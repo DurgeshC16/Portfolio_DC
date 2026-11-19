@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f9f9f6"><title>Neuro-symbolic tree tutor | Durgesh Chaudhari</title>
+<meta name="description" content="An interactive tutor that combines structural validation with explanations of tree operations.">
+<meta property="og:title" content="Neuro-symbolic tree tutor | Durgesh Chaudhari">
+<meta property="og:description" content="An interactive tutor that combines structural validation with explanations of tree operations.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<script src="../site.js" defer>
+</script>
+</head>
+<body><a href="#main" class="skip">Skip to content</a>
+<header>
+<div class="wrap topbar"><a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"><span class="brandmark" aria-hidden="true">dc<span>.</span></span><span>Durgesh Chaudhari</span></a>
+<nav aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#about">About</a>
+</nav><a href="../index.html#contact" class="contact-nav"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>Get in touch</a><button class="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</div>
+<div class="mobile-menu" id="mobile-menu" hidden><a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+</div>
+</header>
+<main id="main" class="detail">
+<section class="detail-hero">
+<div class="wrap"><a class="crumb" href="../index.html#work"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Project portfolio</a>
+<p class="eyebrow"><span></span>Agentic systems</p>
+<h1>Neuro-symbolic tree tutor</h1>
+<p class="deck">A seven-agent learning system co-built with Niraj Chavan, combining symbolic validators, a prerequisite knowledge graph and Gemini explanations.</p>
+<div class="tags"><span class="chip">Gemini</span><span class="chip">FastAPI</span><span class="chip">React / D3.js</span>
+</div>
+</div>
+</section>
+<section class="wrap case-layout">
+<div>
+<p class="category">Engineering case study</p>
+<h2>Make the rule behind a tree rotation visible.</h2>
+<div class="spec">
+<h3>Engineering decision</h3>
+<p>Rules validate the structure after a student action. The tutor uses the detected violation and prerequisite concepts to explain what went wrong.</p>
+</div>
+<div class="spec">
+<h3>Evaluation</h3>
+<p>The résumé reports detection of all structural violations in 240 test cases, with a mean validation latency of 34.1 ms. The pilot involved 23 users.</p>
+</div>
+<div class="spec">
+<h3>Scope</h3>
+<p>The tutor covers AVL trees, red-black trees, B-trees, B+ trees, heaps and segment trees. A React and D3.js interface connects to a FastAPI backend.</p>
+</div>
+<div class="source-links"><a class="card-link" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18"/></svg>Project repository</a><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"/></svg>Résumé</a>
+</div>
+</div>
+<div class="experiment" id="experiment">
+<p class="eyebrow"><span></span>Interactive exercise</p>
+<h2>Restore the AVL balance.</h2>
+<p>Keys 30, 20 and 10 were inserted in that order. The root has a left-left imbalance. Choose a rotation at node 30.</p>
+<div class="sample">
+<div class="nodes-box">
+<div data-tree="before"><svg viewBox="0 0 280 116" class="tree-art" aria-hidden="true"><path d="m183 20-43 39-43 39"/><g><circle cx="183" cy="20" r="16"/><text x="183" y="21">30</text><circle cx="140" cy="59" r="16"/><text x="140" y="60">20</text><circle cx="97" cy="98" r="16"/><text x="97" y="99">10</text></g></svg>
+</div>
+<div data-tree="after" hidden><svg viewBox="0 0 280 116" class="tree-art" aria-hidden="true"><path d="M140 25 78 91m62-66 62 66"/><g><circle cx="140" cy="25" r="18"/><text x="140" y="26">20</text><circle cx="78" cy="91" r="18"/><text x="78" y="92">10</text><circle cx="202" cy="91" r="18"/><text x="202" y="92">30</text></g></svg>
+</div>
+</div>
+<p id="tree-reading">Root 30 has left child 20, which has left child 10.</p>
+<div class="choices"><button class="button secondary" data-rotate="left">Rotate left</button><button class="button primary" data-rotate="right">Rotate right</button><button class="card-link" data-rotate="reset" hidden><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 1 1 2 7M3 5v6h6"/></svg>Reset exercise</button>
+</div>
+<p class="feedback" role="status" id="tree-feedback">Select a rotation to test the structure.</p>
+</div>
+<p>This small, rule-based portfolio exercise illustrates one concept from the collaborative tutor.</p>
+</div>
+</section>
+<aside class="case-bottom">
+<div class="wrap">
+<div>
+<p class="eyebrow"><span></span>Continue exploring</p>
+<h2>Federated learning for ASD research</h2>
+</div><a class="button secondary" href="federated.html"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"/></svg>Read case study</a>
+</div>
+</aside>
+</main>
+<footer>
+<div class="wrap foot"><span>© 2026 Durgesh Chaudhari</span>
+<div><a class="" href="https://github.com/DurgeshC16">GitHub</a><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+</div>
+</div>
+</footer>
+</body></html>
