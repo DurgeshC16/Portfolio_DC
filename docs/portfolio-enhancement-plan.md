@@ -1,8 +1,43 @@
 # Portfolio enhancement plan
 
-**Discussion draft · November 2026**
+**Design proposal · 21 November 2026**
 
 In the first minute, a recruiter should be able to identify what Durgesh built, how he tested it and where to inspect the evidence. Give an engineer a reason to stay longer by letting them change one input and see the result. Keep the résumé, contact details and case-study summaries directly accessible.
+
+## The design direction
+
+Open on Durgesh’s name and a working piece of Kaaran. A district officer’s question appears beside a small result sheet. Selecting **Inspect 3 clusters** opens the three records behind Pandharpur’s ranking, in place. The visitor has learned something about both the project and its author before reaching the first case study.
+
+| Reference | What is visible on the site | How to apply it here |
+| --- | --- | --- |
+| Dousan Miao | An asymmetric light grid puts a personal introduction and contact actions alongside differently sized project previews. A phone screen makes Android Private Space recognisable even before the caption is read. | Use a light grid for collaborations and research. Give each project an artifact that explains it at a glance, such as an offline SmartCare screen or a source review beside the extension’s summary. [Dousan Miao](https://dousanmiao.com/) |
+| Valentin Chevalier | Oversized initials anchor a sparse dark opening. The selected-work gallery brings one project forward, with previous and next controls. The Five Keys page identifies the work performed before expanding into project details. | Give one engineering demonstration visual priority at a time. Carry its title and selected state into the case study, then show team credit, Durgesh’s confirmed role and the evaluation. [Portfolio](https://www.valentin-chevalier.com/) · [Five Keys case study](https://www.valentin-chevalier.com/five-keys) |
+
+### First screen
+
+On desktop, use an ink-coloured opening with the full name on the left and a light, legible project surface on the right. Keep the existing DM Sans for controls, Instrument Serif italic for the surname, and cobalt for selections and evidence links. Use a lighter blue for links on dark backgrounds. Reserve the trefoil sculpture for the About section, where it can act as a personal signature.
+
+| Identity | Selected demonstration |
+| --- | --- |
+| **Durgesh Chaudhari** | **Kaaran** · Synthetic district data |
+| AI engineering · VIT Pune | Which block requires the most attention? |
+| “I build AI systems that can show their work.” | Pandharpur · **Inspect 3 clusters** |
+| **View résumé** · **Contact** | **Kaaran** · **Tree tutor** · **Federated learning** |
+
+On a phone, put the name, positioning and résumé link first. Place the Kaaran question immediately below. Expand the evidence beneath its button and allow ordinary vertical scrolling. Keep all three project names available as controls. A visitor should be able to reach the tutor without discovering a swipe gesture.
+
+### What follows the opening
+
+| Section | Visitor experience |
+| --- | --- |
+| Selected demonstration | Switch the same surface between a district evidence sheet, a manipulable tree and a three-client averaging diagram. Give each a single primary action and a direct case-study link. Returning from a case study restores the previous selection. |
+| Collaborations | Use a wide SmartCare tile showing an offline workflow, an adjacent Review Summarizer excerpt and a compact exam-management entry. Link to the tree tutor from this collection as well, and credit Niraj Chavan on all four collaborations. Capture original project screens when available. |
+| Research | Present the federated-learning paper as a bibliographic entry with title, venue, year and available author record. Place the paper and patent counts here, alongside their source. Put Kaaran’s test count in its case study and CGPA beside education. |
+| About and contact | Pair the trefoil with a short personal account of an engineering decision. End with internship interests, email, LinkedIn and a downloadable résumé. |
+
+### How movement earns its place
+
+Use a short crossfade when switching projects. Opening Kaaran evidence should align the count with the first source row. A tree rotation should move the same labelled nodes to their new positions so the visitor can follow node 20 as it becomes the root. Keep the comparison figures and all navigation readable while these transitions run. Under reduced motion, show the completed state immediately. Use native links, visible focus and buttons for every action.
 
 ## First release candidate — Kaaran’s evidence explorer
 
@@ -37,15 +72,16 @@ Use explicitly illustrative client parameters of 1, 3 and 5. Equal sample counts
 
 | Order | Deliverable | Review question |
 | --- | --- | --- |
-| 1 | One locally verified Kaaran evidence trail, reachable from the homepage | Can a visitor tell which source supports the finding? |
-| 2 | Two tutor exercises with deterministic state, undo and text equivalents | Can a visitor explain why the two cases require different rotations? |
-| 3 | One weighted-average experiment and its research context | Can a visitor distinguish the illustrative calculation from the study’s measured results? |
+| 1 | A local desktop and phone prototype of the opening, with one complete Kaaran evidence trail and a working résumé link | Can a first-time visitor identify Durgesh’s field, open the résumé and find a source record? |
+| 2 | The light collaboration grid, research record and case-study layouts, using verified screenshots and contribution statements | Can a recruiter distinguish Durgesh’s contribution from the team outcome and reach the relevant repository? |
+| 3 | Two tutor exercises with deterministic state, undo and text equivalents | Can a visitor explain why the two cases require different rotations? |
+| 4 | One weighted-average experiment, followed by mobile, keyboard, reduced-motion and loading checks across all three demonstrations | Can a visitor distinguish the illustrative calculation from the study’s measured results? |
 
-Keep project titles, contribution statements, technical skills, evaluation summaries and source links in the initial HTML. Add JavaScript to individual demonstrations as needed. Test each increment on a narrow phone, by keyboard, with reduced motion, and with the external project service unavailable. Use observed difficulties from the first five sessions to choose the next revision.
+Build the first prototype in the existing HTML, CSS and JavaScript. Use CSS Grid for the two homepage layouts and load each exercise’s code when needed. Keep project titles, contribution statements, technical skills, evaluation summaries, résumé and source links in the initial HTML. Verify that opening a project URL directly and using the browser’s Back button both work. Check the first screen at 320, 390, 768 and 1440 pixels, with 200% zoom, and with the external project service unavailable. Record the device and network profile when checking the proposed 2.5-second mobile largest-contentful-paint target.
 
 ## Decisions for discussion
 
-- Should the homepage open directly on Kaaran’s sample question, or retain the current trefoil illustration with a visible “Inspect Kaaran evidence” link? Test both with the same first-minute task.
+- Use the current trefoil-led homepage as the comparison for the proposed Kaaran-led opening. In five short sessions, record time to the first source record and whether visitors can describe Durgesh’s role. Use the result to decide which opening ships.
 - Which parts of each collaborative project did Durgesh personally design, implement or evaluate? Confirm these before expanding individual contribution statements.
 - Which research records can be linked directly? Prioritise proceedings entries and the patent record when identifiers are available.
 - After the local version is reviewed, decide on the final Vercel address and social preview. The static site in `dist/` is the handoff. A Vercel project connection and deployment are separate future actions.
