@@ -2,6 +2,14 @@
 
 An interactive portfolio covering AI engineering, research and collaborative software projects. The website is plain HTML, CSS and JavaScript. The HTML pages, styles, script, fonts, illustrations and downloadable résumé are in `dist/`.
 
+## Interactive projects
+
+- **Kaaran** traces a synthetic district finding to three local evidence records. Select a cluster or change the language to inspect its figures, comparison period and source workbooks.
+- **Tree tutor** lets visitors choose a node, apply AVL rotations, inspect its balance factor and undo a move. Two insertion sequences illustrate single and double rotations.
+- **Federated learning** calculates a weighted average from three adjustable client sample counts. The case study also explains the stages of a training round.
+
+Each demonstration records its selection in the URL so the same example can be reopened or shared. The collaborations section includes interface captures from SmartCare and Review Summarizer. The extension capture uses synthetic review data.
+
 ## Local preview
 
 From the repository root, run the following command with Python 3.

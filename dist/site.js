@@ -1,117 +1,97 @@
 'use strict';
 
-document.documentElement.classList.add('enhanced');
-
-const menu = document.querySelector('.mobile-menu');
+const menu = document.getElementById('mobile-menu');
 const menuButton = document.querySelector('.menu-btn');
-function closeMenu() {
-  menu.hidden = true;
-  menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-label', 'Open navigation');
+function setMenu(open) {
+  menu.hidden = !open;
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
 }
-menuButton.addEventListener('click', () => {
-  if (!menu.hidden) return closeMenu();
-  menu.hidden = false;
-  menuButton.setAttribute('aria-expanded', 'true');
-  menuButton.setAttribute('aria-label', 'Close navigation');
-});
-menu.addEventListener('click', closeMenu);
-window.matchMedia('(min-width: 531px)').addEventListener('change', closeMenu);
-document.addEventListener('keydown', event => {
+menuButton.addEventListener('click', () => setMenu(menu.hidden));
+menu.addEventListener('click', () => setMenu(false));
+matchMedia('(min-width: 641px)').addEventListener('change', () => setMenu(false));
+document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !menu.hidden) {
-    closeMenu();
+    setMenu(false);
     menuButton.focus();
   }
 });
 
-// All selector buttons expose their current selection and reference visible content.
-function select(buttons, selected) {
-  buttons.forEach(button => button.setAttribute('aria-pressed', String(button === selected)));
-}
-const workButtons = document.querySelectorAll('[data-work]');
-function showCollection(button) {
-  select(workButtons, button);
-  workButtons.forEach(item => {
-    document.getElementById(item.getAttribute('aria-controls')).hidden = item !== button;
-  });
-}
-if (workButtons.length) {
-  showCollection(workButtons[0]);
-  workButtons.forEach(button => button.addEventListener('click', () => showCollection(button)));
-}
-const studies = document.querySelectorAll('[data-study]');
-studies.forEach(button => button.addEventListener('click', () => {
-  select(studies, button);
-  studies.forEach(item => {
-    document.getElementById(item.getAttribute('aria-controls')).hidden = item !== button;
-  });
-  document.getElementById('study-title').textContent = button.dataset.title;
-}));
+const panels = [...document.querySelectorAll('[data-lab]')];
+const selectors = [...document.querySelectorAll('[data-project]')];
+const factories = { kaaran: evidenceLab, tutor: rotationLab, federated: averagingLab };
+const instances = new Map();
+let current = panels[0].dataset.lab;
 
-const surface = document.querySelector('#study-form .hero-art');
-if (surface && window.matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches) {
-  surface.addEventListener('pointermove', event => {
-    const rect = surface.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    surface.style.setProperty('--tilt-x', (x * 10) + 'deg');
-    surface.style.setProperty('--tilt-y', (-y * 8) + 'deg');
-  });
-  surface.addEventListener('pointerleave', () => {
-    surface.style.removeProperty('--tilt-x');
-    surface.style.removeProperty('--tilt-y');
-  });
+function fragment(key) {
+  const query = instances.get(key)?.params().toString();
+  return '#lab/' + key + (query ? '?' + query : '');
 }
-const languages = document.querySelectorAll('[data-lang]');
-languages.forEach(button => button.addEventListener('click', () => {
-  select(languages, button);
-  const previous = document.querySelector('[data-pane]:not([hidden])');
-  const expanded = Array.from(previous.querySelectorAll('details'), detail => detail.open);
-  document.querySelectorAll('[data-pane]').forEach(pane => {
-    pane.hidden = pane.dataset.pane !== button.dataset.lang;
-    if (!pane.hidden) pane.querySelectorAll('details').forEach((detail, index) => {
-      detail.open = !!expanded[index];
+function updateLinks(key) {
+  const hash = fragment(key);
+  const panel = document.getElementById('lab-' + key);
+  const caseLink = panel.querySelector('.study-link');
+  if (caseLink) caseLink.href = 'projects/' + key + '.html' + hash;
+  const backLink = document.querySelector('.detail .crumb');
+  if (backLink) backLink.href = '../index.html' + hash;
+}
+function remember(key) {
+  if (key !== current) return;
+  const hash = fragment(key);
+  updateLinks(key);
+  if (location.hash !== hash) history.replaceState(null, '', hash);
+}
+function display(key, restoredParams) {
+  const panel = panels.find((item) => item.dataset.lab === key);
+  if (!panel) return;
+  current = key;
+  panels.forEach((item) => (item.hidden = item !== panel));
+  selectors.forEach((item) => {
+    if (item.dataset.project === key) item.setAttribute('aria-current', 'true');
+    else item.removeAttribute('aria-current');
+  });
+  const firstVisit = !instances.has(key);
+  if (firstVisit)
+    instances.set(
+      key,
+      factories[key](panel, () => remember(key)),
+    );
+  if (firstVisit || restoredParams) instances.get(key).restore(restoredParams || new URLSearchParams());
+  updateLinks(key);
+}
+function restoreRoute() {
+  const route = location.hash.match(/^#lab\/([a-z]+)(?:\?(.*))?$/);
+  if (route && panels.some((item) => item.dataset.lab === route[1])) {
+    display(route[1], new URLSearchParams(route[2]));
+    return true;
+  }
+  return false;
+}
+selectors.forEach((item) =>
+  item.addEventListener('click', (event) => {
+    if (event.button || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    event.preventDefault();
+    display(item.dataset.project);
+    remember(item.dataset.project);
+  }),
+);
+if (!restoreRoute()) {
+  display(current);
+} else {
+  const target = document.querySelector('.showcase, .experiment');
+  target.scrollIntoView({ behavior: 'instant', block: 'start' });
+}
+window.addEventListener('hashchange', restoreRoute);
+const training = document.querySelector('[data-training]');
+if (training) {
+  const buttons = training.querySelectorAll('button[aria-controls]');
+  function showStage(selected) {
+    buttons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(selected === button));
+      document.getElementById(button.getAttribute('aria-controls')).hidden = selected !== button;
     });
-  });
-}));
-const rotateButtons = document.querySelectorAll('[data-rotate]');
-rotateButtons.forEach(button => button.addEventListener('click', () => {
-  const action = button.dataset.rotate;
-  const balanced = action === 'right';
-  const feedback = document.getElementById('tree-feedback');
-  document.querySelector('[data-tree="before"]').hidden = balanced;
-  document.querySelector('[data-tree="after"]').hidden = !balanced;
-  document.getElementById('tree-reading').textContent = balanced
-    ? 'Root 20 has left child 10 and right child 30.'
-    : 'Root 30 has left child 20, which has left child 10.';
-  feedback.textContent = ({
-    right: 'Correct. A right rotation promotes node 20. Both subtrees now have equal height and the keys remain in order.',
-    left: 'Node 30 has no right child to promote. Its heavier subtree is on the left. Try a right rotation.',
-    reset: 'Select a rotation to test the structure.'
-  })[action];
-  rotateButtons.forEach(item => {
-    if (item.dataset.rotate === 'reset') item.hidden = action === 'reset';
-    else item.disabled = balanced;
-  });
-  if (balanced) document.querySelector('[data-rotate="reset"]').focus();
-  if (action === 'reset') document.querySelector('[data-rotate="left"]').focus();
-}));
-
-const stages = [
-  ['Local training', 'Each of the three clients trains a copy of the model on its own image dataset. Raw images remain at the client.'],
-  ['Model updates', 'Clients return their trained model parameters to the coordinator. The exchanged parameters allow training to proceed across the three datasets.'],
-  ['Aggregation', 'The coordinator combines the client updates using federated averaging. The resulting global model is shared with clients for the next training round.']
-];
-const stageButtons = document.querySelectorAll('[data-fed]');
-stageButtons.forEach(button => button.addEventListener('click', () => {
-  select(stageButtons, button);
-  stageButtons.forEach(item => {
-    item.classList.toggle('primary', item === button);
-    item.classList.toggle('secondary', item !== button);
-  });
-  const stage = button.dataset.fed;
-  document.querySelector('.fed-diagram').dataset.step = stage;
-  const [title, description] = stages[Number(stage)];
-  document.querySelector('#fed-text h3').textContent = title;
-  document.querySelector('#fed-text p').textContent = description;
-}));
+  }
+  buttons.forEach((button) => button.addEventListener('click', () => showStage(button)));
+  showStage(buttons[0]);
+}
+document.documentElement.classList.add('enhanced');

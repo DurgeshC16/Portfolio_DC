@@ -1,84 +1,313 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f9f9f6"><title>Federated learning for ASD research | Durgesh Chaudhari</title>
-<meta name="description" content="A cross-silo image classification experiment in which three clients retain their local training data.">
-<meta property="og:title" content="Federated learning for ASD research | Durgesh Chaudhari">
-<meta property="og:description" content="A cross-silo image classification experiment in which three clients retain their local training data.">
-<meta property="og:type" content="website">
-<link rel="icon" href="../assets/favicon.svg">
-<link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../style.css">
-<script src="../site.js" defer>
-</script>
-</head>
-<body><a href="#main" class="skip">Skip to content</a>
-<header>
-<div class="wrap topbar"><a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"><span class="brandmark" aria-hidden="true">dc<span>.</span></span><span>Durgesh Chaudhari</span></a>
-<nav aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#about">About</a>
-</nav><a href="../index.html#contact" class="contact-nav"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>Get in touch</a><button class="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
-</div>
-<div class="mobile-menu" id="mobile-menu" hidden><a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
-</div>
-</header>
-<main id="main" class="detail">
-<section class="detail-hero">
-<div class="wrap"><a class="crumb" href="../index.html#work"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Project portfolio</a>
-<p class="eyebrow"><span></span>Machine learning research</p>
-<h1>Federated learning for ASD research</h1>
-<p class="deck">An experimental cross-silo training framework for a facial-image classification task across three datasets.</p>
-<div class="tags"><span class="chip">Flower</span><span class="chip">EfficientNet</span><span class="chip">TensorFlow</span>
-</div>
-</div>
-</section>
-<section class="wrap case-layout">
-<div>
-<p class="category">Engineering case study</p>
-<h2>Train across three clients while keeping images local.</h2>
-<div class="spec">
-<h3>Method</h3>
-<p>Three clients trained an EfficientNet-based model using transfer learning and federated averaging. The experiment ran for 80 rounds.</p>
-</div>
-<div class="spec">
-<h3>Reported results</h3>
-<p>The résumé reports 95.2% global accuracy across an experiment using 12,423 images, with the best checkpoint at round 33 and a 1.8 percentage-point cross-client accuracy gap.</p>
-</div>
-<div class="spec">
-<h3>Interpretation</h3>
-<p>These results describe the study datasets and evaluation protocol. Dataset composition and generalisation to other populations limit the conclusions. The work is presented as a machine-learning experiment.</p>
-</div>
-<div class="source-links"><a class="card-link" href="https://github.com/DurgeshC16/Autism-Detection-using-FL"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18"/></svg>Project repository</a><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"/></svg>Résumé</a>
-</div>
-</div>
-<div class="experiment" id="experiment">
-<p class="eyebrow"><span></span>Training walkthrough</p>
-<h2>Follow one federated round.</h2>
-<div class="nodes-box fed-diagram" data-step="0"><svg class="network" viewBox="0 0 290 130" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4"><path d="M145 62 54 28m91 34L60 106m85-44 97 22"/></g><g fill="none" stroke="currentColor"><circle cx="145" cy="62" r="35" opacity=".26"/><circle cx="145" cy="62" r="28" opacity=".5"/></g><g fill="#127e6f"><circle cx="145" cy="62" r="21"/><circle cx="54" cy="28" r="10"/><circle cx="60" cy="106" r="10"/><circle cx="242" cy="84" r="10"/></g><g fill="none" stroke="white" stroke-width="1.6"><path d="m134 59 11-5 11 5-11 6-11-6Zm0 5 11 6 11-6"/></g></svg>
-</div>
-<div class="choices" aria-label="Training stages"><button class="button primary" data-fed="0" aria-pressed="true">Local training</button><button class="button secondary" data-fed="1" aria-pressed="false">Model updates</button><button class="button secondary" data-fed="2" aria-pressed="false">Aggregation</button>
-</div>
-<div class="sample" aria-live="polite" id="fed-text">
-<h3>Local training</h3>
-<p>Each of the three clients trains a copy of the model on its own image dataset. Raw images remain at the client.</p>
-</div>
-<p>The diagram illustrates one training round. It contains no individual images or predictions.</p>
-</div>
-</section>
-<aside class="case-bottom">
-<div class="wrap">
-<div>
-<p class="eyebrow"><span></span>Continue exploring</p>
-<h2>Kaaran</h2>
-</div><a class="button secondary" href="kaaran.html"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"/></svg>Read case study</a>
-</div>
-</aside>
-</main>
-<footer>
-<div class="wrap foot"><span>© 2026 Durgesh Chaudhari</span>
-<div><a class="" href="https://github.com/DurgeshC16">GitHub</a><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
-</div>
-</div>
-</footer>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#141518" />
+    <title>Federated learning for ASD research | Durgesh Chaudhari</title>
+    <meta
+      name="description"
+      content="A cross-silo image classification experiment in which three clients retain their local training data."
+    />
+    <meta property="og:title" content="Federated learning for ASD research | Durgesh Chaudhari" />
+    <meta
+      property="og:description"
+      content="A cross-silo image classification experiment in which three clients retain their local training data."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="../assets/favicon.svg" />
+    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../experiments.js" defer></script>
+    <script src="../site.js" defer></script>
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+    <header class="mast">
+      <div class="wrap nav-row">
+        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
+          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="../index.html#work" class="">Work</a
+          ><a href="../index.html#research" class="">Research</a
+          ><a href="../index.html#about" class="">About</a>
+        </nav>
+        <a href="../index.html#contact" class="nav-contact"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2.5" y="5" width="19" height="14" rx="3" />
+            <path d="m4 7 8 6 8-6" /></svg
+          >Get in touch</a
+        >
+        <button
+          type="button"
+          class="menu-btn"
+          aria-label="Open navigation"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="../index.html#work" class="">Work</a
+        ><a href="../index.html#research" class="">Research</a
+        ><a href="../index.html#about" class="">About</a
+        ><a href="../index.html#contact" class="">Contact</a>
+      </nav>
+    </header>
+    <main id="main" class="detail">
+      <section class="detail-hero">
+        <div class="wrap">
+          <a class="crumb" href="../index.html#lab/federated"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+            Interactive projects</a
+          >
+          <p class="eyebrow"><span></span>Machine learning research</p>
+          <h1>Federated learning for ASD research</h1>
+          <p class="deck">
+            An experimental cross-silo training framework for a facial-image classification task across
+            three datasets.
+          </p>
+          <div class="tags">
+            <span class="chip">Flower</span><span class="chip">EfficientNet</span
+            ><span class="chip">TensorFlow</span>
+          </div>
+        </div>
+      </section>
+      <section class="wrap case-layout">
+        <div>
+          <p class="category">Engineering case study</p>
+          <h2>Train across three clients while keeping images local.</h2>
+          <div class="spec">
+            <h3>Method</h3>
+            <p>
+              Three clients trained an EfficientNet-based model using transfer learning and federated
+              averaging. The experiment ran for 80 rounds.
+            </p>
+          </div>
+          <div class="spec">
+            <h3>Reported results</h3>
+            <p>
+              The résumé reports 95.2% global accuracy across an experiment using 12,423 images, with the
+              best checkpoint at round 33 and a 1.8 percentage-point cross-client accuracy gap.
+            </p>
+          </div>
+          <div class="spec">
+            <h3>Interpretation</h3>
+            <p>
+              These results describe the study datasets and evaluation protocol. Dataset composition and
+              generalisation to other populations limit the conclusions. The work is presented as a
+              machine-learning experiment.
+            </p>
+          </div>
+          <div class="source-links">
+            <a class="card-link" href="https://github.com/DurgeshC16/Autism-Detection-using-FL"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.65"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18" /></svg
+              >Project repository</a
+            ><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.65"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"
+                /></svg
+              >Résumé</a
+            >
+          </div>
+        </div>
+        <div class="experiment" id="experiment">
+          <article class="lab lab-federated" data-lab="federated" id="lab-federated">
+            <div class="lab-heading">
+              <span class="lab-symbol"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm9 5-9 5-9-5m9 5v10" /></svg
+              ></span>
+              <h2>Federated learning</h2>
+            </div>
+            <div class="average-stage">
+              <div><span>Global parameter</span><output data-average>3</output></div>
+              <div class="weight-plot" aria-hidden="true">
+                <span><i style="--height: 16px"></i><small>A</small></span
+                ><span><i style="--height: 48px"></i><small>B</small></span
+                ><span><i style="--height: 80px"></i><small>C</small></span>
+              </div>
+            </div>
+            <div class="lab-body">
+              <div class="lab-meta">Federated averaging · Illustrative values</div>
+              <h3>Weight the client updates.</h3>
+              <p>
+                Each client contributes one parameter. Change its sample count to see how much influence
+                it has.
+              </p>
+              <div class="lab-fields client-fields">
+                <label
+                  >Client A<small>Parameter 1</small
+                  ><input
+                    data-client
+                    type="number"
+                    min="0"
+                    max="9999"
+                    value="1"
+                    step="1"
+                    aria-label="Sample count for client A" /></label
+                ><label
+                  >Client B<small>Parameter 3</small
+                  ><input
+                    data-client
+                    type="number"
+                    min="0"
+                    max="9999"
+                    value="1"
+                    step="1"
+                    aria-label="Sample count for client B" /></label
+                ><label
+                  >Client C<small>Parameter 5</small
+                  ><input
+                    data-client
+                    type="number"
+                    min="0"
+                    max="9999"
+                    value="1"
+                    step="1"
+                    aria-label="Sample count for client C"
+                /></label>
+              </div>
+              <p class="formula" data-equation aria-live="polite">(1 × 1 + 3 × 1 + 5 × 1) ÷ 3 = 3</p>
+              <button type="button" class="plain-button" data-equal>Reset counts</button>
+            </div>
+          </article>
+          <details class="method-note">
+            <summary>Follow one training round</summary>
+            <div class="method-steps" data-training>
+              <div class="training-options" aria-label="Training stage">
+                <button type="button" aria-pressed="true" aria-controls="local-stage">
+                  Local training
+                </button>
+                <button type="button" aria-pressed="false" aria-controls="update-stage">
+                  Model updates
+                </button>
+                <button type="button" aria-pressed="false" aria-controls="aggregate-stage">
+                  Aggregation
+                </button>
+              </div>
+              <div id="local-stage">
+                <h3>Local training</h3>
+                <p>
+                  Each client trains a copy of the model using its own images. The raw images stay with
+                  that client.
+                </p>
+              </div>
+              <div id="update-stage">
+                <h3>Model updates</h3>
+                <p>
+                  The three clients send the parameters learned from their local datasets to the
+                  coordinator.
+                </p>
+              </div>
+              <div id="aggregate-stage">
+                <h3>Aggregation</h3>
+                <p>
+                  The coordinator averages the updates and shares the resulting model with the clients for
+                  their next training round.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+      <aside class="case-bottom">
+        <div class="wrap">
+          <div>
+            <p class="eyebrow"><span></span>Continue exploring</p>
+            <h2>Kaaran</h2>
+          </div>
+          <a class="button secondary" href="kaaran.html"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14" /></svg
+            >Read case study</a
+          >
+        </div>
+      </aside>
+    </main>
+    <footer>
+      <div class="wrap foot">
+        <span>© 2026 Durgesh Chaudhari</span>
+        <div>
+          <a class="" href="https://github.com/DurgeshC16">GitHub</a
+          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
+          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

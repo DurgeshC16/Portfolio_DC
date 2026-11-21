@@ -1,127 +1,325 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f9f9f6"><title>Kaaran | Durgesh Chaudhari</title>
-<meta name="description" content="A bilingual data analyst that traces school district findings back to their source records.">
-<meta property="og:title" content="Kaaran | Durgesh Chaudhari">
-<meta property="og:description" content="A bilingual data analyst that traces school district findings back to their source records.">
-<meta property="og:type" content="website">
-<link rel="icon" href="../assets/favicon.svg">
-<link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../style.css">
-<script src="../site.js" defer>
-</script>
-</head>
-<body><a href="#main" class="skip">Skip to content</a>
-<header>
-<div class="wrap topbar"><a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"><span class="brandmark" aria-hidden="true">dc<span>.</span></span><span>Durgesh Chaudhari</span></a>
-<nav aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#about">About</a>
-</nav><a href="../index.html#contact" class="contact-nav"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>Get in touch</a><button class="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
-</div>
-<div class="mobile-menu" id="mobile-menu" hidden><a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
-</div>
-</header>
-<main id="main" class="detail">
-<section class="detail-hero">
-<div class="wrap"><a class="crumb" href="../index.html#work"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Project portfolio</a>
-<p class="eyebrow"><span></span>Applied AI</p>
-<h1>Kaaran</h1>
-<p class="deck">A Marathi and English data analyst co-built for education officers during the Anthropic × ShikshaNext hackathon.</p>
-<div class="tags"><span class="chip">Claude</span><span class="chip">DuckDB</span><span class="chip">Python</span>
-</div>
-</div>
-</section>
-<section class="wrap case-layout">
-<div>
-<p class="category">Engineering case study</p>
-<h2>From a district question to a verifiable answer.</h2>
-<div class="spec">
-<h3>Engineering decision</h3>
-<p>Claude interprets questions and prepares language. DuckDB and pandas compute the figures. A verifier checks the generated brief before it reaches the officer.</p>
-</div>
-<div class="spec">
-<h3>Evaluation</h3>
-<p>On 25 test questions, the LLM parser reached 92% intent accuracy. All 22 evaluated briefs passed verification on the first attempt. The project includes 295 automated tests.</p>
-</div>
-<div class="spec">
-<h3>Delivery</h3>
-<p>The system provides web, WhatsApp and voice interfaces, plus downloadable evidence briefs. Its district demonstration uses synthetic data.</p>
-</div>
-<div class="source-links"><a class="card-link" href="https://github.com/DurgeshC16/Kaaran"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18"/></svg>Project repository</a><a class="card-link" href="https://kaaran-vk5o.onrender.com"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M12 17v4m-5 0h10"/></svg>Open live application</a><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"/></svg>Résumé</a>
-</div>
-</div>
-<div class="experiment" id="experiment">
-<div class="exp-head">
-<p class="eyebrow"><span></span>Interactive demonstration</p>
-<div class="switch" aria-label="Demonstration language"><button aria-pressed="true" data-lang="en" lang="en">English</button><button aria-pressed="false" data-lang="mr" lang="mr">मराठी</button>
-</div>
-</div>
-<div data-pane="en" class="langpane">
-<h2>Inspect district evidence.</h2>
-<p>This replay uses the published synthetic district sample.</p>
-<div class="sample">
-<h3>Which block requires the most attention?</h3>
-<details><summary>Show the district result</summary>
-<p><strong>Pandharpur</strong> has three clusters requiring attention. Karmala and Madha each have one.</p>
-<div class="barplot">
-<div><span>Pandharpur</span><i style="--value:100%"></i><b>3</b>
-</div>
-<div><span>Karmala</span><i style="--value:33.33333333333333%"></i><b>1</b>
-</div>
-<div><span>Madha</span><i style="--value:33.33333333333333%"></i><b>1</b>
-</div>
-</div>
-<details><summary>Inspect the three Pandharpur records</summary>
-<ol>
-<li><strong>Bhalwad Khurd Kendra.</strong> The decline in mathematics was 11.6 points greater than elsewhere in the block. <a class="cite record-link" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03">Inspect workbook references</a>
-</li>
-<li><strong>Bhalpur Kendra.</strong> The seasonal attendance gap across five schools was 14.7 percentage points, comparing November–March with June–October. <a class="cite record-link" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.mig.gap.08K11">Inspect workbook references</a>
-</li>
-<li><strong>Takangaon Kendra.</strong> The decline in mathematics was 7.4 points greater than elsewhere in the block. <a class="cite record-link" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K07">Inspect workbook references</a>
-</li>
-</ol><a class="cite" href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur">Inspect the source records (JSON)</a>
-</details>
-</details>
-</div>
-</div>
-<div data-pane="mr" class="langpane" lang="mr" hidden>
-<h2>जिल्ह्यातील नोंदी तपासा.</h2>
-<p>या प्रात्यक्षिकासाठी प्रकाशित केलेला कृत्रिम नमुना डेटा वापरला आहे.</p>
-<div class="sample">
-<h3>कोणत्या तालुक्याकडे सर्वाधिक लक्ष देणे आवश्यक आहे?</h3>
-<details><summary>जिल्ह्याचा निकाल पहा</summary>
-<p><strong>पंढरपूर</strong> तालुक्यातील तीन केंद्रांकडे लक्ष देणे आवश्यक आहे. करमाळा आणि माढा या तालुक्यांमध्ये प्रत्येकी एक असे केंद्र आहे.</p>
-<details><summary>पंढरपूरच्या तीन केंद्रांच्या नोंदी पहा</summary>
-<ol>
-<li><strong>Bhalwad Khurd Kendra.</strong> गणितातील गुणांची घसरण तालुक्यातील इतर भागांच्या तुलनेत ११.६ गुणांनी अधिक होती. <a class="cite record-link" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03">मूळ नोंदी तपासा</a>
-</li>
-<li><strong>Bhalpur Kendra.</strong> पाच शाळांच्या नोव्हेंबर–मार्च आणि जून–ऑक्टोबर या कालावधींतील उपस्थितीत १४.७ टक्के गुणांचा फरक आढळला. <a class="cite record-link" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.mig.gap.08K11">मूळ नोंदी तपासा</a>
-</li>
-<li><strong>Takangaon Kendra.</strong> गणितातील गुणांची घसरण तालुक्यातील इतर भागांच्या तुलनेत ७.४ गुणांनी अधिक होती. <a class="cite record-link" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K07">मूळ नोंदी तपासा</a>
-</li>
-</ol><a class="cite" href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur">मूळ नोंदी पहा (JSON)</a>
-</details>
-</details>
-</div>
-</div>
-<p class="demo-credit">The portfolio reproduces selected results and provides its own Marathi translation. The linked service contains the full demonstration.</p>
-</div>
-</section>
-<aside class="case-bottom">
-<div class="wrap">
-<div>
-<p class="eyebrow"><span></span>Continue exploring</p>
-<h2>Neuro-symbolic tree tutor</h2>
-</div><a class="button secondary" href="tutor.html"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"/></svg>Read case study</a>
-</div>
-</aside>
-</main>
-<footer>
-<div class="wrap foot"><span>© 2026 Durgesh Chaudhari</span>
-<div><a class="" href="https://github.com/DurgeshC16">GitHub</a><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
-</div>
-</div>
-</footer>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#141518" />
+    <title>Kaaran | Durgesh Chaudhari</title>
+    <meta
+      name="description"
+      content="A bilingual data analyst that traces school district findings back to their source records."
+    />
+    <meta property="og:title" content="Kaaran | Durgesh Chaudhari" />
+    <meta
+      property="og:description"
+      content="A bilingual data analyst that traces school district findings back to their source records."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="../assets/favicon.svg" />
+    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../assets/kaaran-evidence.js" defer></script>
+    <script src="../experiments.js" defer></script>
+    <script src="../site.js" defer></script>
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+    <header class="mast">
+      <div class="wrap nav-row">
+        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
+          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="../index.html#work" class="">Work</a
+          ><a href="../index.html#research" class="">Research</a
+          ><a href="../index.html#about" class="">About</a>
+        </nav>
+        <a href="../index.html#contact" class="nav-contact"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2.5" y="5" width="19" height="14" rx="3" />
+            <path d="m4 7 8 6 8-6" /></svg
+          >Get in touch</a
+        >
+        <button
+          type="button"
+          class="menu-btn"
+          aria-label="Open navigation"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="../index.html#work" class="">Work</a
+        ><a href="../index.html#research" class="">Research</a
+        ><a href="../index.html#about" class="">About</a
+        ><a href="../index.html#contact" class="">Contact</a>
+      </nav>
+    </header>
+    <main id="main" class="detail">
+      <section class="detail-hero">
+        <div class="wrap">
+          <a class="crumb" href="../index.html#lab/kaaran"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+            Interactive projects</a
+          >
+          <p class="eyebrow"><span></span>Applied AI</p>
+          <h1>Kaaran</h1>
+          <p class="deck">
+            A Marathi and English data analyst co-built for education officers during the Anthropic ×
+            ShikshaNext hackathon.
+          </p>
+          <div class="tags">
+            <span class="chip">Claude</span><span class="chip">DuckDB</span
+            ><span class="chip">Python</span>
+          </div>
+        </div>
+      </section>
+      <section class="wrap case-layout">
+        <div>
+          <p class="category">Engineering case study</p>
+          <h2>From a district question to a verifiable answer.</h2>
+          <div class="spec">
+            <h3>Engineering decision</h3>
+            <p>
+              Claude interprets questions and prepares language. DuckDB and pandas compute the figures. A
+              verifier checks the generated brief before it reaches the officer.
+            </p>
+          </div>
+          <div class="spec">
+            <h3>Evaluation</h3>
+            <p>
+              On 25 test questions, the LLM parser reached 92% intent accuracy. All 22 evaluated briefs
+              passed verification on the first attempt. The project includes 295 automated tests.
+            </p>
+          </div>
+          <div class="spec">
+            <h3>Delivery</h3>
+            <p>
+              The system provides web, WhatsApp and voice interfaces, plus downloadable evidence briefs.
+              Its district demonstration uses synthetic data.
+            </p>
+          </div>
+          <div class="source-links">
+            <a class="card-link" href="https://github.com/DurgeshC16/Kaaran"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.65"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18" /></svg
+              >Project repository</a
+            ><a class="card-link" href="https://kaaran-vk5o.onrender.com"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.65"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M12 17v4m-5 0h10" /></svg
+              >Open live application</a
+            ><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.65"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"
+                /></svg
+              >Résumé</a
+            >
+          </div>
+        </div>
+        <div class="experiment" id="experiment">
+          <article class="lab lab-kaaran" data-lab="kaaran" id="lab-kaaran">
+            <div class="lab-heading">
+              <span class="lab-symbol"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 16v4m5-10v10m5-15v15m5-11v11" /></svg
+              ></span>
+              <h2>Kaaran</h2>
+              <div class="language" aria-label="Evidence language">
+                <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button
+                ><button
+                  type="button"
+                  data-language="mr"
+                  lang="mr"
+                  aria-pressed="false"
+                  aria-label="मराठी"
+                >
+                  मराठी
+                </button>
+              </div>
+            </div>
+            <figure class="block-figure">
+              <img
+                src="../assets/kaaran-blocks.webp"
+                width="950"
+                height="397"
+                alt="Three isometric plates for Pandharpur and one plate each for Karmala and Madha."
+              />
+              <figcaption>
+                <span>Pandharpur <b>3</b></span
+                ><span>Karmala <b>1</b></span
+                ><span>Madha <b>1</b></span>
+              </figcaption>
+            </figure>
+            <div class="lab-body" data-evidence-body lang="en">
+              <div class="lab-meta" data-e-text="type">Education analytics · Synthetic sample</div>
+              <h3 data-e-text="question">Which block needs the most attention?</h3>
+              <p data-e-text="answer">Pandharpur has three flagged clusters in the district sample.</p>
+              <details class="records">
+                <summary>
+                  <span class="inspect-icon"
+                    ><svg
+                      class="icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="10" cy="10" r="6" />
+                      <path d="m15 15 6 6m-11-14v6m-3-3h6" /></svg></span
+                  ><span data-e-text="inspect">Inspect 3 clusters</span
+                  ><span class="toggle-sign" aria-hidden="true"></span>
+                </summary>
+                <noscript
+                  ><ul>
+                    <li>
+                      Bhalwad Khurd Kendra · Relative mathematics decline of 11.6 percentage points.
+                    </li>
+                    <li>Bhalpur Kendra · Seasonal attendance gap of 14.7 percentage points.</li>
+                    <li>Takangaon Kendra · Relative mathematics decline of 7.4 percentage points.</li>
+                  </ul>
+                  <a
+                    class="source-link"
+                    href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur"
+                    >Read the block evidence</a
+                  ></noscript
+                >
+                <div class="evidence-detail">
+                  <label for="cluster" data-e-text="choose">Select a cluster</label
+                  ><select id="cluster">
+                    <option>Bhalwad Khurd Kendra</option>
+                    <option>Bhalpur Kendra</option>
+                    <option>Takangaon Kendra</option>
+                  </select>
+                  <div class="source-extract" aria-live="polite">
+                    <h4 data-record-name>Bhalwad Khurd Kendra</h4>
+                    <p data-record-finding>
+                      The mathematics score fell 11.6 points more than elsewhere in the block.
+                    </p>
+                    <p data-record-period></p>
+                    <ul data-workbooks></ul>
+                    <a
+                      class="source-link"
+                      data-record-url
+                      href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03"
+                      >View source record</a
+                    >
+                  </div>
+                  <small data-snapshot></small>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+      </section>
+      <aside class="case-bottom">
+        <div class="wrap">
+          <div>
+            <p class="eyebrow"><span></span>Continue exploring</p>
+            <h2>Neuro-symbolic tree tutor</h2>
+          </div>
+          <a class="button secondary" href="tutor.html"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14" /></svg
+            >Read case study</a
+          >
+        </div>
+      </aside>
+    </main>
+    <footer>
+      <div class="wrap foot">
+        <span>© 2026 Durgesh Chaudhari</span>
+        <div>
+          <a class="" href="https://github.com/DurgeshC16">GitHub</a
+          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
+          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

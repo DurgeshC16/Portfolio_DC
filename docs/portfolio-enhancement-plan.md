@@ -2,6 +2,8 @@
 
 **Design proposal · 21 November 2026**
 
+**Local build status.** The Kaaran-led opening, four-project collaboration grid, AVL rotation lab and federated averaging experiment are implemented. Browser checks cover navigation, keyboard operation, shared demonstration state and six screen widths. The five-person evidence-finding exercise below is still a proposed usability study.
+
 In the first minute, a recruiter should be able to identify what Durgesh built, how he tested it and where to inspect the evidence. Give an engineer a reason to stay longer by letting them change one input and see the result. Keep the résumé, contact details and case-study summaries directly accessible.
 
 ## The design direction
