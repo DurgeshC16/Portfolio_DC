@@ -87,3 +87,9 @@ Build the first prototype in the existing HTML, CSS and JavaScript. Use CSS Grid
 - Which parts of each collaborative project did Durgesh personally design, implement or evaluate? Confirm these before expanding individual contribution statements.
 - Which research records can be linked directly? Prioritise proceedings entries and the patent record when identifiers are available.
 - After the local version is reviewed, decide on the final Vercel address and social preview. The static site in `dist/` is the handoff. A Vercel project connection and deployment are separate future actions.
+
+## Engineering notebook and next review
+
+The local notebook now links the C++ binary-tree benchmark to its archived measurements and the collaborative Review Summarizer to its fusion implementation. Visitors can replay a small AVL insertion sequence, compare all 27 benchmark configurations, and change the retrieval scenario or search method. The homepage and both related projects link directly to the relevant study.
+
+For the next review, ask one classmate to find the configuration where the splay tree becomes a chain and one recruiter to trace a notebook result to the original source. Record where either reader hesitates. If repeated benchmark trials become available, add their distributions alongside the archived single-run timings. A retrieval evaluation can follow when the team has labeled queries and relevance judgments.

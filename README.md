@@ -10,6 +10,10 @@ An interactive portfolio covering AI engineering, research and collaborative sof
 
 Each demonstration records its selection in the URL so the same example can be reopened or shared. The collaborations section includes interface captures from SmartCare and Review Summarizer. The extension capture uses synthetic review data.
 
+## Engineering notebook
+
+[Open the notebook](dist/projects/notebook.html) to replay seven ascending AVL insertions, compare 27 recorded C++ benchmark results, or inspect the reciprocal rank fusion used by the collaborative Review Summarizer. The benchmark shows the final height and single-run batch time for three binary trees. The retrieval study uses fictional reviews with assigned input ranks and recalculates the project's scoring formula locally. Each study links to its source revision and preserves the selected example in the URL.
+
 ## Local preview
 
 From the repository root, run the following command with Python 3.

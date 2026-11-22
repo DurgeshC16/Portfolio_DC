@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="assets/kaaran-evidence.js" defer></script>
     <script src="experiments.js" defer></script>
+    <script src="navigation.js" defer></script>
     <script src="site.js" defer></script>
   </head>
   <body>
@@ -30,7 +31,8 @@
           ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
         >
         <nav aria-label="Main navigation">
-          <a href="index.html#work" class="">Work</a><a href="index.html#research" class="">Research</a
+          <a href="index.html#work" class="">Work</a><a href="projects/notebook.html">Notebook</a
+          ><a href="index.html#research" class="">Research</a
           ><a href="index.html#about" class="">About</a>
         </nav>
         <a href="index.html#contact" class="nav-contact"
@@ -70,8 +72,9 @@
         </button>
       </div>
       <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="index.html#work" class="">Work</a><a href="index.html#research" class="">Research</a
-        ><a href="index.html#about" class="">About</a><a href="index.html#contact" class="">Contact</a>
+        <a href="index.html#work" class="">Work</a><a href="projects/notebook.html">Notebook</a
+        ><a href="index.html#research" class="">Research</a><a href="index.html#about" class="">About</a
+        ><a href="index.html#contact" class="">Contact</a>
       </nav>
     </header>
     <main id="main">
@@ -137,7 +140,9 @@
             </div>
           </div>
           <section class="showcase" id="showcase" aria-label="Interactive project gallery">
-            <div class="stage-top"><span class="stage-line"></span><span>Interactive projects</span></div>
+            <div class="stage-top">
+              <span class="stage-line"></span><span>Interactive projects</span>
+            </div>
             <nav aria-label="Select a project" class="project-picker">
               <a
                 href="projects/kaaran.html#experiment"
@@ -425,8 +430,8 @@
                 <div class="lab-meta">Federated averaging · Illustrative values</div>
                 <h3>Weight the client updates.</h3>
                 <p>
-                  Each client contributes one parameter. Change its sample count to see how much influence
-                  it has.
+                  Each client contributes one parameter. Change its sample count to see how much
+                  influence it has.
                 </p>
                 <div class="lab-fields client-fields">
                   <label
@@ -550,7 +555,13 @@
             <div class="work-copy">
               <span class="discipline">Browser extension</span>
               <h3>Review Summarizer</h3>
-              <p>An extension that groups product reviews by aspect and explains the findings.</p>
+              <p>
+                A browser extension that groups product reviews by aspect and combines keyword and
+                semantic search to retrieve evidence.
+              </p>
+              <a class="text-link review-notebook" href="projects/notebook.html#retrieval"
+                >Try the ranking experiment →</a
+              >
               <a href="https://github.com/Niraj-Chavan/review-summarizer" class="text-link"
                 ><svg
                   class="icon"
@@ -649,6 +660,35 @@
               >
             </div>
           </article>
+        </div>
+      </section>
+      <section class="notebook-preview" aria-labelledby="notebook-title">
+        <div class="wrap notebook-spread">
+          <div>
+            <p class="overline light-label">Interactive studies</p>
+            <h2 id="notebook-title">Engineering <em>notebook.</em></h2>
+            <p>
+              Two questions from my project repositories, with the inputs and results open for
+              inspection.
+            </p>
+          </div>
+          <div class="notebook-index">
+            <a href="projects/notebook.html#trees">
+              <span
+                ><small>C++ · Data structures</small><strong>How tall does a tree grow?</strong
+                ><span>Compare 27 benchmark runs.</span></span
+              >
+              <span class="index-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="projects/notebook.html#retrieval">
+              <span
+                ><small>Python · Information retrieval</small
+                ><strong>Which review surfaces first?</strong
+                ><span>Trace a search result back to its ranks.</span></span
+              >
+              <span class="index-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </section>
       <section class="research-band" id="research" aria-labelledby="research-heading">
@@ -769,7 +809,8 @@
               <path d="m2 9 10-5 10 5-10 5L2 9Zm4 3v5c3 3 9 3 12 0v-5" />
             </svg>
             <div>
-              <strong>B.Tech in Computer Engineering</strong><span>VIT Pune · 2024–2028 · CGPA 8.94</span>
+              <strong>B.Tech in Computer Engineering</strong
+              ><span>VIT Pune · Expected June 2028 · CGPA 8.94</span>
             </div>
           </div>
           <details class="skills">
@@ -786,12 +827,18 @@
             </dl>
           </details>
           <details class="skills">
-            <summary>Certifications and coursework</summary>
+            <summary>Certifications, coursework and practice</summary>
             <dl>
               <dt>Microsoft Certified Azure AI Fundamentals</dt>
               <dd>AI-900 · June 2026</dd>
               <dt>Machine Learning Specialization</dt>
               <dd>Stanford Online and DeepLearning.AI · November 2026</dd>
+              <dt>LeetCode 100 Days Badge</dt>
+              <dd>
+                <a class="notebook-crosslink" href="https://leetcode.com/u/strangeDC/"
+                  >View algorithm practice profile ↗</a
+                >
+              </dd>
             </dl>
           </details>
         </div>

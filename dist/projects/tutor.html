@@ -19,6 +19,7 @@
     <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="../style.css" />
     <script src="../experiments.js" defer></script>
+    <script src="../navigation.js" defer></script>
     <script src="../site.js" defer></script>
   </head>
   <body>
@@ -29,7 +30,7 @@
           ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
         >
         <nav aria-label="Main navigation">
-          <a href="../index.html#work" class="">Work</a
+          <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
           ><a href="../index.html#research" class="">Research</a
           ><a href="../index.html#about" class="">About</a>
         </nav>
@@ -70,7 +71,7 @@
         </button>
       </div>
       <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="../index.html#work" class="">Work</a
+        <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
         ><a href="../index.html#research" class="">Research</a
         ><a href="../index.html#about" class="">About</a
         ><a href="../index.html#contact" class="">Contact</a>
@@ -124,14 +125,16 @@
             <h3>Evaluation</h3>
             <p>
               The résumé reports detection of all structural violations in 240 test cases, with a mean
-              validation latency of 34.1 ms. The pilot involved 23 users.
+              validation latency of 34.1 ms. In a pilot with 23 users, the team identified 11 recurring
+              misconceptions across 219 error events.
             </p>
           </div>
           <div class="spec">
             <h3>Scope</h3>
             <p>
               The tutor covers AVL trees, red-black trees, B-trees, B+ trees, heaps and segment trees. A
-              React and D3.js interface connects to a FastAPI backend.
+              React and D3.js interface connects to a FastAPI backend. Redis caching reduced repeated
+              response time from 1.43 seconds to 0.18 seconds.
             </p>
           </div>
           <div class="source-links">
@@ -234,7 +237,9 @@
             </div>
           </article>
           <p class="lab-note">
-            This portfolio exercise demonstrates the symbolic rules behind the collaborative tutor.
+            This exercise demonstrates the symbolic rules behind the collaborative tutor. For a separate
+            C++ study of how insertion order changes tree height,
+            <a class="notebook-crosslink" href="notebook.html#trees">explore the recorded benchmarks</a>.
           </p>
         </div>
       </section>
@@ -255,7 +260,9 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-              <path d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14" /></svg
+              <path
+                d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
+              /></svg
             >Read case study</a
           >
         </div>

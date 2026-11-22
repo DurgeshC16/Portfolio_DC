@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#141518" />
+    <title>Engineering notebook | Durgesh Chaudhari</title>
+    <meta
+      name="description"
+      content="Explore Durgesh Chaudhari’s C++ tree benchmarks and the reciprocal rank fusion behind Review Summarizer."
+    />
+    <meta property="og:title" content="Engineering notebook | Durgesh Chaudhari" />
+    <meta
+      property="og:description"
+      content="Explore Durgesh Chaudhari’s C++ tree benchmarks and the reciprocal rank fusion behind Review Summarizer."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="../assets/favicon.svg" />
+    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../notebook.css" />
+    <script src="../assets/tree-benchmarks.js" defer></script>
+    <script src="../navigation.js" defer></script>
+    <script src="../notebook.js" defer></script>
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+    <header class="mast">
+      <div class="wrap nav-row">
+        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
+          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="../index.html#work" class="">Work</a
+          ><a href="notebook.html" aria-current="page">Notebook</a
+          ><a href="../index.html#research" class="">Research</a
+          ><a href="../index.html#about" class="">About</a>
+        </nav>
+        <a href="../index.html#contact" class="nav-contact"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2.5" y="5" width="19" height="14" rx="3" />
+            <path d="m4 7 8 6 8-6" /></svg
+          >Get in touch</a
+        >
+        <button
+          type="button"
+          class="menu-btn"
+          aria-label="Open navigation"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
+        <a href="../index.html#work" class="">Work</a
+        ><a href="notebook.html" aria-current="page">Notebook</a
+        ><a href="../index.html#research" class="">Research</a
+        ><a href="../index.html#about" class="">About</a
+        ><a href="../index.html#contact" class="">Contact</a>
+      </nav>
+    </header>
+    <main id="main" class="notebook">
+      <section class="book-cover">
+        <div class="wrap cover-grid">
+          <div>
+            <a class="book-back" href="../index.html#work">← Selected work</a>
+            <h1>Engineering<br /><em>notebook.</em></h1>
+            <p class="cover-deck">
+              How does a tree respond to its input? Which review rises to the top of a search? Explore
+              two decisions from my engineering projects.
+            </p>
+            <nav class="cover-links" aria-label="Notebook contents">
+              <a href="#trees">Tree benchmarks <span aria-hidden="true">↓</span></a>
+              <a href="#retrieval">Review retrieval <span aria-hidden="true">↓</span></a>
+            </nav>
+          </div>
+          <figure class="insertion-figure" id="insertion">
+            <figcaption>Inside an AVL tree <span>C++ · Data structures</span></figcaption>
+            <div class="insertion-drawing" hidden>
+              <canvas id="insertion-canvas" role="img" aria-label="Seven-node AVL tree"></canvas>
+            </div>
+            <div class="insertion-controls" data-js-only hidden>
+              <label for="step"
+                >Ascending insertions <output for="step" id="step-count">7 / 7</output></label
+              >
+              <input id="step" type="range" min="1" max="7" value="7" step="1" />
+            </div>
+            <p id="step-reading">
+              After inserting keys 1 through 7, the root is 4 and the tree has three levels.
+            </p>
+          </figure>
+        </div>
+      </section>
+      <section class="book-study wrap" id="trees" aria-labelledby="trees-title">
+        <div class="study-intro">
+          <p class="overline">C++17 · Benchmark study</p>
+          <h2 id="trees-title">How tall does a <em>tree grow?</em></h2>
+          <p>
+            My C++ benchmark feeds the same sequence of keys to an AVL tree, a red-black tree and a splay
+            tree. Change the insertion order to see which trees keep their depth, then compare how long
+            each batch took.
+          </p>
+          <details class="method">
+            <summary>How the measurements were taken</summary>
+            <p>
+              Each configuration has one recorded run. Height counts levels, with a single node at level
+              one. Time covers the full insertion batch and excludes key generation and height
+              measurement. Random inputs use seed 42 and can repeat keys. Ordered inputs use each integer
+              from 1 through the selected size once.
+            </p>
+            <p>
+              In the ascending workload, each new key is the largest. Splaying moves it to the root, with
+              the previous tree on its left. Repeating that step creates the chain visible in the height
+              measurements.
+            </p>
+            <a
+              href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/src/BenchmarkRunner.cpp#L32-L55"
+              >Read the benchmark runner ↗</a
+            >
+          </details>
+        </div>
+        <div class="instrument tree-instrument">
+          <h3>Compare the runs</h3>
+          <div class="instrument-fields" data-js-only hidden>
+            <label
+              >Insertion order<select id="order">
+                <option value="ascending">Ascending</option>
+                <option value="random">Random</option>
+                <option value="descending">Descending</option>
+              </select></label
+            >
+            <label
+              >Insert calls<select id="size">
+                <option value="1000">1,000</option>
+                <option value="5000">5,000</option>
+                <option value="10000" selected>10,000</option>
+              </select></label
+            >
+            <label
+              >Measurement<select id="metric">
+                <option value="height">Final height</option>
+                <option value="time">Batch time</option>
+              </select></label
+            >
+          </div>
+          <figure class="plot">
+            <figcaption id="plot-caption">Final height in levels · Logarithmic scale</figcaption>
+            <div class="plot-row">
+              <span>AVL</span>
+              <div class="plot-track" aria-hidden="true"><i style="--position: 28.7%"></i></div>
+              <strong>14</strong>
+            </div>
+            <div class="plot-row">
+              <span>Red-black</span>
+              <div class="plot-track" aria-hidden="true"><i style="--position: 34.5%"></i></div>
+              <strong>24</strong>
+            </div>
+            <div class="plot-row">
+              <span>Splay</span>
+              <div class="plot-track" aria-hidden="true"><i style="--position: 100%"></i></div>
+              <strong>10,000</strong>
+            </div>
+            <div class="plot-axis" aria-hidden="true">
+              <span>1</span><span>10</span><span>100</span><span>1k</span><span>10k</span>
+            </div>
+          </figure>
+          <p id="tree-reading" class="instrument-reading" role="status">
+            At 10,000 ascending insertions, the splay tree has one level per key. The AVL tree reaches 14
+            levels.
+          </p>
+          <a
+            class="instrument-source"
+            href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/dashboard/metrics.json"
+            >Inspect the recorded measurements ↗</a
+          >
+        </div>
+      </section>
+      <section class="retrieval-band" id="retrieval" aria-labelledby="retrieval-title">
+        <div class="book-study wrap">
+          <div class="study-intro">
+            <p class="overline">Python · Information retrieval</p>
+            <h2 id="retrieval-title">Which review <em>surfaces first?</em></h2>
+            <p>
+              In Review Summarizer, co-built with Niraj Chavan, one search ranks product reviews by
+              keywords and another by meaning. Reciprocal rank fusion combines their positions into a
+              single result.
+            </p>
+            <details class="method">
+              <summary>Where the rankings come from</summary>
+              <p>
+                The project uses BM25 for keyword matches and FAISS with multilingual E5 embeddings for
+                semantic matches. The example below uses three fictional headphone reviews with assigned
+                ranks. Each match contributes 1/(60 + rank) to the score. A review missing from a list
+                receives zero from that list.
+              </p>
+              <a
+                href="https://github.com/Niraj-Chavan/review-summarizer/blob/68d0c0a6dd76fe38be99836982d72f404b1cf814/src/retrieval/hybrid_search.py"
+                >Read the retrieval implementation ↗</a
+              >
+            </details>
+          </div>
+          <div class="instrument rank-instrument">
+            <h3>Inspect the ranking</h3>
+            <p class="instrument-prompt">Illustrative reviews for a search about battery life.</p>
+            <div class="instrument-fields" data-js-only hidden>
+              <label
+                >Input rankings<select id="scenario">
+                  <option value="overlap">Shared second choice</option>
+                  <option value="agreement">Shared first choice</option>
+                  <option value="split">Reversed top two</option>
+                </select></label
+              >
+              <label
+                >Search method<select id="channel">
+                  <option value="hybrid">Hybrid search</option>
+                  <option value="keyword">Keyword only</option>
+                  <option value="semantic">Semantic only</option>
+                </select></label
+              >
+            </div>
+            <div class="rank-matrix">
+              <table>
+                <caption>
+                  Review positions and calculated scores
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Review</th>
+                    <th scope="col">Keyword</th>
+                    <th scope="col">Semantic</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody id="rank-results">
+                  <tr>
+                    <th scope="row">Commute</th>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.03226</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Quick charge</th>
+                    <td>—</td>
+                    <td>1</td>
+                    <td>0.01639</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Two days</th>
+                    <td>1</td>
+                    <td>—</td>
+                    <td>0.01639</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p id="rank-reading" class="instrument-reading" role="status">
+              Commute leads. Its two second-place matches contribute 1/62 + 1/62 = 0.03226.
+            </p>
+            <details class="method excerpts">
+              <summary>Read the three sample reviews</summary>
+              <dl>
+                <dt>Two days</dt>
+                <dd>“I used these headphones for two days on one charge.”</dd>
+                <dt>Commute</dt>
+                <dd>“The battery lasted through my commute, and recharging took about an hour.”</dd>
+                <dt>Quick charge</dt>
+                <dd>“A short charge gave me enough listening time for the trip home.”</dd>
+              </dl>
+            </details>
+          </div>
+        </div>
+      </section>
+      <div class="book-end wrap">
+        <a href="../index.html#work">← Selected work</a
+        ><a href="../assets/Durgesh-Chaudhari-Resume.pdf">View résumé ↗</a>
+      </div>
+    </main>
+    <footer>
+      <div class="wrap foot">
+        <span>© 2026 Durgesh Chaudhari</span>
+        <div>
+          <a class="" href="https://github.com/DurgeshC16">GitHub</a
+          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
+          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
