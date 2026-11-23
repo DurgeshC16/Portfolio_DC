@@ -16,6 +16,37 @@ Single source of truth for every public claim on the redesigned site. If a sente
 4. **IEEE ICNPCV 2026 paper → confirmed as Durgesh's; list as Published** with the full author list and DOI exactly as in row P2 below.
 5. **IConDeepCom 2026 federated paper:** list as co-authored, with the conference verified as real; status word only per evidence (no DOI exists). The third paper is not listed (TODO). Replace bare counters ("3 papers", "1 granted patent") with listed items.
 
+### 0b. Evidence from Durgesh's local folders (2026-11-23) — supersedes §0 where they differ
+Sources: `_research/local-docs.md`, `_research/certificates-a.md`, `_research/certificates-b.md`, and the folder `_research/Achievements and Certificates Stuff/` that Durgesh supplied. Personal documents stay out of the repo.
+
+6. **Patent → GRANTED** (this supersedes §0.1). Durgesh supplied a patent-register record showing:
+   - application 2025/09215, lodged (complete) 2025-10-31, accepted 2026-06-05 and **granted 2026-06-24**;
+   - applicant Vishwakarma Institute of Technology;
+   - eight inventors, including CHAUDHARI, Durgesh Nitin;
+   - IPC A01G.
+
+   Approved wording: "**Granted patent** · *A System Consisting of Solar Technology with Hydroponics* · No. 2025/09215 · granted 24 Jun 2026 · co-inventor (one of eight; applicant: VIT Pune)." Status chip: **Granted**. Do not state a jurisdiction (TODO(durgesh): confirm the register and add a public link).
+7. **Papers** (Durgesh's folder is titled "Accepted Research papers"):
+   - **P2, ICNPCV 2026 (IEEE) → Published · Presented.** Use the DOI author line in row P2. The e-certificate states that Durgesh presented it at Global Academy of Technology, Bengaluru, on 17–18 Jul 2026. The STAI 2026 acceptance (paper ID 434) is the same paper, so never list it separately.
+   - **P1, IConDeepCom 2026 → Accepted** (camera-ready paper ID ICONDEEPCOM26_079). Authors in order: Saraswati Patil, Durgesh Chaudhari, Niraj Chavan, Anjali Chandewar, Falguni Chaudhari. Title per the camera-ready. **Results stay on HOLD per §0.2.** The paper reports EfficientNetB4 at 95.2% and B0 at 90.1%, while the public checkpoint is a B0 relabelled 0.9518. This needs Durgesh's decision before any number is shown.
+   - **P3, Neuro-symbolic tutor paper (IEEE-format manuscript) → Accepted** (per Durgesh's folder). Durgesh is 5th of 5 authors. The venue is not evidenced (the filename suggests "Incode2026_984"; TODO(durgesh): venue and date). Its metrics stay off the site (see §0.3, and its N=100 outcomes are projections).
+   - The research index may therefore say "three papers": one published, two accepted. List them as items, not a counter.
+8. **Certifications** (Coursera verify pages checked; each names "Durgesh Nitin Chaudhari"):
+   - **Microsoft Certified: Azure AI Fundamentals (AI-900)** · earned 29 Jun 2026 · credential ID **B95FB0D40BFFDBF9**. Every résumé prints B95F80…, which is a typo; use the corrected ID.
+   - **Deep Learning Specialization** · DeepLearning.AI · Nov 2026 · https://coursera.org/verify/specialization/IUL2VTFTL1RV
+   - **IBM Full Stack Software Developer Professional Certificate** · Oct 2026 · 15 courses · https://coursera.org/verify/professional-cert/IRVG1NOM9YUA
+   - **Google AI Professional Certificate** · Oct 2026 · https://coursera.org/verify/professional-cert/S1MQHA14ZOTD
+   - Optional, secondary list: **Decentralized Finance (DeFi) Specialization** · Duke · Oct 2026 · https://coursera.org/verify/specialization/HHXV6LSHZ76U; **FinTech: Finance Industry Transformation and Regulation Specialization** · HKUST · Oct 2026 · https://coursera.org/verify/specialization/RTXLD5W53438
+   - **AB-100**: "exam passed, certification pending" (RESUME).
+   - **Do NOT list "Machine Learning Specialization (Stanford)".** No certificate exists; it is probably a mislabel of the Deep Learning Specialization (TODO(durgesh)).
+   - Omit the individual courses and the Infosys Springboard courses. Never use `Coursera 9ZYVKBUD6GJ9.pdf`, which belongs to someone else.
+9. **CertiVault is a TEAM course project** (Web Technology, group C1_G3): Anjali Chandewar, Durgesh Chaudhari and Falguni Chaudhari; guide Prof. Rahul Diwate.
+   - Role wording: "Team course project; I'm the sole committer of the public repository" (46/46 commits). Never "I designed and built the platform".
+   - Verdict states: use only those in the repo/deck (the deck shows **5 verdicts** and a 0–100 trust score). Check the repo before drawing "six".
+10. **Cascade-XID is a TEAM Data Science course project** (TY-B5-G1): Durgesh Chaudhari, Yugant Chincholikar and Ronit Dahiwal. It is "In progress", with **no results**. The deck figures (86.2%, 0.834, 11.7%, 96.2%) are CONFLICT and placeholders, never to be shown.
+11. **Hackathon:** a 10 Oct 2026 selection e-mail lists team "Easy Company" with the idea KAARAN in the Top-30 build stage (VERIFIED, private document). Do not use "Hack2Skill National-Level". Krithoathon 4.0 (VNR VJIET, 24–25 Apr 2026) is a participation certificate only.
+12. **LinkedIn:** use https://in.linkedin.com/in/durgesh-chaudhari-420408331 (the form used on all of Durgesh's résumés).
+
 ---
 
 ## 1. Status vocabulary
