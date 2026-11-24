@@ -1,0 +1,512 @@
+/* =====================================================================
+   DC. — shared components
+   Owner: A (system & shell). Spec: docs/design-system.md §10.
+   Header · skip link · buttons & links (+ magnetic) · kbd · chips ·
+   provenance & evidence badges · citations · running head · section
+   header · figure/caption · fact strip · metrics · code · copy control ·
+   credits footer · scroll cue base.
+   NOT here (chrome owner, css/chrome.css): nav overlay, command palette,
+   cursor chip, scroll progress bar styling, view transitions.
+   ===================================================================== */
+
+/* =====================================================================
+   Skip link
+   ===================================================================== */
+.skip {
+  position: absolute; left: var(--page-x); top: var(--s-2); z-index: var(--z-skip);
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s-4);
+  background: var(--accent); color: var(--on-accent); border-radius: var(--r-1);
+  font: 500 var(--t-small)/1 var(--f-sans); text-decoration: none;
+  transform: translateY(calc(-100% - var(--s-4) - var(--header-h)));
+}
+.skip:focus, .skip:focus-visible { transform: none; outline-color: var(--accent); }
+
+/* =====================================================================
+   10.1 Header
+   <header class="site-header" data-header data-surface="night"> … </header>
+   Solid surface, bottom hairline, sticky. core.js sets data-surface from
+   the section under its bottom edge and data-hidden on scroll-down
+   (past 100svh). Never transparent, never blurred.
+   ===================================================================== */
+.site-header {
+  position: sticky; top: 0; z-index: var(--z-header);
+  height: var(--header-h);
+  background: var(--bg); color: var(--fg);
+  transition: transform var(--d-swap) var(--e-out);
+}
+.site-header[data-hidden]:not(:focus-within) { transform: translateY(-100%); }
+.site-header::after { /* bottom hairline */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--rule);
+  pointer-events: none;
+}
+.site-header__bar {
+  display: flex; align-items: center; gap: var(--s-4);
+  height: 100%; padding-inline: var(--page-x);
+}
+
+/* Wordmark: "DC." with the brand stop (the one decorative accent, §3.4) */
+.wordmark {
+  display: inline-flex; align-items: baseline; flex: none;
+  min-height: 44px; align-self: center; padding-block: var(--s-2);
+  font: 400 1.75rem/1 var(--f-serif); letter-spacing: -.01em;
+  color: var(--fg); text-decoration: none;
+}
+.wordmark__stop { color: var(--accent); }
+@media (hover: hover) and (pointer: fine) { .wordmark:hover { color: var(--fg); } }
+
+.site-header__title {
+  margin: 0 0 0 var(--s-6); flex: none;
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase;
+  color: var(--fg-2); white-space: nowrap;
+}
+
+/* Primary nav: mono caps with roman section numerals */
+.site-nav { margin-left: auto; }
+.site-nav ul { display: flex; align-items: center; gap: clamp(14px, 1.8vw, 28px); margin: 0; padding: 0; list-style: none; }
+.site-nav a, .site-header__cv {
+  position: relative; display: inline-flex; align-items: center; min-height: 44px;
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase;
+  color: var(--fg); text-decoration: none; white-space: nowrap;
+}
+.site-nav sup {
+  margin-left: 3px; font-size: .8em; line-height: 0; letter-spacing: .02em; color: var(--fg-2);
+  position: relative; top: -.1em; vertical-align: super;
+}
+.site-nav a::after, .site-header__cv::after { /* underline that wipes in on hover; marks the current item */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 11px; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: right center; transition: transform var(--d-swap) var(--e-out);
+}
+.site-nav a[aria-current]::after { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  .site-nav a:hover, .site-header__cv:hover { color: var(--accent); }
+  .site-nav a:hover::after, .site-header__cv:hover::after { transform: scaleX(1); transform-origin: left center; }
+}
+.site-header__cv .icon { margin-right: 6px; width: 14px; height: 14px; vertical-align: 0; }
+
+/* Header buttons: palette (Search) and menu (Index) */
+.site-header__btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  height: 40px; padding: 0 var(--s-3); flex: none;
+  background: transparent; color: var(--fg);
+  border: 1px solid var(--fg-2); border-radius: var(--r-1);
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase;
+  transition: border-color var(--d-instant) linear, color var(--d-instant) linear;
+}
+.site-header__btn .icon { width: 14px; height: 14px; vertical-align: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .site-header__btn:hover { border-color: var(--fg); color: var(--fg); }
+}
+.site-header__btn .kbd { margin-left: 2px; }
+.site-header__btn[aria-expanded="true"] { border-color: var(--fg); }
+/* Index reads as a nav item, not a second box: unboxed, after a hairline divider */
+@media (min-width: 760px) {
+  .site-header__index { position: relative; border-color: transparent; padding-inline: var(--s-4) 0; margin-left: var(--s-2); }
+  .site-header__index::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px; background: var(--rule-strong); }
+  .site-header__index:hover { border-color: transparent; }
+  .site-header__index .icon { order: 2; }
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 760px) {
+  .site-header__index:hover { color: var(--accent); }
+}
+.site-header__actions { display: flex; align-items: center; gap: var(--s-3); flex: none; }
+.site-header__cv { margin-right: var(--s-2); }
+
+/* Progress hook (styled by chrome.css; empty and inert here) */
+.site-header__progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; pointer-events: none; }
+
+/* No JS: the overlay and palette cannot open, so their triggers are hidden */
+html:not(.js) :is([data-menu-open], [data-palette-open], [data-copy], [data-copy-from]) { display: none; }
+
+/* --- responsive --- */
+@media (max-width: 1279px) { .site-header__title { display: none; } }
+@media (max-width: 1099px) { /* label leaves the layout but stays in the accessible name */
+  .site-header__search .site-header__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media (max-width: 759px) {
+  .site-header__bar { gap: var(--s-3); padding-right: calc(var(--page-x) - 12px); }
+  .wordmark { font-size: 1.625rem; }
+  .site-nav ul { gap: 14px; }
+  .site-nav__wide, .site-nav sup, .site-header__search { display: none; }
+  .site-header__cv { margin-right: 0; }
+  .site-header__cv .icon { display: none; }
+  .site-header__actions { gap: 0; margin-left: 2px; }
+  .site-header__index { width: 48px; height: 48px; padding: 0; border-color: transparent; }
+  .site-header__index .site-header__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .site-header__index .icon { width: 20px; height: 20px; }
+}
+@media (max-width: 359px) {
+  .site-nav a, .site-header__cv { font: 500 .8125rem/1 var(--f-sans); letter-spacing: 0; text-transform: none; }
+  .site-nav ul { gap: 12px; }
+  .wordmark { font-size: 1.5rem; }
+}
+
+/* =====================================================================
+   kbd
+   ===================================================================== */
+.kbd {
+  display: inline-flex; align-items: center; justify-content: center; gap: 2px;
+  min-width: 20px; height: 20px; padding: 0 5px;
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: .02em; text-transform: none;
+  color: var(--fg-2); background: transparent;
+  border: 1px solid var(--rule-strong); border-radius: var(--r-1);
+}
+.kbd .icon { width: 11px; height: 11px; vertical-align: 0; }
+
+/* =====================================================================
+   10.3 Buttons and links
+   <a class="btn btn--primary" href="#work" data-magnetic>
+     <span class="btn__inner">Explore work <svg class="icon">…arrow-down</svg></span></a>
+   ===================================================================== */
+.btn {
+  --btn-wipe: color-mix(in srgb, var(--fg) 8%, transparent);
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; height: 52px; padding: 0 var(--s-5);
+  font: 500 1rem/1 var(--f-sans); letter-spacing: 0; text-decoration: none; white-space: nowrap;
+  color: var(--fg); background: transparent;
+  border: 1px solid transparent; border-radius: var(--r-1);
+  cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;
+  transition: color var(--d-instant) linear, border-color var(--d-instant) linear;
+}
+.btn::before { /* the hover wipe, left -> right */
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--btn-wipe);
+  transform: scaleX(0); transform-origin: right center;
+  transition: transform var(--d-swap) var(--e-out);
+}
+.btn__inner {
+  display: inline-flex; align-items: center; gap: .55em;
+  transition: transform var(--d-swap) var(--e-spring), scale var(--d-instant) var(--e-response);
+}
+.btn .icon { transition: translate var(--d-swap) var(--e-spring); }
+.btn__tag { font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase; opacity: .78; }
+.btn:active:not([aria-disabled="true"]) .btn__inner { scale: .98; }
+
+.btn--primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); --btn-wipe: var(--accent-hi); }
+.btn--ghost { border-color: var(--fg-2); color: var(--fg); }
+.btn--text {
+  height: auto; min-height: 44px; padding: 0; border: 0; overflow: visible;
+  color: var(--accent); font-weight: 500;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em;
+}
+.btn--text::before { display: none; }
+.btn--icon { width: 48px; height: 48px; min-height: 48px; padding: 0; border-color: var(--fg-2); }
+.btn--icon .icon { width: 18px; height: 18px; vertical-align: 0; }
+.btn--sm { height: 40px; min-height: 40px; padding: 0 var(--s-4); font-size: var(--t-small); }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:not([aria-disabled="true"]):hover::before { transform: scaleX(1); transform-origin: left center; }
+  .btn--primary:not([aria-disabled="true"]):hover { border-color: var(--accent-hi); }
+  .btn--ghost:not([aria-disabled="true"]):hover, .btn--icon:not([aria-disabled="true"]):hover { border-color: var(--fg); }
+  .btn--text:not([aria-disabled="true"]):hover { color: var(--accent-hi); text-decoration-thickness: 2px; }
+  .btn:not([aria-disabled="true"]):hover .icon:last-child { translate: 3px 0; }
+  .btn:not([aria-disabled="true"]):hover .icon--arrow-left:first-child { translate: -3px 0; }
+  .btn:not([aria-disabled="true"]):hover .icon--arrow-down { translate: 0 3px; }
+  .btn:not([aria-disabled="true"]):hover .icon--arrow-up { translate: 0 -3px; }
+  .btn:not([aria-disabled="true"]):hover .icon--arrow-up-right { translate: 2px -2px; }
+  .btn:not([aria-disabled="true"]):hover .icon--static { translate: none; }
+}
+/* Disabled: stays focusable; click is a no-op (owners guard in JS) */
+.btn[aria-disabled="true"], .btn:disabled { opacity: .38; cursor: not-allowed; }
+
+/* External-link icon inside running text or link lists */
+.ext .icon, a .icon--ext { width: .8em; height: .8em; margin-left: .2em; vertical-align: -.02em; }
+
+/* =====================================================================
+   10.4 Chips (state). Never accent. Vocabulary is fixed (§10.4).
+   <ul class="chips"><li class="chip">Hackathon build</li></ul>
+   ===================================================================== */
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0; padding: 0; list-style: none; }
+.chip {
+  display: inline-flex; align-items: center; height: 24px; padding: 0 var(--s-2);
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase;
+  color: var(--fg-2); border: 1px solid var(--rule-strong); border-radius: var(--r-1);
+  white-space: nowrap;
+}
+
+/* =====================================================================
+   10.5 Provenance badge (what this is) and evidence badge (where to check)
+   <span class="prov prov--synthetic">Synthetic data</span>
+   <a class="evidence" href="…">Repo <svg class="icon">…arrow-up-right</svg><span class="vh"> (opens external site)</span></a>
+   ===================================================================== */
+.prov {
+  display: inline-flex; align-items: center; gap: 7px;
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .02em;
+  color: var(--fg-2); white-space: nowrap;
+}
+.prov::before {
+  content: ""; flex: none; width: 8px; height: 8px; box-sizing: border-box;
+  border: 1px solid currentColor;                         /* default = Live demo capture (outline square) */
+}
+.prov--synthetic::before {                                /* square with a diagonal hatch */
+  background: linear-gradient(135deg, transparent 0 calc(50% - .75px), currentColor calc(50% - .75px) calc(50% + .75px), transparent calc(50% + .75px));
+}
+.prov--aggregate::before { background: currentColor; }   /* filled square */
+.prov--drawing::before { border-radius: var(--r-dot); }  /* circle */
+.prov--run::before {                                      /* tick mark */
+  width: 8px; height: 4px; border-width: 0 0 1.5px 1.5px; transform: translateY(-1px) rotate(-45deg);
+}
+.prov--illustrative::before { border-style: dashed; }    /* dashed square */
+
+.evidence {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 var(--s-2);
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  border: 1px solid var(--accent); border-radius: var(--r-1);
+  transition: background-color var(--d-instant) linear, color var(--d-instant) linear;
+}
+.evidence .icon { width: 11px; height: 11px; vertical-align: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .evidence:hover { background: var(--accent); color: var(--on-accent); text-decoration: none; }
+}
+/* Lettered citations: the index sits OUTSIDE the link so the link name stays clean */
+.cite { font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: .02em; color: var(--fg-3); margin-right: .45em; }
+[data-surface="night"] .cite, .cite { color: var(--fg-3); }
+
+/* =====================================================================
+   10.6 Running head + section header
+   <div class="running-head" aria-hidden="true"><span><b>II</b> — From the archive</span><span>Plates 06–09</span><span>p. 03</span></div>
+   ===================================================================== */
+.running-head {
+  position: relative; grid-column: 1 / -1;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: baseline; gap: var(--s-4);
+  padding: var(--s-4) 0 var(--s-3);
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .04em;
+  color: var(--fg-2);
+}
+.running-head > :nth-child(2) { text-align: center; }
+.running-head > :nth-child(3) { text-align: right; }
+.running-head b { font-weight: 500; color: var(--fg); letter-spacing: var(--tr-caps); }
+.running-head::after { /* hairline; draws in with scaleX when core.js marks it .is-in */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--rule);
+  transform-origin: left center; transition: transform var(--d-reveal) var(--e-out);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not([data-motion="reduce"]) .running-head:not(.is-in)::after { transform: scaleX(0); }
+}
+@media (max-width: 759px) {
+  .running-head { grid-template-columns: minmax(0, 1fr) auto; }
+  .running-head > :nth-child(2) { display: none; }
+}
+
+.section-head { row-gap: var(--s-5); }
+.section-head > .running-head { margin-bottom: var(--s-6); }
+.section-head__title { grid-column: 1 / -1; }
+.section-head__dek { grid-column: 1 / -1; font: 450 var(--t-lead)/var(--lh-lead) var(--f-sans); letter-spacing: var(--tr-lead); color: var(--fg-2); max-width: 34ch; }
+.section-head__note { grid-column: 1 / -1; font: 400 var(--t-caption)/var(--lh-caption) var(--f-mono); letter-spacing: var(--tr-caption); color: var(--fg-2); }
+@media (min-width: 760px) {
+  .section-head__title { grid-column: 1 / span 10; }
+  .section-head--offset .section-head__title { grid-column: 4 / -1; }
+  .section-head__dek { grid-column: 4 / span 6; }
+  .section-head__note { grid-column: 10 / span 3; align-self: end; }
+}
+
+/* =====================================================================
+   10.7 Figure + caption
+   <figure class="fig" data-reveal="media"><div class="fig__media">…</div>
+     <figcaption class="fig__cap"><span class="fig__no">Fig. 3.2</span> <span class="fig__text">…</span> <span class="prov prov--drawing">Original drawing</span></figcaption></figure>
+   ===================================================================== */
+.fig { margin: 0; }
+.fig__media { position: relative; overflow: hidden; border-radius: var(--r-1); }
+.fig__media > :is(img, svg, canvas, video) { width: 100%; height: auto; }
+.fig__cap {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-3); row-gap: var(--s-1);
+  align-items: baseline; margin-top: var(--s-3);
+}
+.fig__no { font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .04em; color: var(--fg); white-space: nowrap; }
+.fig__text { font: 400 var(--t-small)/var(--lh-small) var(--f-sans); color: var(--fg-2); }
+.fig__cap > .prov, .fig__cap > .evidence, .fig__cap > .fig__badges { grid-column: 2; justify-self: start; }
+@media (min-width: 760px) {
+  .fig__cap { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .fig__cap > .prov, .fig__cap > .evidence, .fig__cap > .fig__badges { grid-column: 3; justify-self: end; }
+}
+.fig__badges { display: inline-flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+
+/* =====================================================================
+   10.10 Fact strip
+   <dl class="facts"><div><dt>Role</dt><dd>…</dd></div> … </dl>
+   ===================================================================== */
+.facts {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter);
+  margin: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.facts > div { padding: var(--s-4) 0; min-width: 0; }
+.facts > div + div { border-top: 0; }
+.facts dt { font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase; color: var(--fg-2); }
+.facts dd { margin: 6px 0 0; font: 400 var(--t-small)/var(--lh-small) var(--f-sans); color: var(--fg); overflow-wrap: anywhere; }
+.facts dd .evidence { margin: 4px 6px 0 0; }
+@media (max-width: 759px) {
+  .facts > div:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+}
+@media (min-width: 760px) and (max-width: 1099px) {
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .facts > div:nth-child(n + 4) { border-top: 1px solid var(--rule); }
+}
+@media (min-width: 1100px) {
+  .facts { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+}
+/* Stacked variant (deck / sidebars): label-value rows */
+.facts--stack { display: block; border-bottom: 0; }
+.facts--stack > div { display: grid; grid-template-columns: 9ch minmax(0, 1fr); gap: var(--s-3); align-items: baseline; padding: var(--s-2) 0; border-bottom: 1px solid var(--rule); }
+.facts--stack dd { margin: 0; }
+
+/* =====================================================================
+   10.11 Metrics + code
+   <div class="metric"><p class="metric__figure"><span class="metric__value">92</span><span class="metric__unit">%</span></p>
+     <p class="metric__label">…</p><p class="metric__scope">25 questions · recorded Haiku outputs</p></div>
+   ===================================================================== */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--s-6) var(--gutter); }
+.metric { border-top: 1px solid var(--rule-strong); padding-top: var(--s-4); }
+.metric__figure { display: flex; align-items: baseline; gap: .3em; }
+.metric__value { font: 500 var(--t-h2)/1 var(--f-mono); letter-spacing: -.02em; color: var(--fg); }
+a.metric__value { color: var(--accent); text-decoration: none; }
+.metric__unit { font: 400 var(--t-caption)/1 var(--f-mono); color: var(--fg-2); }
+.metric__label { margin-top: var(--s-2); font: 400 var(--t-small)/var(--lh-small) var(--f-sans); color: var(--fg); }
+.metric__scope { margin-top: var(--s-2); font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .02em; color: var(--fg-2); }
+
+.code { background: var(--bg-2); border: 1px solid var(--rule); border-radius: var(--r-1); min-width: 0; }
+.code__bar {
+  display: flex; align-items: center; gap: var(--s-4); justify-content: space-between;
+  min-height: 44px; padding: 0 var(--s-2) 0 var(--s-4); border-bottom: 1px solid var(--rule);
+  font: 400 var(--t-micro)/1.3 var(--f-mono); letter-spacing: .02em; color: var(--fg-2);
+}
+.code__path { color: var(--fg); overflow-wrap: anywhere; }
+.code__rev { margin-left: auto; }
+.code pre {
+  margin: 0; padding: var(--s-4) var(--s-5); overflow-x: auto;
+  font: 400 var(--t-caption)/1.6 var(--f-mono); letter-spacing: 0; tab-size: 2; color: var(--fg-2);
+}
+.code pre:focus-visible { outline-offset: -3px; }
+.code--lines pre, pre.code--lines { counter-reset: ln; }
+.code--lines .line { display: block; }
+.code--lines .line::before {
+  counter-increment: ln; content: counter(ln); display: inline-block; width: 3ch; margin-right: 2ch;
+  text-align: right; color: var(--fg-3); user-select: none;
+}
+.tok-k { color: var(--fg); font-weight: 500; }
+.tok-c { color: var(--fg-2); }
+
+/* =====================================================================
+   Copy control (§10.17): "Copy address" -> check + "Copied" (2000 ms)
+   <button class="btn btn--ghost copy" type="button" data-copy="…" data-magnetic>
+     <span class="btn__inner"><svg class="icon copy__idle">#copy</svg><svg class="icon copy__done">#check</svg>
+     <span data-copy-label>Copy address</span></span></button>
+   <p class="vh" aria-live="polite" data-copy-live></p>
+   ===================================================================== */
+.copy { min-width: 11.5rem; }          /* "Copied" never shrinks the control: no layout shift */
+.copy .copy__done { display: none; }
+.copy[data-state="done"] .copy__idle { display: none; }
+.copy[data-state="done"] .copy__done { display: inline-block; }
+.copy[data-state="done"] { border-color: var(--accent); color: var(--accent); }
+.copy[data-state="manual"] { user-select: text; text-transform: none; }
+.copy[data-state="manual"] .copy__idle { display: none; }
+.copy .icon { width: 15px; height: 15px; vertical-align: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .copy:hover .icon:last-child { translate: none; }
+  .copy:hover .copy__idle { translate: 0 -1px; }
+}
+
+/* =====================================================================
+   10.17 Credits footer — "V — Correspondence" (night, every page)
+   ===================================================================== */
+.credits {
+  position: relative;
+  border-top: 1px solid var(--rule-strong);
+  padding-bottom: var(--s-5);
+}
+.credits__body { row-gap: 0; padding-top: clamp(40px, 24px + 4vw, 96px); }
+.credits__label {
+  grid-column: 1 / -1; margin-bottom: var(--s-5);
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase; color: var(--fg-2);
+}
+.credits__main { grid-column: 1 / -1; min-width: 0; }
+.credits__lead {
+  font: 450 var(--t-lead)/var(--lh-lead) var(--f-sans); letter-spacing: var(--tr-lead); color: var(--fg-2);
+  max-width: 30ch;
+}
+.credits__shout { margin-top: clamp(16px, 8px + 1.4vw, 32px); }
+.credits__email {
+  display: inline-block; max-width: 100%;
+  font: italic 400 var(--t-email)/1.02 var(--f-serif-i); letter-spacing: -.01em; word-spacing: 0;
+  color: var(--c-lamp); text-decoration: none; white-space: nowrap;
+  padding-bottom: .08em;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 2px no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 700ms var(--e-out), color var(--d-instant) linear;
+}
+.credits__at { color: var(--fg-2); padding-inline: .03em; }
+@media (hover: hover) and (pointer: fine) {
+  .credits__email:hover { color: var(--c-lamp); background-size: 100% 2px; }
+}
+.credits__row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4) var(--s-7);
+  margin-top: clamp(28px, 16px + 2vw, 48px);
+}
+.credits__links { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); margin: 0; padding: 0; list-style: none; }
+.credits__links li { display: inline-flex; align-items: baseline; }
+.credits__links a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font: 400 var(--t-small)/1 var(--f-sans); color: var(--fg); text-decoration: underline;
+  text-decoration-color: var(--rule-strong); text-decoration-thickness: 1px; text-underline-offset: .32em;
+  transition: color var(--d-instant) linear, text-decoration-color var(--d-instant) linear;
+}
+.credits__links a .icon { width: 12px; height: 12px; margin-left: 5px; vertical-align: 0; color: var(--fg-2); }
+@media (hover: hover) and (pointer: fine) {
+  .credits__links a:hover { color: var(--accent); text-decoration-color: currentColor; }
+  .credits__links a:hover .icon { color: currentColor; }
+}
+.credits__base {
+  grid-column: 1 / -1; margin-top: clamp(56px, 32px + 5vw, 120px); padding-top: var(--s-4);
+  border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2) var(--s-6);
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .02em; color: var(--fg-2);
+}
+.credits__base p { margin: 0; }
+.credits__top {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  color: var(--fg); text-decoration: none;
+}
+.credits__top .icon { width: 12px; height: 12px; vertical-align: 0; transition: translate var(--d-swap) var(--e-spring); }
+@media (hover: hover) and (pointer: fine) {
+  .credits__top:hover { color: var(--accent); }
+  .credits__top:hover .icon { translate: 0 -2px; }
+}
+@media (min-width: 760px) {
+  .credits__label { grid-column: 1 / span 2; margin: .55em 0 0; }
+  .credits__main { grid-column: 3 / -1; }
+}
+@media (max-width: 759px) {
+  /* Mobile: the shout breaks before "@" and grows. "durgesh.chaudhari24" measures 7.53em in
+     Instrument Serif italic; /8.6 leaves room for the fallback face. */
+  .credits__email { font-size: min(calc((100vw - 2 * var(--margin)) / 8.6), 3.5rem); line-height: .98; white-space: normal; }
+  .credits__domain { display: block; }
+  .credits__row { gap: var(--s-4); }
+  .credits__links { gap: 0 var(--s-5); }
+  .credits__base { flex-direction: column; align-items: flex-start; }
+}
+
+/* =====================================================================
+   10.18 Scroll cue (base). Hero owner places it.
+   <a class="scroll-cue" href="#work"><span class="scroll-cue__track" aria-hidden="true"></span><span class="scroll-cue__label">Selected work</span></a>
+   The tick runs 3 times, then rests. Paused offscreen (core.js). Hidden < 760.
+   ===================================================================== */
+.scroll-cue {
+  display: inline-flex; align-items: flex-end; gap: var(--s-4);
+  padding: var(--s-2) var(--s-2) var(--s-2) 0;
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .04em;
+  color: var(--fg-2); text-decoration: none;
+}
+.scroll-cue__track { position: relative; flex: none; width: 1px; height: 72px; background: var(--rule); overflow: hidden; }
+.scroll-cue__track::after {
+  content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 22px; background: var(--fg-2);
+  transform: translateY(25px);                         /* resting position (centred) */
+  /* Three passes; the third stops half-way, so it comes to rest centred in the track. */
+  animation: dc-cue 2400ms var(--e-inout) 1600ms 2.3 both;
+}
+@keyframes dc-cue {
+  0% { transform: translateY(-24px); }
+  60%, 100% { transform: translateY(74px); }
+}
+@media (hover: hover) and (pointer: fine) { .scroll-cue:hover { color: var(--fg); } }
+@media (max-width: 759px) { .scroll-cue { display: none; } }
+@media (prefers-reduced-motion: reduce) { .scroll-cue__track::after { animation: none; } }
+html[data-motion="reduce"] .scroll-cue__track::after { animation: none; }

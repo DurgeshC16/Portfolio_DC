@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CertiVault — Durgesh Chaudhari</title>
+    <meta name="description" content="A PHP/MySQL platform that signs certificates and lets anyone verify them, with six distinct verdicts.">
+    <meta name="theme-color" content="#0d0e11">
+    <meta name="color-scheme" content="dark light">
+    <!-- TODO(durgesh): add <link rel="canonical"> and make og:image absolute once the deployment URL is decided (ledger Q-16). -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DC. — The Interactive Engineering Archive">
+    <meta property="og:title" content="CertiVault — Durgesh Chaudhari">
+    <meta property="og:description" content="A PHP/MySQL platform that signs certificates and lets anyone verify them, with six distinct verdicts.">
+    <meta property="og:image" content="../assets/og/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DC. — Durgesh Chaudhari, The Interactive Engineering Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CertiVault — Durgesh Chaudhari">
+    <meta name="twitter:description" content="A PHP/MySQL platform that signs certificates and lets anyone verify them, with six distinct verdicts.">
+    <meta name="twitter:image" content="../assets/og/og-default.png">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script>!function(h){h.classList.add("js");try{if(localStorage.getItem("dc.motion")=="reduce")return h.setAttribute("data-motion","reduce")}catch(e){}matchMedia("(prefers-reduced-motion: reduce)").matches||h.classList.add("intro")}(document.documentElement)</script>
+    <link rel="preload" href="../assets/fonts/dm-sans-normal-100_1000-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/chrome.css">
+    <link rel="stylesheet" href="../css/case.css">
+    <script src="../js/core.js" defer></script>
+    <script src="../js/case.js" defer></script>
+    <script src="../js/nav.js" defer></script>
+    <script src="../js/palette-index.js" defer></script>
+    <script src="../js/palette.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+    <script src="../js/transitions.js" defer></script>
+  </head>
+  <body id="top" data-page="case" data-case="certivault">
+    <!-- region:shell-header (owner A) -->
+    <header class="site-header" data-header data-surface="night">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="site-header__bar">
+        <a class="wordmark" href="../index.html">DC<span class="wordmark__stop">.</span><span class="vh"> Durgesh Chaudhari, home</span></a>
+        <p class="site-header__title">The Interactive Engineering Archive</p>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../index.html#work" aria-current="page">Work<sup aria-hidden="true">I</sup></a></li>
+            <li class="site-nav__wide"><a href="../index.html#evidence">Evidence<sup aria-hidden="true">II</sup></a></li>
+            <li class="site-nav__wide"><a href="../projects/notebook.html">Notebook</a></li>
+            <li><a href="#contact">Contact<sup aria-hidden="true">V</sup></a></li>
+          </ul>
+        </nav>
+        <div class="site-header__actions">
+          <a class="site-header__cv" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon icon--file" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#file"></use></svg>Résumé<span class="vh"> (PDF)</span></a>
+          <button class="site-header__btn site-header__search" type="button" data-palette-open aria-haspopup="dialog" aria-controls="palette"><svg class="icon icon--search" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="site-header__label">Search</span> <kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">K</kbd></button>
+          <button class="site-header__btn site-header__index" type="button" data-menu-open aria-haspopup="dialog" aria-controls="nav-overlay" aria-expanded="false"><svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#menu"></use></svg><span class="site-header__label">Index</span></button>
+        </div>
+      </div>
+      <span class="site-header__progress" data-scroll-progress aria-hidden="true"></span>
+    </header>
+    <!-- /region:shell-header -->
+    <main id="main" class="detail" data-surface="paper">
+      <!-- region:case-a (owner E1) -->
+      <section class="case-plate" id="overview" data-surface="night" data-case-essential aria-labelledby="case-title">
+        <div class="grid case-plate__head">
+          <div class="running-head" aria-hidden="true"><span><b>Pl. 04</b> — Case study</span><span>CertiVault</span><span>Ch. 01–08</span></div>
+          <a class="case-crumb" href="../index.html#work"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Selected work</a>
+          <p class="case-plate__kicker label">Pl. 04 · Web Technology course project · Applied cryptography</p>
+          <h1 class="case-plate__title" id="case-title" data-vt-title>CertiVault</h1>
+          <p class="case-plate__dek">A PHP/MySQL platform that signs certificates and lets anyone verify them, with six distinct verdicts.</p>
+          <div class="case-plate__side">
+            <ul class="chips" aria-label="Status"><li class="chip">Coursework</li><li class="chip">No live demo yet</li></ul>
+            <div class="case-mode" role="group" aria-labelledby="case-mode-label" data-case-modes>
+              <span class="case-mode__hint" id="case-mode-label">Reading mode</span>
+              <div class="case-mode__seg" data-active="deep">
+                <button class="case-mode__btn" type="button" data-case-mode="quick" aria-pressed="false">Quick view <span class="case-mode__time" data-case-time="quick"></span></button>
+                <button class="case-mode__btn" type="button" data-case-mode="deep" aria-pressed="true">Deep dive <span class="case-mode__time" data-case-time="deep"></span></button>
+              </div>
+              <p class="vh" aria-live="polite" data-case-mode-live></p>
+            </div>
+          </div>
+          <figure class="fig case-plate__fig">
+            <div class="case-plate__mat case-plate__mat--svg" data-vt-plate><svg class="dg dg--full dg--plate" viewBox="0 0 1200 600" role="img" aria-labelledby="cv-plate-t cv-plate-d" focusable="false"><title id="cv-plate-t">Pl. 04 CertiVault: issue, then verify</title><desc id="cv-plate-d">Issue lane: issuer, canonical JSON, SHA-256 fingerprint, RSA-2048 signature, certificate with QR code. Verify lane: a public verifier, with no account, recomputes the fingerprint and checks the signature against the pinned issuer key, and returns exactly one of six verdicts: valid, tampered, expired, revoked, superseded or invalid.</desc><text x="40" y="64" class="dg-label" font-size="24">CertiVault · issue, then verify</text><text x="1160" y="64" class="dg-label dg-mute" text-anchor="end" font-size="24">7 checks · 6 verdicts</text><path class="dg-rule" d="M40 88H1160"/><text x="40" y="132" class="dg-band" font-size="22">ISSUE</text><g class="dg-node " data-node="1"><rect x="40" y="150" width="190" height="70" rx="2"/><text x="135.0" y="192.7" class="dg-label" text-anchor="middle" font-size="22">Issuer</text></g><g class="dg-node " data-node="1"><rect x="262" y="150" width="218" height="70" rx="2"/><text x="371.0" y="192.7" class="dg-label" text-anchor="middle" font-size="22">Canonical JSON</text></g><g class="dg-node " data-node="1"><rect x="512" y="150" width="156" height="70" rx="2"/><text x="590.0" y="192.7" class="dg-label" text-anchor="middle" font-size="22">SHA-256</text></g><g class="dg-node " data-node="1"><rect x="700" y="150" width="170" height="70" rx="2"/><text x="785.0" y="192.7" class="dg-label" text-anchor="middle" font-size="22">RSA-2048</text></g><g class="dg-node dg-node--dark" data-node="1"><rect x="902" y="150" width="258" height="70" rx="2"/><text x="1031.0" y="192.7" class="dg-label" text-anchor="middle" font-size="22">Certificate + QR</text></g><path class="dg-edge" d="M230.0 185.0 L260.0 185.0"/><path class="dg-head" d="M253.0 188.8 L260.0 185.0 L253.0 181.2"/><path class="dg-edge" d="M480.0 185.0 L510.0 185.0"/><path class="dg-head" d="M503.0 188.8 L510.0 185.0 L503.0 181.2"/><path class="dg-edge" d="M668.0 185.0 L698.0 185.0"/><path class="dg-head" d="M691.0 188.8 L698.0 185.0 L691.0 181.2"/><path class="dg-edge" d="M870.0 185.0 L900.0 185.0"/><path class="dg-head" d="M893.0 188.8 L900.0 185.0 L893.0 181.2"/><text x="40" y="290" class="dg-band" font-size="22">VERIFY · NO ACCOUNT</text><path class="dg-edge" d="M1031.0 220.0 L1031.0 306.0"/><path class="dg-head" d="M1027.2 299.0 L1031.0 306.0 L1034.8 299.0"/><g class="dg-node " data-node="2"><rect x="820" y="308" width="340" height="70" rx="2"/><text x="990.0" y="350.7" class="dg-label" text-anchor="middle" font-size="22">Public verifier</text></g><g class="dg-node dg-node--soft" data-node="2"><rect x="300" y="308" width="470" height="70" rx="2"/><text x="535.0" y="350.7" class="dg-label" text-anchor="middle" font-size="22">Recompute · check signature</text></g><path class="dg-edge" d="M820.0 343.0 L772.0 343.0"/><path class="dg-head" d="M779.0 339.1 L772.0 343.0 L779.0 346.9"/><text x="535" y="404" class="dg-label dg-mute" text-anchor="middle" font-size="22">against the pinned issuer key</text><g class="dg-node dg-node--seal" data-node="3"><rect x="40" y="458" width="170" height="58" rx="2"/><text x="125.0" y="494.0" class="dg-label" text-anchor="middle" font-size="20">VALID</text></g><g class="dg-node dg-node--open" data-node="3"><rect x="228" y="458" width="170" height="58" rx="2"/><text x="313.0" y="494.0" class="dg-label" text-anchor="middle" font-size="20">TAMPERED</text></g><g class="dg-node dg-node--open" data-node="3"><rect x="416" y="458" width="170" height="58" rx="2"/><text x="501.0" y="494.0" class="dg-label" text-anchor="middle" font-size="20">EXPIRED</text></g><g class="dg-node dg-node--open" data-node="3"><rect x="604" y="458" width="170" height="58" rx="2"/><text x="689.0" y="494.0" class="dg-label" text-anchor="middle" font-size="20">REVOKED</text></g><g class="dg-node dg-node--open" data-node="3"><rect x="792" y="458" width="200" height="58" rx="2"/><text x="892.0" y="494.0" class="dg-label" text-anchor="middle" font-size="20">SUPERSEDED</text></g><g class="dg-node dg-node--open" data-node="3"><rect x="1010" y="458" width="170" height="58" rx="2"/><text x="1095.0" y="494.0" class="dg-label" text-anchor="middle" font-size="20">INVALID</text></g><path class="dg-edge" d="M535.0 378.0 L535.0 424.0 L125.0 424.0 L125.0 456.0"/><path class="dg-head" d="M121.2 449.0 L125.0 456.0 L128.8 449.0"/><text x="40" y="572" class="dg-label dg-mute" font-size="22">Every check returns exactly one verdict.</text></svg><svg class="dg dg--compact dg--plate" viewBox="0 0 400 420" role="img" aria-labelledby="cv-plate-c-t cv-plate-c-d" focusable="false"><title id="cv-plate-c-t">Pl. 04 CertiVault: issue, then verify, compact</title><desc id="cv-plate-c-d">A certificate is issued and signed, shared as a QR code, verified by anyone, and gets one verdict such as valid or tampered.</desc><g class="dg-node " data-node="1"><rect x="20" y="16" width="360" height="60" rx="2"/><text x="200.0" y="53.4" class="dg-label" text-anchor="middle" font-size="21">Issue + sign</text></g><g class="dg-node dg-node--dark" data-node="1"><rect x="20" y="116" width="360" height="60" rx="2"/><text x="200.0" y="153.3" class="dg-label" text-anchor="middle" font-size="21">Share QR</text></g><g class="dg-node dg-node--soft" data-node="2"><rect x="20" y="216" width="360" height="60" rx="2"/><text x="200.0" y="253.3" class="dg-label" text-anchor="middle" font-size="21">Verify, no account</text></g><path class="dg-edge" d="M200.0 76.0 L200.0 114.0"/><path class="dg-head" d="M194.5 104.0 L200.0 114.0 L205.5 104.0"/><path class="dg-edge" d="M200.0 176.0 L200.0 214.0"/><path class="dg-head" d="M194.5 204.0 L200.0 214.0 L205.5 204.0"/><g class="dg-node dg-node--seal" data-node="3"><rect x="20" y="318" width="170" height="52" rx="2"/><text x="105.0" y="351.0" class="dg-label" text-anchor="middle" font-size="20">VALID</text></g><g class="dg-node dg-node--open" data-node="3"><rect x="210" y="318" width="170" height="52" rx="2"/><text x="295.0" y="351.0" class="dg-label" text-anchor="middle" font-size="20">TAMPERED</text></g><path class="dg-edge" d="M200.0 276.0 L106.8 317.2"/><path class="dg-head" d="M113.8 308.1 L106.8 317.2 L118.2 318.2"/><path class="dg-edge" d="M200.0 276.0 L293.2 317.2"/><path class="dg-head" d="M281.8 318.2 L293.2 317.2 L286.2 308.1"/><text x="200" y="404" class="dg-label dg-mute" text-anchor="middle" font-size="20">+ 4 other verdicts</text></svg></div>
+            <figcaption class="fig__cap"><span class="fig__no">Pl. 04</span> <span class="fig__text">Issue, then verify: two lanes and six verdicts, drawn from the repository’s README.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="case-brief" id="summary" data-surface="paper" data-case-essential aria-label="Summary">
+        <div class="grid">
+          <dl class="facts" data-reveal="fade">
+            <div><dt>Role</dt><dd>Course team member and public repository maintainer</dd></div>
+            <div><dt>Team</dt><dd>Anjali Chandewar, Durgesh Chaudhari and Falguni Chaudhari · C1_G3 · Guided by Prof. Rahul Diwate</dd></div>
+            <div><dt>Stack</dt><dd>PHP 8.2 (no framework), MySQL/MariaDB, vanilla JavaScript, Web Crypto, OpenSSL, Docker</dd></div>
+            <div><dt>Proof</dt><dd><a class="evidence" href="https://github.com/DurgeshC16/Web_Tech_CP">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></dd></div>
+          </dl>
+          <div class="case-row">
+            <h2 class="case-row__label label">In 30 seconds</h2>
+            <dl class="case-row__body case-row__body--measure case-30" data-reveal="lines">
+              <div data-reveal-item><dt>What it is</dt><dd>CertiVault issues certificates bound to their issuer by a SHA-256 fingerprint and an RSA-2048 signature, with the signing key’s fingerprint pinned outside the database and a QR code on each one. Anyone can check a certificate without an account.</dd></div>
+              <div data-reveal-item><dt>What I did</dt><dd>I worked on CertiVault with Anjali Chandewar and Falguni Chaudhari and maintained the public repository.</dd></div>
+              <div data-reveal-item><dt>What came of it</dt><dd>One explainable verdict for every check, a Docker setup and a Render deployment blueprint. There is no public demo yet.</dd></div>
+            </dl>
+          </div>
+          <div class="case-row">
+            <h2 class="case-row__label label">By design</h2>
+            <div class="case-row__body metrics" data-reveal="lines">
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">6</span><span class="metric__unit">verdicts</span></p>
+                <p class="metric__label">Valid, tampered, expired, revoked, superseded or invalid: exactly one per check.</p>
+                <p class="metric__scope">README.md, lines 7–13 · @ aea2ff8</p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">7</span><span class="metric__unit">checks</span></p>
+                <p class="metric__label">Run in a fixed order; the first one that fails decides the verdict.</p>
+                <p class="metric__scope">README.md, lines 106–125 · @ aea2ff8</p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">0</span><span class="metric__unit">accounts</span></p>
+                <p class="metric__label">Needed to verify a certificate.</p>
+                <p class="metric__scope">Public verification by QR, ID or link · README.md</p>
+              </div>
+            </div>
+          </div>
+          <div class="case-row">
+            <h2 class="case-row__label label">Links</h2>
+            <div class="case-row__body case-links">
+              <a class="btn btn--ghost" href="https://github.com/DurgeshC16/Web_Tech_CP"><span class="btn__inner"><svg class="icon icon--github" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github"></use></svg>Source on GitHub</span><span class="vh"> (opens external site)</span></a>
+              <a class="btn btn--text" href="#walkthrough" data-case-mode="deep"><span class="btn__inner">Try the verify walkthrough<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></a>
+              <p class="case-links__note">No live demo yet.</p>
+            </div>
+          </div>
+          <p class="case-deep-cta" data-case-quick-only><button class="btn btn--ghost" type="button" data-case-mode="deep" data-case-goto="problem"><span class="btn__inner">Read the deep dive<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></button></p>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="problem" data-surface="paper" aria-labelledby="ch-problem">
+        <div class="running-head" aria-hidden="true"><span><b>01</b> — CertiVault</span><span>Case study</span><span>Ch. 01 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-problem" data-reveal><span class="case-ch__no">01 —</span> <span>Problem</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Certificates circulate as editable PDFs and images, and recipients have no quick way to check them.</p>
+          <p>Blockchain approaches add fees and latency, and still cannot prove that a ledger identity belongs to a real institution. CertiVault uses plain, well-understood cryptography instead: a fingerprint to detect any change, a signature to show who issued it, and a pinned key to catch a swapped one.</p>
+          <dl class="case-pairs" aria-label="Constraints">
+            <div><dt>Trust</dt><dd>Signatures and key pinning, not a blockchain.</dd></div>
+            <div><dt>Access</dt><dd>Anyone can verify, with no account.</dd></div>
+            <div><dt>Clarity</dt><dd>Exactly one verdict per check, in a fixed order, so it can be explained.</dd></div>
+            <div><dt>Security</dt><dd>The content security policy allows no inline scripts.</dd></div>
+            <div><dt>Stack</dt><dd>PHP 8.2 with no framework, MySQL or MariaDB in strict mode.</dd></div>
+          </dl>
+        </div>
+        <aside class="case-ch__aside" aria-label="Key statement">
+          <div class="case-pull" data-reveal="fade">
+            <p class="case-quote">“A signature proves who issued a certificate, not that its content is true.”</p>
+            <p class="case-pull__scope">From the project’s own stated limitations · README.md</p>
+          </div>
+        </aside>
+      </section>
+      <section class="case-section case-ch grid" id="role" data-surface="paper" aria-labelledby="ch-role">
+        <div class="running-head" aria-hidden="true"><span><b>02</b> — CertiVault</span><span>Case study</span><span>Ch. 02 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-role" data-reveal><span class="case-ch__no">02 —</span> <span>Role and team contributions</span></h2>
+        <div class="case-ch__body">
+          <p class="case-ch__lead">Our Web Technology team developed CertiVault under the guidance of Prof. Rahul Diwate.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <table class="case-table">
+            <caption>Course team and public repository history · aea2ff8</caption>
+            <thead><tr><th scope="col">Area</th><th scope="col">I did</th><th scope="col">Others</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Platform code</th><td data-label="I did">I maintained the public repository. Its history records 37 commits under my name and nine under the project identity.<span class="case-who">git shortlog @ aea2ff8</span></td><td data-label="Others">Anjali Chandewar and Falguni Chaudhari were my teammates in course group C1_G3.<!-- TODO(durgesh): add individual responsibilities once confirmed. --></td></tr>
+              <tr><th scope="row">Walkthrough on this page</th><td data-label="I did">An illustration I built that follows the repository’s documented order of checks.<span class="case-who">Portfolio code</span></td><td data-label="Others" class="case-none">Not applicable.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="architecture" data-surface="paper" aria-labelledby="ch-arch">
+        <div class="running-head" aria-hidden="true"><span><b>03</b> — CertiVault</span><span>Case study</span><span>Ch. 03 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-arch" data-reveal><span class="case-ch__no">03 —</span> <span>Technical architecture</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Two lanes: an institution issues, and anyone verifies without an account.</p>
+        </div>
+        <div class="case-ch__wide">
+          <figure class="fig case-arch" data-reveal="media" aria-labelledby="cv-arch-cap">
+            <div class="fig__media"><svg class="dg dg--full" viewBox="0 0 1000 620" role="img" aria-labelledby="cv-arch-t cv-arch-d" focusable="false"><title id="cv-arch-t">Fig. 4.3 CertiVault architecture: issue, then verify</title><desc id="cv-arch-d">Issue: an institution sends certificate data to the issuance service, which builds canonical JSON, a SHA-256 fingerprint and an RSA-2048 signature; the record and signature go to MySQL; the signing key fingerprint is pinned outside the database; the certificate PDF carries a QR code with its ID; an optional Merkle transparency log appends a leaf and signs checkpoints. Verify: the holder shares the PDF, QR or link; a public verifier needs no account; verify.php runs seven checks in a fixed order (exists, revoked, superseded, hash match, key pin match, RSA verify, expired) and returns exactly one of six verdicts.</desc><path class="dg-rule" d="M0 0H1000"/><text x="0" y="20" class="dg-band">ISSUE · INSTITUTION</text><text x="1000" y="20" class="dg-band dg-mute" text-anchor="end">PHP 8.2, no framework</text><g class="dg-node " data-node="1"><rect x="0" y="52" width="150" height="64" rx="2"/><text x="75.0" y="79.7" class="dg-label" text-anchor="middle" font-size="14">Institution</text><text x="75.0" y="98.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">issuer</text><g class="dg-badge"><circle cx="0" cy="52" r="11"/><text x="0" y="56.6" text-anchor="middle" font-size="13">1</text></g></g><g class="dg-node " data-node="2"><rect x="190" y="52" width="330" height="64" rx="2"/><text x="355.0" y="79.7" class="dg-label" text-anchor="middle" font-size="14">Issuance service</text><text x="355.0" y="98.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">canonical JSON · SHA-256 · RSA</text><g class="dg-badge"><circle cx="190" cy="52" r="11"/><text x="190" y="56.6" text-anchor="middle" font-size="13">2</text></g></g><g class="dg-node " data-node="3"><rect x="560" y="52" width="190" height="64" rx="2"/><text x="655.0" y="79.7" class="dg-label" text-anchor="middle" font-size="14">MySQL</text><text x="655.0" y="98.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">record + signature</text><g class="dg-badge"><circle cx="560" cy="52" r="11"/><text x="560" y="56.6" text-anchor="middle" font-size="13">3</text></g></g><g class="dg-node dg-node--dark" data-node="4"><rect x="790" y="52" width="210" height="64" rx="2"/><text x="895.0" y="79.7" class="dg-label" text-anchor="middle" font-size="14">Certificate PDF</text><text x="895.0" y="98.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">QR with ID</text><g class="dg-badge"><circle cx="790" cy="52" r="11"/><text x="790" y="56.6" text-anchor="middle" font-size="13">4</text></g></g><g class="dg-node dg-node--soft" data-node="5"><rect x="190" y="152" width="330" height="46" rx="2"/><text x="355.0" y="179.9" class="dg-label" text-anchor="middle" font-size="14">Key pin · outside the database</text><g class="dg-badge"><circle cx="190" cy="152" r="11"/><text x="190" y="156.6" text-anchor="middle" font-size="13">5</text></g></g><g class="dg-node dg-node--plan" data-node="6"><rect x="560" y="152" width="400" height="46" rx="2"/><text x="760.0" y="179.9" class="dg-label" text-anchor="middle" font-size="14">Merkle log + checkpoints · optional</text><g class="dg-badge"><circle cx="560" cy="152" r="11"/><text x="560" y="156.6" text-anchor="middle" font-size="13">6</text></g></g><path class="dg-edge" d="M150.0 84.0 L188.0 84.0"/><path class="dg-head" d="M181.0 87.8 L188.0 84.0 L181.0 80.2"/><path class="dg-edge" d="M520.0 84.0 L558.0 84.0"/><path class="dg-head" d="M551.0 87.8 L558.0 84.0 L551.0 80.2"/><path class="dg-edge" d="M750.0 84.0 L788.0 84.0"/><path class="dg-head" d="M781.0 87.8 L788.0 84.0 L781.0 80.2"/><path class="dg-edge" d="M355.0 116.0 L355.0 150.0"/><path class="dg-head" d="M351.1 143.0 L355.0 150.0 L358.9 143.0"/><path class="dg-edge dg-edge--dash" d="M480.0 116.0 L480.0 134.0 L640.0 134.0 L640.0 150.0"/><path class="dg-head dg-edge--dash" d="M636.1 143.0 L640.0 150.0 L643.9 143.0"/><path class="dg-rule" d="M0 236H1000"/><text x="0" y="256" class="dg-band">VERIFY · ANYONE, NO ACCOUNT</text><text x="1000" y="256" class="dg-band dg-mute" text-anchor="end">one verdict, always</text><g class="dg-node " data-node="7"><rect x="0" y="296" width="150" height="64" rx="2"/><text x="75.0" y="323.7" class="dg-label" text-anchor="middle" font-size="14">Holder</text><text x="75.0" y="342.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">shares PDF / QR</text><g class="dg-badge"><circle cx="0" cy="296" r="11"/><text x="0" y="300.6" text-anchor="middle" font-size="13">7</text></g></g><g class="dg-node " data-node="8"><rect x="190" y="296" width="200" height="64" rx="2"/><text x="290.0" y="323.7" class="dg-label" text-anchor="middle" font-size="14">Public verifier</text><text x="290.0" y="342.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">scan or paste ID</text><g class="dg-badge"><circle cx="190" cy="296" r="11"/><text x="190" y="300.6" text-anchor="middle" font-size="13">8</text></g></g><path class="dg-edge" d="M982.0 116.0 L982.0 270.0 L75.0 270.0 L75.0 294.0"/><path class="dg-head" d="M71.2 287.0 L75.0 294.0 L78.8 287.0"/><text x="970" y="262" class="dg-elabel" text-anchor="end">holder receives the PDF</text><path class="dg-edge" d="M150.0 328.0 L188.0 328.0"/><path class="dg-head" d="M181.0 331.9 L188.0 328.0 L181.0 324.1"/><rect class="dg-frame" x="430" y="286" width="570" height="190" rx="2"/><g class="dg-node " data-node="9"><rect x="430" y="286" width="0" height="0" rx="2"/><g class="dg-badge"><circle cx="430" cy="286" r="11"/><text x="430" y="290.6" text-anchor="middle" font-size="13">9</text></g></g><text x="450" y="312" class="dg-label" font-size="14">verify.php · seven checks, fixed order</text><path class="dg-edge" d="M390.0 328.0 L428.0 328.0"/><path class="dg-head" d="M421.0 331.9 L428.0 328.0 L421.0 324.1"/><g class="dg-node " data-node="9"><rect x="450" y="332" width="64" height="52" rx="2"/><text x="482.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">1</text></g><text x="482" y="406" class="dg-elabel" text-anchor="middle">exists</text><g class="dg-node " data-node="9"><rect x="530" y="332" width="64" height="52" rx="2"/><text x="562.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">2</text></g><text x="562" y="426" class="dg-elabel" text-anchor="middle">revoked</text><path class="dg-edge" d="M514.0 358.0 L528.0 358.0"/><path class="dg-head" d="M521.0 361.9 L528.0 358.0 L521.0 354.1"/><g class="dg-node " data-node="9"><rect x="610" y="332" width="64" height="52" rx="2"/><text x="642.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">3</text></g><text x="642" y="406" class="dg-elabel" text-anchor="middle">superseded</text><path class="dg-edge" d="M594.0 358.0 L608.0 358.0"/><path class="dg-head" d="M601.0 361.9 L608.0 358.0 L601.0 354.1"/><g class="dg-node " data-node="9"><rect x="690" y="332" width="64" height="52" rx="2"/><text x="722.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">4</text></g><text x="722" y="426" class="dg-elabel" text-anchor="middle">hash match</text><path class="dg-edge" d="M674.0 358.0 L688.0 358.0"/><path class="dg-head" d="M681.0 361.9 L688.0 358.0 L681.0 354.1"/><g class="dg-node dg-node--hi" data-node="9"><rect x="770" y="332" width="64" height="52" rx="2"/><text x="802.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">5</text></g><text x="802" y="406" class="dg-elabel" text-anchor="middle">key pin</text><path class="dg-edge" d="M754.0 358.0 L768.0 358.0"/><path class="dg-head" d="M761.0 361.9 L768.0 358.0 L761.0 354.1"/><g class="dg-node " data-node="9"><rect x="850" y="332" width="64" height="52" rx="2"/><text x="882.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">6</text></g><text x="882" y="426" class="dg-elabel" text-anchor="middle">RSA verify</text><path class="dg-edge" d="M834.0 358.0 L848.0 358.0"/><path class="dg-head" d="M841.0 361.9 L848.0 358.0 L841.0 354.1"/><g class="dg-node " data-node="9"><rect x="930" y="332" width="64" height="52" rx="2"/><text x="962.0" y="363.6" class="dg-label" text-anchor="middle" font-size="16">7</text></g><text x="962" y="406" class="dg-elabel" text-anchor="middle">expired</text><path class="dg-edge" d="M914.0 358.0 L928.0 358.0"/><path class="dg-head" d="M921.0 361.9 L928.0 358.0 L921.0 354.1"/><text x="450" y="460" class="dg-elabel">The first failing check decides the verdict.</text><path class="dg-rule" d="M0 500H1000"/><text x="0" y="520" class="dg-band">SIX VERDICTS</text><text x="1000" y="520" class="dg-band dg-mute" text-anchor="end">words and shapes, never colour alone</text><g class="dg-node dg-node--seal" data-node="10"><rect x="0" y="540" width="154" height="48" rx="2"/><text x="77.0" y="568.9" class="dg-label" text-anchor="middle" font-size="14">VALID</text></g><g class="dg-node dg-node--open" data-node="10"><rect x="164" y="540" width="154" height="48" rx="2"/><text x="241.0" y="568.9" class="dg-label" text-anchor="middle" font-size="14">TAMPERED</text></g><g class="dg-node dg-node--open" data-node="10"><rect x="328" y="540" width="154" height="48" rx="2"/><text x="405.0" y="568.9" class="dg-label" text-anchor="middle" font-size="14">EXPIRED</text></g><g class="dg-node dg-node--open" data-node="10"><rect x="492" y="540" width="154" height="48" rx="2"/><text x="569.0" y="568.9" class="dg-label" text-anchor="middle" font-size="14">REVOKED</text></g><g class="dg-node dg-node--open" data-node="10"><rect x="656" y="540" width="176" height="48" rx="2"/><text x="744.0" y="568.9" class="dg-label" text-anchor="middle" font-size="14">SUPERSEDED</text></g><g class="dg-node dg-node--open" data-node="10"><rect x="842" y="540" width="154" height="48" rx="2"/><text x="919.0" y="568.9" class="dg-label" text-anchor="middle" font-size="14">INVALID</text></g><path class="dg-edge" d="M715.0 476.0 L715.0 538.0"/><path class="dg-head" d="M711.1 531.0 L715.0 538.0 L718.9 531.0"/><text x="0" y="612" class="dg-band dg-mute">Numbered steps follow README.md, lines 106 to 125</text></svg><svg class="dg dg--compact" viewBox="0 0 400 548" role="img" aria-labelledby="cv-arch-c-t cv-arch-c-d" focusable="false"><title id="cv-arch-c-t">Fig. 4.3 CertiVault architecture, compact</title><desc id="cv-arch-c-d">Six stages: the institution issues; the service fingerprints with SHA-256 and signs with RSA-2048; the key fingerprint is pinned outside the database; the holder shares the PDF or QR; verify.php runs seven checks in a fixed order; the verifier gets one of six verdicts.</desc><g class="dg-node " data-node="1"><rect x="22" y="16" width="370" height="60" rx="2"/><text x="207.0" y="53.4" class="dg-label" text-anchor="middle" font-size="21">Institution issues</text><g class="dg-badge"><circle cx="22" cy="16" r="15"/><text x="22" y="22.4" text-anchor="middle" font-size="18">1</text></g></g><g class="dg-node " data-node="2"><rect x="22" y="106" width="370" height="60" rx="2"/><text x="207.0" y="143.3" class="dg-label" text-anchor="middle" font-size="21">SHA-256 + RSA-2048</text><g class="dg-badge"><circle cx="22" cy="106" r="15"/><text x="22" y="112.4" text-anchor="middle" font-size="18">2</text></g></g><g class="dg-node dg-node--hi" data-node="5"><rect x="22" y="196" width="370" height="60" rx="2"/><text x="207.0" y="233.3" class="dg-label" text-anchor="middle" font-size="21">Key pin, outside DB</text><g class="dg-badge"><circle cx="22" cy="196" r="15"/><text x="22" y="202.4" text-anchor="middle" font-size="18">5</text></g></g><g class="dg-node " data-node="7"><rect x="22" y="286" width="370" height="60" rx="2"/><text x="207.0" y="323.4" class="dg-label" text-anchor="middle" font-size="21">Holder shares PDF / QR</text><g class="dg-badge"><circle cx="22" cy="286" r="15"/><text x="22" y="292.4" text-anchor="middle" font-size="18">7</text></g></g><g class="dg-node " data-node="9"><rect x="22" y="376" width="370" height="60" rx="2"/><text x="207.0" y="413.4" class="dg-label" text-anchor="middle" font-size="21">7 checks, fixed order</text><g class="dg-badge"><circle cx="22" cy="376" r="15"/><text x="22" y="382.4" text-anchor="middle" font-size="18">9</text></g></g><g class="dg-node dg-node--dark" data-node="10"><rect x="22" y="466" width="370" height="60" rx="2"/><text x="207.0" y="503.4" class="dg-label" text-anchor="middle" font-size="21">One of 6 verdicts</text><g class="dg-badge"><circle cx="22" cy="466" r="15"/><text x="22" y="472.4" text-anchor="middle" font-size="18">10</text></g></g><path class="dg-edge" d="M207.0 76.0 L207.0 104.0"/><path class="dg-head" d="M201.5 94.0 L207.0 104.0 L212.5 94.0"/><path class="dg-edge" d="M207.0 166.0 L207.0 194.0"/><path class="dg-head" d="M201.5 184.0 L207.0 194.0 L212.5 184.0"/><path class="dg-edge" d="M207.0 256.0 L207.0 284.0"/><path class="dg-head" d="M201.5 274.0 L207.0 284.0 L212.5 274.0"/><path class="dg-edge" d="M207.0 346.0 L207.0 374.0"/><path class="dg-head" d="M201.5 364.0 L207.0 374.0 L212.5 364.0"/><path class="dg-edge" d="M207.0 436.0 L207.0 464.0"/><path class="dg-head" d="M201.5 454.0 L207.0 464.0 L212.5 454.0"/></svg></div>
+            <figcaption class="fig__cap" id="cv-arch-cap"><span class="fig__no">Fig. 4.3</span> <span class="fig__text">The highlighted check, the key pin, is what catches a swapped institution key. The Merkle log is optional and off by default.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
+          <div class="case-arch__tools" data-case-js>
+            <button class="btn btn--ghost btn--sm" type="button" data-arch-open="cv-viewer" aria-haspopup="dialog"><span class="btn__inner"><svg class="icon icon--plus" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#plus"></use></svg>Open the full diagram</span></button>
+          </div>
+          <dialog class="case-viewer" id="cv-viewer" data-surface="paper" aria-labelledby="cv-viewer-title">
+            <div class="case-viewer__bar"><h2 id="cv-viewer-title">Fig. 4.3 · CertiVault architecture, full</h2><button class="btn btn--icon" type="button" data-viewer-close><svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg><span class="vh">Close</span></button></div>
+            <div class="case-viewer__scroll" tabindex="0" role="region" aria-label="Full diagram, scrollable" data-viewer-slot="cv-arch"></div>
+            <p class="case-viewer__hint">Scroll sideways to follow the whole drawing.</p>
+          </dialog>
+          <ol class="case-legend" aria-label="Diagram legend" data-legend-for="cv-arch">
+            <li data-node="1"><span class="case-legend__n">1</span><span><b>Institution.</b> An approved issuer sends certificate data.</span></li>
+            <li data-node="2"><span class="case-legend__n">2</span><span><b>Issuance service.</b> Canonical JSON, then a SHA-256 fingerprint, then an RSA-2048 signature.</span></li>
+            <li data-node="3"><span class="case-legend__n">3</span><span><b>MySQL.</b> The record and its signature, in strict mode.</span></li>
+            <li data-node="4"><span class="case-legend__n">4</span><span><b>Certificate PDF.</b> Carries a QR code with its ID.</span></li>
+            <li data-node="5"><span class="case-legend__n">5</span><span><b>Key pin.</b> The signing key’s fingerprint, kept outside the database.</span></li>
+            <li data-node="6"><span class="case-legend__n">6</span><span><b>Transparency log.</b> Optional: an append-only Merkle log with signed checkpoints.</span></li>
+            <li data-node="7"><span class="case-legend__n">7</span><span><b>Holder.</b> Shares the PDF, the QR code or a link.</span></li>
+            <li data-node="8"><span class="case-legend__n">8</span><span><b>Public verifier.</b> Anyone, with no account.</span></li>
+            <li data-node="9"><span class="case-legend__n">9</span><span><b>verify.php.</b> Exists, revoked, superseded, hash match, key pin match, RSA verify, expired: in that order.</span></li>
+            <li data-node="10"><span class="case-legend__n">10</span><span><b>Verdict.</b> Exactly one of six, shown in words and shapes, never colour alone.</span></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="decisions" data-surface="paper" aria-labelledby="ch-decisions">
+        <div class="running-head" aria-hidden="true"><span><b>04</b> — CertiVault</span><span>Case study</span><span>Ch. 04 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-decisions" data-reveal><span class="case-ch__no">04 —</span> <span>Key challenges and decisions</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ol class="case-decisions">
+            <li data-reveal="fade"><span class="case-decisions__no">D1</span><h3>Signatures and a pinned key, not a blockchain.</h3><p>It avoids a blockchain’s fees and latency, and answers “who issued this?” with a key tied to an approved institution.</p><p class="case-trade"><b>Trade-off</b>Key pinning is trust-on-first-use, and a single operator runs the system.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D2</span><h3>A fixed order of checks.</h3><p>The precedence among verdicts is fixed, so a certificate gets exactly one verdict, and the verifier can say which check decided it.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D3</span><h3>Open verification.</h3><p>Anyone can verify, without an account, by QR code, ID or link.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D4</span><h3>No inline scripts.</h3><p>The content security policy forbids them, so every script is an external file.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D5</span><h3>A lookup that grew with the table.</h3><p>The project’s notes report that the rate limiter slowed down as its table grew, and that the lookup was found and fixed during development.</p></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="implementation" data-surface="paper" aria-labelledby="ch-impl">
+        <div class="running-head" aria-hidden="true"><span><b>05</b> — CertiVault</span><span>Case study</span><span>Ch. 05 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-impl" data-reveal><span class="case-ch__no">05 —</span> <span>Implementation and technology</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Plain PHP and MySQL, with the cryptography in the open.</p>
+          <p>Each certificate is fingerprinted with SHA-256 over its canonical fields and its file, and signed with RSA-2048. The signing key’s fingerprint is pinned outside the database, and each certificate carries a QR code. The repository ships a Docker setup, a Render deployment blueprint, and automated PHP and headless-browser test suites.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <dl class="case-stack" data-reveal="lines">
+            <div data-reveal-item><dt>Server</dt><dd>PHP 8.2, no framework; MySQL or MariaDB in strict mode</dd></div>
+            <div data-reveal-item><dt>Cryptography</dt><dd>SHA-256, RSA-2048 via OpenSSL, AES-256-GCM, HMAC-SHA-256, TOTP, bcrypt</dd></div>
+            <div data-reveal-item><dt>Browser</dt><dd>Vanilla JavaScript, Web Crypto, html5-qrcode, pdf.js</dd></div>
+            <div data-reveal-item><dt>Delivery</dt><dd>dompdf, PHPMailer, phpqrcode, Docker, a Render blueprint, GitHub Actions</dd></div>
+          </dl>
+          <div class="code case-code" data-reveal="fade">
+            <div class="code__bar"><span class="code__path">README.md · how a certificate is fingerprinted</span><span class="code__rev">@ aea2ff8</span></div>
+            <pre class="code--lines" tabindex="0" aria-label="Fingerprint and signature, as documented in README.md"><span class="line"><span class="tok-k">h</span> = SHA-256(id | inst | student | title | issued | expires | SHA-256(file))</span><span class="line"><span class="tok-k">sig</span> = RSA-Sign(institution key, h)</span><span class="line"><span class="tok-c">key pinned outside the database at approval</span></span></pre>
+          </div>
+        </div>
+      </section>
+      <!-- /region:case-a -->
+      <!-- region:case-b (owner E1) -->
+      <section class="case-section case-ch grid case-walk" id="walkthrough" data-surface="paper" aria-labelledby="ch-walk">
+        <div class="running-head" aria-hidden="true"><span><b>06</b> — CertiVault</span><span>Case study</span><span>Ch. 06 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-walk" data-reveal><span class="case-ch__no">06 —</span> <span>Issue, then verify: a walkthrough</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Pick what happened to the certificate, or edit its title yourself, and watch the seven checks run in order.</p>
+          <p>The fingerprint is a real SHA-256, computed in your browser over the same fields the repository documents. The certificate is fictional, and the key and signature checks are simulated.</p>
+        </div>
+        <div class="case-walk__bench" data-walk>
+          <div class="case-walk__bar"><span>Walkthrough 06 · Issue, then verify</span><span class="case-walk__state" data-walk-state aria-hidden="true">Verdict · VALID</span><button class="btn btn--text" type="button" data-walk-reset data-case-js>Reset</button></div>
+          <div class="case-walk__body">
+            <div class="case-walk__controls">
+              <fieldset>
+                <legend>What happened to it?</legend>
+                <div class="case-walk__opts">
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="valid" checked>Nothing: untouched since issue</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="tampered">A field was edited after issue</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="revoked">The issuer revoked it</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="superseded">A corrected copy replaced it</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="expired">It is past its expiry date</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="unknown">The ID does not exist</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="key">The institution key was swapped</label>
+                  <label class="case-walk__opt"><input type="radio" name="cv-scenario" value="sig">The signature was altered</label>
+                </div>
+              </fieldset>
+              <div class="case-walk__field">
+                <label for="cv-title">Certificate title</label>
+                <input id="cv-title" type="text" data-walk-title autocomplete="off" spellcheck="false" aria-describedby="cv-title-help" value="Certificate of Completion">
+                <p class="case-walk__help" id="cv-title-help">Change one letter: the fingerprint is recomputed as you type.</p>
+              </div>
+            </div>
+            <div class="case-walk__stage case-walk__live">
+              <div class="case-cert" aria-label="Fictional certificate" role="group">
+                <p class="case-cert__kicker">Certificate · fictional example</p>
+                <p class="case-cert__title" data-walk-title-out>Certificate of Completion</p>
+                <dl>
+                  <div><dt>ID</dt><dd>CV-2026-000123</dd></div>
+                  <div><dt>Issuer</dt><dd>Example Institute of Technology</dd></div>
+                  <div><dt>Holder</dt><dd>A. Student</dd></div>
+                  <div><dt>Valid</dt><dd>2026-06-01 to 2028-05-31</dd></div>
+                  <div><dt>Stored h</dt><dd class="case-cert__hash" data-walk-stored></dd></div>
+                  <div><dt>Now h</dt><dd class="case-cert__hash" data-walk-now></dd></div>
+                </dl>
+                <p class="case-cert__ill"><span class="prov prov--illustrative">Illustrative</span></p>
+              </div>
+              <div>
+                <ol class="case-cascade" aria-label="Verification checks, in order">
+                  <li data-walk-step><span class="case-cascade__n">1</span><span>Does the ID exist?<small>if not: INVALID</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                  <li data-walk-step><span class="case-cascade__n">2</span><span>Not revoked?<small>if revoked: REVOKED</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                  <li data-walk-step><span class="case-cascade__n">3</span><span>Not superseded?<small>if replaced: SUPERSEDED</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                  <li data-walk-step><span class="case-cascade__n">4</span><span>Recomputed fingerprint matches?<small>if not: TAMPERED</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                  <li data-walk-step><span class="case-cascade__n">5</span><span>Key matches its pin?<small>if not: TAMPERED</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                  <li data-walk-step><span class="case-cascade__n">6</span><span>RSA signature verifies?<small>if not: TAMPERED</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                  <li data-walk-step><span class="case-cascade__n">7</span><span>Not expired?<small>if expired: EXPIRED</small></span><span class="case-cascade__out" aria-hidden="true"></span></li>
+                </ol>
+                <div class="case-verdict"><span class="label">Verdict</span><span class="case-seal" data-walk-verdict data-verdict="VALID"><svg class="icon icon--check" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#check"></use></svg><svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg><span data-walk-verdict-text>VALID</span></span></div>
+              </div>
+            </div>
+            <table class="case-table case-walk__static">
+              <caption>The seven checks, in order. The first one that fails decides the verdict; if all pass, the certificate is VALID.</caption>
+              <thead><tr><th scope="col">Check</th><th scope="col">If it fails</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1 · Does the ID exist?</th><td data-label="If it fails">INVALID</td></tr>
+                <tr><th scope="row">2 · Not revoked?</th><td data-label="If it fails">REVOKED</td></tr>
+                <tr><th scope="row">3 · Not superseded?</th><td data-label="If it fails">SUPERSEDED</td></tr>
+                <tr><th scope="row">4 · Recomputed fingerprint matches?</th><td data-label="If it fails">TAMPERED</td></tr>
+                <tr><th scope="row">5 · Key matches its pin?</th><td data-label="If it fails">TAMPERED</td></tr>
+                <tr><th scope="row">6 · RSA signature verifies?</th><td data-label="If it fails">TAMPERED</td></tr>
+                <tr><th scope="row">7 · Not expired?</th><td data-label="If it fails">EXPIRED</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="case-walk__reading case-walk__live" role="status" data-walk-reading>Verdict: VALID. All seven checks passed in order.</p>
+          <p class="case-walk__source"><span class="prov prov--illustrative">Illustrative</span><span>Order and verdicts from README.md, lines 106–125.</span><a class="evidence" href="https://github.com/DurgeshC16/Web_Tech_CP/blob/aea2ff8/README.md">Source<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="evaluation" data-surface="paper" aria-labelledby="ch-eval">
+        <div class="running-head" aria-hidden="true"><span><b>07</b> — CertiVault</span><span>Case study</span><span>Ch. 07 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-eval" data-reveal><span class="case-ch__no">07 —</span> <span>Evaluation, results and limitations</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-note">The repository has automated PHP and headless-browser test suites. No test counts or performance figures are shown here yet.</p>
+          <!-- TODO(durgesh): reconcile the test counts and fix CI before quoting either (ledger §3.4, Q-8). Tamper-detection and latency figures stay off the site until the paper is public. -->
+        </div>
+        <div class="case-ch__body case-sub">
+          <h3 class="case-h3">Limitations</h3>
+          <ul class="case-list">
+            <li>A single operator runs the system.</li>
+            <li>Key pinning is trust-on-first-use.</li>
+            <li>A signature proves who issued a certificate, not that its content is true.</li>
+            <li>There is no public demo yet, and no screenshots on this page.<!-- TODO(durgesh): capture the verify page with VALID, TAMPERED and REVOKED seals from the fictional seeded dataset (ledger Q-8). --></li>
+          </ul>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="source" data-surface="paper" aria-labelledby="ch-source">
+        <div class="running-head" aria-hidden="true"><span><b>08</b> — CertiVault</span><span>Case study</span><span>Ch. 08 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-source" data-reveal><span class="case-ch__no">08 —</span> <span>Source code and supporting evidence</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ul class="case-sources">
+            <li><span class="case-sources__what">Repository</span><span class="case-sources__why">DurgeshC16/Web_Tech_CP, the CertiVault course project.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/DurgeshC16/Web_Tech_CP">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">README at a pinned revision</span><span class="case-sources__why">The verdicts, the order of checks, the stack and the stated limitations quoted on this page.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/DurgeshC16/Web_Tech_CP/blob/aea2ff8/README.md">README<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Drawings</span><span class="case-sources__why">The plate and Fig. 4.3 are original drawings based on the public repository.</span><span class="case-sources__badges"><span class="prov prov--drawing">Original drawing</span></span></li>
+          </ul>
+        </div>
+      </section>
+      <nav class="case-next grid" data-surface="paper" data-case-essential aria-label="More case studies">
+        <div class="case-next__inner">
+          <a class="case-next__link" href="federated.html" rel="prev"><span class="case-next__meta"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Previous · Pl. 03</span><span class="case-next__title">Federated learning for ASD research</span><span class="case-next__dek">Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.</span></a>
+          <a class="case-next__link" href="notebook.html" rel="next"><span class="case-next__meta">Next · Pl. 05<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></span><span class="case-next__title">Engineering notebook</span><span class="case-next__dek">Interactive notes on two engineering decisions: how insertion order shapes tree height, and how rank fusion orders search results.</span></a>
+        </div>
+        <p class="case-next__colophon"><span>Last updated 2026-11-23</span><span>Every claim on this page maps to a source above.</span></p>
+      </nav>
+      <!-- /region:case-b -->
+    </main>
+    <!-- region:shell-footer (owner A) -->
+    <footer class="credits" id="contact" data-surface="night" aria-labelledby="contact-label">
+      <div class="wrap">
+        <div class="running-head" aria-hidden="true"><span><b>V</b> — Correspondence</span><span>Credits</span><span>p. 05</span></div>
+      </div>
+      <div class="credits__body grid">
+        <h2 class="credits__label" id="contact-label">Contact</h2>
+        <div class="credits__main">
+          <p class="credits__lead">Looking for an AI engineering internship.</p>
+          <p class="credits__shout"><a class="credits__email" href="mailto:durgesh.chaudhari24@vit.edu">durgesh.chaudhari24<span class="credits__domain"><span class="credits__at">@</span>vit.edu</span></a></p>
+          <div class="credits__row">
+            <button class="btn btn--ghost copy" type="button" data-copy="durgesh.chaudhari24@vit.edu" data-copy-email data-magnetic data-cursor="Copy"><span class="btn__inner"><svg class="icon icon--copy copy__idle" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#copy"></use></svg><svg class="icon icon--check copy__done" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#check"></use></svg><span data-copy-label>Copy address</span></span></button>
+            <p class="vh" aria-live="polite" data-copy-live></p>
+            <ul class="credits__links">
+              <li><span class="cite" aria-hidden="true">[a]</span><a href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[b]</span><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[c]</span><a href="https://leetcode.com/u/strangeDC/">LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[d]</span><a href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="credits__base">
+          <p>Durgesh Chaudhari · Pune, India</p>
+          <p>Set in DM Sans, Instrument Serif and DM Mono. Hand-built in HTML, CSS and JavaScript.</p>
+          <a class="credits__top" href="#top">Back to top<svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up"></use></svg></a>
+        </div>
+      </div>
+    </footer>
+    <!-- /region:shell-footer -->
+    <!-- region:chrome (owner CHROME: nav overlay + command palette; empty shells so the header's aria-controls resolve) -->
+    <dialog id="nav-overlay" class="nav-overlay" data-surface="night" aria-label="Site index"></dialog>
+    <dialog id="palette" class="palette" data-surface="night" aria-label="Search the archive"></dialog>
+    <!-- /region:chrome -->
+  </body>
+</html>

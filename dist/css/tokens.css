@@ -1,0 +1,198 @@
+/* =====================================================================
+   DC. — The Interactive Engineering Archive · tokens
+   Owner: A (system & shell). Spec: docs/design-system.md §3–§6.
+   Colour primitives, surfaces, type, space, grid, radii, elevation,
+   layers and motion. Components consume the SURFACE ALIASES
+   (--bg, --fg, --accent …), never the --c-* primitives (SVG art excepted).
+   ===================================================================== */
+
+/* Local fonts are preloaded. On slow connections retain the metric-adjusted
+   fallback for this visit so a late download cannot repaginate the archive. */
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 100 1000; font-display: optional;
+  src: url(../assets/fonts/dm-sans-normal-100_1000-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 100 1000; font-display: optional;
+  src: url(../assets/fonts/dm-sans-normal-100_1000-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: optional;
+  src: url(../assets/fonts/instrument-serif-normal-400-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: optional;
+  src: url(../assets/fonts/instrument-serif-normal-400-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: optional;
+  src: url(../assets/fonts/instrument-serif-italic-400-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: optional;
+  src: url(../assets/fonts/instrument-serif-italic-400-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 400; font-display: optional;
+  src: url(../assets/fonts/dm-mono-normal-400-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 400; font-display: optional;
+  src: url(../assets/fonts/dm-mono-normal-400-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 500; font-display: optional;
+  src: url(../assets/fonts/dm-mono-normal-500-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 500; font-display: optional;
+  src: url(../assets/fonts/dm-mono-normal-500-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* Metric-matched fallbacks (§4.1, measured with ds_measure.js) */
+@font-face { font-family: "DM Sans Fallback"; src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  size-adjust: 92.4%; ascent-override: 107.4%; descent-override: 33.5%; line-gap-override: 0%; }
+@font-face { font-family: "Instrument Serif Fallback"; src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Liberation Serif");
+  size-adjust: 82.4%; ascent-override: 120.2%; descent-override: 37.6%; line-gap-override: 0%; }
+@font-face { font-family: "Instrument Serif Italic Fallback"; font-style: italic;
+  src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"), local("Liberation Serif Italic");
+  size-adjust: 86.2%; ascent-override: 114.9%; descent-override: 36.0%; line-gap-override: 0%; }
+
+:root {
+  /* ---------- Colour primitives (§3.1) — exact, and only these ---------- */
+  /* night family */
+  --c-night: #0d0e11;
+  --c-graphite: #141518;
+  --c-ink: #1b1e26;
+  --c-ink-2: #272b36;
+  --c-fog: #ecebe5;
+  --c-lamp: #f4ead6;
+  --c-mist: #a3a5ae;
+  --c-slate: #8a8d98;
+  /* paper family */
+  --c-paper: #f7f7f3;
+  --c-paper-2: #eeece4;
+  --c-paper-3: #e4e1d6;
+  --c-bone: #d6d2c4;
+  --c-ink-soft: #575a64;
+  /* accents: one meaning — inspectable or interactive (§3.4) */
+  --c-cobalt: #3544b9;
+  --c-cobalt-hi: #284ad5;
+  --c-cobalt-wash: #e3e4fb;
+  --c-periwinkle: #b7baff;
+  --c-periwinkle-hi: #d6d8ff;
+  --c-periwinkle-lo: #8e93f0;
+  --c-focus-any: #5f6bf0;
+  /* functional (labs only) */
+  --c-error: #a3360f;
+  --c-error-night: #ff9b7a;
+
+  /* hairlines (decorative; never the only boundary of a control) */
+  --rule-night: rgb(236 235 229 / .16);
+  --rule-night-strong: rgb(236 235 229 / .32);
+  --rule-paper: var(--c-bone);
+  --rule-paper-strong: rgb(27 30 38 / .32);
+
+  /* ---------- Type families (§4.1) ---------- */
+  --f-sans: "DM Sans", "DM Sans Fallback", system-ui, "Segoe UI", "Nirmala UI", "Noto Sans Devanagari", sans-serif;
+  --f-serif: "Instrument Serif", "Instrument Serif Fallback", Georgia, serif;
+  --f-serif-i: "Instrument Serif", "Instrument Serif Italic Fallback", Georgia, serif; /* use with font-style: italic */
+  --f-mono: "DM Mono", "Courier New", ui-monospace, monospace;
+  --f-deva: "Nirmala UI", "Noto Sans Devanagari", "Kohinoor Devanagari", "Mangal", sans-serif;
+
+  /* ---------- Type scale (§4.4; fluid 390 -> 1440) ---------- */
+  --t-name: clamp(3.875rem, 19.5vw, 9.25rem);                 /* < 760; overridden ≥ 760 below */
+  --t-display: clamp(3.25rem, 1.671rem + 6.476vw, 7.5rem);    /* 52 -> 120 */
+  --t-title: clamp(2.75rem, 1.729rem + 4.19vw, 5.5rem);       /* 44 -> 88 */
+  --t-h2: clamp(2rem, 1.536rem + 1.905vw, 3.25rem);           /* 32 -> 52 */
+  --t-h3: clamp(1.5rem, 1.314rem + .762vw, 2rem);             /* 24 -> 32 */
+  --t-counter: clamp(2.5rem, 1.943rem + 2.286vw, 4rem);       /* 40 -> 64 */
+  --t-email: min(clamp(1.75rem, .357rem + 5.714vw, 5.5rem), calc((100vw - 2 * var(--margin)) / 11.8));
+  --t-lead: clamp(1.3125rem, 1.104rem + .857vw, 1.875rem);    /* 21 -> 30 */
+  --t-body: clamp(1rem, .977rem + .095vw, 1.0625rem);         /* 16 -> 17 */
+  --t-small: .9375rem;                                        /* 15 */
+  --t-caption: .8125rem;                                      /* 13 mono */
+  --t-micro: .75rem;                                          /* 12 mono caps — the floor */
+
+  --lh-name: .88; --lh-display: .95; --lh-h2: 1.05; --lh-h3: 1.1;
+  --lh-lead: 1.25; --lh-body: 1.6; --lh-small: 1.55; --lh-caption: 1.45; --lh-micro: 1.4;
+  --tr-display: -.01em; --tr-h2: -.005em; --tr-lead: -.01em; --tr-caption: .02em; --tr-caps: .08em;
+  --ws-display: .06em;
+
+  /* ---------- Space (§5.1; 4 px base) ---------- */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
+  --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px; --s-11: 192px;
+  --s-section: clamp(80px, 48px + 8.2vw, 168px);
+  --s-block: clamp(48px, 32px + 4vw, 96px);
+  --s-stack: var(--s-5);
+
+  /* ---------- Grid (§5.2) ---------- */
+  --cols: 6;                                    /* 12 at ≥ 760 */
+  --margin: clamp(20px, 4.2vw, 64px);
+  --gutter: clamp(12px, 1.7vw, 28px);
+  --max: 1600px;
+  --page-x: max(var(--margin), (100vw - var(--max)) / 2);
+  --measure: 68ch;
+  --header-h: 60px;                             /* 72px at ≥ 760; the header's fixed height */
+
+  /* ---------- Radii (§5.4) ---------- */
+  --r-0: 0; --r-1: 2px; --r-dot: 50%;
+
+  /* ---------- Elevation (§5.6; shadows only) ---------- */
+  --shadow-plate: 0 48px 80px -40px rgb(0 0 0 / .75), 0 2px 6px rgb(0 0 0 / .30);
+  --shadow-tile: 0 30px 60px -36px rgb(27 30 38 / .45);
+  --shadow-sheet: 0 -24px 60px -30px rgb(0 0 0 / .55);
+
+  /* ---------- Layers (§5.7) ---------- */
+  --z-base: 1; --z-stage: 5; --z-header: 20; --z-cursor: 30; --z-skip: 50;
+
+  /* ---------- Motion (§6.1) ---------- */
+  --d-instant: 120ms;
+  --d-response: 240ms;
+  --d-swap: 480ms;
+  --d-travel: 900ms;
+  --d-reveal: 900ms;
+  --d-name: 1000ms;
+  --d-assemble: 1500ms;
+  --e-out: cubic-bezier(.16, 1, .3, 1);
+  --e-inout: cubic-bezier(.76, 0, .24, 1);
+  --e-response: cubic-bezier(.25, 1, .5, 1);
+  --e-spring: linear(0, .109, .342, .593, .805, .954, 1.041, 1.078, 1.082, 1.068, 1.047, 1.027, 1.011, 1.001, .995, 1);
+  --st-letter: 42ms;
+  --st-word: 70ms;
+  --st-line: 90ms;
+  --st-item: 40ms;
+  --st-tile: 120ms;
+}
+
+@media (min-width: 760px) {
+  :root {
+    --cols: 12;
+    --t-name: clamp(6rem, 12.5vw, 13.5rem);
+    --header-h: 72px;
+  }
+}
+
+/* ---------- Surfaces (§3.3): the only way components get colour ---------- */
+:root, [data-surface="night"] {
+  --bg: var(--c-night); --bg-2: var(--c-graphite); --bg-raised: var(--c-ink);
+  --fg: var(--c-fog); --fg-2: var(--c-mist); --fg-3: var(--c-slate);
+  --rule: var(--rule-night); --rule-strong: var(--rule-night-strong);
+  --accent: var(--c-periwinkle); --accent-hi: var(--c-periwinkle-hi); --on-accent: var(--c-night);
+  --focus: var(--c-periwinkle); --mark: var(--c-periwinkle-lo);
+  --error: var(--c-error-night);
+  color-scheme: dark;
+}
+[data-surface="paper"] {
+  --bg: var(--c-paper); --bg-2: var(--c-paper-2); --bg-raised: var(--c-paper-3);
+  --fg: var(--c-ink); --fg-2: var(--c-ink-soft); --fg-3: var(--c-ink-soft);
+  --rule: var(--rule-paper); --rule-strong: var(--rule-paper-strong);
+  --accent: var(--c-cobalt); --accent-hi: var(--c-cobalt-hi); --on-accent: var(--c-paper);
+  --focus: var(--c-cobalt); --mark: var(--c-cobalt-hi);
+  --error: var(--c-error);
+  color-scheme: light;
+}
+
+/* ---------- Reduced motion (§6.5): durations 1 ms, staggers 0 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-instant: 1ms; --d-response: 1ms; --d-swap: 1ms; --d-travel: 1ms;
+    --d-reveal: 1ms; --d-name: 1ms; --d-assemble: 1ms;
+    --st-letter: 0ms; --st-word: 0ms; --st-line: 0ms; --st-item: 0ms; --st-tile: 0ms;
+  }
+}
+html[data-motion="reduce"] {
+  --d-instant: 1ms; --d-response: 1ms; --d-swap: 1ms; --d-travel: 1ms;
+  --d-reveal: 1ms; --d-name: 1ms; --d-assemble: 1ms;
+  --st-letter: 0ms; --st-word: 0ms; --st-line: 0ms; --st-item: 0ms; --st-tile: 0ms;
+}

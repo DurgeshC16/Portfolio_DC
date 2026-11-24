@@ -1,282 +1,394 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#141518" />
-    <title>Neuro-symbolic tree tutor | Durgesh Chaudhari</title>
-    <meta
-      name="description"
-      content="An interactive tutor that combines structural validation with explanations of tree operations."
-    />
-    <meta property="og:title" content="Neuro-symbolic tree tutor | Durgesh Chaudhari" />
-    <meta
-      property="og:description"
-      content="An interactive tutor that combines structural validation with explanations of tree operations."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="../assets/favicon.svg" />
-    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neuro-symbolic tree tutor — Durgesh Chaudhari</title>
+    <meta name="description" content="A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.">
+    <meta name="theme-color" content="#0d0e11">
+    <meta name="color-scheme" content="dark light">
+    <!-- TODO(durgesh): add <link rel="canonical"> and make og:image absolute once the deployment URL is decided (ledger Q-16). -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DC. — The Interactive Engineering Archive">
+    <meta property="og:title" content="Neuro-symbolic tree tutor — Durgesh Chaudhari">
+    <meta property="og:description" content="A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.">
+    <meta property="og:image" content="../assets/og/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DC. — Durgesh Chaudhari, The Interactive Engineering Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Neuro-symbolic tree tutor — Durgesh Chaudhari">
+    <meta name="twitter:description" content="A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.">
+    <meta name="twitter:image" content="../assets/og/og-default.png">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script>!function(h){h.classList.add("js");try{if(localStorage.getItem("dc.motion")=="reduce")return h.setAttribute("data-motion","reduce")}catch(e){}matchMedia("(prefers-reduced-motion: reduce)").matches||h.classList.add("intro")}(document.documentElement)</script>
+    <link rel="preload" href="../assets/fonts/dm-sans-normal-100_1000-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/chrome.css">
+    <link rel="stylesheet" href="../css/case.css">
+    <link rel="stylesheet" href="../css/lab.css">
+    <script src="../js/core.js" defer></script>
     <script src="../experiments.js" defer></script>
-    <script src="../navigation.js" defer></script>
     <script src="../site.js" defer></script>
+    <script src="../js/case.js" defer></script>
+    <script src="../js/nav.js" defer></script>
+    <script src="../js/palette-index.js" defer></script>
+    <script src="../js/palette.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+    <script src="../js/transitions.js" defer></script>
   </head>
-  <body>
-    <a href="#main" class="skip">Skip to content</a>
-    <header class="mast">
-      <div class="wrap nav-row">
-        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
-          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
-        >
-        <nav aria-label="Main navigation">
-          <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
-          ><a href="../index.html#research" class="">Research</a
-          ><a href="../index.html#about" class="">About</a>
+  <body id="top" data-page="case" data-case="tutor">
+    <!-- region:shell-header (owner A) -->
+    <header class="site-header" data-header data-surface="night">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="site-header__bar">
+        <a class="wordmark" href="../index.html">DC<span class="wordmark__stop">.</span><span class="vh"> Durgesh Chaudhari, home</span></a>
+        <p class="site-header__title">The Interactive Engineering Archive</p>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../index.html#work" aria-current="page">Work<sup aria-hidden="true">I</sup></a></li>
+            <li class="site-nav__wide"><a href="../index.html#evidence">Evidence<sup aria-hidden="true">II</sup></a></li>
+            <li class="site-nav__wide"><a href="../projects/notebook.html">Notebook</a></li>
+            <li><a href="#contact">Contact<sup aria-hidden="true">V</sup></a></li>
+          </ul>
         </nav>
-        <a href="../index.html#contact" class="nav-contact"
-          ><svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2.5" y="5" width="19" height="14" rx="3" />
-            <path d="m4 7 8 6 8-6" /></svg
-          >Get in touch</a
-        >
-        <button
-          type="button"
-          class="menu-btn"
-          aria-label="Open navigation"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-        </button>
+        <div class="site-header__actions">
+          <a class="site-header__cv" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon icon--file" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#file"></use></svg>Résumé<span class="vh"> (PDF)</span></a>
+          <button class="site-header__btn site-header__search" type="button" data-palette-open aria-haspopup="dialog" aria-controls="palette"><svg class="icon icon--search" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="site-header__label">Search</span> <kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">K</kbd></button>
+          <button class="site-header__btn site-header__index" type="button" data-menu-open aria-haspopup="dialog" aria-controls="nav-overlay" aria-expanded="false"><svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#menu"></use></svg><span class="site-header__label">Index</span></button>
+        </div>
       </div>
-      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
-        ><a href="../index.html#research" class="">Research</a
-        ><a href="../index.html#about" class="">About</a
-        ><a href="../index.html#contact" class="">Contact</a>
-      </nav>
+      <span class="site-header__progress" data-scroll-progress aria-hidden="true"></span>
     </header>
-    <main id="main" class="detail">
-      <section class="detail-hero">
-        <div class="wrap">
-          <a class="crumb" href="../index.html#lab/tutor"
-            ><svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-            Interactive projects</a
-          >
-          <p class="eyebrow"><span></span>Agentic systems</p>
-          <h1>Neuro-symbolic tree tutor</h1>
-          <p class="deck">
-            A seven-agent learning system co-built with Niraj Chavan, combining symbolic validators, a
-            prerequisite knowledge graph and Gemini explanations.
-          </p>
-          <div class="tags">
-            <span class="chip">Gemini</span><span class="chip">FastAPI</span
-            ><span class="chip">React / D3.js</span>
+    <!-- /region:shell-header -->
+    <main id="main" class="detail" data-surface="paper">
+      <!-- region:case-a (owner E1) -->
+      <section class="case-plate" id="overview" data-surface="night" data-case-essential aria-labelledby="case-title">
+        <div class="grid case-plate__head">
+          <div class="running-head" aria-hidden="true"><span><b>Pl. 02</b> — Case study</span><span>Tree tutor</span><span>Ch. 01–08</span></div>
+          <a class="case-crumb" href="../index.html#work"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Selected work</a>
+          <p class="case-plate__kicker label">Pl. 02 · Team project · Learning systems</p>
+          <h1 class="case-plate__title" id="case-title" data-vt-title>Neuro-symbolic tree tutor</h1>
+          <p class="case-plate__dek">A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.</p>
+          <div class="case-plate__side">
+            <ul class="chips" aria-label="Status"><li class="chip">Co-built</li><li class="chip">No live demo yet</li></ul>
+            <div class="case-mode" role="group" aria-labelledby="case-mode-label" data-case-modes>
+              <span class="case-mode__hint" id="case-mode-label">Reading mode</span>
+              <div class="case-mode__seg" data-active="deep">
+                <button class="case-mode__btn" type="button" data-case-mode="quick" aria-pressed="false">Quick view <span class="case-mode__time" data-case-time="quick"></span></button>
+                <button class="case-mode__btn" type="button" data-case-mode="deep" aria-pressed="true">Deep dive <span class="case-mode__time" data-case-time="deep"></span></button>
+              </div>
+              <p class="vh" aria-live="polite" data-case-mode-live></p>
+            </div>
           </div>
+          <figure class="fig case-plate__fig">
+            <div class="case-plate__mat case-plate__mat--svg" data-vt-plate><svg class="dg dg--full dg--plate" viewBox="0 0 1200 600" role="img" aria-labelledby="tutor-plate-t tutor-plate-d" focusable="false"><title id="tutor-plate-t">Pl. 02 An AVL right rotation, redrawn</title><desc id="tutor-plate-d">Inserting 30, 20 and 10 makes a left-leaning chain: node 30 has balance factor plus 2. A right rotation at 30 promotes node 20, which becomes the root with children 10 and 30, and every balance factor returns to 0. Validators check these invariants after every step.</desc><text x="40" y="64" class="dg-label" font-size="24">AVL · insert 30, 20, 10</text><text x="1160" y="64" class="dg-label dg-mute" text-anchor="end" font-size="24">balance restored in one rotation</text><path class="dg-rule" d="M40 88H1160"/><path class="dg-edge" d="M300 190L220 300"/><path class="dg-edge" d="M220 300L140 410"/><g class="dg-node dg-node--round "><circle cx="300" cy="190" r="42"/><text x="300" y="200.5" text-anchor="middle" class="dg-label dg-serif" font-size="30">30</text></g><g class="dg-node dg-node--round "><circle cx="220" cy="300" r="42"/><text x="220" y="310.5" text-anchor="middle" class="dg-label dg-serif" font-size="30">20</text></g><g class="dg-node dg-node--round "><circle cx="140" cy="410" r="42"/><text x="140" y="420.5" text-anchor="middle" class="dg-label dg-serif" font-size="30">10</text></g><text x="356" y="182" class="dg-label" font-size="24">bf +2</text><text x="276" y="292" class="dg-label dg-mute" font-size="24">bf +1</text><text x="196" y="402" class="dg-label dg-mute" font-size="24">bf 0</text><path class="dg-edge" d="M470.0 300.0 L698.0 300.0"/><path class="dg-head" d="M691.0 303.9 L698.0 300.0 L691.0 296.1"/><path class="dg-edge" d="M470.0 300.0 L698.0 300.0"/><text x="585" y="278" class="dg-label" text-anchor="middle" font-size="24">right rotation at 30</text><text x="585" y="336" class="dg-label dg-mute" text-anchor="middle" font-size="22">one step, checked</text><path class="dg-edge" d="M930 220L830 350"/><path class="dg-edge" d="M930 220L1030 350"/><g class="dg-node dg-node--round dg-node--hi"><circle cx="930" cy="220" r="46"/><text x="930" y="230.5" text-anchor="middle" class="dg-label dg-serif" font-size="30">20</text></g><g class="dg-node dg-node--round "><circle cx="830" cy="350" r="42"/><text x="830" y="360.5" text-anchor="middle" class="dg-label dg-serif" font-size="30">10</text></g><g class="dg-node dg-node--round "><circle cx="1030" cy="350" r="42"/><text x="1030" y="360.5" text-anchor="middle" class="dg-label dg-serif" font-size="30">30</text></g><text x="994" y="200" class="dg-label dg-hi-text" font-size="24">bf 0</text><text x="40" y="552" class="dg-label dg-mute" font-size="22">Rule-based validators check every invariant; the language model only explains.</text></svg><svg class="dg dg--compact dg--plate" viewBox="0 0 400 420" role="img" aria-labelledby="tutor-plate-c-t tutor-plate-c-d" focusable="false"><title id="tutor-plate-c-t">Pl. 02 An AVL right rotation, compact</title><desc id="tutor-plate-c-d">Top: the chain 30, 20, 10 leans left. Bottom: after a right rotation at 30, node 20 is the root with children 10 and 30.</desc><path class="dg-edge" d="M150 56L110 120"/><path class="dg-edge" d="M110 120L70 184"/><g class="dg-node dg-node--round "><circle cx="150" cy="56" r="30"/><text x="150" y="63.7" text-anchor="middle" class="dg-label dg-serif" font-size="22">30</text></g><g class="dg-node dg-node--round "><circle cx="110" cy="120" r="30"/><text x="110" y="127.7" text-anchor="middle" class="dg-label dg-serif" font-size="22">20</text></g><g class="dg-node dg-node--round "><circle cx="70" cy="184" r="30"/><text x="70" y="191.7" text-anchor="middle" class="dg-label dg-serif" font-size="22">10</text></g><path class="dg-edge" d="M215.0 150.0 L298.5 228.6"/><path class="dg-head" d="M287.5 225.8 L298.5 228.6 L295.0 217.8"/><path class="dg-edge" d="M290 290L220 370"/><path class="dg-edge" d="M290 290L360 370"/><g class="dg-node dg-node--round dg-node--hi"><circle cx="290" cy="290" r="32"/><text x="290" y="297.7" text-anchor="middle" class="dg-label dg-serif" font-size="22">20</text></g><g class="dg-node dg-node--round "><circle cx="220" cy="370" r="30"/><text x="220" y="377.7" text-anchor="middle" class="dg-label dg-serif" font-size="22">10</text></g><g class="dg-node dg-node--round "><circle cx="360" cy="370" r="30"/><text x="360" y="377.7" text-anchor="middle" class="dg-label dg-serif" font-size="22">30</text></g></svg></div>
+            <figcaption class="fig__cap"><span class="fig__no">Pl. 02</span> <span class="fig__text">An AVL right rotation, redrawn: the structure the rotation lab on this page lets you operate.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
         </div>
       </section>
-      <section class="wrap case-layout">
-        <div>
-          <p class="category">Engineering case study</p>
-          <h2>Make the rule behind a tree rotation visible.</h2>
-          <div class="spec">
-            <h3>Engineering decision</h3>
-            <p>
-              Rules validate the structure after a student action. The tutor uses the detected violation
-              and prerequisite concepts to explain what went wrong.
-            </p>
+      <section class="case-brief" id="summary" data-surface="paper" data-case-essential aria-label="Summary">
+        <div class="grid">
+          <dl class="facts" data-reveal="fade">
+            <div><dt>Role</dt><dd>Team project with Niraj Chavan · repository by Niraj Chavan<!-- TODO(durgesh): describe your part (ledger §0.3, Q-4). --></dd></div>
+            <div><dt>Team</dt><dd>Niraj Chavan (repository owner and sole committer)<!-- TODO(durgesh): other team members, if they agree to be named. --></dd></div>
+            <div><dt>Stack</dt><dd>Python, FastAPI, NetworkX, Gemini 2.5 Flash, React 18, D3 v7, WebSocket, Docker Compose</dd></div>
+            <div><dt>Proof</dt><dd><a class="evidence" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></dd></div>
+          </dl>
+          <div class="case-row">
+            <h2 class="case-row__label label">In 30 seconds</h2>
+            <dl class="case-row__body case-row__body--measure case-30" data-reveal="lines">
+              <div data-reveal-item><dt>What it is</dt><dd>A FastAPI and React/D3 tutor for six tree structures. Rule-based validators check every invariant after an operation; Gemini writes explanations and Socratic prompts, with rule-based fallbacks when no API key is set.</dd></div>
+              <div data-reveal-item><dt>Whose it is</dt><dd>A team project with Niraj Chavan; the repository is his. The rotation lab on this page is a local demonstration I built that follows the tutor’s balance-factor rules.<!-- TODO(durgesh): add a first-person line on your part of the tutor once documented (ledger Q-4). --></dd></div>
+              <div data-reveal-item><dt>What came of it</dt><dd>I co-authored an accepted manuscript on concept-level learning and misconception repair. The implementation figures here describe the public repository.</dd></div>
+            </dl>
           </div>
-          <div class="spec">
-            <h3>Evaluation</h3>
-            <p>
-              The résumé reports detection of all structural violations in 240 test cases, with a mean
-              validation latency of 34.1 ms. In a pilot with 23 users, the team identified 11 recurring
-              misconceptions across 219 error events.
-            </p>
-          </div>
-          <div class="spec">
-            <h3>Scope</h3>
-            <p>
-              The tutor covers AVL trees, red-black trees, B-trees, B+ trees, heaps and segment trees. A
-              React and D3.js interface connects to a FastAPI backend. Redis caching reduced repeated
-              response time from 1.43 seconds to 0.18 seconds.
-            </p>
-          </div>
-          <div class="source-links">
-            <a class="card-link" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18" /></svg
-              >Project repository</a
-            ><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"
-                /></svg
-              >Résumé</a
-            >
-          </div>
-        </div>
-        <div class="experiment" id="experiment">
-          <article class="lab lab-tutor" data-lab="tutor" id="lab-tutor">
-            <div class="lab-heading">
-              <span class="lab-symbol"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="5" r="2.5" />
-                  <circle cx="5" cy="18" r="2.5" />
-                  <circle cx="19" cy="18" r="2.5" />
-                  <path d="m11 7-5 9m7-9 5 9" /></svg
-              ></span>
-              <h2>Tree tutor</h2>
+          <div class="case-row">
+            <h2 class="case-row__label label">In the repository</h2>
+            <div class="case-row__body metrics" data-reveal="lines">
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">6</span><span class="metric__unit">structures</span></p>
+                <p class="metric__label">AVL, red-black, B-tree, B+ tree, heap and segment tree.</p>
+                <p class="metric__scope">core/tree_factory.py · counted @ 87d8dd0</p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">34</span><span class="metric__unit">routes</span></p>
+                <p class="metric__label">A FastAPI backend: 33 HTTP routes and one WebSocket tutor chat.</p>
+                <p class="metric__scope">Counted in the code @ 87d8dd0</p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">52/94</span><span class="metric__unit">concepts / edges</span></p>
+                <p class="metric__label">A prerequisite graph with weighted edges and mastery that decays over time.</p>
+                <p class="metric__scope">Counted in the misconception engine @ 87d8dd0</p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">122</span><span class="metric__unit">tests</span></p>
+                <p class="metric__label">pytest functions, most of them for AVL.</p>
+                <p class="metric__scope">Count only · never run in CI · pass status unknown</p>
+              </div>
             </div>
-            <div class="tree-stage">
-              <svg viewBox="0 0 340 145" aria-label="AVL tree diagram" role="group">
+          </div>
+          <div class="case-row">
+            <h2 class="case-row__label label">Links</h2>
+            <div class="case-row__body case-links">
+              <a class="btn btn--ghost" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai"><span class="btn__inner"><svg class="icon icon--github" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github"></use></svg>Source on GitHub <span class="btn__tag">Niraj Chavan</span></span><span class="vh"> (opens external site)</span></a>
+              <a class="btn btn--text" href="#how-it-works" data-case-mode="deep"><span class="btn__inner">Operate the rotation lab<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></a>
+              <p class="case-links__note">No live demo. The repository is maintained by Niraj Chavan; its name keeps the original “nuero” spelling.</p>
+            </div>
+          </div>
+          <p class="case-deep-cta" data-case-quick-only><button class="btn btn--ghost" type="button" data-case-mode="deep" data-case-goto="problem"><span class="btn__inner">Read the deep dive<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></button></p>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="problem" data-surface="paper" aria-labelledby="ch-problem">
+        <div class="running-head" aria-hidden="true"><span><b>01</b> — Tree tutor</span><span>Case study</span><span>Ch. 01 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-problem" data-reveal><span class="case-ch__no">01 —</span> <span>Problem</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Students learn balanced-tree rules by memorising rotations.</p>
+          <p>The tutor takes the other route: it checks a structure against its invariants, names the rule involved, and links the mistake to prerequisite concepts. A language model can explain a rule, but it should not be the thing that decides whether the tree is valid.</p>
+          <dl class="case-pairs" aria-label="Constraints">
+            <div><dt>Correctness</dt><dd>Rule-based validators, not the model, decide whether a structure is valid.</dd></div>
+            <div><dt>Availability</dt><dd>Every LLM path has a rule-based fallback, so the tutor works without an API key.</dd></div>
+            <div><dt>Scope</dt><dd>Six structures: AVL, red-black, B-tree, B+ tree, heap and segment tree.</dd></div>
+            <div><dt>Learning signal</dt><dd>Mastery moves only on deliberate evidence: quizzes, remediation and diagram checks.</dd></div>
+          </dl>
+        </div>
+        <aside class="case-ch__aside" aria-label="Key number">
+          <div class="case-pull" data-reveal="fade">
+            <p class="case-pull__value">2×</p>
+            <p class="case-pull__label">Each invariant is checked twice: inside the tree class and again on the exported JSON, and the results are merged.</p>
+            <p class="case-pull__scope">agents/validation_agent.py @ 87d8dd0</p>
+          </div>
+        </aside>
+      </section>
+      <section class="case-section case-ch grid" id="role" data-surface="paper" aria-labelledby="ch-role">
+        <div class="running-head" aria-hidden="true"><span><b>02</b> — Tree tutor</span><span>Case study</span><span>Ch. 02 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-role" data-reveal><span class="case-ch__no">02 —</span> <span>Role and team contributions</span></h2>
+        <div class="case-ch__body">
+          <p class="case-ch__lead">Team project with Niraj Chavan · repository by Niraj Chavan.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <table class="case-table">
+            <caption>Contribution boundary · from the public git history and licence</caption>
+            <thead><tr><th scope="col">Area</th><th scope="col">I did</th><th scope="col">Team did</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Tutor code</th><td data-label="I did" class="case-none">No commits in the public repository, whose history is one bulk import.<!-- TODO(durgesh): describe your part (files or features) and any private history (ledger Q-4). --></td><td data-label="Team did">Niraj Chavan owns the repository and is its sole committer; the MIT licence credits him.<span class="case-who">Niraj-Chavan/nuerosymbolic-agentic-ai @ 87d8dd0</span></td></tr>
+              <tr><th scope="row">Rotation lab on this page</th><td data-label="I did">A local demonstration I built that follows the tutor’s balance-factor rules.<span class="case-who">Portfolio code</span></td><td data-label="Team did" class="case-none">Not applicable.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="architecture" data-surface="paper" aria-labelledby="ch-arch">
+        <div class="running-head" aria-hidden="true"><span><b>03</b> — Tree tutor</span><span>Case study</span><span>Ch. 03 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-arch" data-reveal><span class="case-ch__no">03 —</span> <span>Technical architecture</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Five agents run in sequence over a shared blackboard for each tree operation. Validation sits in the middle and is never skipped.</p>
+        </div>
+        <div class="case-ch__wide">
+          <figure class="fig case-arch" data-reveal="media" aria-labelledby="tutor-arch-cap">
+            <div class="fig__media"><svg class="dg dg--full" viewBox="0 0 1000 610" role="img" aria-labelledby="tutor-arch-t tutor-arch-d" focusable="false"><title id="tutor-arch-t">Fig. 2.3 Tree tutor architecture, as found in the repository</title><desc id="tutor-arch-d">A student uses a React and D3 interface for practice, quizzes and a tutor chat. It talks to a FastAPI backend with 33 HTTP routes and one WebSocket route. POST /tree/operate runs an operation pipeline over a shared blackboard: A1 executes the operation and logs steps, A2 checks the invariants with rule-based validators, A3 diagnoses only if there are violations, A4 writes an explanation and a guiding question, A5 updates concept recommendations. The pipeline returns the tree, steps, validation, diagnosis and teaching to the interface. A6 grades quiz answers and moves mastery in a 52-concept, 94-edge prerequisite graph. A tutoring layer uses weak concepts to build a learning path. Gemini 2.5 Flash writes explanations and Socratic replies, always with a rule-based fallback. Celery with Redis is optional and off by default; PostgreSQL exists as a schema only.</desc><path class="dg-rule" d="M0 0H1000"/><text x="0" y="20" class="dg-band">INTERFACE AND API</text><text x="1000" y="20" class="dg-band dg-mute" text-anchor="end">REST + WebSocket tutor chat</text><g class="dg-node " data-node="1"><rect x="0" y="50" width="120" height="60" rx="2"/><text x="60.0" y="84.9" class="dg-label" text-anchor="middle" font-size="14">Student</text><g class="dg-badge"><circle cx="0" cy="50" r="11"/><text x="0" y="54.6" text-anchor="middle" font-size="13">1</text></g></g><g class="dg-node " data-node="2"><rect x="160" y="50" width="230" height="60" rx="2"/><text x="275.0" y="75.7" class="dg-label" text-anchor="middle" font-size="14">React + D3 interface</text><text x="275.0" y="94.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">practice · quiz · tutor</text><g class="dg-badge"><circle cx="160" cy="50" r="11"/><text x="160" y="54.6" text-anchor="middle" font-size="13">2</text></g></g><g class="dg-node " data-node="3"><rect x="430" y="50" width="190" height="60" rx="2"/><text x="525.0" y="75.7" class="dg-label" text-anchor="middle" font-size="14">FastAPI</text><text x="525.0" y="94.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">34 routes</text><g class="dg-badge"><circle cx="430" cy="50" r="11"/><text x="430" y="54.6" text-anchor="middle" font-size="13">3</text></g></g><g class="dg-node dg-node--soft" data-node="12"><rect x="790" y="50" width="210" height="60" rx="2"/><text x="895.0" y="75.7" class="dg-label" text-anchor="middle" font-size="14">Gemini 2.5 Flash</text><text x="895.0" y="94.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">rule fallback always</text><g class="dg-badge"><circle cx="790" cy="50" r="11"/><text x="790" y="54.6" text-anchor="middle" font-size="13">12</text></g></g><path class="dg-edge" d="M120.0 80.0 L158.0 80.0"/><path class="dg-head" d="M151.0 83.8 L158.0 80.0 L151.0 76.2"/><path class="dg-edge" d="M390.0 70.0 L428.0 70.0"/><path class="dg-head" d="M421.0 73.8 L428.0 70.0 L421.0 66.2"/><path class="dg-edge" d="M430.0 92.0 L392.0 92.0"/><path class="dg-head" d="M399.0 88.2 L392.0 92.0 L399.0 95.8"/><path class="dg-rule" d="M0 160H1000"/><text x="0" y="180" class="dg-band">OPERATION PIPELINE · SHARED BLACKBOARD</text><text x="1000" y="180" class="dg-band dg-mute" text-anchor="end">POST /tree/operate</text><rect class="dg-frame" x="0" y="204" width="1000" height="150" rx="2"/><g class="dg-node " data-node="4"><rect x="0" y="204" width="0" height="0" rx="2"/><g class="dg-badge"><circle cx="0" cy="204" r="11"/><text x="0" y="208.6" text-anchor="middle" font-size="13">4</text></g></g><path class="dg-edge" d="M525.0 110.0 L525.0 202.0"/><path class="dg-head" d="M521.1 195.0 L525.0 202.0 L528.9 195.0"/><text x="535" y="196" class="dg-elabel">tree operation</text><g class="dg-node " data-node="5"><rect x="20" y="236" width="184" height="70" rx="2"/><text x="112.0" y="266.7" class="dg-label" text-anchor="middle" font-size="14">A1 Execute</text><text x="112.0" y="285.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">tree + step log</text><g class="dg-badge"><circle cx="20" cy="236" r="11"/><text x="20" y="240.6" text-anchor="middle" font-size="13">5</text></g></g><g class="dg-node dg-node--hi" data-node="6"><rect x="214" y="236" width="184" height="70" rx="2"/><text x="306.0" y="266.7" class="dg-label" text-anchor="middle" font-size="14">A2 Validate</text><text x="306.0" y="285.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">invariants, twice</text><g class="dg-badge"><circle cx="214" cy="236" r="11"/><text x="214" y="240.6" text-anchor="middle" font-size="13">6</text></g></g><g class="dg-node " data-node="7"><rect x="408" y="236" width="184" height="70" rx="2"/><text x="500.0" y="266.7" class="dg-label" text-anchor="middle" font-size="14">A3 Diagnose</text><text x="500.0" y="285.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">only if violations</text><g class="dg-badge"><circle cx="408" cy="236" r="11"/><text x="408" y="240.6" text-anchor="middle" font-size="13">7</text></g></g><g class="dg-node " data-node="8"><rect x="602" y="236" width="184" height="70" rx="2"/><text x="694.0" y="266.7" class="dg-label" text-anchor="middle" font-size="14">A4 Teach</text><text x="694.0" y="285.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">explain + question</text><g class="dg-badge"><circle cx="602" cy="236" r="11"/><text x="602" y="240.6" text-anchor="middle" font-size="13">8</text></g></g><g class="dg-node " data-node="9"><rect x="796" y="236" width="184" height="70" rx="2"/><text x="888.0" y="266.7" class="dg-label" text-anchor="middle" font-size="14">A5 Concepts</text><text x="888.0" y="285.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">recommendations</text><g class="dg-badge"><circle cx="796" cy="236" r="11"/><text x="796" y="240.6" text-anchor="middle" font-size="13">9</text></g></g><path class="dg-edge" d="M204.0 271.0 L212.0 271.0"/><path class="dg-head" d="M205.0 274.9 L212.0 271.0 L205.0 267.1"/><path class="dg-edge" d="M398.0 271.0 L406.0 271.0"/><path class="dg-head" d="M399.0 274.9 L406.0 271.0 L399.0 267.1"/><path class="dg-edge" d="M592.0 271.0 L600.0 271.0"/><path class="dg-head" d="M593.0 274.9 L600.0 271.0 L593.0 267.1"/><path class="dg-edge" d="M786.0 271.0 L794.0 271.0"/><path class="dg-head" d="M787.0 274.9 L794.0 271.0 L787.0 267.1"/><text x="20" y="340" class="dg-elabel">Returned to the interface: tree, steps, validation, diagnosis, teaching</text><path class="dg-edge dg-edge--aux" d="M855.0 110.0 L855.0 180.0 L888.0 180.0 L888.0 234.0"/><path class="dg-head dg-edge--aux" d="M884.1 227.0 L888.0 234.0 L891.9 227.0"/><path class="dg-edge dg-edge--aux" d="M855.0 180.0 L694.0 180.0 L694.0 234.0"/><path class="dg-head dg-edge--aux" d="M690.1 227.0 L694.0 234.0 L697.9 227.0"/><text x="990" y="150" class="dg-elabel dg-mute" text-anchor="end">optional enrichment</text><path class="dg-rule" d="M0 392H1000"/><text x="0" y="412" class="dg-band">LEARNER MODEL</text><g class="dg-node " data-node="10"><rect x="0" y="446" width="220" height="64" rx="2"/><text x="110.0" y="473.7" class="dg-label" text-anchor="middle" font-size="14">A6 Quiz</text><text x="110.0" y="492.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">55-question bank</text><g class="dg-badge"><circle cx="0" cy="446" r="11"/><text x="0" y="450.6" text-anchor="middle" font-size="13">10</text></g></g><g class="dg-node dg-node--soft" data-node="9"><rect x="300" y="446" width="280" height="64" rx="2"/><text x="440.0" y="473.7" class="dg-label" text-anchor="middle" font-size="14">Prerequisite graph</text><text x="440.0" y="492.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">52 concepts · 94 edges</text><g class="dg-badge"><circle cx="300" cy="446" r="11"/><text x="300" y="450.6" text-anchor="middle" font-size="13">9</text></g></g><g class="dg-node " data-node="11"><rect x="660" y="446" width="340" height="64" rx="2"/><text x="830.0" y="473.7" class="dg-label" text-anchor="middle" font-size="14">Tutoring layer</text><text x="830.0" y="492.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">learning path from weak concepts</text><g class="dg-badge"><circle cx="660" cy="446" r="11"/><text x="660" y="450.6" text-anchor="middle" font-size="13">11</text></g></g><path class="dg-edge" d="M220.0 478.0 L298.0 478.0"/><path class="dg-head" d="M291.0 481.9 L298.0 478.0 L291.0 474.1"/><text x="260" y="438" class="dg-elabel " text-anchor="middle">mastery</text><path class="dg-edge" d="M580.0 466.0 L658.0 466.0"/><path class="dg-head" d="M651.0 469.9 L658.0 466.0 L651.0 462.1"/><text x="620" y="438" class="dg-elabel " text-anchor="middle">weak concepts</text><path class="dg-edge" d="M660.0 492.0 L582.0 492.0"/><path class="dg-head" d="M589.0 488.1 L582.0 492.0 L589.0 495.9"/><text x="620" y="540" class="dg-elabel " text-anchor="middle">repaired</text><path class="dg-edge dg-edge--aux" d="M500.0 446.0 L500.0 356.0"/><path class="dg-head dg-edge--aux" d="M503.9 363.0 L500.0 356.0 L496.1 363.0"/><g class="dg-node dg-node--plan" data-node="p"><rect x="0" y="566" width="260" height="36" rx="2"/><text x="130.0" y="588.5" class="dg-label" text-anchor="middle" font-size="13">Celery + Redis · optional, off</text></g><g class="dg-node dg-node--plan" data-node="p"><rect x="280" y="566" width="240" height="36" rx="2"/><text x="400.0" y="588.5" class="dg-label" text-anchor="middle" font-size="13">PostgreSQL · schema only</text></g><text x="1000" y="590" class="dg-band dg-mute" text-anchor="end">Dashed = present in code, not wired</text></svg><svg class="dg dg--compact" viewBox="0 0 400 548" role="img" aria-labelledby="tutor-arch-c-t tutor-arch-c-d" focusable="false"><title id="tutor-arch-c-t">Fig. 2.3 Tree tutor architecture, compact</title><desc id="tutor-arch-c-d">Six stages: the student acts in the React and D3 interface; FastAPI receives the tree operation; A1 executes it; A2 validates invariants with rules; A3 and A4 diagnose and explain, with Gemini optional and a rule-based fallback; A5 updates the prerequisite concept graph.</desc><g class="dg-node " data-node="2"><rect x="22" y="16" width="370" height="60" rx="2"/><text x="207.0" y="53.4" class="dg-label" text-anchor="middle" font-size="21">Student + interface</text><g class="dg-badge"><circle cx="22" cy="16" r="15"/><text x="22" y="22.4" text-anchor="middle" font-size="18">2</text></g></g><g class="dg-node " data-node="3"><rect x="22" y="106" width="370" height="60" rx="2"/><text x="207.0" y="143.3" class="dg-label" text-anchor="middle" font-size="21">FastAPI · tree operation</text><g class="dg-badge"><circle cx="22" cy="106" r="15"/><text x="22" y="112.4" text-anchor="middle" font-size="18">3</text></g></g><g class="dg-node " data-node="5"><rect x="22" y="196" width="370" height="60" rx="2"/><text x="207.0" y="233.3" class="dg-label" text-anchor="middle" font-size="21">A1 Execute</text><g class="dg-badge"><circle cx="22" cy="196" r="15"/><text x="22" y="202.4" text-anchor="middle" font-size="18">5</text></g></g><g class="dg-node dg-node--hi" data-node="6"><rect x="22" y="286" width="370" height="60" rx="2"/><text x="207.0" y="323.4" class="dg-label" text-anchor="middle" font-size="21">A2 Validate</text><g class="dg-badge"><circle cx="22" cy="286" r="15"/><text x="22" y="292.4" text-anchor="middle" font-size="18">6</text></g></g><g class="dg-node " data-node="8"><rect x="22" y="376" width="370" height="60" rx="2"/><text x="207.0" y="413.4" class="dg-label" text-anchor="middle" font-size="21">A3 + A4 Explain</text><g class="dg-badge"><circle cx="22" cy="376" r="15"/><text x="22" y="382.4" text-anchor="middle" font-size="18">8</text></g></g><g class="dg-node " data-node="9"><rect x="22" y="466" width="370" height="60" rx="2"/><text x="207.0" y="503.4" class="dg-label" text-anchor="middle" font-size="21">A5 Concept graph</text><g class="dg-badge"><circle cx="22" cy="466" r="15"/><text x="22" y="472.4" text-anchor="middle" font-size="18">9</text></g></g><path class="dg-edge" d="M207.0 76.0 L207.0 104.0"/><path class="dg-head" d="M201.5 94.0 L207.0 104.0 L212.5 94.0"/><path class="dg-edge" d="M207.0 166.0 L207.0 194.0"/><path class="dg-head" d="M201.5 184.0 L207.0 194.0 L212.5 184.0"/><path class="dg-edge" d="M207.0 256.0 L207.0 284.0"/><path class="dg-head" d="M201.5 274.0 L207.0 284.0 L212.5 274.0"/><path class="dg-edge" d="M207.0 346.0 L207.0 374.0"/><path class="dg-head" d="M201.5 364.0 L207.0 374.0 L212.5 364.0"/><path class="dg-edge" d="M207.0 436.0 L207.0 464.0"/><path class="dg-head" d="M201.5 454.0 L207.0 464.0 L212.5 454.0"/></svg></div>
+            <figcaption class="fig__cap" id="tutor-arch-cap"><span class="fig__no">Fig. 2.3</span> <span class="fig__text">Redrawn from the code’s operation pipeline. The highlighted agent, validation, is the source of truth. Dashed parts exist in code but are not wired in.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
+          <div class="case-arch__tools" data-case-js>
+            <button class="btn btn--ghost btn--sm" type="button" data-arch-open="tutor-viewer" aria-haspopup="dialog"><span class="btn__inner"><svg class="icon icon--plus" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#plus"></use></svg>Open the full diagram</span></button>
+          </div>
+          <dialog class="case-viewer" id="tutor-viewer" data-surface="paper" aria-labelledby="tutor-viewer-title">
+            <div class="case-viewer__bar"><h2 id="tutor-viewer-title">Fig. 2.3 · Tree tutor architecture, full</h2><button class="btn btn--icon" type="button" data-viewer-close><svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg><span class="vh">Close</span></button></div>
+            <div class="case-viewer__scroll" tabindex="0" role="region" aria-label="Full diagram, scrollable" data-viewer-slot="tutor-arch"></div>
+            <p class="case-viewer__hint">Scroll sideways to follow the whole drawing.</p>
+          </dialog>
+          <ol class="case-legend" aria-label="Diagram legend" data-legend-for="tutor-arch">
+            <li data-node="1"><span class="case-legend__n">1</span><span><b>Student.</b> Inserts, deletes and searches; takes quizzes; chats with the tutor; uploads diagrams.</span></li>
+            <li data-node="2"><span class="case-legend__n">2</span><span><b>React and D3 interface.</b> Animates each step and draws the concept graph.</span></li>
+            <li data-node="3"><span class="case-legend__n">3</span><span><b>FastAPI.</b> 33 HTTP routes and one WebSocket route for tutor chat.</span></li>
+            <li data-node="4"><span class="case-legend__n">4</span><span><b>Operation pipeline.</b> Agents share one blackboard instead of calling each other.</span></li>
+            <li data-node="5"><span class="case-legend__n">5</span><span><b>A1 Execute.</b> Runs the operation and returns the tree and a step log.</span></li>
+            <li data-node="6"><span class="case-legend__n">6</span><span><b>A2 Validate.</b> Internal and external validators check the invariants; results are merged and deduplicated.</span></li>
+            <li data-node="7"><span class="case-legend__n">7</span><span><b>A3 Diagnose.</b> Runs only if there are violations; the misconception engine holds 24 violation signatures.</span></li>
+            <li data-node="8"><span class="case-legend__n">8</span><span><b>A4 Teach.</b> An explanation and a guiding question; Gemini writes them, else a fallback bank.</span></li>
+            <li data-node="9"><span class="case-legend__n">9</span><span><b>A5 Concept graph.</b> 52 concepts and 94 edges with decay; the playground gives recommendations but never changes mastery.</span></li>
+            <li data-node="10"><span class="case-legend__n">10</span><span><b>A6 Quiz.</b> A 55-question bank; a graded answer moves mastery up or down.</span></li>
+            <li data-node="11"><span class="case-legend__n">11</span><span><b>Tutoring layer.</b> Socratic replies, sentiment and diagram grading; builds a learning path from weak concepts.</span></li>
+            <li data-node="12"><span class="case-legend__n">12</span><span><b>Gemini 2.5 Flash.</b> Optional enrichment; every call has a rule-based fallback.</span></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="decisions" data-surface="paper" aria-labelledby="ch-decisions">
+        <div class="running-head" aria-hidden="true"><span><b>04</b> — Tree tutor</span><span>Case study</span><span>Ch. 04 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-decisions" data-reveal><span class="case-ch__no">04 —</span> <span>Key challenges and decisions</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ol class="case-decisions">
+            <li data-reveal="fade"><span class="case-decisions__no">D1</span><h3>Validators are the source of truth.</h3><p>The LLM only explains, and every LLM path has a deterministic fallback.</p><p class="case-trade"><b>Trade-off</b>The validators only see trees built by the tool’s own self-balancing code, so the symbolic path rarely fires in normal use.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D2</span><h3>A blackboard, not agent-to-agent calls.</h3><p>A conditional pipeline over one shared context: diagnosis runs only when validation finds a violation.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D3</span><h3>Validate twice, report once.</h3><p>Invariants are checked inside the tree class and again on the exported JSON; the two result sets are merged and deduplicated.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D4</span><h3>Mastery moves only on evidence.</h3><p>Quizzes, remediation and diagram checks change mastery. It decays on a forgetting curve, and mistakes propagate down the prerequisite graph.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D5</span><h3>Explain every step.</h3><p>Each animation step carries a “why” and a concept tag, so a rotation is never just movement on screen.</p></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="implementation" data-surface="paper" aria-labelledby="ch-impl">
+        <div class="running-head" aria-hidden="true"><span><b>05</b> — Tree tutor</span><span>Case study</span><span>Ch. 05 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-impl" data-reveal><span class="case-ch__no">05 —</span> <span>Implementation and technology</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">A Python backend that owns the rules, and a React and D3 front end that shows each step.</p>
+          <p>The tutor tracks likely misconceptions from quiz answers and tutor conversations. Gemini writes explanations, Socratic prompts and quiz feedback; without an API key, the same paths return rule-based text. A Docker Compose setup runs the stack.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <dl class="case-stack" data-reveal="lines">
+            <div data-reveal-item><dt>Backend</dt><dd>Python, FastAPI (34 routes), NetworkX</dd></div>
+            <div data-reveal-item><dt>Language model</dt><dd>Gemini 2.5 Flash via google-generativeai, with rule-based fallbacks</dd></div>
+            <div data-reveal-item><dt>Interface</dt><dd>React 18, Vite, D3 v7, Zustand, WebSocket</dd></div>
+            <div data-reveal-item><dt>Delivery</dt><dd>Docker Compose; Celery and Redis optional; a PostgreSQL schema that is not wired in</dd></div>
+          </dl>
+        </div>
+      </section>
+      <!-- /region:case-a -->
+      <!-- region:bench (owner L) -->
+      <section class="case-bench section" id="how-it-works" data-surface="paper" aria-labelledby="bench-title">
+        <div class="grid bench-case__head">
+          <h2 class="bench-case__title" id="bench-title"><span class="bench-case__no">04 —</span> How it works</h2>
+          <p class="bench-case__dek">A local demonstration I built that follows the tutor’s balance-factor rules. Pick a node, rotate it, and the validator re-checks every node after each move.</p>
+        </div>
+        <div class="wrap">
+        <div class="experiment" id="experiment">
+          <article class="lab bench bench--tutor" data-lab="tutor" id="lab-tutor" aria-labelledby="lab-tutor-title">
+          <header class="bench__bar">
+            <h3 class="bench__title" id="lab-tutor-title"><span class="bench__no">Lab 02</span> Rotation bench</h3>
+            <p class="bench__readout" data-tree-reading>Root 30 · Balance factor at node 30 = 2</p>
+            <span class="prov prov--illustrative bench__prov">Local demonstration</span>
+            <div class="bench__tools"><button type="button" class="btn btn--text bench__reset" data-reset>Reset</button></div>
+          </header>
+          <div class="bench__body">
+            <div class="bench__stage tree-stage">
+              <svg class="tree-svg" viewBox="0 0 360 280" aria-label="AVL tree diagram" role="group">
+                <defs><pattern id="tree-hatch-c" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="thull__ground"/><path d="M0 0v7" class="thull__line"/></pattern></defs>
+                <g class="thull" data-hull></g>
+                <g class="taxis" aria-hidden="true"><path d="M30 244H330" class="taxis__rule"/><path d="M70 240v8"/><path d="M180 240v8"/><path d="M290 240v8"/><g class="taxis__keys" text-anchor="middle"><text x="70" y="266">10</text><text x="180" y="266">20</text><text x="290" y="266">30</text></g></g>
                 <g data-edges></g>
                 <g data-nodes></g>
               </svg>
+              <p class="tree-legend" aria-hidden="true"><span class="tree-legend__item tree-legend__item--pick">Selected</span><span class="tree-legend__item tree-legend__item--fail">Outside the range</span><span class="tree-legend__item tree-legend__item--heavy">Heavier subtree</span><span class="tree-legend__item tree-legend__item--axis">In-order keys</span></p>
             </div>
-            <div class="lab-body">
-              <div class="lab-meta">Data structures · AVL rotation</div>
-              <h3>Restore the balance.</h3>
-              <p>
-                Choose a node and rotate its subtree. A balanced AVL tree has a balance factor between −1
-                and 1 at every node.
-              </p>
+            <div class="bench__controls">
+              <p class="bench__prompt">Restore the balance.</p>
+              <p class="bench__note">Choose a node, then rotate its subtree. A balanced AVL tree has a balance factor of −1, 0 or 1 at every node: the height of the left subtree minus the height of the right.</p>
               <div class="lab-fields">
-                <label
-                  >Insertion order<select data-sequence>
-                    <option value="ll">30, 20, 10</option>
-                    <option value="lr">30, 10, 20</option>
-                  </select></label
-                >
-                <label
-                  >Selected node<select data-node>
-                    <option>30</option>
-                    <option>20</option>
-                    <option>10</option>
-                  </select></label
-                >
+                <label class="field"><span class="field__label">Insertion order</span><select data-sequence><option value="ll">30, 20, 10</option><option value="lr">30, 10, 20</option></select></label>
+                <label class="field"><span class="field__label">Selected node</span><select data-node><option>30</option><option>20</option><option>10</option></select></label>
               </div>
-              <p data-tree-reading class="tree-reading"></p>
               <div class="commands">
-                <button type="button" data-rotate="left">Rotate left</button
-                ><button type="button" data-rotate="right">Rotate right</button
-                ><button type="button" data-undo disabled>Undo</button
-                ><button type="button" data-reset>Reset</button>
+                <button type="button" class="btn btn--ghost btn--sm" data-rotate="left" data-unavailable><span class="btn__inner"><svg class="icon icon--arrow-left icon--static" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Rotate left <kbd class="kbd">L</kbd></span></button><button type="button" class="btn btn--ghost btn--sm" data-rotate="right"><span class="btn__inner">Rotate right <kbd class="kbd">R</kbd><svg class="icon icon--arrow-right icon--static" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></span></button><button type="button" class="btn btn--ghost btn--sm" data-undo disabled><span class="btn__inner"><svg class="icon icon--reset icon--static" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#reset"></use></svg>Undo <span class="kbd-pair"><kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">Z</kbd></span></span></button>
               </div>
-              <p class="feedback" data-tree-status role="status">
-                Select a rotation to test the structure.
-              </p>
-              <noscript
-                ><p>
-                  For insertion order 30, 20, 10, a right rotation at 30 promotes node 20. Its children
-                  are 10 and 30.
-                </p></noscript
-              >
+              <p class="tree-hint" data-tree-hint>Rotate right at 30 promotes 20. Node 30 has no right child, so it cannot rotate left.</p>
+              <p class="tree-keys">On a node: arrow keys move between nodes, <kbd class="kbd">L</kbd> or <kbd class="kbd">R</kbd> rotates.</p>
+              <table class="tree-checks">
+                <caption>Validator · every node, after every move</caption>
+                <thead><tr><th scope="col">Node</th><th scope="col">Height</th><th scope="col">bf</th><th scope="col">Check</th></tr></thead>
+                <tbody data-tree-checks><tr class="is-ok"><th scope="row">10</th><td>1</td><td>0</td><td>Within range</td></tr><tr class="is-ok"><th scope="row">20</th><td>2</td><td>+1</td><td>Within range</td></tr><tr class="is-fail"><th scope="row">30</th><td>3</td><td>+2</td><td>AVL-002 · out of range</td></tr></tbody>
+              </table>
+              <div class="tree-log"><p class="label">Moves</p><ol data-tree-log><li class="is-empty">No rotations yet. Insertion order 30, 20, 10.</li></ol></div>
+              <noscript><p class="bench__noscript">For insertion order 30, 20, 10, a right rotation at 30 promotes node 20. Its children are 10 and 30. For 30, 10, 20, rotate left at 10 first, then right at 30.</p></noscript>
             </div>
-          </article>
-          <p class="lab-note">
-            This exercise demonstrates the symbolic rules behind the collaborative tutor. For a separate
-            C++ study of how insertion order changes tree height,
-            <a class="notebook-crosslink" href="notebook.html#trees">explore the recorded benchmarks</a>.
-          </p>
+          </div>
+          <footer class="bench__foot">
+            <div class="bench__reading"><p class="label">Reading</p><p class="feedback" data-tree-status role="status">Node 30 has balance factor 2 (must be −1, 0 or 1). Its left child 20 also leans left (balance factor +1), so this is the LL case: rotate right at 30.</p></div>
+            <p class="bench__source"><span class="label">Source</span> A local demonstration I built that follows the tutor’s balance-factor rules. Team project with Niraj Chavan; repository maintained by Niraj. <a class="evidence" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai/blob/87d8dd039baa2bd7b24db7862cc261cf76ef09b5/ai_tree_tutor/backend/app/validators/avl_validator.py">Validator · 87d8dd0 <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p>
+            <a class="bench__return btn btn--text" href="../index.html#lab/tutor" data-lab-return><span class="btn__inner"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg> Open on the home bench</span></a>
+          </footer>
+        </article>
+          <p class="bench-case__aside">For a separate C++ study of how insertion order changes tree height, <a href="notebook.html#trees">explore the recorded benchmarks</a>.</p>
+        </div>
         </div>
       </section>
-      <aside class="case-bottom">
-        <div class="wrap">
-          <div>
-            <p class="eyebrow"><span></span>Continue exploring</p>
-            <h2>Federated learning for ASD research</h2>
-          </div>
-          <a class="button secondary" href="federated.html"
-            ><svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-              /></svg
-            >Read case study</a
-          >
+      <!-- /region:bench -->
+      <!-- region:case-b (owner E1) -->
+      <div class="case-benchlink grid" data-surface="paper">
+        <p>The lab keeps its state in the address. <a class="crumb" href="../index.html#lab/tutor">Open this lab on the home bench<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></a></p>
+      </div>
+      <section class="case-section case-ch grid" id="evaluation" data-surface="paper" aria-labelledby="ch-eval">
+        <div class="running-head" aria-hidden="true"><span><b>07</b> — Tree tutor</span><span>Case study</span><span>Ch. 07 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-eval" data-reveal><span class="case-ch__no">07 —</span> <span>Evaluation, results and limitations</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-note">The checks below describe the pinned repository. The accepted manuscript’s projected learning outcomes are outside the scope of this implementation review.</p>
         </div>
-      </aside>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <table class="case-table case-table--eval">
+            <caption>Repository facts with scope · Niraj-Chavan/nuerosymbolic-agentic-ai @ 87d8dd0</caption>
+            <thead><tr><th scope="col">Check</th><th scope="col">Finding</th><th scope="col">Scope</th><th scope="col">Evidence</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Test suite</th><td data-label="Finding" class="case-num">122 functions</td><td data-label="Scope">Most cover AVL; none for red-black or segment tree.</td><td data-label="Evidence">Counted; never run in CI</td></tr>
+              <tr><th scope="row">Violation injection</th><td data-label="Finding" class="case-num">5 tests</td><td data-label="Scope">All on AVL trees.</td><td data-label="Evidence">Counted in the repository</td></tr>
+              <tr><th scope="row">Continuous integration</th><td data-label="Finding" class="case-num">0 runs</td><td data-label="Scope">The workflow file sits in a subfolder that GitHub does not read.</td><td data-label="Evidence">Repository and Actions history</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="case-ch__body case-sub">
+          <h3 class="case-h3">Limitations</h3>
+          <ul class="case-list">
+            <li>The validators only see trees built by the tool’s own self-balancing code, so the symbolic path rarely fires in normal use.</li>
+            <li>A key mismatch between the diagnosis and teaching agents sends generic fallback text.</li>
+            <li>No persistence: state is held in memory across four workers.</li>
+            <li>Tests are thin outside AVL.</li>
+            <li>The documentation drifts from the code: it mentions a Claude adapter and React Flow, neither of which exists.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="source" data-surface="paper" aria-labelledby="ch-source">
+        <div class="running-head" aria-hidden="true"><span><b>08</b> — Tree tutor</span><span>Case study</span><span>Ch. 08 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-source" data-reveal><span class="case-ch__no">08 —</span> <span>Source code and supporting evidence</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ul class="case-sources">
+            <li><span class="case-sources__what">Repository</span><span class="case-sources__why">Niraj-Chavan/nuerosymbolic-agentic-ai, MIT licence, maintained by Niraj Chavan. The spelling is the repository’s own.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Pinned revision</span><span class="case-sources__why">The commit every count on this page was read from.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai/tree/87d8dd0">87d8dd0<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">AVL insertion replay</span><span class="case-sources__why">My seven-key insertion replay in the engineering notebook.</span><span class="case-sources__badges"><a class="evidence" href="notebook.html#insertion">Notebook</a></span></li>
+            <li><span class="case-sources__what">Tree heights</span><span class="case-sources__why">My C++17 benchmark of AVL, red-black and splay trees, from recorded runs.</span><span class="case-sources__badges"><a class="evidence" href="notebook.html#trees">Notebook</a></span></li>
+            <li><span class="case-sources__what">Drawings</span><span class="case-sources__why">The plate and Fig. 2.3 are original drawings made from the code; the repository contains no images.</span><span class="case-sources__badges"><span class="prov prov--drawing">Original drawing</span></span></li>
+          </ul>
+        </div>
+      </section>
+      <nav class="case-next grid" data-surface="paper" data-case-essential aria-label="More case studies">
+        <div class="case-next__inner">
+          <a class="case-next__link" href="kaaran.html" rel="prev"><span class="case-next__meta"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Previous · Pl. 01</span><span class="case-next__title">Kaaran</span><span class="case-next__dek">A bilingual education-data analyst where Claude handles language and code computes every figure.</span></a>
+          <a class="case-next__link" href="federated.html" rel="next"><span class="case-next__meta">Next · Pl. 03<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></span><span class="case-next__title">Federated learning for ASD research</span><span class="case-next__dek">Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.</span></a>
+        </div>
+        <p class="case-next__colophon"><span>Last updated 2026-11-23</span><span>Every claim on this page maps to a source above.</span></p>
+      </nav>
+      <!-- /region:case-b -->
     </main>
-    <footer>
-      <div class="wrap foot">
-        <span>© 2026 Durgesh Chaudhari</span>
-        <div>
-          <a class="" href="https://github.com/DurgeshC16">GitHub</a
-          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
-          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+    <!-- region:shell-footer (owner A) -->
+    <footer class="credits" id="contact" data-surface="night" aria-labelledby="contact-label">
+      <div class="wrap">
+        <div class="running-head" aria-hidden="true"><span><b>V</b> — Correspondence</span><span>Credits</span><span>p. 05</span></div>
+      </div>
+      <div class="credits__body grid">
+        <h2 class="credits__label" id="contact-label">Contact</h2>
+        <div class="credits__main">
+          <p class="credits__lead">Looking for an AI engineering internship.</p>
+          <p class="credits__shout"><a class="credits__email" href="mailto:durgesh.chaudhari24@vit.edu">durgesh.chaudhari24<span class="credits__domain"><span class="credits__at">@</span>vit.edu</span></a></p>
+          <div class="credits__row">
+            <button class="btn btn--ghost copy" type="button" data-copy="durgesh.chaudhari24@vit.edu" data-copy-email data-magnetic data-cursor="Copy"><span class="btn__inner"><svg class="icon icon--copy copy__idle" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#copy"></use></svg><svg class="icon icon--check copy__done" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#check"></use></svg><span data-copy-label>Copy address</span></span></button>
+            <p class="vh" aria-live="polite" data-copy-live></p>
+            <ul class="credits__links">
+              <li><span class="cite" aria-hidden="true">[a]</span><a href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[b]</span><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[c]</span><a href="https://leetcode.com/u/strangeDC/">LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[d]</span><a href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="credits__base">
+          <p>Durgesh Chaudhari · Pune, India</p>
+          <p>Set in DM Sans, Instrument Serif and DM Mono. Hand-built in HTML, CSS and JavaScript.</p>
+          <a class="credits__top" href="#top">Back to top<svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up"></use></svg></a>
         </div>
       </div>
     </footer>
+    <!-- /region:shell-footer -->
+    <!-- region:chrome (owner CHROME: nav overlay + command palette; empty shells so the header's aria-controls resolve) -->
+    <dialog id="nav-overlay" class="nav-overlay" data-surface="night" aria-label="Site index"></dialog>
+    <dialog id="palette" class="palette" data-surface="night" aria-label="Search the archive"></dialog>
+    <!-- /region:chrome -->
   </body>
 </html>

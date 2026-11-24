@@ -1,0 +1,202 @@
+/* =====================================================================
+   css/hero.css — owner: B (home hero, region:hero, Fig. 1 frame).
+   Spec: design-system §4.5 (name), §6.3 (dim-to-lit), §10.18 (scroll cue),
+   §11 (Fig. 1), §13.1 row 1.
+   DOM order is mobile order: h1 > copy > facts > Fig. 1 > cue.
+   ≥ 1100 the grid moves the name to the lower band (diagonal) and the
+   figure to cols 7–12 of the upper band.
+   ===================================================================== */
+
+.hero {
+  --fig-h: auto;
+  position: relative;
+  align-content: start;
+  row-gap: var(--s-6);
+  padding-block: var(--s-5) var(--s-8);
+}
+
+/* ---------- The name (h1, §4.5) ---------- */
+.hero .name {
+  grid-column: 1 / -1;
+  position: relative; z-index: 0;
+  font-family: var(--f-sans);
+  font-size: var(--hero-name, var(--t-name));
+  line-height: var(--lh-name);
+  letter-spacing: 0; word-spacing: 0;
+  text-wrap: nowrap; white-space: nowrap;
+}
+.name__l1, .name__l2 { display: block; width: fit-content; max-width: none; }
+.name__l1 {
+  position: relative;
+  font-weight: 600; font-variation-settings: "opsz" 40;
+  letter-spacing: -.035em; color: var(--fg);
+}
+.name__l2 {
+  margin-left: auto; padding-right: .03em;            /* italic overhang stays inside the margin */
+  font-family: var(--f-serif-i); font-style: italic; font-weight: 400;
+  font-size: 1.06em; line-height: var(--lh-name);
+  letter-spacing: -.01em; color: var(--c-lamp);
+}
+.name__stop { color: var(--accent); }                 /* brand full stop (§3.4 exception 6) */
+.name .ch { display: inline-block; }
+
+/* Dim-to-lit first paint (§6.3): letters are painted at .4 and lift to 1.
+   .intro is set by the inline head script only when motion is allowed. */
+@keyframes dc-name-lift   { from { opacity: .4; transform: translateY(.12em); } }
+@keyframes dc-name-lift-i { from { opacity: .4; transform: translateY(.12em) rotate(4deg); } }
+.intro .name .ch, .name.is-replay .ch {
+  animation: dc-name-lift var(--d-name) var(--e-out) both;
+  animation-delay: calc(60ms + var(--i, 0) * var(--st-letter));
+}
+.intro .name__l2 .ch, .name.is-replay .name__l2 .ch {
+  animation-name: dc-name-lift-i;
+  animation-delay: calc(300ms + var(--i, 0) * var(--st-letter));
+  transform-origin: 0 100%;
+}
+.name.is-reset .ch, .name.is-reset .name__l1::after { animation: none !important; }
+
+/* ---------- Claim, sub-copy, CTAs ---------- */
+.hero__copy { grid-column: 1 / -1; }
+.hero__claim {
+  font: 450 var(--t-lead)/1.2 var(--f-sans); letter-spacing: var(--tr-lead);
+  color: var(--fg); max-width: 21ch; text-wrap: balance;
+}
+.hero__claim em { color: var(--fg); }                /* never accent (§3.4) */
+.hero__sub {
+  margin-top: var(--s-4); max-width: 46ch;
+  font-size: var(--t-body); line-height: 1.55; color: var(--fg-2);
+}
+.hero__ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
+.hero__pages { text-transform: none; }               /* "PDF · 1 p": only the format is a caps label */
+@media (max-width: 1279px) { .hero__pages { display: none; } } /* keeps both CTAs on one row */
+
+/* ---------- Facts ---------- */
+.hero__facts { grid-column: 1 / -1; }
+.hero__when {
+  display: block; margin-top: 2px;
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .02em; color: var(--fg-2);
+}
+
+/* ---------- Fig. 1 (§11) ---------- */
+.fig1 { grid-column: 1 / -1; margin: 0; min-width: 0; }
+.fig1__frame { position: relative; aspect-ratio: 2 / 1; height: var(--fig-h); }
+.fig1__frame::before {                                /* four 8 px corner ticks, no box border */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  --tk: var(--rule-strong);
+  background:
+    linear-gradient(var(--tk), var(--tk)) left top / 8px 1px,
+    linear-gradient(var(--tk), var(--tk)) left top / 1px 8px,
+    linear-gradient(var(--tk), var(--tk)) right top / 8px 1px,
+    linear-gradient(var(--tk), var(--tk)) right top / 1px 8px,
+    linear-gradient(var(--tk), var(--tk)) left bottom / 8px 1px,
+    linear-gradient(var(--tk), var(--tk)) left bottom / 1px 8px,
+    linear-gradient(var(--tk), var(--tk)) right bottom / 8px 1px,
+    linear-gradient(var(--tk), var(--tk)) right bottom / 1px 8px;
+  background-repeat: no-repeat;
+}
+.fig1__canvas, .fig1__poster { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fig1__poster { object-fit: contain; display: none; }
+html:not(.js) .fig1__poster, .fig1--poster .fig1__poster { display: block; }
+html:not(.js) .fig1__canvas, .fig1--poster .fig1__canvas { display: none; }
+
+.fig1__cap {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+  gap: var(--s-1) var(--s-5); margin-top: var(--s-3);
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .02em; color: var(--fg-2);
+}
+.fig1__no { color: var(--fg); }
+.fig1__readout { white-space: nowrap; text-align: right; }
+
+/* ---------- Scroll cue placement (component is A's; hidden < 760) ---------- */
+.hero__cue { position: relative; z-index: 1; }
+
+/* ---------- < 760: name > claim > CTAs > facts > Fig. 1 (2:1) ---------- */
+@media (max-width: 759px) {
+  .hero { row-gap: var(--s-5); padding-top: var(--s-5); }
+  .hero .name { margin-bottom: var(--s-1); }
+  .hero__sub { margin-top: var(--s-3); }
+  .hero__ctas { margin-top: var(--s-5); gap: var(--s-2); }
+  .hero__ctas .btn { flex: 1 1 0; padding-inline: var(--s-4); min-width: max-content; } /* side by side; stack only when they cannot fit (< 360) */
+  .hero__facts > div:first-child { grid-column: 1 / -1; }
+  .hero__facts > div:nth-child(2) { border-top: 1px solid var(--rule); }
+  .fig1__cap { display: grid; justify-content: stretch; }
+  .fig1__readout { text-align: left; }
+}
+
+/* ---------- ≥ 760: dimension rule under "Durgesh" (label on hover only, MF-23) ---------- */
+@media (min-width: 760px) {
+  .name__l1::after {
+    content: ""; position: absolute; left: 0; right: .02em; bottom: -.05em; height: 9px;
+    --dm: var(--rule-strong);
+    background:
+      linear-gradient(var(--dm), var(--dm)) center / 100% 1px,
+      linear-gradient(var(--dm), var(--dm)) left center / 1px 100%,
+      linear-gradient(var(--dm), var(--dm)) right center / 1px 100%;
+    background-repeat: no-repeat;
+    transform-origin: left center;
+  }
+  .intro .name__l1::after, .name.is-replay .name__l1::after { animation: dc-dim-draw var(--d-reveal) var(--e-out) 900ms both; }
+  @keyframes dc-dim-draw { from { transform: scaleX(0); } }
+  .name__l1::before {
+    content: attr(data-dim); position: absolute; left: 17%; bottom: calc(-.05em + 4.5px); /* under "Du": clear of the g's descender */
+    transform: translate(-50%, 50%);
+    padding: 0 var(--s-2); background: var(--bg);
+    font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: .04em; color: var(--fg-2);
+    font-variation-settings: normal;
+    opacity: 0; transition: opacity var(--d-instant) linear;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .hero .name:hover .name__l1::before { opacity: 1; }
+  }
+}
+
+/* ---------- 760–1099: name on top, copy + facts, then Fig. 1 at full width, 300 high ---------- */
+@media (min-width: 760px) and (max-width: 1099px) {
+  .hero { row-gap: var(--s-6); padding-top: var(--s-6); }
+  .hero .name { grid-row: 1; }
+  .hero__cue { grid-column: 1 / span 4; grid-row: 1; align-self: end; justify-self: start; }
+  .hero__copy { grid-column: 1 / span 7; grid-row: 2; }
+  /* facts sit beside the copy as label-over-value rows, so Fig. 1 reaches the first screen */
+  .hero__facts { grid-column: 8 / -1; grid-row: 2; align-self: start; display: block; }
+  .hero__facts > div + div { border-top: 1px solid var(--rule); }
+  .hero__facts > div { padding: var(--s-3) 0; }
+  .fig1 { grid-row: 3; }
+  .fig1__frame { aspect-ratio: auto; --fig-h: 300px; height: 300px; }
+}
+
+/* ---------- ≥ 1100: upper band (copy cols 1–5 · Fig. 1 cols 7–12), lower band (name) ---------- */
+@media (min-width: 1100px) {
+  .hero {
+    /* The name keeps the first screen: 12.5vw, reduced on short viewports so it stays above the fold. */
+    --hero-name: clamp(6rem, min(12.5vw, (100svh - var(--header-h) - 495px) * .55), 13.5rem);
+    --fig-h: min(38svh, 360px);
+    min-height: calc(100svh - var(--header-h));
+    grid-template-rows: auto auto minmax(var(--s-5), 1fr) auto;
+    row-gap: 0;
+    padding-block: clamp(20px, 3.5svh, 48px) clamp(16px, 2.6svh, 32px);
+  }
+  .hero__copy { grid-column: 1 / span 5; grid-row: 1; }
+  .hero__sub { margin-top: var(--s-3); }
+  .hero__ctas { margin-top: var(--s-5); }
+  .hero__facts {
+    grid-column: 1 / span 5; grid-row: 2; align-self: start; margin-top: var(--s-5);
+    display: block; border-bottom: 0;
+  }
+  .hero__facts > div {
+    display: grid; grid-template-columns: 4.75rem minmax(0, 1fr); gap: var(--s-3); align-items: baseline;
+    padding: 7px 0; border-bottom: 1px solid var(--rule);
+  }
+  .hero__facts dd { margin: 0; }
+  /* Fig. 1 spans the copy + facts rows; its caption lands on the facts' last rule. */
+  .fig1 { grid-column: 7 / -1; grid-row: 1 / span 2; display: flex; flex-direction: column; }
+  .fig1__frame { aspect-ratio: auto; height: auto; flex: 1 1 auto; min-height: var(--fig-h); max-height: 400px; }
+  .fig1__cap { margin-top: auto; padding-top: var(--s-3); }
+  .fig1__cap { flex-wrap: nowrap; }
+  .fig1__title { min-width: 0; }
+  .fig1__readout { flex: none; }
+  .hero .name { grid-row: 4; align-self: end; }
+  .hero__cue { grid-column: 1 / span 3; grid-row: 4; align-self: end; justify-self: start; margin-bottom: .2em; }
+}
+@media (min-width: 1280px) {
+  .fig1__readout { min-width: 33ch; }               /* the longest state fits: no reflow as it changes */
+}

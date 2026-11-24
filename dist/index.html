@@ -1,905 +1,965 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#141518" />
-    <title>Durgesh Chaudhari | AI Engineering & Research</title>
-    <meta
-      name="description"
-      content="Durgesh Chaudhari, B.Tech Computer Engineering at VIT Pune. Explore interactive AI engineering projects, federated learning research and collaborative software."
-    />
-    <meta property="og:title" content="Durgesh Chaudhari | Engineering Portfolio" />
-    <meta
-      property="og:description"
-      content="Explore the evidence, algorithms and experiments behind my engineering projects."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="assets/favicon.svg" />
-    <link rel="preload" href="assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Durgesh Chaudhari — AI systems that can show their work</title>
+    <meta name="description" content="Durgesh Chaudhari, a third-year B.Tech Computer Engineering student at VIT Pune. I build AI systems that can show their work: case studies, runnable labs and the evidence behind each claim.">
+    <meta name="theme-color" content="#0d0e11">
+    <meta name="color-scheme" content="dark light">
+    <!-- TODO(durgesh): add <link rel="canonical"> and make og:image absolute once the deployment URL is decided (ledger Q-16). -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DC. — The Interactive Engineering Archive">
+    <meta property="og:title" content="Durgesh Chaudhari — The Interactive Engineering Archive">
+    <meta property="og:description" content="Durgesh Chaudhari, a third-year B.Tech Computer Engineering student at VIT Pune. I build AI systems that can show their work: case studies, runnable labs and the evidence behind each claim.">
+    <meta property="og:image" content="assets/og/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DC. — Durgesh Chaudhari, The Interactive Engineering Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Durgesh Chaudhari — The Interactive Engineering Archive">
+    <meta name="twitter:description" content="Durgesh Chaudhari, a third-year B.Tech Computer Engineering student at VIT Pune. I build AI systems that can show their work: case studies, runnable labs and the evidence behind each claim.">
+    <meta name="twitter:image" content="assets/og/og-default.png">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script>!function(h){h.classList.add("js");try{if(localStorage.getItem("dc.motion")=="reduce")return h.setAttribute("data-motion","reduce")}catch(e){}matchMedia("(prefers-reduced-motion: reduce)").matches||h.classList.add("intro")}(document.documentElement)</script>
+    <link rel="preload" href="assets/fonts/dm-sans-normal-100_1000-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/chrome.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <script src="js/core.js" defer></script>
     <script src="assets/kaaran-evidence.js" defer></script>
     <script src="experiments.js" defer></script>
-    <script src="navigation.js" defer></script>
     <script src="site.js" defer></script>
+    <script src="js/hero-truss.js" defer></script>
+    <script src="js/gallery.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/palette-index.js" defer></script>
+    <script src="js/palette.js" defer></script>
+    <script src="js/cursor.js" defer></script>
+    <script src="js/transitions.js" defer></script>
   </head>
-  <body>
-    <a class="skip" href="#main">Skip to content</a>
-    <header class="mast">
-      <div class="wrap nav-row">
-        <a class="brand" href="index.html" aria-label="Durgesh Chaudhari, home"
-          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
-        >
-        <nav aria-label="Main navigation">
-          <a href="index.html#work" class="">Work</a><a href="projects/notebook.html">Notebook</a
-          ><a href="index.html#research" class="">Research</a
-          ><a href="index.html#about" class="">About</a>
+  <body id="top" data-page="home">
+    <!-- region:shell-header (owner A) -->
+    <header class="site-header" data-header data-surface="night">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="site-header__bar">
+        <a class="wordmark" href="index.html">DC<span class="wordmark__stop">.</span><span class="vh"> Durgesh Chaudhari, home</span></a>
+        <p class="site-header__title">The Interactive Engineering Archive</p>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html#work">Work<sup aria-hidden="true">I</sup></a></li>
+            <li class="site-nav__wide"><a href="index.html#evidence">Evidence<sup aria-hidden="true">II</sup></a></li>
+            <li class="site-nav__wide"><a href="projects/notebook.html">Notebook</a></li>
+            <li><a href="#contact">Contact<sup aria-hidden="true">V</sup></a></li>
+          </ul>
         </nav>
-        <a href="index.html#contact" class="nav-contact"
-          ><svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2.5" y="5" width="19" height="14" rx="3" />
-            <path d="m4 7 8 6 8-6" /></svg
-          >Get in touch</a
-        >
-        <button
-          type="button"
-          class="menu-btn"
-          aria-label="Open navigation"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-        </button>
+        <div class="site-header__actions">
+          <a class="site-header__cv" href="assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon icon--file" aria-hidden="true" focusable="false"><use href="assets/icons.svg#file"></use></svg>Résumé<span class="vh"> (PDF)</span></a>
+          <button class="site-header__btn site-header__search" type="button" data-palette-open aria-haspopup="dialog" aria-controls="palette"><svg class="icon icon--search" aria-hidden="true" focusable="false"><use href="assets/icons.svg#search"></use></svg><span class="site-header__label">Search</span> <kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">K</kbd></button>
+          <button class="site-header__btn site-header__index" type="button" data-menu-open aria-haspopup="dialog" aria-controls="nav-overlay" aria-expanded="false"><svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="assets/icons.svg#menu"></use></svg><span class="site-header__label">Index</span></button>
+        </div>
       </div>
-      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="index.html#work" class="">Work</a><a href="projects/notebook.html">Notebook</a
-        ><a href="index.html#research" class="">Research</a><a href="index.html#about" class="">About</a
-        ><a href="index.html#contact" class="">Contact</a>
-      </nav>
+      <span class="site-header__progress" data-scroll-progress aria-hidden="true"></span>
     </header>
+    <!-- /region:shell-header -->
     <main id="main">
-      <section class="opening" aria-labelledby="hero-name">
-        <div class="wrap opening-inner">
-          <div class="identity">
-            <p class="overline light-label">B.Tech Computer Engineering <span> / </span> VIT Pune</p>
-            <h1 id="hero-name">Durgesh<br /><em>Chaudhari</em><span class="name-dot">.</span></h1>
-            <p class="positioning">I build AI systems that can show their work.</p>
-            <p class="introduction">
-              My engineering work connects language models with verifiable data, from a bilingual analyst
-              for education officers to a tutor that explains a tree rotation.
-            </p>
-            <div class="hero-actions">
-              <a href="assets/Durgesh-Chaudhari-Resume.pdf" class="button bright"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 2h9l5 5v15H5z M14 2v6h5M8 13h8m-8 4h6" /></svg
-                >View résumé</a
-              ><a href="#work" class="button outline"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="3" y="3" width="7" height="7" rx="1" />
-                  <rect x="14" y="3" width="7" height="7" rx="1" />
-                  <rect x="3" y="14" width="7" height="7" rx="1" />
-                  <rect x="14" y="14" width="7" height="7" rx="1" /></svg
-                >Explore work</a
-              >
+      <!-- region:hero (owner B) -->
+      <section class="hero grid" id="hero" data-surface="night" aria-labelledby="hero-name" data-hero>
+        <h1 class="name" id="hero-name" data-hero-name>
+          <span class="vh">Durgesh Chaudhari</span>
+          <span class="name__l1" aria-hidden="true" data-hero-dim><span class="ch" style="--i:0">D</span><span class="ch" style="--i:1">u</span><span class="ch" style="--i:2">r</span><span class="ch" style="--i:3">g</span><span class="ch" style="--i:4">e</span><span class="ch" style="--i:5">s</span><span class="ch" style="--i:6">h</span></span>
+          <span class="name__l2" aria-hidden="true"><span class="ch" style="--i:0">C</span><span class="ch" style="--i:1">h</span><span class="ch" style="--i:2">a</span><span class="ch" style="--i:3">u</span><span class="ch" style="--i:4">d</span><span class="ch" style="--i:5">h</span><span class="ch" style="--i:6">a</span><span class="ch" style="--i:7">r</span><span class="ch" style="--i:8">i</span><span class="ch name__stop" style="--i:9">.</span></span>
+        </h1>
+        <div class="hero__copy">
+          <p class="hero__claim">I build AI systems that can <em>show their work.</em></p>
+          <p class="hero__sub">In the LLM applications I build, code, not the model, is responsible for the facts. This archive holds the case studies, runnable labs and the evidence behind each claim.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="#work" data-magnetic data-hero-jump><span class="btn__inner">Explore work <svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-down"></use></svg></span></a>
+            <a class="btn btn--ghost" href="assets/Durgesh-Chaudhari-Resume.pdf" data-magnetic><span class="btn__inner">View résumé <span class="btn__tag">PDF<span class="hero__pages"> · 1 p<span class="vh">age</span></span></span></span></a>
+          </div>
+        </div>
+        <dl class="facts hero__facts">
+          <div><dt>Now</dt><dd>Third-year B.Tech Computer Engineering student, VIT Pune <span class="hero__when">2024–2028 (expected)</span></dd></div>
+          <div><dt>Focus</dt><dd>LLM systems, machine learning, algorithms</dd></div>
+          <div><dt>Open to</dt><dd>AI engineering internships</dd></div>
+        </dl>
+        <figure class="fig1" data-fig1>
+          <div class="fig1__frame">
+            <img class="fig1__poster" src="assets/fig-dc-truss.svg" alt="" width="640" height="334" decoding="async">
+            <canvas class="fig1__canvas" aria-hidden="true" data-fig1-canvas></canvas>
+          </div>
+          <figcaption class="fig1__cap">
+            <span class="fig1__title"><span class="fig1__no">Fig. 1</span> — The initials DC, drawn as a graph.<span class="vh"> 51 nodes joined by 97 edges form the letters D and C, with a single node as the full stop.</span></span>
+            <span class="fig1__readout" aria-hidden="true" data-fig1-readout>51 nodes · 97 edges</span>
+          </figcaption>
+        </figure>
+        <a class="scroll-cue hero__cue" href="#work" data-hero-jump><span class="scroll-cue__track" aria-hidden="true"></span><span class="scroll-cue__label">Selected work</span></a>
+      </section>
+      <!-- /region:hero -->
+      <!-- region:work (owner C) -->
+      <!-- I — Selected work: five plates (design-system §12; copy per docs/content-ledger.md §0, §3).
+           SmartCare and Review Summarizer are INDEX entries (ledger §3) and live in D's "Also in the archive" index, not here.
+           TODO(durgesh): ledger §7 removed "Four projects co-built with Niraj Chavan"; each plate carries its own team credit. -->
+      <section class="work" id="work" data-surface="night" aria-labelledby="work-h">
+        <div class="grid work__head">
+          <div class="running-head" aria-hidden="true"><span><b>I</b> — Selected work</span><span>Plates 01–05</span><span>p. 02</span></div>
+          <h2 class="work__title" id="work-h" data-reveal>Five plates <em>from the archive</em></h2>
+          <p class="work__hint" id="work-hint" data-reveal="fade">Each plate opens a case study.<span class="work__hint-js work__hint-desk"> Drag the plates or use the buttons; arrow keys work inside the gallery.</span><span class="work__hint-js work__hint-touch"> Swipe sideways or use the buttons.</span></p>
+        </div>
+
+        <div class="gallery" id="gallery" role="region" aria-roledescription="carousel" aria-label="Project gallery" aria-describedby="work-hint">
+          <div class="gallery__controls">
+            <p class="counter" aria-hidden="true"><span class="counter__win"><span class="counter__roll" data-gallery-roll><span><i>0</i><i>1</i></span><span><i>0</i><i>2</i></span><span><i>0</i><i>3</i></span><span><i>0</i><i>4</i></span><span><i>0</i><i>5</i></span></span></span><span class="counter__of">/ 05</span></p>
+            <p class="gallery__status" aria-hidden="true"><span class="gallery__count"><span data-gallery-now>01</span> — 05</span><span class="gallery__name" data-gallery-name>Kaaran</span><span class="gallery__bar"><span data-gallery-bar></span></span></p>
+            <button class="btn btn--ghost gallery__btn" id="prev" type="button" aria-controls="ring" aria-disabled="true" data-magnetic><span class="btn__inner"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-left"></use></svg><span class="gallery__btn-label">Prev</span><span class="vh"> project</span></span></button>
+            <div class="index" role="group" aria-label="Jump to project">
+              <button class="index__stop" type="button" data-gallery-stop aria-current="true"><span class="index__num">01</span> <span class="index__name">Kaaran</span></button>
+              <button class="index__stop" type="button" data-gallery-stop tabindex="-1"><span class="index__num">02</span> <span class="index__name">Tree tutor</span></button>
+              <button class="index__stop" type="button" data-gallery-stop tabindex="-1"><span class="index__num">03</span> <span class="index__name">Federated</span></button>
+              <button class="index__stop" type="button" data-gallery-stop tabindex="-1"><span class="index__num">04</span> <span class="index__name">CertiVault</span></button>
+              <button class="index__stop" type="button" data-gallery-stop tabindex="-1"><span class="index__num">05</span> <span class="index__name">Notebook</span></button>
+              <span class="index__marker" data-gallery-marker aria-hidden="true"></span>
             </div>
-            <div class="identity-meta">
-              <span
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-                Pune, India</span
-              ><span>Seeking AI engineering internships</span>
+            <button class="btn btn--ghost gallery__btn" id="next" type="button" aria-controls="ring" data-magnetic><span class="btn__inner"><span class="gallery__btn-label">Next</span><span class="vh"> project</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></button>
+          </div>
+
+          <div class="gallery__stage" data-gallery-stage data-cursor="Drag">
+            <ol class="gallery__ring" id="ring">
+
+              <!-- Pl. 01 · Kaaran. Capture: _research/assets-candidates/kaaran/kaaran-desktop-source-drawer.png crop (224,0,1440,760);
+                   compact: kaaran-mobile-source-drawer.png crop (0,478,780,966). Live demo, synthetic data (ledger §3.1 row 24). -->
+              <li class="slide is-active" id="slide-kaaran" data-key="kaaran" data-name="Kaaran" aria-roledescription="slide" aria-label="1 of 5">
+                <a class="plate" href="projects/kaaran.html" tabindex="-1" draggable="false" data-surface="paper" data-cursor="Open">
+                  <span class="vh">Kaaran case study. </span>
+                  <span class="plate__art plate__art--capture" data-vt-key="kaaran">
+                    <span class="mat">
+                      <picture>
+                        <source media="(max-width: 759px)" srcset="assets/img/plates/kaaran-source-drawer-compact-390.webp 390w, assets/img/plates/kaaran-source-drawer-compact-780.webp 780w" sizes="80vw" width="780" height="488">
+                        <img src="assets/img/plates/kaaran-source-drawer-1216.webp" srcset="assets/img/plates/kaaran-source-drawer-608.webp 608w, assets/img/plates/kaaran-source-drawer-1216.webp 1216w" sizes="(min-width: 1100px) min(36vw, 530px), 56vw" width="1216" height="760" alt="Kaaran live demo on synthetic data: a kendra card cites the figure 11.6, and the source drawer beside it lists the two files, the filter and the 120 matched rows behind that figure." loading="lazy" decoding="async" draggable="false">
+                      </picture>
+                      <svg class="annot annot--full" viewBox="0 0 1216 760" aria-hidden="true" focusable="false">
+                        <defs><mask id="kaaran-lead-m" maskUnits="userSpaceOnUse" x="0" y="0" width="1216" height="760"><path class="annot__draw annot__draw--lead" d="M124 436 C 330 380, 560 150, 728 98" pathLength="1" fill="none" stroke="#fff" stroke-width="14"/></mask></defs>
+                        <ellipse class="annot__mark annot__draw annot__draw--a" cx="78" cy="451" rx="46" ry="26" pathLength="1"/>
+                        <path class="annot__lead" d="M124 436 C 330 380, 560 150, 728 98" mask="url(#kaaran-lead-m)"/>
+                        <ellipse class="annot__mark annot__draw annot__draw--b" cx="793" cy="76" rx="64" ry="38" pathLength="1"/>
+                      </svg>
+                      <svg class="annot annot--compact" viewBox="0 0 780 488" aria-hidden="true" focusable="false">
+                        <defs><mask id="kaaran-lead-mc" maskUnits="userSpaceOnUse" x="0" y="0" width="780" height="488"><path class="annot__draw annot__draw--lead" d="M170 58 C 430 70, 480 330, 336 448" pathLength="1" fill="none" stroke="#fff" stroke-width="18"/></mask></defs>
+                        <ellipse class="annot__mark annot__draw annot__draw--a" cx="94" cy="47" rx="66" ry="32" pathLength="1"/>
+                        <path class="annot__lead" d="M170 58 C 430 70, 480 330, 336 448" mask="url(#kaaran-lead-mc)"/>
+                        <ellipse class="annot__mark annot__draw annot__draw--b" cx="290" cy="470" rx="40" ry="16" pathLength="1"/>
+                      </svg>
+                      <span class="annot__tag annot__tag--full" aria-hidden="true">figure<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg>file · filter · 120 rows</span>
+                      <span class="annot__tag annot__tag--compact" aria-hidden="true">figure<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg>120 rows</span>
+                    </span>
+                  </span>
+                  <span class="plate__cap"><span class="plate__no">Pl. 01</span> <span class="plate__what">Source drawer</span> <span class="prov prov--synthetic">Live demo capture · Synthetic data</span></span>
+                </a>
+                <div class="slide__text">
+                  <p class="kicker">Applied AI · Education data</p>
+                  <h3 class="slide__title" data-vt-key="kaaran">Kaaran</h3>
+                  <p class="summary">A bilingual education-data analyst where Claude handles language and code computes every figure. The public demo runs on synthetic district data.</p>
+                  <dl class="facts facts--stack facts--deck">
+                    <div><dt>Role</dt><dd>Four-person hackathon team · sole committer</dd></div>
+                    <div><dt>Stack</dt><dd>Python · FastAPI · pandas · Claude API</dd></div>
+                    <div><dt>Status</dt><dd><ul class="chips"><li class="chip">Hackathon build</li><li class="chip">Build stage · top 30</li></ul></dd></div>
+                  </dl>
+                  <a class="btn btn--text slide__cta" href="projects/kaaran.html">Read the case study<span class="vh">: Kaaran</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a>
+                </div>
+              </li>
+
+              <!-- Pl. 02 · Tree tutor. Original drawing (start: proto/editorial + proto/instrumented AVL plates). Team credit per ledger §0.3.
+                   TODO(durgesh): describe your part of the tutor (ledger Q-4) before any first-person line is added. -->
+              <li class="slide" id="slide-tutor" data-key="tutor" data-name="Neuro-symbolic tree tutor" aria-roledescription="slide" aria-label="2 of 5">
+                <a class="plate" href="projects/tutor.html" tabindex="-1" draggable="false" data-surface="paper" data-cursor="Open">
+                  <span class="vh">Tree tutor case study. </span>
+                  <span class="plate__art" data-vt-key="tutor">
+                    <svg class="pl-svg v-full" viewBox="0 0 800 500" role="img" aria-labelledby="pl-tutor-t pl-tutor-d" focusable="false">
+                      <title id="pl-tutor-t">AVL rotation, right-right case</title>
+                      <desc id="pl-tutor-d">Inserting 10, 20 and 30 in order leaves node 10 with balance factor −2. The validator flags it; a left rotation at 10 makes 20 the root with children 10 and 30, and an LLM explains the step in words.</desc>
+                      <text class="t-soft t-cap" x="40" y="56">AVL · INSERT 10, 20, 30</text>
+                      <text class="t-soft t-cap" x="760" y="56" text-anchor="end">RR CASE</text>
+                      <line class="hair" x1="40" y1="76" x2="760" y2="76"/>
+                      <path class="ln" d="M129.8 149.8 L170.2 190.2 M209.8 229.8 L250.2 270.2"/>
+                      <circle class="node" cx="110" cy="130" r="28"/><circle class="node" cx="190" cy="210" r="28"/><circle class="node" cx="270" cy="290" r="28"/>
+                      <text class="t-node" x="110" y="139">10</text><text class="t-node" x="190" y="219">20</text><text class="t-node" x="270" y="299">30</text>
+                      <text class="t-soft" x="150" y="116">bf −2</text><text class="t-soft" x="230" y="196">bf −1</text><text class="t-soft" x="310" y="276">bf 0</text>
+                      <text class="t-soft" x="392" y="150" text-anchor="middle">rotate left</text>
+                      <path class="ln" d="M338 206 C 362 172, 418 172, 442 206 M440.9 194.1 L442 206 L431.1 201"/>
+                      <path class="ln" d="M581.3 153.4 L537.5 208.1 M618.7 153.4 L662.5 208.1"/>
+                      <circle class="node hot" cx="600" cy="130" r="30"/><circle class="node" cx="520" cy="230" r="28"/><circle class="node" cx="680" cy="230" r="28"/>
+                      <text class="t-node t-paper" x="600" y="139">20</text><text class="t-node" x="520" y="239">10</text><text class="t-node" x="680" y="239">30</text>
+                      <rect class="box" x="40" y="340" width="340" height="124" rx="2"/>
+                      <text class="t-soft t-cap" x="64" y="378">VALIDATOR</text>
+                      <text x="64" y="414">bf(10) = −2</text>
+                      <text x="64" y="446">fix: rotate left at 10</text>
+                      <rect class="box" x="420" y="340" width="340" height="124" rx="2"/>
+                      <text class="t-soft t-cap" x="444" y="378">LLM EXPLAINS</text>
+                      <text class="t-serif" x="444" y="416">“20 moves up; 10 and 30</text>
+                      <text class="t-serif" x="444" y="448">become its children.”</text>
+                    </svg>
+                    <svg class="pl-svg v-compact" viewBox="0 0 400 250" role="img" aria-labelledby="pl-tutor-ct pl-tutor-d" focusable="false">
+                      <title id="pl-tutor-ct">AVL rotation, compact</title>
+                      <path class="ln" d="M47.4 93.2 L77.6 126.8 M92.4 143.2 L122.6 176.8"/>
+                      <circle class="node" cx="40" cy="85" r="11"/><circle class="node" cx="85" cy="135" r="11"/><circle class="node" cx="130" cy="185" r="11"/>
+                      <text class="t-soft" x="58" y="79">bf −2</text>
+                      <text class="t-soft" x="205" y="113" text-anchor="middle">rotate</text>
+                      <path class="ln" d="M170 155 C 188 127, 222 127, 240 155 M239.5 144 L240 155 L230.2 150"/>
+                      <path class="ln" d="M303.8 106.2 L275.3 160.5 M326.2 106.2 L354.7 160.5"/>
+                      <circle class="node hot" cx="315" cy="85" r="24"/><circle class="node" cx="265" cy="180" r="22"/><circle class="node" cx="365" cy="180" r="22"/>
+                      <text class="t-node t-paper" x="315" y="92">20</text><text class="t-node" x="265" y="187">10</text><text class="t-node" x="365" y="187">30</text>
+                    </svg>
+                  </span>
+                  <span class="plate__cap"><span class="plate__no">Pl. 02</span> <span class="plate__what">AVL rotation</span> <span class="prov prov--drawing">Original drawing</span></span>
+                </a>
+                <div class="slide__text">
+                  <p class="kicker">Neuro-symbolic · Learning systems</p>
+                  <h3 class="slide__title" data-vt-key="tutor">Tree tutor</h3>
+                  <p class="summary">A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.</p>
+                  <dl class="facts facts--stack facts--deck">
+                    <div><dt>Role</dt><dd>Team project with Niraj Chavan</dd></div>
+                    <div><dt>Stack</dt><dd>FastAPI · React · D3 · Gemini</dd></div>
+                    <div><dt>Status</dt><dd>Repository by Niraj Chavan</dd></div>
+                  </dl>
+                  <a class="btn btn--text slide__cta" href="projects/tutor.html">Read the case study<span class="vh">: Tree tutor</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a>
+                </div>
+              </li>
+
+              <!-- Pl. 03 · Federated learning. Original drawing of the described FedAvg design; no images of people (ledger §3.3, S2).
+                   Results are on HOLD (ledger §0.2): no accuracy, image count or rounds anywhere on this plate.
+                   TODO(durgesh): confirm your technical role in the study (Q-3). -->
+              <li class="slide" id="slide-federated" data-key="federated" data-name="Federated learning ASD research" aria-roledescription="slide" aria-label="3 of 5">
+                <a class="plate" href="projects/federated.html" tabindex="-1" draggable="false" data-surface="paper" data-cursor="Open">
+                  <span class="vh">Federated learning case study. </span>
+                  <span class="plate__art" data-vt-key="federated">
+                    <svg class="pl-svg v-full" viewBox="0 0 800 500" role="img" aria-labelledby="pl-fed-t pl-fed-d" focusable="false">
+                      <title id="pl-fed-t">Federated averaging, one round</title>
+                      <desc id="pl-fed-d">Three clients train on local data that never leaves them and send model weights to a server. The server averages the weights, weighted by each client's sample count, and sends the global model back. Drawn from the team's description; the training code is not public.</desc>
+                      <text class="t-soft t-cap" x="40" y="56">FEDAVG · ONE ROUND</text>
+                      <text class="t-soft t-cap" x="760" y="56" text-anchor="end">AS DESCRIBED</text>
+                      <line class="hair" x1="40" y1="76" x2="760" y2="76"/>
+                      <rect class="box" x="200" y="100" width="400" height="100" rx="2"/>
+                      <text class="t-soft t-cap" x="226" y="138">SERVER</text>
+                      <text class="t-hot" x="226" y="178">weighted average</text>
+                      <g class="fed-avg"><circle class="node hot" cx="520" cy="150" r="26"/><text class="t-serif t-it t-paper" x="520" y="159" text-anchor="middle">w</text></g>
+                      <path class="ln fed-up" style="--k:0" d="M150 326 L 260 206" pathLength="1"/>
+                      <path class="ln fed-up" style="--k:1" d="M390 326 V 206" pathLength="1"/>
+                      <path class="ln fed-up" style="--k:2" d="M650 326 L 540 206" pathLength="1"/>
+                      <path class="ln fed-head" d="M248.6 209.6 L260 206 L257.4 217.7 M384 216.4 L390 206 L396 216.4 M551.4 209.6 L540 206 L542.6 217.7"/>
+                      <g class="fed-down">
+                        <path class="ln ln-soft ln-dash" d="M290 206 L 175 326 M410 206 V 326 M510 206 L 625 326"/>
+                        <path class="ln ln-soft" d="M186.5 322.6 L175 326 L177.9 314.3 M404 315.6 L410 326 L416 315.6 M613.5 322.6 L625 326 L622.1 314.3"/>
+                      </g>
+                      <text class="t-soft" x="380" y="276" text-anchor="end">weights</text>
+                      <text class="t-soft" x="420" y="266">global</text>
+                      <text class="t-soft" x="420" y="294">model</text>
+                      <rect class="box" x="40" y="330" width="210" height="110" rx="2"/><rect class="box" x="295" y="330" width="210" height="110" rx="2"/><rect class="box" x="550" y="330" width="210" height="110" rx="2"/>
+                      <text class="t-cap" x="60" y="366">CLIENT 1</text><text class="t-cap" x="315" y="366">CLIENT 2</text><text class="t-cap" x="570" y="366">CLIENT 3</text>
+                      <g class="layer"><rect x="60" y="384" width="104" height="11"/><rect x="60" y="401" width="82" height="11"/><rect x="60" y="418" width="60" height="11"/><rect x="315" y="384" width="104" height="11"/><rect x="315" y="401" width="82" height="11"/><rect x="315" y="418" width="60" height="11"/><rect x="570" y="384" width="104" height="11"/><rect x="570" y="401" width="82" height="11"/><rect x="570" y="418" width="60" height="11"/></g>
+                      <g class="datum"><rect x="196" y="384" width="13" height="13"/><rect x="215" y="384" width="13" height="13"/><rect x="196" y="401" width="13" height="13"/><rect x="215" y="401" width="13" height="13"/><rect x="196" y="418" width="13" height="13"/><rect x="215" y="418" width="13" height="13"/><rect x="451" y="384" width="13" height="13"/><rect x="470" y="384" width="13" height="13"/><rect x="451" y="401" width="13" height="13"/><rect x="470" y="401" width="13" height="13"/><rect x="451" y="418" width="13" height="13"/><rect x="470" y="418" width="13" height="13"/><rect x="706" y="384" width="13" height="13"/><rect x="725" y="384" width="13" height="13"/><rect x="706" y="401" width="13" height="13"/><rect x="725" y="401" width="13" height="13"/><rect x="706" y="418" width="13" height="13"/><rect x="725" y="418" width="13" height="13"/></g>
+                      <text class="t-soft" x="40" y="482">Images stay on each client; only weights travel.</text>
+                    </svg>
+                    <svg class="pl-svg v-compact" viewBox="0 0 400 250" role="img" aria-labelledby="pl-fed-ct pl-fed-d" focusable="false">
+                      <title id="pl-fed-ct">Federated averaging, compact</title>
+                      <rect class="box" x="110" y="26" width="180" height="60" rx="2"/>
+                      <text x="130" y="63">FedAvg</text>
+                      <g class="fed-avg"><circle class="node hot" cx="258" cy="56" r="16"/><text class="t-serif t-it t-paper" x="258" y="63" text-anchor="middle">w</text></g>
+                      <path class="ln fed-up" style="--k:0" d="M80 156 L 170 92" pathLength="1"/>
+                      <path class="ln fed-up" style="--k:1" d="M200 156 V 92" pathLength="1"/>
+                      <path class="ln fed-up" style="--k:2" d="M320 156 L 230 92" pathLength="1"/>
+                      <path class="ln fed-head" d="M160 93 L170 92 L165.8 101.1 M195 100.7 L200 92 L205 100.7 M240 93 L230 92 L234.2 101.1"/>
+                      <rect class="box" x="30" y="160" width="90" height="46" rx="2"/><rect class="box" x="155" y="160" width="90" height="46" rx="2"/><rect class="box" x="280" y="160" width="90" height="46" rx="2"/>
+                      <text class="t-node" x="75" y="190">1</text><text class="t-node" x="200" y="190">2</text><text class="t-node" x="325" y="190">3</text>
+                      <text class="t-soft" x="200" y="238" text-anchor="middle">weights up · model down</text>
+                    </svg>
+                  </span>
+                  <span class="plate__cap"><span class="plate__no">Pl. 03</span> <span class="plate__what">FedAvg, one round</span> <span class="prov prov--drawing">Original drawing</span></span>
+                </a>
+                <div class="slide__text">
+                  <p class="kicker">Research · Privacy-preserving ML</p>
+                  <h3 class="slide__title" data-vt-key="federated">Federated learning</h3>
+                  <p class="summary">Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.</p>
+                  <dl class="facts facts--stack facts--deck">
+                    <div><dt>Role</dt><dd>Co-author · team project with Niraj Chavan</dd></div>
+                    <div><dt>Stack</dt><dd>TensorFlow/Keras · EfficientNetB0 · Streamlit</dd></div>
+                    <div><dt>Status</dt><dd>Accepted paper · IConDeepCom 2026</dd></div>
+                  </dl>
+                  <a class="btn btn--text slide__cta" href="projects/federated.html">Read the case study<span class="vh">: Federated learning</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a>
+                </div>
+              </li>
+
+              <!-- Pl. 04 · CertiVault. Original drawing of README.md:7-13, 106-125 (verdict cascade).
+                   TODO(durgesh): document the division of responsibilities within the course team (ledger §0b.9). -->
+              <li class="slide" id="slide-certivault" data-key="certivault" data-name="CertiVault" aria-roledescription="slide" aria-label="4 of 5">
+                <a class="plate" href="projects/certivault.html" tabindex="-1" draggable="false" data-surface="paper" data-cursor="Open">
+                  <span class="vh">CertiVault case study. </span>
+                  <span class="plate__art" data-vt-key="certivault">
+                    <svg class="pl-svg v-full" viewBox="0 0 800 500" role="img" aria-labelledby="pl-cv-t pl-cv-d" focusable="false">
+                      <title id="pl-cv-t">CertiVault: issue, then verify</title>
+                      <desc id="pl-cv-d">An issuer fingerprints a certificate with SHA-256 and signs it with RSA-2048; the certificate carries a QR code. Anyone can verify it without an account: the check recomputes the hash, compares the pinned key and verifies the signature, and returns exactly one of six verdicts: valid, tampered, expired, revoked, superseded or invalid.</desc>
+                      <text class="t-soft t-cap" x="40" y="56">ISSUE, THEN VERIFY</text>
+                      <text class="t-soft t-cap" x="760" y="56" text-anchor="end">6 VERDICTS</text>
+                      <line class="hair" x1="40" y1="76" x2="760" y2="76"/>
+                      <rect class="box" x="40" y="100" width="150" height="86" rx="2"/>
+                      <text class="t-serif" x="64" y="152">Issuer</text>
+                      <path class="ln" d="M190 143 H 226 M218 137 L226 143 L218 149"/>
+                      <rect class="box" x="230" y="100" width="318" height="86" rx="2"/>
+                      <text x="252" y="136">SHA-256 fingerprint</text>
+                      <text x="252" y="170">RSA-2048 signature</text>
+                      <path class="ln" d="M548 143 H 584 M576 137 L584 143 L576 149"/>
+                      <rect class="box" x="588" y="96" width="172" height="120" rx="2"/>
+                      <text class="t-serif" x="604" y="134">Certificate</text>
+                      <path class="ln ln-soft" d="M604 152 H 690 M604 168 H 668"/>
+                      <g class="qr"><rect class="box" x="704" y="160" width="44" height="44"/><rect x="708" y="164" width="11" height="11"/><rect x="733" y="164" width="11" height="11"/><rect x="708" y="189" width="11" height="11"/><rect x="724" y="180" width="5" height="5"/><rect x="735" y="191" width="6" height="6"/><rect x="723" y="193" width="5" height="5"/></g>
+                      <path class="ln ln-soft ln-dash" d="M674 216 C 674 240, 135 226, 135 250"/>
+                      <path class="ln ln-soft" d="M129 241 L135 250 L141 241"/>
+                      <rect class="box" x="40" y="254" width="190" height="80" rx="2"/>
+                      <text class="t-serif" x="62" y="290">Verifier</text>
+                      <text class="t-soft" x="62" y="322">no account</text>
+                      <path class="ln" d="M230 294 H 266 M258 288 L266 294 L258 300"/>
+                      <rect class="box" x="270" y="254" width="490" height="80" rx="2"/>
+                      <text x="292" y="288">recompute SHA-256</text>
+                      <text x="292" y="320">check pinned key, verify RSA</text>
+                      <path class="ln" d="M515 334 V 356 M509 348 L515 356 L521 348"/>
+                      <rect class="seal hot" x="270" y="360" width="156" height="42" rx="2"/>
+                      <rect class="seal" x="437" y="360" width="156" height="42" rx="2"/><rect class="seal" x="604" y="360" width="156" height="42" rx="2"/>
+                      <rect class="seal" x="270" y="412" width="156" height="42" rx="2"/><rect class="seal" x="437" y="412" width="156" height="42" rx="2"/><rect class="seal" x="604" y="412" width="156" height="42" rx="2"/>
+                      <g class="t-seal"><text class="t-paper" x="348" y="389">VALID</text><text x="515" y="389">TAMPERED</text><text x="682" y="389">EXPIRED</text><text x="348" y="441">REVOKED</text><text x="515" y="441">SUPERSEDED</text><text x="682" y="441">INVALID</text></g>
+                      <text class="t-serif t-it" x="40" y="398">Exactly one</text>
+                      <text class="t-serif t-it" x="40" y="432">verdict.</text>
+                    </svg>
+                    <svg class="pl-svg v-compact" viewBox="0 0 400 250" role="img" aria-labelledby="pl-cv-ct pl-cv-d" focusable="false">
+                      <title id="pl-cv-ct">CertiVault, compact</title>
+                      <rect class="box" x="30" y="40" width="130" height="170" rx="2"/>
+                      <path class="ln ln-soft" d="M48 74 H 132 M48 92 H 112 M48 110 H 122"/>
+                      <g class="qr"><rect class="box" x="92" y="150" width="52" height="52"/><rect x="97" y="155" width="13" height="13"/><rect x="126" y="155" width="13" height="13"/><rect x="97" y="184" width="13" height="13"/><rect x="116" y="174" width="6" height="6"/><rect x="128" y="186" width="7" height="7"/><rect x="115" y="188" width="6" height="6"/></g>
+                      <text class="t-soft" x="208" y="112" text-anchor="middle">verify</text>
+                      <path class="ln" d="M170 125 H 248 M240 118 L248 125 L240 132"/>
+                      <rect class="seal hot" x="256" y="102" width="122" height="46" rx="2"/>
+                      <text class="t-paper t-seal-c" x="317" y="132" text-anchor="middle">VALID</text>
+                      <text class="t-soft" x="317" y="180" text-anchor="middle">one of six</text>
+                      <text class="t-soft" x="317" y="206" text-anchor="middle">verdicts</text>
+                    </svg>
+                  </span>
+                  <span class="plate__cap"><span class="plate__no">Pl. 04</span> <span class="plate__what">Issue, then verify</span> <span class="prov prov--drawing">Original drawing</span></span>
+                </a>
+                <div class="slide__text">
+                  <p class="kicker">Applied cryptography · Web platform</p>
+                  <h3 class="slide__title" data-vt-key="certivault">CertiVault</h3>
+                  <p class="summary">A PHP/MySQL platform that signs certificates and lets anyone verify them, with six distinct verdicts.</p>
+                  <dl class="facts facts--stack facts--deck">
+                    <div><dt>Role</dt><dd>Web Technology team project</dd></div>
+                    <div><dt>Stack</dt><dd>PHP 8.2 · MySQL · Web Crypto · OpenSSL</dd></div>
+                    <div><dt>Status</dt><dd><ul class="chips"><li class="chip">Coursework</li><li class="chip">No live demo yet</li></ul></dd></div>
+                  </dl>
+                  <a class="btn btn--text slide__cta" href="projects/certivault.html">Read the case study<span class="vh">: CertiVault</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a>
+                </div>
+              </li>
+
+              <!-- Pl. 05 · Engineering notebook. Chart drawn from dist/assets/tree-benchmarks.js (Sorted, 10,000 keys):
+                   AVL 14, Red-Black 24, Splay 10000; reference ceil(log2 10,001) = 14. One recorded run each, DS_Actual_CP @ b80db89. -->
+              <li class="slide" id="slide-notebook" data-key="notebook" data-name="Engineering notebook" aria-roledescription="slide" aria-label="5 of 5">
+                <a class="plate" href="projects/notebook.html" tabindex="-1" draggable="false" data-surface="paper" data-cursor="Open">
+                  <span class="vh">Engineering notebook. </span>
+                  <span class="plate__art" data-vt-key="notebook">
+                    <svg class="pl-svg v-full" viewBox="0 0 800 500" role="img" aria-labelledby="pl-nb-t pl-nb-d" focusable="false">
+                      <title id="pl-nb-t">Tree height after inserting 10,000 sorted keys</title>
+                      <desc id="pl-nb-d">Horizontal bars on a log scale from 1 to 10,000. AVL reaches 14 levels, the minimum possible: the ceiling of log base 2 of 10,001. Red-black reaches 24. Splay reaches 10,000, one level per key. One recorded run per tree, DS_Actual_CP at commit b80db89.</desc>
+                      <text class="t-soft t-cap" x="40" y="56">TREE HEIGHT · 10,000 SORTED KEYS</text>
+                      <text class="t-soft t-cap" x="760" y="56" text-anchor="end">LOG SCALE</text>
+                      <line class="hair" x1="40" y1="76" x2="760" y2="76"/>
+                      <path class="hair" d="M350 128 V 362 M480 128 V 362 M610 128 V 362 M740 128 V 362"/>
+                      <path class="ln ln-dash" d="M369 96 V 352"/>
+                      <rect class="bar" x="220" y="140" width="149" height="44"/>
+                      <rect class="bar" x="220" y="216" width="179.4" height="44"/>
+                      <rect class="bar hot" x="220" y="292" width="520" height="44"/>
+                      <path class="ln" d="M220 128 V 362"/>
+                      <text class="t-serif" x="40" y="172">AVL</text><text class="t-serif" x="40" y="248">Red-Black</text><text class="t-serif" x="40" y="324">Splay</text>
+                      <text class="t-val" x="382" y="171">14</text><text class="t-val" x="412" y="247">24</text><text class="t-val t-paper" x="726" y="323" text-anchor="end">10,000</text>
+                      <path class="ln" d="M386 92 V 120 M386 92 H 394 M572 92 V 120 M572 92 H 564"/>
+                      <text class="t-ref" x="396" y="116">log</text><text class="t-sub" x="447" y="124">2</text><text class="t-ref" x="466" y="116">10,001</text><text class="t-ref" x="584" y="116">= 14</text>
+                      <g class="t-soft t-tick"><text x="220" y="392">1</text><text x="350" y="392">10</text><text x="480" y="392">100</text><text x="610" y="392">1,000</text><text x="740" y="392">10,000</text></g>
+                      <text class="t-soft" x="40" y="456">Sorted input leaves splay as one long path.</text>
+                    </svg>
+                    <svg class="pl-svg v-compact" viewBox="0 0 400 250" role="img" aria-labelledby="pl-nb-ct pl-nb-d" focusable="false">
+                      <title id="pl-nb-ct">Tree heights, compact</title>
+                      <path class="ln ln-dash" d="M201.6 30 V 226"/>
+                      <rect class="bar" x="130" y="42" width="71.6" height="30"/>
+                      <rect class="bar" x="130" y="112" width="86.3" height="30"/>
+                      <rect class="bar hot" x="130" y="182" width="250" height="30"/>
+                      <path class="ln" d="M130 30 V 226"/>
+                      <text class="t-serif" x="16" y="65">AVL</text><text class="t-serif" x="16" y="135">Red-Black</text><text class="t-serif" x="16" y="205">Splay</text>
+                      <text class="t-val" x="210" y="64">14</text><text class="t-val" x="225" y="134">24</text><text class="t-val t-paper" x="372" y="204" text-anchor="end">10,000</text>
+                    </svg>
+                  </span>
+                  <span class="plate__cap"><span class="plate__no">Pl. 05</span> <span class="plate__what">Tree heights</span> <span class="prov prov--run">Recorded run · DS_Actual_CP @ b80db89</span></span>
+                </a>
+                <div class="slide__text">
+                  <p class="kicker">Algorithms · Benchmarks</p>
+                  <h3 class="slide__title" data-vt-key="notebook">Engineering notebook</h3>
+                  <p class="summary">Interactive notes on two engineering decisions: how insertion order shapes tree height, and how rank fusion orders search results.</p>
+                  <dl class="facts facts--stack facts--deck">
+                    <div><dt>Role</dt><dd>My C++ benchmark · sole author of DS_Actual_CP</dd></div>
+                    <div><dt>Stack</dt><dd>C++17 · CMake · vanilla JS · canvas</dd></div>
+                    <div><dt>Status</dt><dd>27 recorded runs · source pinned at b80db89</dd></div>
+                  </dl>
+                  <a class="btn btn--text slide__cta" href="projects/notebook.html">Open the notebook<span class="vh">: Engineering notebook</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="deck" id="deck">
+            <div class="deck__main">
+              <p class="kicker" data-deck="kicker">Applied AI · Education data</p>
+              <h3 class="deck__title" id="deck-title" data-vt-key="kaaran"><span class="deck__line">Kaaran</span></h3>
+              <p class="summary" data-deck="summary">A bilingual education-data analyst where Claude handles language and code computes every figure. The public demo runs on synthetic district data.</p>
+            </div>
+            <div class="deck__side">
+              <dl class="facts facts--stack facts--deck" data-deck="facts">
+                <div><dt>Role</dt><dd>Four-person hackathon team · sole committer</dd></div>
+                <div><dt>Stack</dt><dd>Python · FastAPI · pandas · Claude API</dd></div>
+                <div><dt>Status</dt><dd><ul class="chips"><li class="chip">Hackathon build</li><li class="chip">Build stage · top 30</li></ul></dd></div>
+              </dl>
+              <a class="btn btn--primary deck__cta" id="deck-link" href="projects/kaaran.html" data-cursor="Open" data-magnetic><span class="btn__inner">Read the case study<span class="vh" data-deck="name">: Kaaran</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></a>
             </div>
           </div>
-          <section class="showcase" id="showcase" aria-label="Interactive project gallery">
-            <div class="stage-top">
-              <span class="stage-line"></span><span>Interactive projects</span>
-            </div>
-            <nav aria-label="Select a project" class="project-picker">
-              <a
-                href="projects/kaaran.html#experiment"
-                data-project="kaaran"
-                aria-controls="lab-kaaran"
-                aria-current="true"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M3 16v4m5-10v10m5-15v15m5-11v11" /></svg
-                >Kaaran</a
-              ><a href="projects/tutor.html#experiment" data-project="tutor" aria-controls="lab-tutor"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="5" r="2.5" />
-                  <circle cx="5" cy="18" r="2.5" />
-                  <circle cx="19" cy="18" r="2.5" />
-                  <path d="m11 7-5 9m7-9 5 9" /></svg
-                >Tree tutor</a
-              ><a
-                href="projects/federated.html#experiment"
-                data-project="federated"
-                aria-controls="lab-federated"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm9 5-9 5-9-5m9 5v10" /></svg
-                >Federated learning</a
-              >
-            </nav>
-            <article class="lab lab-kaaran" data-lab="kaaran" id="lab-kaaran">
-              <div class="lab-heading">
-                <span class="lab-symbol"
-                  ><svg
-                    class="icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M3 16v4m5-10v10m5-15v15m5-11v11" /></svg
-                ></span>
-                <h2>Kaaran</h2>
-                <div class="language" aria-label="Evidence language">
-                  <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button
-                  ><button
-                    type="button"
-                    data-language="mr"
-                    lang="mr"
-                    aria-pressed="false"
-                    aria-label="मराठी"
-                  >
-                    मराठी
-                  </button>
+          <p class="vh" aria-live="polite" id="gallery-live"></p>
+        </div>
+      </section>
+      <!-- /region:work -->
+      <!-- region:evidence (owner D) -->
+      <div class="dawn-ground" data-surface="night">
+      <link rel="stylesheet" href="css/home.css">
+      <section class="dawn" id="evidence" data-surface="paper" data-dawn aria-labelledby="evidence-title">
+        <div class="dawn__inner" data-dawn-inner>
+          <div class="grid section-head section-head--offset ev-head">
+            <div class="running-head" aria-hidden="true"><span><b>II</b> — From the archive</span><span>Plates 06–09</span><span>p. 03</span></div>
+            <h2 class="section-head__title t-display" id="evidence-title" data-reveal>Evidence, <em>set in type.</em></h2>
+            <p class="section-head__dek ev-head__dek">Three artefacts from inside the projects, and an index of the rest: the brief Kaaran writes for an education officer, the verdicts anyone can check in CertiVault, and the arithmetic behind a ranking.</p>
+            <p class="section-head__note ev-head__note">Every plate links to its source. Figures from the Kaaran demo are synthetic and labelled so.</p>
+          </div>
+
+          <div class="grid bento" data-bento>
+            <!-- Pl. 06 · Sheet: authentic capture (assets-candidates/kaaran/kaaran-brief-print-mr-a4.png, crop 0,0,1588,1566 laid on an A4 sheet; see docs/handoff/D-sections.md) -->
+            <article class="tile tile--sheet" data-tile data-reveal="media">
+              <a class="tile__hit" href="projects/kaaran.html" aria-labelledby="pl06-title" aria-describedby="pl06-desc pl06-prov"></a>
+              <div class="tile__card" data-tile-card>
+                <div class="tile__media sheet" data-surface="night" data-surface-local data-reveal-clip aria-hidden="true">
+                  <span class="tile__index">Pl. 06</span>
+                  <div class="sheet__stack">
+                    <div class="sheet__page sheet__page--en">
+                      <noscript data-sheet-image><img src="assets/img/home/kaaran-brief-en-880.webp" srcset="assets/img/home/kaaran-brief-en-520.webp 520w, assets/img/home/kaaran-brief-en-880.webp 880w" sizes="(min-width: 1100px) min(26vw, 420px), (min-width: 760px) 32vw, 66vw" width="880" height="1245" alt="" loading="lazy" decoding="async"></noscript>
+                    </div>
+                    <div class="sheet__page sheet__page--mr" data-sheet-page>
+                      <noscript data-sheet-image><img src="assets/img/home/kaaran-brief-mr-880.webp" srcset="assets/img/home/kaaran-brief-mr-520.webp 520w, assets/img/home/kaaran-brief-mr-880.webp 880w" sizes="(min-width: 1100px) min(26vw, 420px), (min-width: 760px) 32vw, 66vw" width="880" height="1245" alt="" loading="lazy" decoding="async"></noscript>
+                      <span class="sheet__note" style="--y: 10.2%"><b>A</b> What needs attention</span>
+                      <span class="sheet__note" style="--y: 22%"><b>B</b> Why it may be happening</span>
+                      <span class="sheet__note" style="--y: 45%"><b>C</b> What to do</span>
+                    </div>
+                  </div>
+                  <dl class="sheet__meta">
+                    <div><dt>Title</dt><dd><span lang="mr">केंद्रनिहाय पुरावा अहवाल: पंढरपूर</span> / Cluster Evidence Brief: Pandharpur</dd></div>
+                    <div><dt>Format</dt><dd>1 page · A4 · PDF · Marathi and English</dd></div>
+                    <div><dt>Source</dt><dd>/api/briefs/blocks.BPandharpur/pdf</dd></div>
+                  </dl>
+                  <span class="tile__dims">2 × 1588 × 2246 px · A4 print captures</span>
+                  <span class="tile__scan"></span>
                 </div>
               </div>
-              <figure class="block-figure">
-                <img
-                  src="assets/kaaran-blocks.webp"
-                  width="950"
-                  height="397"
-                  alt="Three isometric plates for Pandharpur and one plate each for Karmala and Madha."
-                />
-                <figcaption>
-                  <span>Pandharpur <b>3</b></span
-                  ><span>Karmala <b>1</b></span
-                  ><span>Madha <b>1</b></span>
-                </figcaption>
-              </figure>
-              <div class="lab-body" data-evidence-body lang="en">
-                <div class="lab-meta" data-e-text="type">Education analytics · Synthetic sample</div>
-                <h3 data-e-text="question">Which block needs the most attention?</h3>
-                <p data-e-text="answer">Pandharpur has three flagged clusters in the district sample.</p>
-                <details class="records">
-                  <summary>
-                    <span class="inspect-icon"
-                      ><svg
-                        class="icon"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <circle cx="10" cy="10" r="6" />
-                        <path d="m15 15 6 6m-11-14v6m-3-3h6" /></svg></span
-                    ><span data-e-text="inspect">Inspect 3 clusters</span
-                    ><span class="toggle-sign" aria-hidden="true"></span>
-                  </summary>
-                  <noscript
-                    ><ul>
-                      <li>
-                        Bhalwad Khurd Kendra · Relative mathematics decline of 11.6 percentage points.
-                      </li>
-                      <li>Bhalpur Kendra · Seasonal attendance gap of 14.7 percentage points.</li>
-                      <li>Takangaon Kendra · Relative mathematics decline of 7.4 percentage points.</li>
+              <div class="tile__cap" data-reveal-caption>
+                <p class="tile__no"><span>Pl. 06</span> Kaaran</p>
+                <h3 class="tile__title" id="pl06-title"><span class="tile__title-text">Kaaran’s one-page brief, in Marathi and English</span><svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></h3>
+                <p class="tile__desc" id="pl06-desc">Each answer has a one-page evidence brief: what needs attention, why it may be happening, and what to do. Code computes every figure; the model writes the sentences around them.</p>
+                <p class="tile__badges" id="pl06-prov"><span class="prov">Live demo capture</span><span class="prov prov--synthetic">Synthetic data</span><span class="tile__src">Captured 2026-11-23 from the live demo</span></p>
+              </div>
+            </article>
+
+            <!-- Pl. 07 · Specimen: original drawing. Verdict names and check order from Web_Tech_CP README.md:7-13, 106-125 (ledger §3.4) -->
+            <article class="tile tile--specimen" data-tile data-reveal="media">
+              <a class="tile__hit" href="projects/certivault.html" aria-labelledby="pl07-title" aria-describedby="pl07-desc pl07-prov"></a>
+              <div class="tile__card" data-tile-card>
+                <div class="tile__media specimen" data-reveal-clip aria-hidden="true">
+                  <span class="specimen__label">Specimen · Pl. 07</span>
+                  <div class="specimen__cert">
+                    <svg viewBox="0 0 300 360" focusable="false">
+                      <rect x=".75" y=".75" width="298.5" height="358.5" fill="#f7f7f3" stroke="#1b1e26" stroke-width="1.5"/>
+                      <rect x="12" y="12" width="276" height="336" fill="none" stroke="#d6d2c4"/>
+                      <text x="150" y="86" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="38" fill="#1b1e26">Certificate</text>
+                      <g fill="#d6d2c4"><rect x="70" y="112" width="160" height="7"/><rect x="95" y="130" width="110" height="7"/><rect x="48" y="164" width="204" height="5"/><rect x="48" y="178" width="180" height="5"/><rect x="48" y="192" width="196" height="5"/></g>
+                      <g transform="translate(36 232)">
+                        <rect width="92" height="92" fill="#f7f7f3" stroke="#1b1e26"/>
+                        <g fill="#1b1e26"><rect x="7" y="7" width="24" height="24"/><rect x="61" y="7" width="24" height="24"/><rect x="7" y="61" width="24" height="24"/><rect x="38" y="10" width="7" height="7"/><rect x="45" y="24" width="7" height="7"/><rect x="38" y="38" width="14" height="7"/><rect x="61" y="42" width="7" height="7"/><rect x="75" y="49" width="7" height="7"/><rect x="38" y="56" width="7" height="14"/><rect x="52" y="63" width="14" height="7"/><rect x="74" y="70" width="11" height="7"/><rect x="48" y="78" width="7" height="7"/><rect x="10" y="42" width="7" height="7"/><rect x="21" y="46" width="7" height="7"/></g>
+                        <g fill="#f7f7f3"><rect x="12" y="12" width="14" height="14"/><rect x="66" y="12" width="14" height="14"/><rect x="12" y="66" width="14" height="14"/></g>
+                      </g>
+                      <g fill="none" stroke="#1b1e26" stroke-width="1.25"><path d="M150 262h112M150 290h112M150 318h80"/></g>
+                    </svg>
+                    <p class="specimen__bind"><span>SHA-256 fingerprint</span><span>RSA-2048 signature</span><span>QR code</span></p>
+                  </div>
+                  <div class="specimen__verdicts">
+                    <p class="specimen__kicker">One public check · one of six verdicts</p>
+                    <ul class="seals">
+                      <li class="seal seal--on" style="--r: -2deg">Valid</li>
+                      <li class="seal" style="--r: 1.5deg">Tampered</li>
+                      <li class="seal" style="--r: -1deg">Expired</li>
+                      <li class="seal" style="--r: 2deg">Revoked</li>
+                      <li class="seal" style="--r: -1.5deg">Superseded</li>
+                      <li class="seal" style="--r: 1deg">Invalid</li>
                     </ul>
-                    <a
-                      class="source-link"
-                      href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur"
-                      >Read the block evidence</a
-                    ></noscript
-                  >
+                    <ol class="cascade">
+                      <li style="--i: 0">exists</li><li style="--i: 1">revoked</li><li style="--i: 2">superseded</li><li style="--i: 3">hash match</li><li style="--i: 4">key pin match</li><li style="--i: 5">RSA verify</li><li style="--i: 6">expired</li>
+                    </ol>
+                  </div>
+                  <span class="tile__dims">SVG + HTML · original drawing</span>
+                  <span class="tile__scan"></span>
+                </div>
+              </div>
+              <div class="tile__cap" data-reveal-caption>
+                <p class="tile__no"><span>Pl. 07</span> CertiVault</p>
+                <h3 class="tile__title" id="pl07-title"><span class="tile__title-text">CertiVault, six verdicts</span><svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></h3>
+                <p class="tile__desc" id="pl07-desc">Anyone can verify a certificate without an account and gets one of six verdicts. The checks run in a fixed order, so each certificate gets exactly one verdict.</p>
+                <p class="tile__badges" id="pl07-prov"><span class="prov prov--drawing">Original drawing</span><span class="chip">Coursework</span><span class="chip">No live demo yet</span></p>
+              </div>
+            </article>
+
+            <!-- Pl. 08 · Worked example: reviews and ranks match notebook.js "overlap" scenario (fictional reviews); scores computed, k = 60, 1-based rank (audit-code §3.5) -->
+            <article class="tile tile--worked" data-tile data-reveal="media">
+              <a class="tile__hit" href="projects/notebook.html#retrieval" aria-labelledby="pl08-title" aria-describedby="pl08-desc pl08-src pl08-prov"></a>
+              <div class="tile__card" data-tile-card>
+                <div class="tile__media worked" data-reveal-clip aria-hidden="true">
+                  <span class="tile__index">Pl. 08</span>
+                  <svg class="worked__wires" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+                    <path class="wire" d="M41 30 C 49 30, 47 24, 55 24"/>
+                    <path class="wire wire--on" d="M41 60 C 50 60, 46 24, 55 24"/>
+                    <path class="wire wire--dim" d="M41 50 C 49 50, 47 39, 55 39"/>
+                    <path class="wire wire--dim" d="M41 20 C 50 20, 46 54, 55 54"/>
+                  </svg>
+                  <p class="worked__head" style="--x: 3%; --y: 9%">Keyword · BM25</p>
+                  <p class="worked__item" style="--x: 3%; --y: 20%"><b>1</b> Two days</p>
+                  <p class="worked__item worked__item--hit" style="--x: 3%; --y: 30%"><b>2</b> Commute</p>
+                  <p class="worked__head" style="--x: 3%; --y: 40%">Semantic · E5</p>
+                  <p class="worked__item" style="--x: 3%; --y: 50%"><b>1</b> Quick charge</p>
+                  <p class="worked__item worked__item--hit" style="--x: 3%; --y: 60%"><b>2</b> Commute</p>
+                  <p class="worked__head worked__head--fused" style="--x: 55%; --y: 9%">Fused · k = 60</p>
+                  <p class="worked__out worked__out--hit" style="--x: 55%; --y: 24%"><span>Commute</span><b data-count="0.03226">0.03226</b></p>
+                  <p class="worked__out" style="--x: 55%; --y: 39%"><span>Quick charge</span><b data-count="0.01639">0.01639</b></p>
+                  <p class="worked__out" style="--x: 55%; --y: 54%"><span>Two days</span><b data-count="0.01639">0.01639</b></p>
+                  <div class="worked__formula">
+                    <p class="worked__eq"><span>score</span> = <span class="frac"><span>1</span><span>60 + rank</span></span> <span class="worked__sum">per list, added</span></p>
+                    <p class="worked__calc">Commute: 1/62 + 1/62 = 0.03226</p>
+                  </div>
+                  <span class="tile__dims">HTML + SVG · computed in the notebook</span>
+                  <span class="tile__scan"></span>
+                </div>
+              </div>
+              <div class="tile__cap" data-reveal-caption>
+                <p class="tile__no"><span>Pl. 08</span> Notebook</p>
+                <h3 class="tile__title" id="pl08-title"><span class="tile__title-text">Rank fusion, worked by hand</span><svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></h3>
+                <p class="tile__desc" id="pl08-desc">Two searches rank the same reviews differently. Reciprocal rank fusion adds 1/(60 + rank) from each list, so Commute, second in both, comes first.</p>
+                <p class="tile__src" id="pl08-src">From the notebook: the fusion step in Review Summarizer, a team project with Niraj Chavan · repository by Niraj Chavan</p>
+                <p class="tile__badges" id="pl08-prov"><span class="prov prov--illustrative">Illustrative ranks</span><span class="tile__src">Fictional reviews · scores computed</span></p>
+              </div>
+            </article>
+
+            <!-- Pl. 09 · Index: INDEX-placement projects (ledger §3). Oral-Cancer-AI omitted until its README is corrected (ledger §3.9, Q-9). Tutor and federated are gallery plates (§12.8). -->
+            <section class="tile tile--index" aria-labelledby="pl09-title" data-reveal="lines">
+              <p class="tile__no" data-reveal-item><span>Pl. 09</span> Index</p>
+              <h3 class="index__title" id="pl09-title" data-reveal-item>Also in the archive</h3>
+              <ol class="index-list">
+                <li data-reveal-item>
+                  <div class="index-row">
+                    <span class="index-row__no" aria-hidden="true">01</span>
+                    <a class="index-row__title" href="https://github.com/DurgeshC16/Data_science_cp/tree/master" aria-describedby="ix1-d ix1-c">Cascade-XID<span class="vh">, repository (opens external site)</span></a>
+                    <span class="index-row__desc" id="ix1-d">A two-tier prototype for explainable network intrusion detection. <span class="index-row__credit">Data Science course project with Yugant Chincholikar and Ronit Dahiwal</span></span>
+                    <span class="chip" id="ix1-c">In progress</span>
+                    <span class="index-row__go" aria-hidden="true">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></span>
+                  </div>
+                </li>
+                <li data-reveal-item>
+                  <div class="index-row">
+                    <span class="index-row__no" aria-hidden="true">02</span>
+                    <a class="index-row__title" href="https://github.com/Niraj-Chavan/review-summarizer" aria-describedby="ix2-d">Review Summarizer<span class="vh">, repository (opens external site)</span></a>
+                    <span class="index-row__desc" id="ix2-d">A Chrome extension that summarises product reviews by aspect with an LLM. <span class="index-row__credit">Team project with Niraj Chavan · repository by Niraj Chavan</span></span>
+                    <span class="index-row__go" aria-hidden="true">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></span>
+                  </div>
+                </li>
+                <li data-reveal-item>
+                  <div class="index-row">
+                    <span class="index-row__no" aria-hidden="true">03</span>
+                    <a class="index-row__title" href="https://github.com/Niraj-Chavan/SMARTCARE-AN-offline-First-AI-system" aria-describedby="ix3-d">SmartCare<span class="vh">, repository (opens external site)</span></a>
+                    <span class="index-row__desc" id="ix3-d">An offline-first symptom checker with rule-based scoring; not a diagnostic tool. <span class="index-row__credit">Team project with Niraj Chavan · repository by Niraj Chavan</span></span>
+                    <span class="index-row__go" aria-hidden="true">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg></span>
+                  </div>
+                </li>
+                <li data-reveal-item>
+                  <div class="index-row">
+                    <span class="index-row__no" aria-hidden="true">04</span>
+                    <a class="index-row__title" href="projects/notebook.html#trees" aria-describedby="ix4-d">How tall does a tree grow?<span class="vh">, notebook entry</span></a>
+                    <span class="index-row__desc" id="ix4-d">27 recorded runs from my C++17 benchmark of AVL, red-black and splay trees. <span class="index-row__credit">Notebook entry</span></span>
+                    <span class="prov prov--run">Recorded run</span>
+                    <span class="index-row__go" aria-hidden="true">Notebook<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </div>
+      </section>
+      </div>
+      <!-- /region:evidence -->
+      <!-- region:bench (owner L) -->
+      <link rel="stylesheet" href="css/lab.css">
+      <section class="bench-home section" id="bench" data-surface="paper" aria-labelledby="bench-title">
+        <div class="grid section-head">
+          <div class="running-head" aria-hidden="true"><span><b>III</b> — The bench</span><span>Labs 01–03</span><span>Runs in your browser</span></div>
+          <h2 class="section-head__title t-display" id="bench-title" data-reveal>Operate the <em>systems.</em></h2>
+          <p class="section-head__dek">Three small instruments that run the real calculation in your browser. Every state is written to the address bar, so a link reopens exactly what you see.</p>
+          <p class="section-head__note">Kaaran figures are synthetic and labelled so. The tree and averaging benches are demonstrations, not results.</p>
+        </div>
+        <div class="wrap bench-home__wrap">
+          <div class="showcase" id="showcase">
+            <nav class="bench-picker" aria-label="Select a project">
+              <a href="projects/kaaran.html#experiment" data-project="kaaran" aria-controls="lab-kaaran" aria-current="true"><span class="bench-picker__no">01</span><span class="bench-picker__name">Kaaran</span><span class="bench-picker__kind">Evidence explorer</span></a><a href="projects/tutor.html#experiment" data-project="tutor" aria-controls="lab-tutor"><span class="bench-picker__no">02</span><span class="bench-picker__name">Tree tutor</span><span class="bench-picker__kind">Rotation bench</span></a><a href="projects/federated.html#experiment" data-project="federated" aria-controls="lab-federated"><span class="bench-picker__no">03</span><span class="bench-picker__name">Federated learning</span><span class="bench-picker__kind">Averaging bench</span></a>
+            </nav>
+            <p class="vh" aria-live="polite" data-bench-live></p>
+            <article class="lab bench bench--kaaran" data-lab="kaaran" id="lab-kaaran" aria-labelledby="lab-kaaran-title">
+          <header class="bench__bar">
+            <h3 class="bench__title" id="lab-kaaran-title"><span class="bench__no">Lab 01</span> Evidence explorer</h3>
+            <p class="bench__readout" data-k-readout>3 flagged clusters · EN</p>
+            <span class="prov prov--synthetic bench__prov">Synthetic data</span>
+            <div class="bench__tools">
+              <div class="language seg" role="group" aria-label="Evidence language">
+                <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button><button type="button" data-language="mr" lang="mr" aria-pressed="false">मराठी</button>
+              </div>
+              <button type="button" class="btn btn--text bench__reset" data-reset>Reset</button>
+            </div>
+          </header>
+          <div class="bench__body kflow-body" data-evidence-body lang="en">
+            <ol class="kflow">
+              <li class="kflow__step kflow__step--q">
+                <p class="kflow__label" lang="en"><span>01</span> Question</p>
+                <p class="kflow__meta" data-e-text="type">Education analytics · Synthetic sample</p>
+                <h4 class="kflow__question" data-e-text="question">Which block needs the most attention?</h4>
+              </li>
+              <li class="kflow__step kflow__step--a">
+                <p class="kflow__label" lang="en"><span>02</span> Analysis</p>
+                <figure class="kchart" lang="en">
+                  <svg class="kchart__svg" viewBox="0 0 290 124" role="img" aria-labelledby="kchart-title-h">
+                    <title id="kchart-title-h">Flagged clusters per block: Pandharpur 3, Karmala 1, Madha 1.</title>
+                    <g class="kchart__labels"><text x="0" y="22" dy="0.35em">Pandharpur</text><text x="0" y="66" dy="0.35em">Karmala</text><text x="0" y="110" dy="0.35em">Madha</text></g>
+                    <g class="kchart__lead"><g class="kchart__cell" data-k-cell data-k-pick="n.drop.08K03"><rect x="136" y="7" width="30" height="30" rx="2"/><text x="151" y="22" dy="0.35em" text-anchor="middle">a</text></g><g class="kchart__cell" data-k-cell data-k-pick="n.mig.gap.08K11"><rect x="174" y="7" width="30" height="30" rx="2"/><text x="189" y="22" dy="0.35em" text-anchor="middle">b</text></g><g class="kchart__cell" data-k-cell data-k-pick="n.drop.08K07"><rect x="212" y="7" width="30" height="30" rx="2"/><text x="227" y="22" dy="0.35em" text-anchor="middle">c</text></g></g>
+                    <g class="kchart__rest"><rect x="136" y="51" width="30" height="30" rx="2"/><rect x="136" y="95" width="30" height="30" rx="2"/></g>
+                    <g class="kchart__counts"><text class="is-lead" x="262" y="22" dy="0.35em">3</text><text x="186" y="66" dy="0.35em">1</text><text x="186" y="110" dy="0.35em">1</text></g>
+                  </svg>
+                  <figcaption class="kchart__cap">Flagged clusters per block, district sample</figcaption>
+                </figure>
+              </li>
+              <li class="kflow__step kflow__step--f">
+                <p class="kflow__label" lang="en"><span>03</span> Finding</p>
+                <p class="kflow__answer" data-e-text="answer">Pandharpur has three flagged clusters in the district sample.</p>
+              </li>
+              <li class="kflow__step kflow__step--e">
+                <p class="kflow__label" lang="en"><span>04</span> Evidence</p>
+                <details class="records">
+                  <summary class="records__summary"><span class="records__count" aria-hidden="true">3</span><span class="records__text" data-e-text="inspect">Inspect 3 clusters</span><svg class="icon icon--plus records__sign" aria-hidden="true" focusable="false"><use href="assets/icons.svg#plus"></use></svg></summary>
+                  <noscript><ul class="records__plain">
+                    <li>Bhalwad Khurd Kendra · Relative mathematics decline of 11.6 percentage points.</li>
+                    <li>Bhalpur Kendra · Seasonal attendance gap of 14.7 percentage points.</li>
+                    <li>Takangaon Kendra · Relative mathematics decline of 7.4 percentage points.</li>
+                  </ul>
+                  <p class="records__plain-link"><a class="evidence" href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur">Read the block evidence <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p></noscript>
                   <div class="evidence-detail">
-                    <label for="cluster" data-e-text="choose">Select a cluster</label
-                    ><select id="cluster">
-                      <option>Bhalwad Khurd Kendra</option>
-                      <option>Bhalpur Kendra</option>
-                      <option>Takangaon Kendra</option>
-                    </select>
-                    <div class="source-extract" aria-live="polite">
-                      <h4 data-record-name>Bhalwad Khurd Kendra</h4>
-                      <p data-record-finding>
-                        The mathematics score fell 11.6 points more than elsewhere in the block.
-                      </p>
-                      <p data-record-period></p>
-                      <ul data-workbooks></ul>
-                      <a
-                        class="source-link"
-                        data-record-url
-                        href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03"
-                        >View source record</a
-                      >
+                    <ol class="kledger" data-k-ledger aria-hidden="true"><li class="kledger__row" data-k-pick="n.drop.08K03" aria-current="true"><span class="kledger__key">a</span><span class="kledger__name">Bhalwad Khurd Kendra</span><span class="kledger__value" lang="en">11.6 pp</span></li><li class="kledger__row" data-k-pick="n.mig.gap.08K11"><span class="kledger__key">b</span><span class="kledger__name">Bhalpur Kendra</span><span class="kledger__value" lang="en">14.7 pp</span></li><li class="kledger__row" data-k-pick="n.drop.08K07"><span class="kledger__key">c</span><span class="kledger__name">Takangaon Kendra</span><span class="kledger__value" lang="en">7.4 pp</span></li></ol>
+                    <div class="kfield">
+                      <label for="cluster" data-e-text="choose">Why does this cluster need attention?</label>
+                      <select id="cluster"><option value="n.drop.08K03">Bhalwad Khurd Kendra</option><option value="n.mig.gap.08K11">Bhalpur Kendra</option><option value="n.drop.08K07">Takangaon Kendra</option></select>
                     </div>
-                    <small data-snapshot></small>
+                    <div class="source-extract" aria-live="polite">
+                      <h4 class="source-extract__name" data-record-name>Bhalwad Khurd Kendra</h4>
+                      <p class="source-extract__finding" data-record-finding>The decline in mathematics scores across 12 schools was 11.6 percentage points greater than in the rest of the block.</p>
+                      <p class="source-extract__period" data-record-period>Comparison period · 2024–25 to 2025–26</p>
+                      <ul class="source-extract__files" data-workbooks><li>fln_assessment_2024-25.xlsx</li><li>fln_assessment_2025-26.xlsx</li></ul>
+                      <a class="evidence" data-record-url href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03"><span data-record-url-label>View source record</span> <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a>
+                    </div>
                   </div>
                 </details>
+              </li>
+            </ol>
+          </div>
+          <footer class="bench__foot">
+            <p class="bench__source"><span class="label">Source</span> <span class="bench__snapshot" data-snapshot lang="en">Synthetic evidence captured · 2026-11-21</span> <span class="bench__sep" aria-hidden="true">·</span> <a class="evidence" href="https://kaaran-vk5o.onrender.com">Live demo <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a> <span class="bench__aside">The free host may take a minute to wake.</span></p>
+            <a class="study-link btn btn--text" href="projects/kaaran.html"><span class="btn__inner">Read the case study <svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></a>
+          </footer>
+        </article>
+            <article class="lab bench bench--tutor" data-lab="tutor" id="lab-tutor" aria-labelledby="lab-tutor-title" hidden>
+          <header class="bench__bar">
+            <h3 class="bench__title" id="lab-tutor-title"><span class="bench__no">Lab 02</span> Rotation bench</h3>
+            <p class="bench__readout" data-tree-reading>Root 30 · Balance factor at node 30 = 2</p>
+            <span class="prov prov--illustrative bench__prov">Local demonstration</span>
+            <div class="bench__tools"><button type="button" class="btn btn--text bench__reset" data-reset>Reset</button></div>
+          </header>
+          <div class="bench__body">
+            <div class="bench__stage tree-stage">
+              <svg class="tree-svg" viewBox="0 0 360 280" aria-label="AVL tree diagram" role="group">
+                <defs><pattern id="tree-hatch-h" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" class="thull__ground"/><path d="M0 0v7" class="thull__line"/></pattern></defs>
+                <g class="thull" data-hull></g>
+                <g class="taxis" aria-hidden="true"><path d="M30 244H330" class="taxis__rule"/><path d="M70 240v8"/><path d="M180 240v8"/><path d="M290 240v8"/><g class="taxis__keys" text-anchor="middle"><text x="70" y="266">10</text><text x="180" y="266">20</text><text x="290" y="266">30</text></g></g>
+                <g data-edges></g>
+                <g data-nodes></g>
+              </svg>
+              <p class="tree-legend" aria-hidden="true"><span class="tree-legend__item tree-legend__item--pick">Selected</span><span class="tree-legend__item tree-legend__item--fail">Outside the range</span><span class="tree-legend__item tree-legend__item--heavy">Heavier subtree</span><span class="tree-legend__item tree-legend__item--axis">In-order keys</span></p>
+            </div>
+            <div class="bench__controls">
+              <p class="bench__prompt">Restore the balance.</p>
+              <p class="bench__note">Choose a node, then rotate its subtree. A balanced AVL tree has a balance factor of −1, 0 or 1 at every node: the height of the left subtree minus the height of the right.</p>
+              <div class="lab-fields">
+                <label class="field"><span class="field__label">Insertion order</span><select data-sequence><option value="ll">30, 20, 10</option><option value="lr">30, 10, 20</option></select></label>
+                <label class="field"><span class="field__label">Selected node</span><select data-node><option>30</option><option>20</option><option>10</option></select></label>
               </div>
-              <div class="lab-foot">
-                <a href="projects/kaaran.html" class="study-link"
-                  ><svg
-                    class="icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-                    /></svg
-                  >Read case study</a
-                >
+              <div class="commands">
+                <button type="button" class="btn btn--ghost btn--sm" data-rotate="left" data-unavailable><span class="btn__inner"><svg class="icon icon--arrow-left icon--static" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-left"></use></svg>Rotate left <kbd class="kbd">L</kbd></span></button><button type="button" class="btn btn--ghost btn--sm" data-rotate="right"><span class="btn__inner">Rotate right <kbd class="kbd">R</kbd><svg class="icon icon--arrow-right icon--static" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></button><button type="button" class="btn btn--ghost btn--sm" data-undo disabled><span class="btn__inner"><svg class="icon icon--reset icon--static" aria-hidden="true" focusable="false"><use href="assets/icons.svg#reset"></use></svg>Undo <span class="kbd-pair"><kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">Z</kbd></span></span></button>
               </div>
-            </article>
-            <article class="lab lab-tutor" data-lab="tutor" id="lab-tutor" hidden>
-              <div class="lab-heading">
-                <span class="lab-symbol"
-                  ><svg
-                    class="icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="5" r="2.5" />
-                    <circle cx="5" cy="18" r="2.5" />
-                    <circle cx="19" cy="18" r="2.5" />
-                    <path d="m11 7-5 9m7-9 5 9" /></svg
-                ></span>
-                <h2>Tree tutor</h2>
-              </div>
-              <div class="tree-stage">
-                <svg viewBox="0 0 340 145" aria-label="AVL tree diagram" role="group">
-                  <g data-edges></g>
-                  <g data-nodes></g>
+              <p class="tree-hint" data-tree-hint>Rotate right at 30 promotes 20. Node 30 has no right child, so it cannot rotate left.</p>
+              <p class="tree-keys">On a node: arrow keys move between nodes, <kbd class="kbd">L</kbd> or <kbd class="kbd">R</kbd> rotates.</p>
+              <table class="tree-checks">
+                <caption>Validator · every node, after every move</caption>
+                <thead><tr><th scope="col">Node</th><th scope="col">Height</th><th scope="col">bf</th><th scope="col">Check</th></tr></thead>
+                <tbody data-tree-checks><tr class="is-ok"><th scope="row">10</th><td>1</td><td>0</td><td>Within range</td></tr><tr class="is-ok"><th scope="row">20</th><td>2</td><td>+1</td><td>Within range</td></tr><tr class="is-fail"><th scope="row">30</th><td>3</td><td>+2</td><td>AVL-002 · out of range</td></tr></tbody>
+              </table>
+              <div class="tree-log"><p class="label">Moves</p><ol data-tree-log><li class="is-empty">No rotations yet. Insertion order 30, 20, 10.</li></ol></div>
+              <noscript><p class="bench__noscript">For insertion order 30, 20, 10, a right rotation at 30 promotes node 20. Its children are 10 and 30. For 30, 10, 20, rotate left at 10 first, then right at 30.</p></noscript>
+            </div>
+          </div>
+          <footer class="bench__foot">
+            <div class="bench__reading"><p class="label">Reading</p><p class="feedback" data-tree-status role="status">Node 30 has balance factor 2 (must be −1, 0 or 1). Its left child 20 also leans left (balance factor +1), so this is the LL case: rotate right at 30.</p></div>
+            <p class="bench__source"><span class="label">Source</span> A local demonstration I built that follows the tutor’s balance-factor rules. Team project with Niraj Chavan; repository maintained by Niraj. <a class="evidence" href="https://github.com/Niraj-Chavan/nuerosymbolic-agentic-ai/blob/87d8dd039baa2bd7b24db7862cc261cf76ef09b5/ai_tree_tutor/backend/app/validators/avl_validator.py">Validator · 87d8dd0 <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p>
+            <a class="study-link btn btn--text" href="projects/tutor.html"><span class="btn__inner">Read the case study <svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></a>
+          </footer>
+        </article>
+            <article class="lab bench bench--fed" data-lab="federated" id="lab-federated" aria-labelledby="lab-federated-title" hidden>
+          <header class="bench__bar">
+            <h3 class="bench__title" id="lab-federated-title"><span class="bench__no">Lab 03</span> Averaging bench</h3>
+            <p class="bench__readout">Global parameter <output data-average>3</output></p>
+            <span class="prov prov--illustrative bench__prov">Illustrative</span>
+            <div class="bench__tools"><button type="button" class="btn btn--text bench__reset" data-equal>Reset counts</button></div>
+          </header>
+          <div class="bench__body">
+            <div class="bench__stage fed-stage">
+              <figure class="fed-fig">
+                <svg class="fsvg" viewBox="0 0 400 248" role="img" aria-label="Clients A, B and C hold parameters 1, 3 and 5 with 1, 1, 1 samples, shares 34%, 33%, 33%. The server’s weighted average is 3." data-fed-svg>
+                  <g class="fsvg__links"><line class="fsvg__link" data-fed-link x1="93.33" y1="66" x2="200" y2="170" stroke-width="6.25"/><line class="fsvg__link" data-fed-link x1="200.00" y1="66" x2="200" y2="170" stroke-width="6.25"/><line class="fsvg__link" data-fed-link x1="306.67" y1="66" x2="200" y2="170" stroke-width="6.25"/></g>
+                  <g class="fsvg__clients"><g class="fsvg__client"><rect x="43.33" y="6" width="100" height="60" rx="2"/><text x="93.33" y="28" dy="0.35em" text-anchor="middle" class="fsvg__name">A<tspan class="fsvg__w" dx="12">w=1</tspan></text><text x="93.33" y="50" dy="0.35em" text-anchor="middle" class="fsvg__n" data-fed-n>n=1</text></g><g class="fsvg__client"><rect x="150.00" y="6" width="100" height="60" rx="2"/><text x="200.00" y="28" dy="0.35em" text-anchor="middle" class="fsvg__name">B<tspan class="fsvg__w" dx="12">w=3</tspan></text><text x="200.00" y="50" dy="0.35em" text-anchor="middle" class="fsvg__n" data-fed-n>n=1</text></g><g class="fsvg__client"><rect x="256.67" y="6" width="100" height="60" rx="2"/><text x="306.67" y="28" dy="0.35em" text-anchor="middle" class="fsvg__name">C<tspan class="fsvg__w" dx="12">w=5</tspan></text><text x="306.67" y="50" dy="0.35em" text-anchor="middle" class="fsvg__n" data-fed-n>n=1</text></g></g>
+                  <g class="fsvg__axis"><path d="M40 178H360" class="fsvg__rule"/><path d="M40.00 178v7"/><path d="M93.33 178v7"/><path d="M146.67 178v7"/><path d="M200.00 178v7"/><path d="M253.33 178v7"/><path d="M306.66 178v7"/><path d="M360.00 178v7"/><g class="fsvg__ticks" text-anchor="middle"><text x="40.00" y="204">0</text><text x="93.33" y="204">1</text><text x="146.67" y="204">2</text><text x="200.00" y="204">3</text><text x="253.33" y="204">4</text><text x="306.66" y="204">5</text><text x="360.00" y="204">6</text></g></g>
+                  <g class="fsvg__mean" data-fed-mean transform="translate(200 0)"><path d="M0 168l9 14h-18z"/><text x="0" y="234" text-anchor="middle" data-fed-mean-label>3</text></g>
                 </svg>
+                <figcaption class="fig__cap fed-fig__cap"><span class="fig__no">Fig. L3</span> <span class="fig__text">One aggregation round. Each line’s weight is that client’s share n ÷ N of all samples; the marker on the 0–6 scale is the weighted average the server sends back.</span> <span class="prov prov--illustrative">Illustrative parameters (1, 3, 5) — not model results</span></figcaption>
+              </figure>
+              <div class="fed-math">
+                <p class="label">Weighted average</p>
+                <p class="formula" data-equation aria-live="polite">(1 × 1 + 3 × 1 + 5 × 1) <span class="formula__tail">÷ 3 = <b>3</b></span></p>
+                <table class="ftable" data-contrib>
+                  <caption class="vh">Each client’s contribution: its share of all samples times its parameter</caption>
+                  <thead><tr><th scope="col">Client</th><th scope="col">n</th><th scope="col">n ÷ N</th><th scope="col">w</th><th scope="col">n ÷ N × w</th></tr></thead>
+                  <tbody><tr><th scope="row">A</th><td>1</td><td>1/3</td><td>1</td><td>0.333</td></tr><tr><th scope="row">B</th><td>1</td><td>1/3</td><td>3</td><td>1</td></tr><tr><th scope="row">C</th><td>1</td><td>1/3</td><td>5</td><td>1.667</td></tr></tbody>
+                  <tfoot><tr><th scope="row">Total</th><td>3</td><td>1</td><td></td><td>3</td></tr></tfoot>
+                </table>
+                <div class="weight-plot" aria-hidden="true"><span><i style="--height: 38.67px; --share: 0.3333; --cum: 0.3333"></i><small>A · 34%</small></span><span><i style="--height: 38.67px; --share: 0.3333; --cum: 0.6667"></i><small>B · 33%</small></span><span><i style="--height: 38.67px; --share: 0.3333; --cum: 1.0000"></i><small>C · 33%</small></span></div>
               </div>
-              <div class="lab-body">
-                <div class="lab-meta">Data structures · AVL rotation</div>
-                <h3>Restore the balance.</h3>
-                <p>
-                  Choose a node and rotate its subtree. A balanced AVL tree has a balance factor between
-                  −1 and 1 at every node.
-                </p>
-                <div class="lab-fields">
-                  <label
-                    >Insertion order<select data-sequence>
-                      <option value="ll">30, 20, 10</option>
-                      <option value="lr">30, 10, 20</option>
-                    </select></label
-                  >
-                  <label
-                    >Selected node<select data-node>
-                      <option>30</option>
-                      <option>20</option>
-                      <option>10</option>
-                    </select></label
-                  >
-                </div>
-                <p data-tree-reading class="tree-reading"></p>
-                <div class="commands">
-                  <button type="button" data-rotate="left">Rotate left</button
-                  ><button type="button" data-rotate="right">Rotate right</button
-                  ><button type="button" data-undo disabled>Undo</button
-                  ><button type="button" data-reset>Reset</button>
-                </div>
-                <p class="feedback" data-tree-status role="status">
-                  Select a rotation to test the structure.
-                </p>
-                <noscript
-                  ><p>
-                    For insertion order 30, 20, 10, a right rotation at 30 promotes node 20. Its children
-                    are 10 and 30.
-                  </p></noscript
-                >
-              </div>
-              <div class="lab-foot">
-                <a href="projects/tutor.html" class="study-link"
-                  ><svg
-                    class="icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-                    /></svg
-                  >Read case study</a
-                >
-              </div>
-            </article>
-            <article class="lab lab-federated" data-lab="federated" id="lab-federated" hidden>
-              <div class="lab-heading">
-                <span class="lab-symbol"
-                  ><svg
-                    class="icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm9 5-9 5-9-5m9 5v10" /></svg
-                ></span>
-                <h2>Federated learning</h2>
-              </div>
-              <div class="average-stage">
-                <div><span>Global parameter</span><output data-average>3</output></div>
-                <div class="weight-plot" aria-hidden="true">
-                  <span><i style="--height: 16px"></i><small>A</small></span
-                  ><span><i style="--height: 48px"></i><small>B</small></span
-                  ><span><i style="--height: 80px"></i><small>C</small></span>
+            </div>
+            <div class="bench__controls">
+              <p class="bench__prompt">Weight the client updates.</p>
+              <p class="bench__note">Each client trains locally and sends one parameter w. The server weights each update by that client’s share of the samples, n ÷ N, and adds them up.</p>
+              <div class="lab-fields client-fields">
+                <div class="fclient">
+                  <p class="fclient__head"><span class="fclient__name">Client A</span><span class="fclient__w">w = 1</span></p>
+                  <div class="fclient__inputs">
+                    <input class="fclient__range" type="range" min="0" max="100" step="1" value="1" data-client-range aria-label="Client A samples, slider from 0 to 100" aria-valuetext="1 samples">
+                    <input class="fclient__num" id="fed-a-h" data-client type="number" min="0" max="9999" value="1" step="1" inputmode="numeric" aria-label="Sample count for client A">
+                  </div>
+                </div><div class="fclient">
+                  <p class="fclient__head"><span class="fclient__name">Client B</span><span class="fclient__w">w = 3</span></p>
+                  <div class="fclient__inputs">
+                    <input class="fclient__range" type="range" min="0" max="100" step="1" value="1" data-client-range aria-label="Client B samples, slider from 0 to 100" aria-valuetext="1 samples">
+                    <input class="fclient__num" id="fed-b-h" data-client type="number" min="0" max="9999" value="1" step="1" inputmode="numeric" aria-label="Sample count for client B">
+                  </div>
+                </div><div class="fclient">
+                  <p class="fclient__head"><span class="fclient__name">Client C</span><span class="fclient__w">w = 5</span></p>
+                  <div class="fclient__inputs">
+                    <input class="fclient__range" type="range" min="0" max="100" step="1" value="1" data-client-range aria-label="Client C samples, slider from 0 to 100" aria-valuetext="1 samples">
+                    <input class="fclient__num" id="fed-c-h" data-client type="number" min="0" max="9999" value="1" step="1" inputmode="numeric" aria-label="Sample count for client C">
+                  </div>
                 </div>
               </div>
-              <div class="lab-body">
-                <div class="lab-meta">Federated averaging · Illustrative values</div>
-                <h3>Weight the client updates.</h3>
-                <p>
-                  Each client contributes one parameter. Change its sample count to see how much
-                  influence it has.
-                </p>
-                <div class="lab-fields client-fields">
-                  <label
-                    >Client A<small>Parameter 1</small
-                    ><input
-                      data-client
-                      type="number"
-                      min="0"
-                      max="9999"
-                      value="1"
-                      step="1"
-                      aria-label="Sample count for client A" /></label
-                  ><label
-                    >Client B<small>Parameter 3</small
-                    ><input
-                      data-client
-                      type="number"
-                      min="0"
-                      max="9999"
-                      value="1"
-                      step="1"
-                      aria-label="Sample count for client B" /></label
-                  ><label
-                    >Client C<small>Parameter 5</small
-                    ><input
-                      data-client
-                      type="number"
-                      min="0"
-                      max="9999"
-                      value="1"
-                      step="1"
-                      aria-label="Sample count for client C"
-                  /></label>
-                </div>
-                <p class="formula" data-equation aria-live="polite">(1 × 1 + 3 × 1 + 5 × 1) ÷ 3 = 3</p>
-                <button type="button" class="plain-button" data-equal>Reset counts</button>
+              <p class="bench__error" id="fed-error-h" data-fed-error hidden>Use whole numbers from 0 to 9,999.</p>
+              <p class="bench__note fed-zero">With every count at 0 there is nothing to weight: N = 0, and the average is undefined.</p>
+            </div>
+          </div>
+          <footer class="bench__foot">
+            <p class="bench__source"><span class="label">Source</span> Illustrative parameters (1, 3, 5) — not model results. The arithmetic runs in your browser; the study’s results will be added with the published paper.</p>
+            <a class="study-link btn btn--text" href="projects/federated.html"><span class="btn__inner">Read the case study <svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></a>
+          </footer>
+        </article>
+          </div>
+          <p class="bench-home__more"><a class="btn btn--text" href="projects/notebook.html"><span class="btn__inner">Open the engineering notebook <svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></span></a></p>
+        </div>
+      </section>
+      <!-- /region:bench -->
+      <!-- region:record (owner D) -->
+      <div class="record" id="record" data-surface="paper">
+        <div class="grid section-head rec-head">
+          <div class="running-head" aria-hidden="true"><span><b>IV</b> — Research &amp; about</span><span>Papers, patent, background</span><span>p. 04</span></div>
+          <h2 class="section-head__title t-display" id="record-title" data-reveal>In print, <em>and in person.</em></h2>
+          <p class="section-head__dek rec-head__dek">Research papers, intellectual property and credentials, with links to public records where available.</p>
+          <p class="section-head__note rec-head__note">The research record includes published work and accepted manuscripts.</p>
+        </div>
+        <div class="grid rec-body">
+          <div class="rec-left">
+            <section class="research" id="research" aria-labelledby="research-heading">
+              <h3 class="rec-label" id="research-heading"><span class="rec-label__no">IV.1</span> Publications and intellectual property</h3>
+              <!-- Research records follow the later evidence decisions in ledger §0b. -->
+              <ol class="pubs" data-reveal="lines">
+                <li class="pub">
+                  <p class="pub__meta"><span class="pub__no">R.01</span><span class="pub__kind">Conference paper · IEEE · 2026</span><span class="chip">Published</span><span class="chip">Presented</span></p>
+                  <h4 class="pub__title"><cite>Lightweight Handwritten Character Recognition Using EfficientNetB0: Transfer Learning and Augmentation Ablation on EMNIST Balanced</cite></h4>
+                  <p class="pub__authors">V. Sonwane, <b>D. Chaudhari</b>, R. Chandorkar, A. Chandewar, F. Chaudhari, P. Chandak.</p>
+                  <p class="pub__venue">2026 International Conference on Natural Language Processing and Computer Vision (ICNPCV), IEEE, pp. 1–8. Presented at Global Academy of Technology, Bengaluru, 17–18 July 2026.</p>
+                  <p class="pub__links"><span class="cite" aria-hidden="true">[a]</span><a class="evidence" href="https://doi.org/10.1109/icnpcv69434.2026.11708952">DOI<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> 10.1109/icnpcv69434.2026.11708952 (opens external site)</span></a><span class="pub__id">doi:10.1109/icnpcv69434.2026.11708952</span></p>
+                </li>
+                <li class="pub">
+                  <p class="pub__meta"><span class="pub__no">R.02</span><span class="pub__kind">Conference paper · 2026</span><span class="chip">Accepted</span></p>
+                  <h4 class="pub__title"><cite>Federated Learning Framework for Privacy-Preserving and Cross-Cultural ASD Detection from Facial Images</cite></h4>
+                  <p class="pub__authors">Saraswati Patil, <b>Durgesh Chaudhari</b>, Niraj Chavan, Anjali Chandewar and Falguni Chaudhari.</p>
+                  <p class="pub__venue">5th International Conference on Deep Sciences for Computing and Communications (IConDeepCom 2026). Camera-ready paper ICONDEEPCOM26_079.</p>
+                  <p class="pub__links"><span class="cite" aria-hidden="true">[b]</span><a class="evidence" href="https://icondeepcom.wordpress.com/">Conference site<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a><a class="pub__more" href="projects/federated.html">Research case study<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a></p>
+                </li>
+                <li class="pub">
+                  <p class="pub__meta"><span class="pub__no">R.03</span><span class="pub__kind">Research manuscript</span><span class="chip">Accepted</span></p>
+                  <h4 class="pub__title"><cite>Neuro-Symbolic Agentic AI for Concept-Level Learning and Misconception Repair</cite></h4>
+                  <p class="pub__authors">Saraswati V. Patil, Falguni P. Chaudhari, Anjali Y. Chandewar, Niraj B. Chavan and <b>Durgesh N. Chaudhari</b>.</p>
+                  <!-- TODO(durgesh): supply venue, date and independent acceptance record. -->
+                  <p class="pub__links"><a class="pub__more" href="projects/tutor.html">Tutor case study</a></p>
+                </li>
+                <li class="pub">
+                  <p class="pub__meta"><span class="pub__no">R.04</span><span class="pub__kind">Patent · 2026</span><span class="chip">Granted</span></p>
+                  <h4 class="pub__title"><cite>A System Consisting of Solar Technology with Hydroponics</cite></h4>
+                  <p class="pub__venue">One of eight co-inventors. Vishwakarma Institute of Technology filed application 2025/09215 on 31 October 2025. The grant was recorded on 24 June 2026.</p>
+                  <!-- TODO(durgesh): add a public grant-register link when available. The university record below documents the filing. -->
+                  <p class="pub__links"><span class="cite" aria-hidden="true">[c]</span><a class="evidence" href="https://www.vit.edu/wp-content/uploads/2026/05/VIT-IPR-Filed.pdf#page=58">Filing register, p. 58<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (PDF, opens external site)</span></a></p>
+                </li>
+              </ol>
+            </section>
+            <section class="recog" aria-labelledby="recog-heading">
+              <h3 class="rec-label" id="recog-heading"><span class="rec-label__no">IV.2</span> Recognition and certifications</h3>
+              <ul class="creds" data-reveal="lines">
+                <li class="cred cred--lead">
+                  <p class="cred__meta"><span>Hackathon · Oct–Nov 2026</span><span class="chip">Build stage · top 30</span></p>
+                  <p class="cred__text">Kaaran (Team EASY COMPANY, 4 members) was selected for the Build stage (top 30 teams) of the AI for Foundational Learning Hackathon, run by ShikshaNext in collaboration with Anthropic.</p>
+                  <p class="pub__links"><span class="cite" aria-hidden="true">[d]</span><a class="evidence" href="https://hack2skill.com/event/aiforfoundationallearning">Event page<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a><a class="pub__more" href="projects/kaaran.html">Kaaran case study<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"></use></svg></a></p>
+                </li>
+                <li class="cred"><p class="cred__name">Microsoft Certified: Azure AI Fundamentals (AI-900)</p><p class="cred__when">29 June 2026 · Credential ID B95FB0D40BFFDBF9</p></li>
+                <li class="cred"><p class="cred__name"><a href="https://coursera.org/verify/specialization/IUL2VTFTL1RV">Deep Learning Specialization</a></p><p class="cred__by">DeepLearning.AI · Coursera</p><p class="cred__when">November 2026</p></li>
+                <li class="cred"><p class="cred__name"><a href="https://coursera.org/verify/professional-cert/IRVG1NOM9YUA">IBM Full Stack Software Developer Professional Certificate</a></p><p class="cred__by">IBM · Coursera</p><p class="cred__when">October 2026</p></li>
+                <li class="cred"><p class="cred__name"><a href="https://coursera.org/verify/professional-cert/S1MQHA14ZOTD">Google AI Professional Certificate</a></p><p class="cred__by">Google · Coursera</p><p class="cred__when">October 2026</p></li>
+                <li class="cred"><p class="cred__name">AB-100 exam passed</p><p class="cred__by">Agentic AI Business Solutions Architect certification pending.</p></li>
+                <li class="cred"><p class="cred__name">LeetCode 100 Days Badge</p><p class="cred__by"><a href="https://leetcode.com/u/strangeDC/">Algorithm practice on LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p></li>
+              </ul>
+              <!-- TODO(durgesh): add Microsoft Learn share links for AI-900 and AB-100 when available. -->
+            </section>
+          </div>
+          <section class="about" id="about" aria-labelledby="about-title">
+            <h3 class="rec-label" id="about-title"><span class="rec-label__no">IV.3</span> About</h3>
+            <p class="about__lead" data-reveal>I’m a third-year B.Tech Computer Engineering student at Vishwakarma Institute of Technology (VIT), Pune. I build LLM applications where code, not the model, is responsible for the facts.</p>
+            <div class="about__approach">
+              <h4 class="about__h">How I approach a problem</h4>
+              <p class="about__principle">Split the work by what each part can be trusted with: code computes the figures, the language model explains them.</p>
+              <p>In Kaaran, Claude turns each question into a validated plan and writes sentences with placeholders; pandas code computes every figure, and a deterministic verifier rejects generated text that contains digits, school names or unsupported causal claims.</p>
+              <p>I start other problems the same way: decide what code must compute and check, let the language model explain the result, and keep a path that still works when the model is unavailable.</p>
+            </div>
+            <dl class="facts facts--stack about__facts">
+              <div><dt>Focus</dt><dd>LLM systems, ML, algorithms</dd></div>
+              <div><dt>Open to</dt><dd>AI engineering internships</dd></div>
+              <div><dt>Based in</dt><dd>Pune, India</dd></div>
+            </dl>
+            <div class="about__cols">
+              <div class="skills">
+                <h4 class="about__h">Selected skills</h4>
+                <dl class="skills__list">
+                  <div><dt>LLM engineering</dt><dd>Claude API with JSON-schema plans, placeholder-constrained generation with deterministic verification, recorded-replay evaluation, RAG over FAISS, local models via Ollama</dd></div>
+                  <div><dt>Backend and data</dt><dd>Python, FastAPI, pandas, DuckDB, PHP 8.2, MySQL, SQL</dd></div>
+                  <div><dt>ML</dt><dd>scikit-learn, XGBoost, PyTorch, SHAP, TensorFlow/Keras (transfer learning)</dd></div>
+                  <div><dt>Systems and delivery</dt><dd>C++17, Docker, Render, GitHub Actions, pytest, GoogleTest</dd></div>
+                </dl>
               </div>
-              <div class="lab-foot">
-                <a href="projects/federated.html" class="study-link"
-                  ><svg
-                    class="icon"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-                    /></svg
-                  >Read case study</a
-                >
+              <div class="edu">
+                <h4 class="about__h">Education</h4>
+                <p class="edu__deg">B.Tech, Computer Engineering</p>
+                <p class="edu__school">Vishwakarma Institute of Technology (VIT), Pune</p>
+                <p class="edu__meta"><span>2024–2028 (expected)</span><span>CGPA 8.94</span></p>
               </div>
-            </article>
+            </div>
+            <div class="about__links">
+              <a class="btn btn--primary" href="assets/Durgesh-Chaudhari-Resume.pdf" download data-magnetic><span class="btn__inner">Download résumé <span class="btn__tag">PDF</span><svg class="icon icon--download" aria-hidden="true" focusable="false"><use href="assets/icons.svg#download"></use></svg></span></a>
+              <a class="btn btn--text" href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a>
+              <a class="btn btn--text" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a>
+            </div>
           </section>
         </div>
-      </section>
-      <section class="wrap work-section" id="work" aria-labelledby="work-title">
-        <div class="section-head">
-          <div>
-            <p class="overline">Collaborative engineering</p>
-            <h2 id="work-title">Selected <em>work.</em></h2>
-          </div>
-          <p>
-            Four projects co-built with
-            <a href="https://github.com/Niraj-Chavan" class="">Niraj Chavan</a>, spanning offline
-            software, language interfaces and learning systems.
-          </p>
-        </div>
-        <div class="work-board">
-          <article class="work-card smart">
-            <div class="work-copy">
-              <span class="discipline">Offline-first software</span>
-              <h3>SmartCare</h3>
-              <p>
-                A symptom-checking application designed for low-connectivity settings, with local storage
-                in the browser.
-              </p>
-              <div class="tech"><span>React</span><span>IndexedDB</span></div>
-              <a
-                href="https://github.com/Niraj-Chavan/SMARTCARE-AN-offline-First-AI-system"
-                class="text-link"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-13-2 16" /></svg
-                >Project repository</a
-              >
-            </div>
-            <figure class="smart-visual">
-              <img
-                src="assets/smartcare-screen.webp"
-                alt="SmartCare symptom checker with an offline status indicator"
-                width="1000"
-                height="676"
-                loading="lazy"
-              />
-              <figcaption>Application running offline</figcaption>
-            </figure>
-          </article>
-          <article class="work-card review">
-            <figure class="review-visual">
-              <img
-                src="assets/review-screen.webp"
-                alt="Review Summarizer extension with a product rating and review breakdown"
-                width="523"
-                height="1100"
-                loading="lazy"
-              />
-              <figcaption>Extension interface · Synthetic review data</figcaption>
-            </figure>
-            <div class="work-copy">
-              <span class="discipline">Browser extension</span>
-              <h3>Review Summarizer</h3>
-              <p>
-                A browser extension that groups product reviews by aspect and combines keyword and
-                semantic search to retrieve evidence.
-              </p>
-              <a class="text-link review-notebook" href="projects/notebook.html#retrieval"
-                >Try the ranking experiment →</a
-              >
-              <a href="https://github.com/Niraj-Chavan/review-summarizer" class="text-link"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-13-2 16" /></svg
-                >Project repository</a
-              >
-            </div>
-          </article>
-          <article class="work-card exam">
-            <div class="tile-symbol">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m2 9 10-5 10 5-10 5L2 9Zm4 3v5c3 3 9 3 12 0v-5" />
-              </svg>
-            </div>
-            <div class="work-copy">
-              <span class="discipline">Full-stack software</span>
-              <h3>Exam Management System</h3>
-              <p>
-                Question banks, timed assessments and exam results in a shared platform for students and
-                administrators.
-              </p>
-              <a href="https://github.com/Niraj-Chavan/DBMS-CP" class="text-link"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-13-2 16" /></svg
-                >Project repository</a
-              >
-            </div>
-          </article>
-          <article class="work-card learning">
-            <div class="tile-symbol">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="5" r="2.5" />
-                <circle cx="5" cy="18" r="2.5" />
-                <circle cx="19" cy="18" r="2.5" />
-                <path d="m11 7-5 9m7-9 5 9" />
-              </svg>
-            </div>
-            <div class="work-copy">
-              <span class="discipline">Agentic learning systems</span>
-              <h3>Neuro-symbolic tree tutor</h3>
-              <p>
-                A seven-agent tutor combines rule-based validation with explanations of misconceptions
-                across six tree structures.
-              </p>
-              <a href="projects/tutor.html#experiment" class="text-link"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="5" r="2.5" />
-                  <circle cx="5" cy="18" r="2.5" />
-                  <circle cx="19" cy="18" r="2.5" />
-                  <path d="m11 7-5 9m7-9 5 9" /></svg
-                >Open tree lab</a
-              >
-            </div>
-          </article>
-        </div>
-      </section>
-      <section class="notebook-preview" aria-labelledby="notebook-title">
-        <div class="wrap notebook-spread">
-          <div>
-            <p class="overline light-label">Interactive studies</p>
-            <h2 id="notebook-title">Engineering <em>notebook.</em></h2>
-            <p>
-              Two questions from my project repositories, with the inputs and results open for
-              inspection.
-            </p>
-          </div>
-          <div class="notebook-index">
-            <a href="projects/notebook.html#trees">
-              <span
-                ><small>C++ · Data structures</small><strong>How tall does a tree grow?</strong
-                ><span>Compare 27 benchmark runs.</span></span
-              >
-              <span class="index-arrow" aria-hidden="true">↗</span>
-            </a>
-            <a href="projects/notebook.html#retrieval">
-              <span
-                ><small>Python · Information retrieval</small
-                ><strong>Which review surfaces first?</strong
-                ><span>Trace a search result back to its ranks.</span></span
-              >
-              <span class="index-arrow" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="research-band" id="research" aria-labelledby="research-heading">
-        <div class="wrap research-grid">
-          <div>
-            <p class="overline">Publications & intellectual property</p>
-            <h2 id="research-heading">Research <em>record.</em></h2>
-            <div class="research-counts">
-              <div><strong>3</strong><span>Conference papers</span></div>
-              <div><strong>1</strong><span>Granted patent</span></div>
-            </div>
-            <a href="assets/Durgesh-Chaudhari-Resume.pdf" class="text-link"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M5 2h9l5 5v15H5z M14 2v6h5M8 13h8m-8 4h6" /></svg
-              >Résumé and credentials</a
-            >
-          </div>
-          <article class="paper">
-            <div class="paper-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M6 3h14v17H6zM3 7v15h12M9 8h8m-8 4h8m-8 4h4" /></svg
-              ><span>IConDeepCom · 2026</span>
-            </div>
-            <h3>
-              Federated Learning Framework for Privacy-Preserving and Cross-Cultural ASD Detection from
-              Facial Images
-            </h3>
-            <p>
-              Co-authored conference research on cross-client training and evaluation across three
-              datasets.
-            </p>
-            <div class="paper-links">
-              <a href="projects/federated.html" class="text-link"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-                  /></svg
-                >Research case study</a
-              ><a href="https://in.linkedin.com/in/niraj-chavan-2a2442311" class="text-link"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="m10 14 4-4m-6 2-2 2a3.5 3.5 0 0 0 5 5l3-3m-4-8 3-3a3.5 3.5 0 0 1 5 5l-2 2"
-                  /></svg
-                >Co-author’s record</a
-              >
-            </div>
-          </article>
-        </div>
-      </section>
-      <section class="wrap about-grid" id="about" aria-labelledby="about-title">
-        <div class="about-art">
-          <img
-            src="assets/geometry.webp"
-            width="1176"
-            height="882"
-            alt="A cobalt trefoil knot formed by interwoven curves"
-            loading="lazy"
-          />
-        </div>
-        <div>
-          <p class="overline">Background</p>
-          <h2 id="about-title">About <em>me.</em></h2>
-          <p class="about-intro">
-            I study Computer Engineering at VIT Pune. My main interest is how a system can explain the
-            result it gives someone.
-          </p>
-          <p>
-            In Kaaran, code computes the figures and the language model helps express the findings. That
-            division of responsibility also shapes how I approach validation, testing and interfaces.
-          </p>
-          <div class="education">
-            <svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m2 9 10-5 10 5-10 5L2 9Zm4 3v5c3 3 9 3 12 0v-5" />
-            </svg>
-            <div>
-              <strong>B.Tech in Computer Engineering</strong
-              ><span>VIT Pune · Expected June 2028 · CGPA 8.94</span>
-            </div>
-          </div>
-          <details class="skills">
-            <summary>Technical capabilities</summary>
-            <dl>
-              <dt>AI engineering</dt>
-              <dd>Multi-agent systems, tool calling, RAG and LLM evaluation</dd>
-              <dt>Software and data</dt>
-              <dd>Python, SQL, C++, TypeScript, FastAPI, React and DuckDB</dd>
-              <dt>Machine learning</dt>
-              <dd>TensorFlow, Keras, Flower, scikit-learn and OpenCV</dd>
-              <dt>Delivery and testing</dt>
-              <dd>Docker, GitHub Actions, Redis, PostgreSQL and Pytest</dd>
-            </dl>
-          </details>
-          <details class="skills">
-            <summary>Certifications, coursework and practice</summary>
-            <dl>
-              <dt>Microsoft Certified Azure AI Fundamentals</dt>
-              <dd>AI-900 · June 2026</dd>
-              <dt>Machine Learning Specialization</dt>
-              <dd>Stanford Online and DeepLearning.AI · November 2026</dd>
-              <dt>LeetCode 100 Days Badge</dt>
-              <dd>
-                <a class="notebook-crosslink" href="https://leetcode.com/u/strangeDC/"
-                  >View algorithm practice profile ↗</a
-                >
-              </dd>
-            </dl>
-          </details>
-        </div>
-      </section>
-      <section class="contact-section" id="contact">
-        <div class="wrap contact-wrap">
-          <div>
-            <p class="overline light-label">Contact</p>
-            <h2>Get in <em>touch.</em></h2>
-            <p>For AI engineering internships, research and technical collaborations.</p>
-          </div>
-          <div class="contact-actions">
-            <a href="mailto:durgesh.chaudhari24@vit.edu" class="email-link"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="2.5" y="5" width="19" height="14" rx="3" />
-                <path d="m4 7 8 6 8-6" /></svg
-              >durgesh.chaudhari24@vit.edu</a
-            >
-            <div>
-              <a href="https://github.com/DurgeshC16" class="dark-link">GitHub</a
-              ><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331" class="dark-link"
-                >LinkedIn</a
-              ><a href="assets/Durgesh-Chaudhari-Resume.pdf" class="dark-link">Résumé</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+      <!-- /region:record -->
     </main>
-    <footer>
-      <div class="wrap foot"><span>© 2026 Durgesh Chaudhari</span><a href="#main">Back to top</a></div>
+    <!-- region:shell-footer (owner A) -->
+    <footer class="credits" id="contact" data-surface="night" aria-labelledby="contact-label">
+      <div class="wrap">
+        <div class="running-head" aria-hidden="true"><span><b>V</b> — Correspondence</span><span>Credits</span><span>p. 05</span></div>
+      </div>
+      <div class="credits__body grid">
+        <h2 class="credits__label" id="contact-label">Contact</h2>
+        <div class="credits__main">
+          <p class="credits__lead">Looking for an AI engineering internship.</p>
+          <p class="credits__shout"><a class="credits__email" href="mailto:durgesh.chaudhari24@vit.edu">durgesh.chaudhari24<span class="credits__domain"><span class="credits__at">@</span>vit.edu</span></a></p>
+          <div class="credits__row">
+            <button class="btn btn--ghost copy" type="button" data-copy="durgesh.chaudhari24@vit.edu" data-copy-email data-magnetic data-cursor="Copy"><span class="btn__inner"><svg class="icon icon--copy copy__idle" aria-hidden="true" focusable="false"><use href="assets/icons.svg#copy"></use></svg><svg class="icon icon--check copy__done" aria-hidden="true" focusable="false"><use href="assets/icons.svg#check"></use></svg><span data-copy-label>Copy address</span></span></button>
+            <p class="vh" aria-live="polite" data-copy-live></p>
+            <ul class="credits__links">
+              <li><span class="cite" aria-hidden="true">[a]</span><a href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[b]</span><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[c]</span><a href="https://leetcode.com/u/strangeDC/">LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[d]</span><a href="assets/Durgesh-Chaudhari-Resume.pdf">Résumé (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="credits__base">
+          <p>Durgesh Chaudhari · Pune, India</p>
+          <p>Set in DM Sans, Instrument Serif and DM Mono. Hand-built in HTML, CSS and JavaScript.</p>
+          <a class="credits__top" href="#top">Back to top<svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-up"></use></svg></a>
+        </div>
+      </div>
     </footer>
+    <!-- /region:shell-footer -->
+    <!-- region:chrome (owner CHROME: nav overlay + command palette; empty shells so the header's aria-controls resolve) -->
+    <dialog id="nav-overlay" class="nav-overlay" data-surface="night" aria-label="Site index"></dialog>
+    <dialog id="palette" class="palette" data-surface="night" aria-label="Search the archive"></dialog>
+    <!-- /region:chrome -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Durgesh Chaudhari",
+        "description": "Third-year B.Tech Computer Engineering student at Vishwakarma Institute of Technology (VIT), Pune. I build AI systems that can show their work.",
+        "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Vishwakarma Institute of Technology, Pune" },
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Vishwakarma Institute of Technology, Pune" },
         "sameAs": [
           "https://github.com/DurgeshC16",
-          "https://in.linkedin.com/in/durgesh-chaudhari-420408331"
+          "https://in.linkedin.com/in/durgesh-chaudhari-420408331",
+          "https://leetcode.com/u/strangeDC/"
         ],
-        "knowsAbout": [
-          "AI engineering",
-          "Multi-agent systems",
-          "LLM evaluation",
-          "Federated learning",
-          "Python",
-          "SQL"
-        ],
-        "affiliation": {
-          "@type": "CollegeOrUniversity",
-          "name": "Vishwakarma Institute of Technology, Pune"
-        }
+        "knowsAbout": ["LLM engineering", "LLM evaluation", "Retrieval-augmented generation", "Machine learning", "Python", "FastAPI", "C++", "SQL"]
       }
     </script>
   </body>

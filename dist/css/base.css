@@ -1,0 +1,189 @@
+/* =====================================================================
+   DC. — base: reset, element defaults, grid, focus, reveal states,
+   reduced motion, utilities.
+   Owner: A (system & shell). Spec: docs/design-system.md §3.5, §4, §5, §6.
+   ===================================================================== */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+  scroll-behavior: auto;                       /* §6.4 rule 8: never smooth by default */
+  font-synthesis: none;                        /* §4.1: no faux bold/italic */
+  background: var(--c-night);
+  hanging-punctuation: first;
+}
+body {
+  margin: 0; min-height: 100svh;
+  background: var(--bg); color: var(--fg);
+  font: 400 var(--t-body)/var(--lh-body) var(--f-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;                            /* no horizontal page overflow; does not break sticky */
+}
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ol, ul, pre { margin: 0; }
+ul[class], ol[class] { padding: 0; list-style: none; }
+img, svg, canvas, video, picture { display: block; max-width: 100%; }
+img, video { height: auto; }
+svg { overflow: visible; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+table { border-collapse: collapse; }
+[hidden] { display: none !important; }
+::selection { background: var(--c-periwinkle); color: var(--c-night); }
+[data-surface="paper"] ::selection { background: var(--c-cobalt); color: var(--c-paper); }
+
+/* Every element that declares a surface paints it. */
+[data-surface] { background-color: var(--bg); color: var(--fg); }
+
+/* ---------- Element defaults ---------- */
+h1, h2, h3, h4 { font-weight: 400; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--f-serif); }
+h1 { font-size: var(--t-title); line-height: var(--lh-display); letter-spacing: var(--tr-display); word-spacing: var(--ws-display); }
+h2 { font-size: var(--t-h2); line-height: var(--lh-h2); letter-spacing: var(--tr-h2); }
+h3 { font-size: var(--t-h3); line-height: var(--lh-h3); }
+h4 { font: 500 var(--t-small)/var(--lh-small) var(--f-sans); }
+p, li, dd, figcaption { text-wrap: pretty; }
+b, strong { font-weight: 600; }
+small { font-size: var(--t-small); }
+
+/* The house device: italic inside sans text is Instrument Serif italic at 1.08em (§4.1). */
+em, i, cite {
+  font-family: var(--f-serif-i); font-style: italic; font-weight: 400;
+  font-size: 1.08em; line-height: 0; letter-spacing: 0;
+}
+:is(h1, h2, h3, .serif, .t-display, .t-title, .t-h2, .t-h3) :is(em, i) { font-size: 1em; line-height: inherit; }
+:is(.mono, .label, code, kbd, samp, pre) :is(em, i) { font-family: inherit; font-style: normal; font-size: 1em; }
+
+/* Inline links (prose). Visited = identical. Components restyle their own links. */
+a { color: var(--accent); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
+  transition: color var(--d-instant) linear, text-decoration-thickness var(--d-instant) linear; }
+@media (hover: hover) and (pointer: fine) {
+  a:hover { color: var(--accent-hi); text-decoration-thickness: 2px; }
+}
+
+code, kbd, samp { font-family: var(--f-mono); font-size: .92em; }
+code { background: var(--bg-raised); padding: .1em .3em; border-radius: var(--r-1); }
+pre { font-family: var(--f-mono); }
+pre code { background: none; padding: 0; font-size: inherit; }
+hr { border: 0; height: 1px; background: var(--rule); margin: var(--s-6) 0; }
+
+/* Marathi (§4.7) */
+[lang="mr"] {
+  font-family: var(--f-deva); line-height: 1.75; letter-spacing: 0;
+  font-style: normal; text-transform: none; font-size: 1.04em;
+}
+:is(h1, h2, h3, h4)[lang="mr"], [lang="mr"] :is(h1, h2, h3, h4) { line-height: 1.3; font-family: var(--f-deva); }
+[lang="mr"] [lang="mr"] { font-size: 1em; }
+
+/* ---------- Focus (§3.5): 3 px ring, 3 px offset, never removed ---------- */
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--r-1); }
+:focus:not(:focus-visible) { outline: none; }
+/* Rings that can land on artwork, mixed surfaces, canvas or SVG nodes */
+.focus-any:focus-visible, svg [tabindex]:focus-visible, svg a:focus-visible {
+  outline: 3px solid var(--c-focus-any); outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--bg);
+}
+/* Anchored targets clear the sticky header */
+[id] { scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
+
+/* ---------- Grid (§5.2) ---------- */
+.grid {
+  display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter); padding-inline: var(--page-x);
+}
+.grid > .full, .subgrid { grid-column: 1 / -1; }
+.subgrid { display: grid; grid-template-columns: subgrid; column-gap: var(--gutter); }
+.wrap { padding-inline: var(--page-x); }
+.measure { max-width: var(--measure); }
+.stack > * + * { margin-top: var(--s-stack); }
+.section { padding-block: var(--s-section); }
+
+/* ---------- Typographic utilities ---------- */
+.vh {
+  position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important;
+  overflow: hidden !important; clip: rect(0 0 0 0) !important; clip-path: inset(50%) !important; white-space: nowrap !important; border: 0 !important;
+}
+.mono { font-family: var(--f-mono); font-size: var(--t-caption); line-height: var(--lh-caption); letter-spacing: var(--tr-caption); font-weight: 400; }
+.mono b, .mono strong, .label b, .label strong { font-weight: 500; }
+.label {
+  font-family: var(--f-mono); font-size: var(--t-micro); line-height: var(--lh-micro); font-weight: 400;
+  letter-spacing: var(--tr-caps); text-transform: uppercase; color: var(--fg-2);
+}
+.serif { font-family: var(--f-serif); font-weight: 400; }
+.t-display { font: 400 var(--t-display)/var(--lh-display) var(--f-serif); letter-spacing: var(--tr-display); word-spacing: var(--ws-display); }
+.t-title { font: 400 var(--t-title)/var(--lh-display) var(--f-serif); letter-spacing: var(--tr-display); word-spacing: var(--ws-display); }
+.t-h2 { font: 400 var(--t-h2)/var(--lh-h2) var(--f-serif); letter-spacing: var(--tr-h2); }
+.t-h3 { font: 400 var(--t-h3)/var(--lh-h3) var(--f-serif); letter-spacing: 0; }
+.t-lead { font: 450 var(--t-lead)/var(--lh-lead) var(--f-sans); letter-spacing: var(--tr-lead); }
+.t-body { font: 400 var(--t-body)/var(--lh-body) var(--f-sans); }
+.t-small { font: 400 var(--t-small)/var(--lh-small) var(--f-sans); letter-spacing: .005em; }
+.t-caption { font: 400 var(--t-caption)/var(--lh-caption) var(--f-mono); letter-spacing: var(--tr-caption); }
+.fg-2 { color: var(--fg-2); }
+.fg-3 { color: var(--fg-3); }
+.prose { max-width: var(--measure); }
+.prose > * + * { margin-top: 1em; }
+.prose :is(h2, h3) { margin-top: 1.6em; }
+
+/* ---------- Icons (assets/icons.svg; §4.2) ---------- */
+.icon {
+  display: inline-block; flex: none; width: .9em; height: .9em;
+  vertical-align: -.12em; overflow: visible;
+  fill: none; stroke: currentColor;
+}
+.icon--fill { fill: currentColor; stroke: none; }
+
+/* ---------- Reveal (§6.2–6.3). core.js adds .is-in; start states only when JS + motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not([data-motion="reduce"]) [data-reveal]:not(.is-in) { transition: none; }
+  /* lift: headings lift from .5 opacity and .3em */
+  html.js:not([data-motion="reduce"]) :is([data-reveal=""], [data-reveal="lift"]) {
+    transition: opacity var(--d-reveal) var(--e-out), transform var(--d-reveal) var(--e-out);
+    transition-delay: calc(var(--reveal-delay, 0ms));
+  }
+  html.js:not([data-motion="reduce"]) :is([data-reveal=""], [data-reveal="lift"]):not(.is-in) { opacity: .5; transform: translateY(.3em); }
+  /* lines: each [data-reveal-item] staggers by --st-line (core.js marks direct children
+     as items when none are marked, and writes --i on each) */
+  html.js:not([data-motion="reduce"]) [data-reveal="lines"] [data-reveal-item] {
+    transition: opacity var(--d-reveal) var(--e-out), transform var(--d-reveal) var(--e-out);
+    transition-delay: calc(var(--i, 0) * var(--st-line));
+  }
+  html.js:not([data-motion="reduce"]) [data-reveal="lines"]:not(.is-in) [data-reveal-item] { opacity: .5; transform: translateY(.3em); }
+  /* fade: captions and secondary blocks */
+  html.js:not([data-motion="reduce"]) [data-reveal="fade"] {
+    transition: opacity var(--d-swap) var(--e-out), transform var(--d-swap) var(--e-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  html.js:not([data-motion="reduce"]) [data-reveal="fade"]:not(.is-in) { opacity: .5; transform: translateY(8px); }
+  /* rule: hairlines draw with scaleX */
+  html.js:not([data-motion="reduce"]) [data-reveal="rule"] { transform-origin: left center; transition: transform var(--d-reveal) var(--e-out); }
+  html.js:not([data-motion="reduce"]) [data-reveal="rule"]:not(.is-in) { transform: scaleX(0); }
+  /* media: the clip target (.fig__media or [data-reveal-clip]) unclips; its image settles from 1.1 */
+  html.js:not([data-motion="reduce"]) [data-reveal="media"] :is(.fig__media, [data-reveal-clip]) {
+    transition: clip-path var(--d-reveal) var(--e-inout);
+  }
+  html.js:not([data-motion="reduce"]) [data-reveal="media"]:not(.is-in) :is(.fig__media, [data-reveal-clip]) { clip-path: inset(100% 0 0 0); }
+  html.js:not([data-motion="reduce"]) [data-reveal="media"] :is(.fig__media, [data-reveal-clip]) > :is(img, svg, picture, canvas, video) {
+    transition: transform 1400ms var(--e-out);
+  }
+  html.js:not([data-motion="reduce"]) [data-reveal="media"]:not(.is-in) :is(.fig__media, [data-reveal-clip]) > :is(img, svg, picture, canvas, video) { transform: scale(1.1); }
+  html.js:not([data-motion="reduce"]) [data-reveal="media"] :is(.fig__cap, figcaption, [data-reveal-caption]) {
+    transition: opacity var(--d-swap) var(--e-out) 300ms, transform var(--d-swap) var(--e-out) 300ms;
+  }
+  html.js:not([data-motion="reduce"]) [data-reveal="media"]:not(.is-in) :is(.fig__cap, figcaption, [data-reveal-caption]) { opacity: .5; transform: translateY(8px); }
+}
+
+/* Offscreen pausing (§6.4 rule 3): DC.watchVisibility toggles .is-offscreen */
+.is-offscreen, .is-offscreen * { animation-play-state: paused !important; }
+
+/* ---------- Reduced motion (§6.5): end states, no running animations ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important; transition-delay: 0ms !important;
+  }
+}
+html[data-motion="reduce"] *, html[data-motion="reduce"] *::before, html[data-motion="reduce"] *::after {
+  animation-duration: 1ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important; transition-delay: 0ms !important;
+}

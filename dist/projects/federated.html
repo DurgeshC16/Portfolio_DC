@@ -1,316 +1,413 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#141518" />
-    <title>Federated learning for ASD research | Durgesh Chaudhari</title>
-    <meta
-      name="description"
-      content="A cross-silo image classification experiment in which three clients retain their local training data."
-    />
-    <meta property="og:title" content="Federated learning for ASD research | Durgesh Chaudhari" />
-    <meta
-      property="og:description"
-      content="A cross-silo image classification experiment in which three clients retain their local training data."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="../assets/favicon.svg" />
-    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Federated learning for ASD research — Durgesh Chaudhari</title>
+    <meta name="description" content="Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.">
+    <meta name="theme-color" content="#0d0e11">
+    <meta name="color-scheme" content="dark light">
+    <!-- TODO(durgesh): add <link rel="canonical"> and make og:image absolute once the deployment URL is decided (ledger Q-16). -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DC. — The Interactive Engineering Archive">
+    <meta property="og:title" content="Federated learning for ASD research — Durgesh Chaudhari">
+    <meta property="og:description" content="Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.">
+    <meta property="og:image" content="../assets/og/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DC. — Durgesh Chaudhari, The Interactive Engineering Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Federated learning for ASD research — Durgesh Chaudhari">
+    <meta name="twitter:description" content="Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.">
+    <meta name="twitter:image" content="../assets/og/og-default.png">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script>!function(h){h.classList.add("js");try{if(localStorage.getItem("dc.motion")=="reduce")return h.setAttribute("data-motion","reduce")}catch(e){}matchMedia("(prefers-reduced-motion: reduce)").matches||h.classList.add("intro")}(document.documentElement)</script>
+    <link rel="preload" href="../assets/fonts/dm-sans-normal-100_1000-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/chrome.css">
+    <link rel="stylesheet" href="../css/case.css">
+    <link rel="stylesheet" href="../css/lab.css">
+    <script src="../js/core.js" defer></script>
     <script src="../experiments.js" defer></script>
-    <script src="../navigation.js" defer></script>
     <script src="../site.js" defer></script>
+    <script src="../js/case.js" defer></script>
+    <script src="../js/nav.js" defer></script>
+    <script src="../js/palette-index.js" defer></script>
+    <script src="../js/palette.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+    <script src="../js/transitions.js" defer></script>
   </head>
-  <body>
-    <a href="#main" class="skip">Skip to content</a>
-    <header class="mast">
-      <div class="wrap nav-row">
-        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
-          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
-        >
-        <nav aria-label="Main navigation">
-          <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
-          ><a href="../index.html#research" class="">Research</a
-          ><a href="../index.html#about" class="">About</a>
+  <body id="top" data-page="case" data-case="federated">
+    <!-- region:shell-header (owner A) -->
+    <header class="site-header" data-header data-surface="night">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="site-header__bar">
+        <a class="wordmark" href="../index.html">DC<span class="wordmark__stop">.</span><span class="vh"> Durgesh Chaudhari, home</span></a>
+        <p class="site-header__title">The Interactive Engineering Archive</p>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../index.html#work" aria-current="page">Work<sup aria-hidden="true">I</sup></a></li>
+            <li class="site-nav__wide"><a href="../index.html#evidence">Evidence<sup aria-hidden="true">II</sup></a></li>
+            <li class="site-nav__wide"><a href="../projects/notebook.html">Notebook</a></li>
+            <li><a href="#contact">Contact<sup aria-hidden="true">V</sup></a></li>
+          </ul>
         </nav>
-        <a href="../index.html#contact" class="nav-contact"
-          ><svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2.5" y="5" width="19" height="14" rx="3" />
-            <path d="m4 7 8 6 8-6" /></svg
-          >Get in touch</a
-        >
-        <button
-          type="button"
-          class="menu-btn"
-          aria-label="Open navigation"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-        </button>
+        <div class="site-header__actions">
+          <a class="site-header__cv" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon icon--file" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#file"></use></svg>Résumé<span class="vh"> (PDF)</span></a>
+          <button class="site-header__btn site-header__search" type="button" data-palette-open aria-haspopup="dialog" aria-controls="palette"><svg class="icon icon--search" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="site-header__label">Search</span> <kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">K</kbd></button>
+          <button class="site-header__btn site-header__index" type="button" data-menu-open aria-haspopup="dialog" aria-controls="nav-overlay" aria-expanded="false"><svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#menu"></use></svg><span class="site-header__label">Index</span></button>
+        </div>
       </div>
-      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
-        ><a href="../index.html#research" class="">Research</a
-        ><a href="../index.html#about" class="">About</a
-        ><a href="../index.html#contact" class="">Contact</a>
-      </nav>
+      <span class="site-header__progress" data-scroll-progress aria-hidden="true"></span>
     </header>
-    <main id="main" class="detail">
-      <section class="detail-hero">
-        <div class="wrap">
-          <a class="crumb" href="../index.html#lab/federated"
-            ><svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-            Interactive projects</a
-          >
-          <p class="eyebrow"><span></span>Machine learning research</p>
-          <h1>Federated learning for ASD research</h1>
-          <p class="deck">
-            An experimental cross-silo training framework for a facial-image classification task across
-            three datasets.
-          </p>
-          <div class="tags">
-            <span class="chip">Flower</span><span class="chip">EfficientNet</span
-            ><span class="chip">TensorFlow</span>
+    <!-- /region:shell-header -->
+    <main id="main" class="detail" data-surface="paper">
+      <!-- region:case-a (owner E1) -->
+      <section class="case-plate" id="overview" data-surface="night" data-case-essential aria-labelledby="case-title">
+        <div class="grid case-plate__head">
+          <div class="running-head" aria-hidden="true"><span><b>Pl. 03</b> — Case study</span><span>Federated learning</span><span>Ch. 01–08</span></div>
+          <a class="case-crumb" href="../index.html#work"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Selected work</a>
+          <p class="case-plate__kicker label">Pl. 03 · Research · Privacy-preserving ML</p>
+          <h1 class="case-plate__title" id="case-title" data-vt-title>Federated learning for ASD research</h1>
+          <p class="case-plate__dek">Team research project on training an ASD facial-image classifier with federated learning; a research prototype, not a diagnostic tool.</p>
+          <div class="case-plate__side">
+            <ul class="chips" aria-label="Status"><li class="chip">Research prototype</li><li class="chip">Co-built</li></ul>
+            <div class="case-mode" role="group" aria-labelledby="case-mode-label" data-case-modes>
+              <span class="case-mode__hint" id="case-mode-label">Reading mode</span>
+              <div class="case-mode__seg" data-active="deep">
+                <button class="case-mode__btn" type="button" data-case-mode="quick" aria-pressed="false">Quick view <span class="case-mode__time" data-case-time="quick"></span></button>
+                <button class="case-mode__btn" type="button" data-case-mode="deep" aria-pressed="true">Deep dive <span class="case-mode__time" data-case-time="deep"></span></button>
+              </div>
+              <p class="vh" aria-live="polite" data-case-mode-live></p>
+            </div>
+          </div>
+          <figure class="fig case-plate__fig">
+            <div class="case-plate__mat case-plate__mat--svg" data-vt-plate><svg class="dg dg--full dg--plate" viewBox="0 0 1200 600" role="img" aria-labelledby="fed-plate-t fed-plate-d" focusable="false"><title id="fed-plate-t">Pl. 03 Federated averaging, one round, as described by the team</title><desc id="fed-plate-d">Three clients keep their images on site. Each sends only updated model weights and its sample count to a server, which averages them weighted by sample count and sends the global weights back. Dashed lines mark the parts described by the team; the training code is not public.</desc><text x="40" y="64" class="dg-label" font-size="24">FedAvg · one round, three clients</text><text x="1160" y="64" class="dg-label dg-mute" text-anchor="end" font-size="24">as described · code not public</text><path class="dg-rule" d="M40 88H1160"/><g class="dg-node dg-node--hi dg-node--plan" data-node="3"><rect x="370" y="122" width="460" height="132" rx="2"/></g><text x="600" y="168" class="dg-label dg-hi-text" text-anchor="middle" font-size="24">Server · weighted average</text><text x="600" y="222" class="dg-formula" text-anchor="middle" font-size="30">w = (n<tspan class="dg-sub" dy="0.28em" font-size="72%">1w</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">1</tspan><tspan dy="-0.28em"> + n</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">2w</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">2</tspan><tspan dy="-0.28em"> + n</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">3w</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">3</tspan><tspan dy="-0.28em">) / n</tspan></text><g class="dg-node dg-node--plan" data-node="1"><rect x="40" y="374" width="300" height="170" rx="2"/></g><text x="62" y="418" class="dg-label" font-size="24">Client 1</text><text x="62" y="452" class="dg-label dg-mute" font-size="22">images stay here</text><rect class="dg-tile" x="230" y="470" width="64" height="52" rx="2"/><rect class="dg-tile" x="242" y="458" width="64" height="52" rx="2"/><rect class="dg-tile" x="254" y="446" width="64" height="52" rx="2"/><text x="62" y="520" class="dg-label dg-mute" font-size="22">EfficientNetB0 + head</text><path class="dg-edge dg-edge--dash" d="M160.0 374.0 L524.1 254.6"/><path class="dg-head dg-edge--dash" d="M518.6 260.5 L524.1 254.6 L516.2 253.1"/><path class="dg-edge dg-edge--dash" d="M554.0 254.0 L221.9 373.3"/><path class="dg-head dg-edge--dash" d="M227.2 367.3 L221.9 373.3 L229.8 374.6"/><g class="dg-node dg-node--plan" data-node="1"><rect x="450" y="374" width="300" height="170" rx="2"/></g><text x="472" y="418" class="dg-label" font-size="24">Client 2</text><text x="472" y="452" class="dg-label dg-mute" font-size="22">images stay here</text><rect class="dg-tile" x="640" y="470" width="64" height="52" rx="2"/><rect class="dg-tile" x="652" y="458" width="64" height="52" rx="2"/><rect class="dg-tile" x="664" y="446" width="64" height="52" rx="2"/><text x="472" y="520" class="dg-label dg-mute" font-size="22">EfficientNetB0 + head</text><path class="dg-edge dg-edge--dash" d="M570.0 374.0 L585.7 256.0"/><path class="dg-head dg-edge--dash" d="M588.6 263.4 L585.7 256.0 L581.0 262.4"/><path class="dg-edge dg-edge--dash" d="M614.0 254.0 L629.7 372.0"/><path class="dg-head dg-edge--dash" d="M625.0 365.6 L629.7 372.0 L632.6 364.6"/><g class="dg-node dg-node--plan" data-node="1"><rect x="860" y="374" width="300" height="170" rx="2"/></g><text x="882" y="418" class="dg-label" font-size="24">Client 3</text><text x="882" y="452" class="dg-label dg-mute" font-size="22">images stay here</text><rect class="dg-tile" x="1050" y="470" width="64" height="52" rx="2"/><rect class="dg-tile" x="1062" y="458" width="64" height="52" rx="2"/><rect class="dg-tile" x="1074" y="446" width="64" height="52" rx="2"/><text x="882" y="520" class="dg-label dg-mute" font-size="22">EfficientNetB0 + head</text><path class="dg-edge dg-edge--dash" d="M980.0 374.0 L647.9 254.7"/><path class="dg-head dg-edge--dash" d="M655.8 253.4 L647.9 254.7 L653.2 260.7"/><path class="dg-edge dg-edge--dash" d="M674.0 254.0 L1038.1 373.4"/><path class="dg-head dg-edge--dash" d="M1030.2 374.9 L1038.1 373.4 L1032.6 367.5"/><text x="220" y="330" class="dg-label" text-anchor="middle" font-size="22">weights + n up</text><text x="980" y="330" class="dg-label" text-anchor="middle" font-size="22">global down</text><text x="40" y="584" class="dg-label dg-mute" font-size="22">Only weights travel. Raw images never leave a client.</text></svg><svg class="dg dg--compact dg--plate" viewBox="0 0 400 360" role="img" aria-labelledby="fed-plate-c-t fed-plate-c-d" focusable="false"><title id="fed-plate-c-t">Pl. 03 Federated averaging, compact</title><desc id="fed-plate-c-d">Three clients send weights to a server that averages them and sends global weights back; images stay on each client.</desc><g class="dg-node dg-node--hi dg-node--plan" data-node="3"><rect x="90" y="16" width="220" height="76" rx="2"/></g><text x="200" y="62" class="dg-label dg-hi-text" text-anchor="middle" font-size="24">FedAvg</text><g class="dg-node dg-node--plan" data-node="1"><rect x="8" y="220" width="110" height="96" rx="2"/></g><text x="63.0" y="260" class="dg-label" text-anchor="middle" font-size="20">Client 1</text><rect class="dg-tile" x="38" y="284" width="34" height="22" rx="2"/><rect class="dg-tile" x="48" y="276" width="34" height="22" rx="2"/><rect class="dg-tile" x="58" y="268" width="34" height="22" rx="2"/><path class="dg-edge dg-edge--dash" d="M63.0 220.0 L148.9 93.7"/><path class="dg-head dg-edge--dash" d="M147.8 105.0 L148.9 93.7 L138.7 98.8"/><g class="dg-node dg-node--plan" data-node="1"><rect x="145" y="220" width="110" height="96" rx="2"/></g><text x="200.0" y="260" class="dg-label" text-anchor="middle" font-size="20">Client 2</text><rect class="dg-tile" x="175" y="284" width="34" height="22" rx="2"/><rect class="dg-tile" x="185" y="276" width="34" height="22" rx="2"/><rect class="dg-tile" x="195" y="268" width="34" height="22" rx="2"/><path class="dg-edge dg-edge--dash" d="M200.0 220.0 L200.0 94.0"/><path class="dg-head dg-edge--dash" d="M205.5 104.0 L200.0 94.0 L194.5 104.0"/><g class="dg-node dg-node--plan" data-node="1"><rect x="282" y="220" width="110" height="96" rx="2"/></g><text x="337.0" y="260" class="dg-label" text-anchor="middle" font-size="20">Client 3</text><rect class="dg-tile" x="312" y="284" width="34" height="22" rx="2"/><rect class="dg-tile" x="322" y="276" width="34" height="22" rx="2"/><rect class="dg-tile" x="332" y="268" width="34" height="22" rx="2"/><path class="dg-edge dg-edge--dash" d="M337.0 220.0 L251.1 93.7"/><path class="dg-head dg-edge--dash" d="M261.3 98.8 L251.1 93.7 L252.2 105.0"/><text x="200" y="346" class="dg-label dg-mute" text-anchor="middle" font-size="20">images stay on site</text></svg></div>
+            <figcaption class="fig__cap"><span class="fig__no">Pl. 03</span> <span class="fig__text">One round of federated averaging, as the team describes the study. Dashed lines mark parts whose code is not public. No images of people appear on this site.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="case-brief" id="summary" data-surface="paper" data-case-essential aria-label="Summary">
+        <div class="grid">
+          <dl class="facts" data-reveal="fade">
+            <div><dt>Role</dt><dd>Team research project with Niraj Chavan; repository maintained by Niraj<!-- TODO(durgesh): add your technical role once confirmed (ledger Q-3). --></dd></div>
+            <div><dt>Authors</dt><dd>Saraswati Patil, Durgesh Chaudhari, Niraj Chavan, Anjali Chandewar and Falguni Chaudhari</dd></div>
+            <div><dt>Context</dt><dd>Accepted paper · IConDeepCom 2026 · ICONDEEPCOM26_079</dd></div>
+            <div><dt>Stack</dt><dd>TensorFlow/Keras 2.15, EfficientNetB0 (ImageNet), Streamlit, OpenCV; Flower (described)</dd></div>
+            <div><dt>Proof</dt><dd><a class="evidence" href="https://icondeepcom.wordpress.com/">Conference<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a><!-- The inference repository is withheld pending privacy and credential remediation. --></dd></div>
+          </dl>
+          <div class="case-row">
+            <h2 class="case-row__label label">In 30 seconds</h2>
+            <dl class="case-row__body case-row__body--measure case-30" data-reveal="lines">
+              <div data-reveal-item><dt>What it is</dt><dd>A study design that trains one classifier across three data silos with federated averaging, so raw images stay local. The public side is a frozen EfficientNetB0 checkpoint and a local dashboard that shows a research-only prediction with a disclaimer.</dd></div>
+              <div data-reveal-item><dt>Whose it is</dt><dd>A team research project with Niraj Chavan, who maintains the repository. I co-authored the paper accepted at IConDeepCom 2026.<!-- TODO(durgesh): add your technical role once confirmed (ledger Q-3). --></dd></div>
+              <div data-reveal-item><dt>What came of it</dt><dd>Results will be added with the published paper.<!-- TODO(durgesh): results are on HOLD per ledger §0.2 (accuracy, image count, rounds, per-client gap). Add them with the published paper and training logs. --></dd></div>
+            </dl>
+          </div>
+          <div class="case-row">
+            <h2 class="case-row__label label">Verified so far</h2>
+            <div class="case-row__body metrics" data-reveal="lines">
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">361k</span><span class="metric__unit">parameters</span></p>
+                <p class="metric__label">Trainable parameters in the classification head on a frozen, ImageNet-pretrained EfficientNetB0 (about 361,000).</p>
+                <p class="metric__scope">From the checkpoint’s Keras config (2.15.0) · read, not executed</p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">3</span><span class="metric__unit">silos</span></p>
+                <p class="metric__label">Data silos in the study design, trained with federated averaging.</p>
+                <p class="metric__scope">As described by the team · training code not public</p>
+              </div>
+              <div class="metric metric--held" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">Held</span></p>
+                <p class="metric__label">Accuracy and other results.</p>
+                <p class="metric__scope">To be added with the published paper</p>
+              </div>
+            </div>
+          </div>
+          <div class="case-row">
+            <h2 class="case-row__label label">Links</h2>
+            <div class="case-row__body case-links">
+              <a class="btn btn--ghost" href="https://icondeepcom.wordpress.com/"><span class="btn__inner">IConDeepCom 2026<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg></span><span class="vh"> (opens external site)</span></a>
+              <a class="btn btn--text" href="#how-it-works" data-case-mode="deep"><span class="btn__inner">Operate the averaging lab<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></a>
+              <p class="case-links__note">No live demo. The dashboard runs locally only.</p>
+            </div>
+          </div>
+          <p class="case-deep-cta" data-case-quick-only><button class="btn btn--ghost" type="button" data-case-mode="deep" data-case-goto="problem"><span class="btn__inner">Read the deep dive<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></button></p>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="problem" data-surface="paper" aria-labelledby="ch-problem">
+        <div class="running-head" aria-hidden="true"><span><b>01</b> — Federated learning</span><span>Case study</span><span>Ch. 01 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-problem" data-reveal><span class="case-ch__no">01 —</span> <span>Problem</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Facial-image datasets for ASD research are small, scattered across institutions and too sensitive to pool.</p>
+          <p>Federated learning trains one model without moving the images: in the study design, each site trains locally and shares only model weights. That changes what has to travel, but not what the model can claim. ASD diagnosis is clinical and behavioural, so a classifier like this is a research instrument, never a diagnosis.</p>
+          <dl class="case-pairs" aria-label="Constraints">
+            <div><dt>Privacy</dt><dd>Raw images stay on each site; only weights and sample counts travel.</dd></div>
+            <div><dt>Data</dt><dd>Small datasets held by different institutions.</dd></div>
+            <div><dt>Compute</dt><dd>A frozen backbone, so each round trains only a small head.</dd></div>
+            <div><dt>Ethics</dt><dd>Research only: every prediction carries a disclaimer, and no faces appear on this site.</dd></div>
+          </dl>
+        </div>
+        <aside class="case-ch__aside" aria-label="Key statement">
+          <div class="case-pull" data-reveal="fade">
+            <p class="case-quote">“Not a diagnostic tool.”</p>
+            <p class="case-pull__scope">The dashboard shows a research disclaimer with every prediction</p>
+          </div>
+        </aside>
+      </section>
+      <section class="case-section case-ch grid" id="role" data-surface="paper" aria-labelledby="ch-role">
+        <div class="running-head" aria-hidden="true"><span><b>02</b> — Federated learning</span><span>Case study</span><span>Ch. 02 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-role" data-reveal><span class="case-ch__no">02 —</span> <span>Role and team contributions</span></h2>
+        <div class="case-ch__body">
+          <p class="case-ch__lead">Team research project with Niraj Chavan; repository maintained by Niraj.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <table class="case-table">
+            <caption>Contribution boundary · from the public git history and the conference record</caption>
+            <thead><tr><th scope="col">Area</th><th scope="col">I did</th><th scope="col">Team did</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Paper</th><td data-label="I did">Second author on the accepted IConDeepCom 2026 paper.</td><td data-label="Team did">Saraswati Patil, Niraj Chavan, Anjali Chandewar and Falguni Chaudhari are the other co-authors.</td></tr>
+              <tr><th scope="row">Public code</th><td data-label="I did" class="case-none">No commits in the public inference repositories.<!-- TODO(durgesh): describe your technical role in training and federation (ledger Q-3). --></td><td data-label="Team did">Niraj Chavan committed the inference dashboard and the trained checkpoint.</td></tr>
+              <tr><th scope="row">Averaging lab on this page</th><td data-label="I did">The illustrative weighted-average lab is my portfolio code.<span class="case-who">Portfolio code</span></td><td data-label="Team did" class="case-none">Not applicable.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="architecture" data-surface="paper" aria-labelledby="ch-arch">
+        <div class="running-head" aria-hidden="true"><span><b>03</b> — Federated learning</span><span>Case study</span><span>Ch. 03 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-arch" data-reveal><span class="case-ch__no">03 —</span> <span>Technical architecture</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Two halves with different standards of proof: a training design the team describes, and an inference path anyone can read.</p>
+        </div>
+        <div class="case-ch__wide">
+          <figure class="fig case-arch" data-reveal="media" aria-labelledby="fed-arch-cap">
+            <div class="fig__media"><svg class="dg dg--full" viewBox="0 0 1000 600" role="img" aria-labelledby="fed-arch-t fed-arch-d" focusable="false"><title id="fed-arch-t">Fig. 3.3 Federated study design and the public inference path</title><desc id="fed-arch-d">Dashed parts are as described by the team; that code is not public. Three clients each keep their images on site and train the same local model: a frozen ImageNet-pretrained EfficientNetB0, global average pooling, then dense layers of 256 and 128 units with dropout 0.4, 0.4 and 0.3, and one sigmoid output; Adam at 1e-4 with binary cross-entropy. Each client sends updated head weights and its sample count to a Flower server, which averages them weighted by sample count and returns global weights; this repeats for R rounds. Solid parts are verified in the public repository: the best checkpoint is loaded by a local Streamlit dashboard that resizes an uploaded image to 224 pixels, predicts, and shows a label, a score capped at 99 percent and a research-only disclaimer.</desc><path class="dg-rule" d="M0 0H1000"/><text x="0" y="20" class="dg-band">AS DESCRIBED BY THE TEAM · TRAINING CODE NOT PUBLIC</text><text x="1000" y="20" class="dg-band dg-mute" text-anchor="end">dashed</text><g class="dg-node dg-node--plan" data-node="1"><rect x="0" y="50" width="320" height="60" rx="2"/><text x="160.0" y="84.9" class="dg-label" text-anchor="middle" font-size="14">Client 1 · images stay on site</text><g class="dg-badge"><circle cx="0" cy="50" r="11"/><text x="0" y="54.6" text-anchor="middle" font-size="13">1</text></g></g><g class="dg-node dg-node--plan" data-node="1"><rect x="340" y="50" width="320" height="60" rx="2"/><text x="500.0" y="84.9" class="dg-label" text-anchor="middle" font-size="14">Client 2 · images stay on site</text></g><g class="dg-node dg-node--plan" data-node="1"><rect x="680" y="50" width="320" height="60" rx="2"/><text x="840.0" y="84.9" class="dg-label" text-anchor="middle" font-size="14">Client 3 · images stay on site</text></g><g class="dg-node dg-node--soft" data-node="2"><rect x="0" y="156" width="650" height="156" rx="2"/><g class="dg-badge"><circle cx="0" cy="156" r="11"/><text x="0" y="160.6" text-anchor="middle" font-size="13">2</text></g></g><text x="20" y="186" class="dg-label" font-size="14">Local model · from the checkpoint config</text><g class="dg-node dg-node--dark" data-node="2"><rect x="20" y="206" width="150" height="60" rx="2"/><text x="95.0" y="232.0" class="dg-label" text-anchor="middle" font-size="13">EfficientNetB0</text><text x="95.0" y="249.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">frozen</text></g><g class="dg-node " data-node="2"><rect x="192" y="206" width="96" height="60" rx="2"/><text x="240.0" y="232.0" class="dg-label" text-anchor="middle" font-size="13">GAP</text><text x="240.0" y="249.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">1,280</text></g><path class="dg-edge" d="M170.0 236.0 L190.0 236.0"/><path class="dg-head" d="M183.0 239.8 L190.0 236.0 L183.0 232.2"/><g class="dg-node " data-node="2"><rect x="310" y="206" width="96" height="60" rx="2"/><text x="358.0" y="232.0" class="dg-label" text-anchor="middle" font-size="13">Dense 256</text><text x="358.0" y="249.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">drop .4</text></g><path class="dg-edge" d="M288.0 236.0 L308.0 236.0"/><path class="dg-head" d="M301.0 239.8 L308.0 236.0 L301.0 232.2"/><g class="dg-node " data-node="2"><rect x="428" y="206" width="96" height="60" rx="2"/><text x="476.0" y="232.0" class="dg-label" text-anchor="middle" font-size="13">Dense 128</text><text x="476.0" y="249.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">drop .3</text></g><path class="dg-edge" d="M406.0 236.0 L426.0 236.0"/><path class="dg-head" d="M419.0 239.8 L426.0 236.0 L419.0 232.2"/><g class="dg-node " data-node="2"><rect x="546" y="206" width="96" height="60" rx="2"/><text x="594.0" y="232.0" class="dg-label" text-anchor="middle" font-size="13">Dense 1</text><text x="594.0" y="249.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">sigmoid</text></g><path class="dg-edge" d="M524.0 236.0 L544.0 236.0"/><path class="dg-head" d="M537.0 239.8 L544.0 236.0 L537.0 232.2"/><text x="20" y="296" class="dg-elabel">Adam 1e-4 · binary cross-entropy · about 361k trainable</text><g class="dg-node dg-node--hi dg-node--plan" data-node="3"><rect x="700" y="166" width="300" height="136" rx="2"/><g class="dg-badge"><circle cx="700" cy="166" r="11"/><text x="700" y="170.6" text-anchor="middle" font-size="13">3</text></g></g><text x="850" y="202" class="dg-label" text-anchor="middle">Flower server · FedAvg</text><text x="850" y="244" class="dg-formula" text-anchor="middle">w = (n<tspan class="dg-sub" dy="0.28em" font-size="72%">1w</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">1</tspan><tspan dy="-0.28em"> + n</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">2w</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">2</tspan><tspan dy="-0.28em"> + n</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">3w</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">3</tspan><tspan dy="-0.28em">)</tspan></text><text x="850" y="272" class="dg-formula" text-anchor="middle">/ (n<tspan class="dg-sub" dy="0.28em" font-size="72%">1</tspan><tspan dy="-0.28em"> + n</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">2</tspan><tspan dy="-0.28em"> + n</tspan><tspan class="dg-sub" dy="0.28em" font-size="72%">3</tspan><tspan dy="-0.28em">)</tspan></text><path class="dg-edge dg-edge--dash" d="M160.0 110.0 L160.0 154.0"/><path class="dg-head dg-edge--dash" d="M156.2 147.0 L160.0 154.0 L163.8 147.0"/><path class="dg-edge dg-edge--dash" d="M500.0 110.0 L500.0 154.0"/><path class="dg-head dg-edge--dash" d="M496.1 147.0 L500.0 154.0 L503.9 147.0"/><path class="dg-edge dg-edge--dash" d="M760.0 110.0 L760.0 164.0"/><path class="dg-head dg-edge--dash" d="M756.1 157.0 L760.0 164.0 L763.9 157.0"/><path class="dg-edge dg-edge--dash" d="M940.0 166.0 L940.0 112.0"/><path class="dg-head dg-edge--dash" d="M943.9 119.0 L940.0 112.0 L936.1 119.0"/><text x="752" y="140" class="dg-elabel" text-anchor="end">weights + n</text><text x="948" y="140" class="dg-elabel">global</text><text x="1000" y="332" class="dg-elabel" text-anchor="end">repeat for R rounds</text><path class="dg-rule" d="M0 372H1000"/><text x="0" y="392" class="dg-band">VERIFIED IN THE PUBLIC REPOSITORY</text><text x="1000" y="392" class="dg-band dg-mute" text-anchor="end">inference only</text><g class="dg-node " data-node="4"><rect x="0" y="426" width="280" height="70" rx="2"/><text x="140.0" y="456.7" class="dg-label" text-anchor="middle" font-size="14">Best checkpoint</text><text x="140.0" y="475.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">Keras .h5</text><g class="dg-badge"><circle cx="0" cy="426" r="11"/><text x="0" y="430.6" text-anchor="middle" font-size="13">4</text></g></g><g class="dg-node " data-node="5"><rect x="340" y="426" width="300" height="70" rx="2"/><text x="490.0" y="456.7" class="dg-label" text-anchor="middle" font-size="14">Streamlit dashboard</text><text x="490.0" y="475.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">local, research only</text><g class="dg-badge"><circle cx="340" cy="426" r="11"/><text x="340" y="430.6" text-anchor="middle" font-size="13">5</text></g></g><g class="dg-node dg-node--dark" data-node="6"><rect x="700" y="426" width="300" height="70" rx="2"/><text x="850.0" y="456.7" class="dg-label" text-anchor="middle" font-size="14">Label + score</text><text x="850.0" y="475.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">capped at 99%</text><g class="dg-badge"><circle cx="700" cy="426" r="11"/><text x="700" y="430.6" text-anchor="middle" font-size="13">6</text></g></g><path class="dg-edge dg-edge--dash" d="M850.0 302.0 L850.0 350.0 L140.0 350.0 L140.0 424.0"/><path class="dg-head dg-edge--dash" d="M136.2 417.0 L140.0 424.0 L143.8 417.0"/><path class="dg-edge" d="M280.0 461.0 L338.0 461.0"/><path class="dg-head" d="M331.0 464.9 L338.0 461.0 L331.0 457.1"/><text x="310" y="418" class="dg-elabel " text-anchor="middle">load .h5</text><path class="dg-edge" d="M640.0 461.0 L698.0 461.0"/><path class="dg-head" d="M691.0 464.9 L698.0 461.0 L691.0 457.1"/><text x="670" y="418" class="dg-elabel " text-anchor="middle">resize 224</text><text x="0" y="536" class="dg-elabel">Every result carries a disclaimer: this is not a diagnostic tool.</text><text x="1000" y="592" class="dg-band dg-mute" text-anchor="end">No images of people are shown anywhere on this site.</text></svg><svg class="dg dg--compact" viewBox="0 0 400 548" role="img" aria-labelledby="fed-arch-c-t fed-arch-c-d" focusable="false"><title id="fed-arch-c-t">Fig. 3.3 Federated design, compact</title><desc id="fed-arch-c-d">Six stages: three clients keep images on site; each trains a frozen EfficientNetB0 with a small head; head weights and sample counts go to a FedAvg server, as described by the team; the best checkpoint is public; a local Streamlit dashboard loads it; it shows a label and score with a disclaimer.</desc><g class="dg-node dg-node--plan" data-node="1"><rect x="22" y="16" width="370" height="60" rx="2"/><text x="207.0" y="53.4" class="dg-label" text-anchor="middle" font-size="21">3 clients · data stays</text><g class="dg-badge"><circle cx="22" cy="16" r="15"/><text x="22" y="22.4" text-anchor="middle" font-size="18">1</text></g></g><g class="dg-node " data-node="2"><rect x="22" y="106" width="370" height="60" rx="2"/><text x="207.0" y="143.3" class="dg-label" text-anchor="middle" font-size="21">EfficientNetB0 + head</text><g class="dg-badge"><circle cx="22" cy="106" r="15"/><text x="22" y="112.4" text-anchor="middle" font-size="18">2</text></g></g><g class="dg-node dg-node--hi dg-node--plan" data-node="3"><rect x="22" y="196" width="370" height="60" rx="2"/><text x="207.0" y="233.3" class="dg-label" text-anchor="middle" font-size="21">FedAvg server</text><g class="dg-badge"><circle cx="22" cy="196" r="15"/><text x="22" y="202.4" text-anchor="middle" font-size="18">3</text></g></g><g class="dg-node " data-node="4"><rect x="22" y="286" width="370" height="60" rx="2"/><text x="207.0" y="323.4" class="dg-label" text-anchor="middle" font-size="21">Best checkpoint</text><g class="dg-badge"><circle cx="22" cy="286" r="15"/><text x="22" y="292.4" text-anchor="middle" font-size="18">4</text></g></g><g class="dg-node " data-node="5"><rect x="22" y="376" width="370" height="60" rx="2"/><text x="207.0" y="413.4" class="dg-label" text-anchor="middle" font-size="21">Streamlit dashboard</text><g class="dg-badge"><circle cx="22" cy="376" r="15"/><text x="22" y="382.4" text-anchor="middle" font-size="18">5</text></g></g><g class="dg-node dg-node--dark" data-node="6"><rect x="22" y="466" width="370" height="60" rx="2"/><text x="207.0" y="503.4" class="dg-label" text-anchor="middle" font-size="21">Label + disclaimer</text><g class="dg-badge"><circle cx="22" cy="466" r="15"/><text x="22" y="472.4" text-anchor="middle" font-size="18">6</text></g></g><path class="dg-edge dg-edge--dash" d="M207.0 76.0 L207.0 104.0"/><path class="dg-head dg-edge--dash" d="M201.5 94.0 L207.0 104.0 L212.5 94.0"/><path class="dg-edge dg-edge--dash" d="M207.0 166.0 L207.0 194.0"/><path class="dg-head dg-edge--dash" d="M201.5 184.0 L207.0 194.0 L212.5 184.0"/><path class="dg-edge dg-edge--dash" d="M207.0 256.0 L207.0 284.0"/><path class="dg-head dg-edge--dash" d="M201.5 274.0 L207.0 284.0 L212.5 274.0"/><path class="dg-edge" d="M207.0 346.0 L207.0 374.0"/><path class="dg-head" d="M201.5 364.0 L207.0 374.0 L212.5 364.0"/><path class="dg-edge" d="M207.0 436.0 L207.0 464.0"/><path class="dg-head" d="M201.5 454.0 L207.0 464.0 L212.5 454.0"/></svg></div>
+            <figcaption class="fig__cap" id="fed-arch-cap"><span class="fig__no">Fig. 3.3</span> <span class="fig__text">Dashed: as described by the team, code not public. Solid: verified in the public repository. The highlighted server is what the averaging lab on this page lets you operate.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
+          <div class="case-arch__tools" data-case-js>
+            <button class="btn btn--ghost btn--sm" type="button" data-arch-open="fed-viewer" aria-haspopup="dialog"><span class="btn__inner"><svg class="icon icon--plus" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#plus"></use></svg>Open the full diagram</span></button>
+          </div>
+          <dialog class="case-viewer" id="fed-viewer" data-surface="paper" aria-labelledby="fed-viewer-title">
+            <div class="case-viewer__bar"><h2 id="fed-viewer-title">Fig. 3.3 · Federated study design, full</h2><button class="btn btn--icon" type="button" data-viewer-close><svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg><span class="vh">Close</span></button></div>
+            <div class="case-viewer__scroll" tabindex="0" role="region" aria-label="Full diagram, scrollable" data-viewer-slot="fed-arch"></div>
+            <p class="case-viewer__hint">Scroll sideways to follow the whole drawing.</p>
+          </dialog>
+          <ol class="case-legend" aria-label="Diagram legend" data-legend-for="fed-arch">
+            <li data-node="1"><span class="case-legend__n">1</span><span><b>Clients.</b> Three data silos; images stay on site. As described; code not public.</span></li>
+            <li data-node="2"><span class="case-legend__n">2</span><span><b>Local model.</b> Frozen EfficientNetB0, global average pooling, dense 256 and 128 with dropout, one sigmoid output; Adam at 1e-4 with binary cross-entropy. Verified from the checkpoint.</span></li>
+            <li data-node="3"><span class="case-legend__n">3</span><span><b>Server.</b> Flower with federated averaging: each client’s weights count in proportion to its sample count. As described; code not public.</span></li>
+            <li data-node="4"><span class="case-legend__n">4</span><span><b>Best checkpoint.</b> A Keras .h5 file in the public repository.</span></li>
+            <li data-node="5"><span class="case-legend__n">5</span><span><b>Streamlit dashboard.</b> Runs locally: upload, resize to 224 pixels, predict.</span></li>
+            <li data-node="6"><span class="case-legend__n">6</span><span><b>Output.</b> A label and a score capped at 99%, with a research-only disclaimer.</span></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="decisions" data-surface="paper" aria-labelledby="ch-decisions">
+        <div class="running-head" aria-hidden="true"><span><b>04</b> — Federated learning</span><span>Case study</span><span>Ch. 04 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-decisions" data-reveal><span class="case-ch__no">04 —</span> <span>Key challenges and decisions</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ol class="case-decisions">
+            <li data-reveal="fade"><span class="case-decisions__no">D1</span><h3>Freeze the backbone.</h3><p>Only a head of about 361,000 parameters is trained, so each round’s update is small. The size is verified from the checkpoint’s config; the motivation is inferred.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D2</span><h3>Average by sample count.</h3><p>Federated averaging weights each client by how many samples it trained on, so a large silo counts for more than a small one. The lab on this page lets you change the counts.</p></li>
+            <li data-reveal="fade"><span class="case-decisions__no">D3</span><h3>Say what it is not.</h3><p>The dashboard shows a research disclaimer with every prediction, and the score is capped at 99%.</p></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="implementation" data-surface="paper" aria-labelledby="ch-impl">
+        <div class="running-head" aria-hidden="true"><span><b>05</b> — Federated learning</span><span>Case study</span><span>Ch. 05 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-impl" data-reveal><span class="case-ch__no">05 —</span> <span>Implementation and technology</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">The public repository contains the inference dashboard and the trained checkpoint; the training code is not public.</p>
+          <p>The model below was read from the checkpoint’s stored configuration, without loading or running it. A local Streamlit dashboard returns a research-only prediction with a model score and a disclaimer.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <dl class="case-stack" data-reveal="lines">
+            <div data-reveal-item><dt>Model</dt><dd>TensorFlow/Keras 2.15, EfficientNetB0 with ImageNet weights, frozen</dd></div>
+            <div data-reveal-item><dt>Training</dt><dd>Adam at 1e-4, binary cross-entropy</dd></div>
+            <div data-reveal-item><dt>Federation</dt><dd>Flower with federated averaging (described; code not public)</dd></div>
+            <div data-reveal-item><dt>Inference</dt><dd>Streamlit and OpenCV, run locally</dd></div>
+          </dl>
+          <div class="code case-code" data-reveal="fade">
+            <div class="code__bar"><span class="code__path">model_config · read from the checkpoint</span><span class="code__rev">Keras 2.15.0</span></div>
+            <pre class="code--lines" tabindex="0" aria-label="Model layers read from the checkpoint configuration"><span class="line"><span class="tok-k">efficientnetb0</span>            frozen · 238 layers · input 224 × 224 × 3</span><span class="line"><span class="tok-k">global_average_pooling2d</span></span><span class="line"><span class="tok-k">dropout</span>                   rate 0.4</span><span class="line"><span class="tok-k">dense</span>                     256 units · relu</span><span class="line"><span class="tok-k">dropout_1</span>                 rate 0.4</span><span class="line"><span class="tok-k">dense_1</span>                   128 units · relu</span><span class="line"><span class="tok-k">dropout_2</span>                 rate 0.3</span><span class="line"><span class="tok-k">dense_2</span>                   1 unit · sigmoid</span><span class="line"><span class="tok-c">optimizer  Adam, learning rate 1e-4 · loss  binary cross-entropy</span></span></pre>
           </div>
         </div>
       </section>
-      <section class="wrap case-layout">
-        <div>
-          <p class="category">Engineering case study</p>
-          <h2>Train across three clients while keeping images local.</h2>
-          <div class="spec">
-            <h3>Method</h3>
-            <p>
-              Three clients trained an EfficientNet-based model using transfer learning and federated
-              averaging. The experiment ran for 80 rounds.
-            </p>
-          </div>
-          <div class="spec">
-            <h3>Reported results</h3>
-            <p>
-              The résumé reports 95.2% global accuracy across an experiment using 12,423 images, with the
-              best checkpoint at round 33 and a 1.8 percentage-point cross-client accuracy gap.
-            </p>
-          </div>
-          <div class="spec">
-            <h3>Interpretation</h3>
-            <p>
-              These results describe the study datasets and evaluation protocol. Dataset composition and
-              generalisation to other populations limit the conclusions. The work is presented as a
-              machine-learning experiment.
-            </p>
-          </div>
-          <div class="source-links">
-            <a class="card-link" href="https://github.com/DurgeshC16/Autism-Detection-using-FL"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18" /></svg
-              >Project repository</a
-            ><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"
-                /></svg
-              >Résumé</a
-            >
-          </div>
+      <!-- /region:case-a -->
+      <!-- region:bench (owner L) -->
+      <section class="case-bench section" id="how-it-works" data-surface="paper" aria-labelledby="bench-title">
+        <div class="grid bench-case__head">
+          <h2 class="bench-case__title" id="bench-title"><span class="bench-case__no">04 —</span> How it works</h2>
+          <p class="bench-case__dek">The aggregation step of federated averaging, with illustrative numbers. Change how many samples each client holds and the server’s weighted average follows.</p>
         </div>
+        <div class="wrap">
         <div class="experiment" id="experiment">
-          <article class="lab lab-federated" data-lab="federated" id="lab-federated">
-            <div class="lab-heading">
-              <span class="lab-symbol"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm9 5-9 5-9-5m9 5v10" /></svg
-              ></span>
-              <h2>Federated learning</h2>
-            </div>
-            <div class="average-stage">
-              <div><span>Global parameter</span><output data-average>3</output></div>
-              <div class="weight-plot" aria-hidden="true">
-                <span><i style="--height: 16px"></i><small>A</small></span
-                ><span><i style="--height: 48px"></i><small>B</small></span
-                ><span><i style="--height: 80px"></i><small>C</small></span>
+          <article class="lab bench bench--fed" data-lab="federated" id="lab-federated" aria-labelledby="lab-federated-title">
+          <header class="bench__bar">
+            <h3 class="bench__title" id="lab-federated-title"><span class="bench__no">Lab 03</span> Averaging bench</h3>
+            <p class="bench__readout">Global parameter <output data-average>3</output></p>
+            <span class="prov prov--illustrative bench__prov">Illustrative</span>
+            <div class="bench__tools"><button type="button" class="btn btn--text bench__reset" data-equal>Reset counts</button></div>
+          </header>
+          <div class="bench__body">
+            <div class="bench__stage fed-stage">
+              <figure class="fed-fig">
+                <svg class="fsvg" viewBox="0 0 400 248" role="img" aria-label="Clients A, B and C hold parameters 1, 3 and 5 with 1, 1, 1 samples, shares 34%, 33%, 33%. The server’s weighted average is 3." data-fed-svg>
+                  <g class="fsvg__links"><line class="fsvg__link" data-fed-link x1="93.33" y1="66" x2="200" y2="170" stroke-width="6.25"/><line class="fsvg__link" data-fed-link x1="200.00" y1="66" x2="200" y2="170" stroke-width="6.25"/><line class="fsvg__link" data-fed-link x1="306.67" y1="66" x2="200" y2="170" stroke-width="6.25"/></g>
+                  <g class="fsvg__clients"><g class="fsvg__client"><rect x="43.33" y="6" width="100" height="60" rx="2"/><text x="93.33" y="28" dy="0.35em" text-anchor="middle" class="fsvg__name">A<tspan class="fsvg__w" dx="12">w=1</tspan></text><text x="93.33" y="50" dy="0.35em" text-anchor="middle" class="fsvg__n" data-fed-n>n=1</text></g><g class="fsvg__client"><rect x="150.00" y="6" width="100" height="60" rx="2"/><text x="200.00" y="28" dy="0.35em" text-anchor="middle" class="fsvg__name">B<tspan class="fsvg__w" dx="12">w=3</tspan></text><text x="200.00" y="50" dy="0.35em" text-anchor="middle" class="fsvg__n" data-fed-n>n=1</text></g><g class="fsvg__client"><rect x="256.67" y="6" width="100" height="60" rx="2"/><text x="306.67" y="28" dy="0.35em" text-anchor="middle" class="fsvg__name">C<tspan class="fsvg__w" dx="12">w=5</tspan></text><text x="306.67" y="50" dy="0.35em" text-anchor="middle" class="fsvg__n" data-fed-n>n=1</text></g></g>
+                  <g class="fsvg__axis"><path d="M40 178H360" class="fsvg__rule"/><path d="M40.00 178v7"/><path d="M93.33 178v7"/><path d="M146.67 178v7"/><path d="M200.00 178v7"/><path d="M253.33 178v7"/><path d="M306.66 178v7"/><path d="M360.00 178v7"/><g class="fsvg__ticks" text-anchor="middle"><text x="40.00" y="204">0</text><text x="93.33" y="204">1</text><text x="146.67" y="204">2</text><text x="200.00" y="204">3</text><text x="253.33" y="204">4</text><text x="306.66" y="204">5</text><text x="360.00" y="204">6</text></g></g>
+                  <g class="fsvg__mean" data-fed-mean transform="translate(200 0)"><path d="M0 168l9 14h-18z"/><text x="0" y="234" text-anchor="middle" data-fed-mean-label>3</text></g>
+                </svg>
+                <figcaption class="fig__cap fed-fig__cap"><span class="fig__no">Fig. L3</span> <span class="fig__text">One aggregation round. Each line’s weight is that client’s share n ÷ N of all samples; the marker on the 0–6 scale is the weighted average the server sends back.</span> <span class="prov prov--illustrative">Illustrative parameters (1, 3, 5) — not model results</span></figcaption>
+              </figure>
+              <div class="fed-math">
+                <p class="label">Weighted average</p>
+                <p class="formula" data-equation aria-live="polite">(1 × 1 + 3 × 1 + 5 × 1) <span class="formula__tail">÷ 3 = <b>3</b></span></p>
+                <table class="ftable" data-contrib>
+                  <caption class="vh">Each client’s contribution: its share of all samples times its parameter</caption>
+                  <thead><tr><th scope="col">Client</th><th scope="col">n</th><th scope="col">n ÷ N</th><th scope="col">w</th><th scope="col">n ÷ N × w</th></tr></thead>
+                  <tbody><tr><th scope="row">A</th><td>1</td><td>1/3</td><td>1</td><td>0.333</td></tr><tr><th scope="row">B</th><td>1</td><td>1/3</td><td>3</td><td>1</td></tr><tr><th scope="row">C</th><td>1</td><td>1/3</td><td>5</td><td>1.667</td></tr></tbody>
+                  <tfoot><tr><th scope="row">Total</th><td>3</td><td>1</td><td></td><td>3</td></tr></tfoot>
+                </table>
+                <div class="weight-plot" aria-hidden="true"><span><i style="--height: 38.67px; --share: 0.3333; --cum: 0.3333"></i><small>A · 34%</small></span><span><i style="--height: 38.67px; --share: 0.3333; --cum: 0.6667"></i><small>B · 33%</small></span><span><i style="--height: 38.67px; --share: 0.3333; --cum: 1.0000"></i><small>C · 33%</small></span></div>
               </div>
             </div>
-            <div class="lab-body">
-              <div class="lab-meta">Federated averaging · Illustrative values</div>
-              <h3>Weight the client updates.</h3>
-              <p>
-                Each client contributes one parameter. Change its sample count to see how much influence
-                it has.
-              </p>
+            <div class="bench__controls">
+              <p class="bench__prompt">Weight the client updates.</p>
+              <p class="bench__note">Each client trains locally and sends one parameter w. The server weights each update by that client’s share of the samples, n ÷ N, and adds them up.</p>
               <div class="lab-fields client-fields">
-                <label
-                  >Client A<small>Parameter 1</small
-                  ><input
-                    data-client
-                    type="number"
-                    min="0"
-                    max="9999"
-                    value="1"
-                    step="1"
-                    aria-label="Sample count for client A" /></label
-                ><label
-                  >Client B<small>Parameter 3</small
-                  ><input
-                    data-client
-                    type="number"
-                    min="0"
-                    max="9999"
-                    value="1"
-                    step="1"
-                    aria-label="Sample count for client B" /></label
-                ><label
-                  >Client C<small>Parameter 5</small
-                  ><input
-                    data-client
-                    type="number"
-                    min="0"
-                    max="9999"
-                    value="1"
-                    step="1"
-                    aria-label="Sample count for client C"
-                /></label>
+                <div class="fclient">
+                  <p class="fclient__head"><span class="fclient__name">Client A</span><span class="fclient__w">w = 1</span></p>
+                  <div class="fclient__inputs">
+                    <input class="fclient__range" type="range" min="0" max="100" step="1" value="1" data-client-range aria-label="Client A samples, slider from 0 to 100" aria-valuetext="1 samples">
+                    <input class="fclient__num" id="fed-a-c" data-client type="number" min="0" max="9999" value="1" step="1" inputmode="numeric" aria-label="Sample count for client A">
+                  </div>
+                </div><div class="fclient">
+                  <p class="fclient__head"><span class="fclient__name">Client B</span><span class="fclient__w">w = 3</span></p>
+                  <div class="fclient__inputs">
+                    <input class="fclient__range" type="range" min="0" max="100" step="1" value="1" data-client-range aria-label="Client B samples, slider from 0 to 100" aria-valuetext="1 samples">
+                    <input class="fclient__num" id="fed-b-c" data-client type="number" min="0" max="9999" value="1" step="1" inputmode="numeric" aria-label="Sample count for client B">
+                  </div>
+                </div><div class="fclient">
+                  <p class="fclient__head"><span class="fclient__name">Client C</span><span class="fclient__w">w = 5</span></p>
+                  <div class="fclient__inputs">
+                    <input class="fclient__range" type="range" min="0" max="100" step="1" value="1" data-client-range aria-label="Client C samples, slider from 0 to 100" aria-valuetext="1 samples">
+                    <input class="fclient__num" id="fed-c-c" data-client type="number" min="0" max="9999" value="1" step="1" inputmode="numeric" aria-label="Sample count for client C">
+                  </div>
+                </div>
               </div>
-              <p class="formula" data-equation aria-live="polite">(1 × 1 + 3 × 1 + 5 × 1) ÷ 3 = 3</p>
-              <button type="button" class="plain-button" data-equal>Reset counts</button>
+              <p class="bench__error" id="fed-error-c" data-fed-error hidden>Use whole numbers from 0 to 9,999.</p>
+              <p class="bench__note fed-zero">With every count at 0 there is nothing to weight: N = 0, and the average is undefined.</p>
             </div>
-          </article>
+          </div>
+          <footer class="bench__foot">
+            <p class="bench__source"><span class="label">Source</span> Illustrative parameters (1, 3, 5) — not model results. The arithmetic runs in your browser; the study’s results will be added with the published paper.</p>
+            <a class="bench__return btn btn--text" href="../index.html#lab/federated" data-lab-return><span class="btn__inner"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg> Open on the home bench</span></a>
+          </footer>
+        </article>
           <details class="method-note">
-            <summary>Follow one training round</summary>
+            <summary class="method-note__summary">Follow one training round <svg class="icon icon--plus method-note__sign" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#plus"></use></svg></summary>
             <div class="method-steps" data-training>
-              <div class="training-options" aria-label="Training stage">
-                <button type="button" aria-pressed="true" aria-controls="local-stage">
-                  Local training
-                </button>
-                <button type="button" aria-pressed="false" aria-controls="update-stage">
-                  Model updates
-                </button>
-                <button type="button" aria-pressed="false" aria-controls="aggregate-stage">
-                  Aggregation
-                </button>
+              <div class="training-options seg" role="group" aria-label="Training stage">
+                <button type="button" aria-pressed="true" aria-controls="local-stage"><span class="mono">1</span> Local training</button><button type="button" aria-pressed="false" aria-controls="update-stage"><span class="mono">2</span> Model updates</button><button type="button" aria-pressed="false" aria-controls="aggregate-stage"><span class="mono">3</span> Aggregation</button>
               </div>
-              <div id="local-stage">
+              <div id="local-stage" class="method-stage">
                 <h3>Local training</h3>
-                <p>
-                  Each client trains a copy of the model using its own images. The raw images stay with
-                  that client.
-                </p>
+                <p>Each client trains a copy of the model using its own images. The raw images stay with that client.</p>
               </div>
-              <div id="update-stage">
+              <div id="update-stage" class="method-stage">
                 <h3>Model updates</h3>
-                <p>
-                  The three clients send the parameters learned from their local datasets to the
-                  coordinator.
-                </p>
+                <p>The three clients send the parameters learned from their local datasets to the coordinator.</p>
               </div>
-              <div id="aggregate-stage">
+              <div id="aggregate-stage" class="method-stage">
                 <h3>Aggregation</h3>
-                <p>
-                  The coordinator averages the updates and shares the resulting model with the clients
-                  for their next training round.
-                </p>
+                <p>The coordinator averages the updates and shares the resulting model with the clients for their next training round.</p>
               </div>
             </div>
           </details>
         </div>
-      </section>
-      <aside class="case-bottom">
-        <div class="wrap">
-          <div>
-            <p class="eyebrow"><span></span>Continue exploring</p>
-            <h2>Kaaran</h2>
-          </div>
-          <a class="button secondary" href="kaaran.html"
-            ><svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-              /></svg
-            >Read case study</a
-          >
         </div>
-      </aside>
+      </section>
+      <!-- /region:bench -->
+      <!-- region:case-b (owner E1) -->
+      <div class="case-benchlink grid" data-surface="paper">
+        <p>The lab keeps its state in the address. <a class="crumb" href="../index.html#lab/federated">Open this lab on the home bench<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></a></p>
+      </div>
+      <section class="case-section case-ch grid" id="evaluation" data-surface="paper" aria-labelledby="ch-eval">
+        <div class="running-head" aria-hidden="true"><span><b>07</b> — Federated learning</span><span>Case study</span><span>Ch. 07 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-eval" data-reveal><span class="case-ch__no">07 —</span> <span>Evaluation, results and limitations</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-note">Results will be added with the published paper.</p>
+          <!-- TODO(durgesh): results are on HOLD per ledger §0.2. Do not publish accuracy, image counts, rounds, the best round or the per-client gap until the paper and training logs are available (Q-1, Q-3). -->
+        </div>
+        <div class="case-ch__body case-sub">
+          <h3 class="case-h3">Limitations</h3>
+          <ul class="case-list">
+            <li>This is not a diagnostic tool. ASD diagnosis is clinical and behavioural.</li>
+            <li>Public ASD face datasets are web-scraped, with unverified labels, so accuracy may reflect dataset artefacts.</li>
+            <li>Per-population results are not public.</li>
+            <li>Federated learning alone does not guarantee privacy: no secure aggregation or differential privacy is evidenced.</li>
+            <li>The training and federation code is not public, so the dashed half of Fig. 3.3 cannot be checked yet.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="source" data-surface="paper" aria-labelledby="ch-source">
+        <div class="running-head" aria-hidden="true"><span><b>08</b> — Federated learning</span><span>Case study</span><span>Ch. 08 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-source" data-reveal><span class="case-ch__no">08 —</span> <span>Source code and supporting evidence</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ul class="case-sources">
+            <li><span class="case-sources__what">Conference</span><span class="case-sources__why">IConDeepCom 2026, the 5th International Conference on Deep Sciences for Computing and Communications. The camera-ready manuscript is recorded as ICONDEEPCOM26_079.</span><span class="case-sources__badges"><a class="evidence" href="https://icondeepcom.wordpress.com/">Conference<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Averaging rule</span><span class="case-sources__why">Flower’s own aggregation code, for the weighted average the lab computes. It is the framework’s code, not the project’s.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/adap/flower/blob/main/framework/py/flwr/server/strategy/aggregate.py">Flower source<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Dataset caveat</span><span class="case-sources__why">A published study noting that the public autism face dataset was gathered from websites, with labels that were not independently verified.</span><span class="case-sources__badges"><a class="evidence" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8811190/">PMC8811190<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Drawings</span><span class="case-sources__why">The plate and Fig. 3.3 are original drawings; the model block comes from the checkpoint’s stored configuration.</span><span class="case-sources__badges"><span class="prov prov--drawing">Original drawing</span></span></li>
+          </ul>
+          <!-- TODO(durgesh): review remediation before adding a public repository link. -->
+        </div>
+      </section>
+      <nav class="case-next grid" data-surface="paper" data-case-essential aria-label="More case studies">
+        <div class="case-next__inner">
+          <a class="case-next__link" href="tutor.html" rel="prev"><span class="case-next__meta"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Previous · Pl. 02</span><span class="case-next__title">Neuro-symbolic tree tutor</span><span class="case-next__dek">A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.</span></a>
+          <a class="case-next__link" href="certivault.html" rel="next"><span class="case-next__meta">Next · Pl. 04<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></span><span class="case-next__title">CertiVault</span><span class="case-next__dek">A PHP/MySQL platform that signs certificates and lets anyone verify them, with six distinct verdicts.</span></a>
+        </div>
+        <p class="case-next__colophon"><span>Last updated 2026-11-23</span><span>Every claim on this page maps to a source above.</span></p>
+      </nav>
+      <!-- /region:case-b -->
     </main>
-    <footer>
-      <div class="wrap foot">
-        <span>© 2026 Durgesh Chaudhari</span>
-        <div>
-          <a class="" href="https://github.com/DurgeshC16">GitHub</a
-          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
-          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+    <!-- region:shell-footer (owner A) -->
+    <footer class="credits" id="contact" data-surface="night" aria-labelledby="contact-label">
+      <div class="wrap">
+        <div class="running-head" aria-hidden="true"><span><b>V</b> — Correspondence</span><span>Credits</span><span>p. 05</span></div>
+      </div>
+      <div class="credits__body grid">
+        <h2 class="credits__label" id="contact-label">Contact</h2>
+        <div class="credits__main">
+          <p class="credits__lead">Looking for an AI engineering internship.</p>
+          <p class="credits__shout"><a class="credits__email" href="mailto:durgesh.chaudhari24@vit.edu">durgesh.chaudhari24<span class="credits__domain"><span class="credits__at">@</span>vit.edu</span></a></p>
+          <div class="credits__row">
+            <button class="btn btn--ghost copy" type="button" data-copy="durgesh.chaudhari24@vit.edu" data-copy-email data-magnetic data-cursor="Copy"><span class="btn__inner"><svg class="icon icon--copy copy__idle" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#copy"></use></svg><svg class="icon icon--check copy__done" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#check"></use></svg><span data-copy-label>Copy address</span></span></button>
+            <p class="vh" aria-live="polite" data-copy-live></p>
+            <ul class="credits__links">
+              <li><span class="cite" aria-hidden="true">[a]</span><a href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[b]</span><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[c]</span><a href="https://leetcode.com/u/strangeDC/">LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[d]</span><a href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="credits__base">
+          <p>Durgesh Chaudhari · Pune, India</p>
+          <p>Set in DM Sans, Instrument Serif and DM Mono. Hand-built in HTML, CSS and JavaScript.</p>
+          <a class="credits__top" href="#top">Back to top<svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up"></use></svg></a>
         </div>
       </div>
     </footer>
+    <!-- /region:shell-footer -->
+    <!-- region:chrome (owner CHROME: nav overlay + command palette; empty shells so the header's aria-controls resolve) -->
+    <dialog id="nav-overlay" class="nav-overlay" data-surface="night" aria-label="Site index"></dialog>
+    <dialog id="palette" class="palette" data-surface="night" aria-label="Search the archive"></dialog>
+    <!-- /region:chrome -->
   </body>
 </html>

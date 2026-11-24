@@ -1,0 +1,331 @@
+/* =====================================================================
+   DC. — gallery.css  (owner C · region:work · design-system §12)
+   "I — Selected work": five paper plates on night.
+   ≥ 760 + JS: clamped CSS-3D arc, controls row, deck (js/gallery.js).
+   < 760: native scroll-snap strip; each slide carries its own text.
+   No JS: static list (≥ 760) / native strip (< 760); controls + deck hidden.
+   ===================================================================== */
+
+/* ---------- Section ---------- */
+.work {
+  /* W (§12.3). Budget 540 px instead of 500 so the whole gallery fits under
+     the sticky header after #work is scrolled to the top (MF-04). */
+  --plate-w: min(40vw, 600px, max(380px, (100svh - 560px) * 1.6));
+  --cap-h: 40px;
+  position: relative;
+  overflow-x: clip;                                   /* clip on the SECTION, never on the 3D parent (Safari) */
+  padding-block: var(--s-2) var(--s-block);
+  background-image: linear-gradient(var(--c-night) 55%, var(--c-graphite));   /* the one allowed gradient: the gallery floor */
+}
+@media (min-width: 760px) and (max-width: 1099px) {
+  .work { --plate-w: min(64vw, 620px, max(380px, (100svh - 560px) * 1.6)); }
+}
+
+.work__head { row-gap: var(--s-2); align-items: end; }
+.work__head > .running-head { margin-bottom: var(--s-3); }
+.work__title { grid-column: 1 / -1; font: 400 var(--t-h2)/var(--lh-h2) var(--f-serif); letter-spacing: var(--tr-h2); }
+.work__hint { grid-column: 1 / -1; max-width: 46ch; font: 400 var(--t-small)/var(--lh-small) var(--f-sans); color: var(--fg-2); }
+.work__hint-js { display: none; }
+html.js .work__hint-touch { display: inline; }
+@media (min-width: 760px) {
+  .work__title { grid-column: 1 / span 7; }
+  .work__hint { grid-column: 9 / -1; justify-self: end; text-align: right; padding-bottom: .35em; }
+  html.js .work__hint-touch { display: none; }
+  html.js .work__hint-desk { display: inline; }
+}
+
+/* ---------- Gallery frame ---------- */
+.gallery { position: relative; margin-top: var(--s-4); }
+html:not(.js) .gallery__controls, html:not(.js) .gallery .deck { display: none; }
+
+/* ---------- Plates (shared by every mode) ---------- */
+.slide { min-width: 0; }
+.plate {
+  position: relative; display: block;
+  color: var(--fg); background: var(--c-paper-2); text-decoration: none;
+  border-radius: var(--r-1);
+  -webkit-user-drag: none; -webkit-tap-highlight-color: transparent;
+  container: platebox / inline-size;
+}
+.plate:focus-visible { outline: 3px solid var(--c-focus-any); outline-offset: 3px; }
+.plate__art {
+  position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden;
+  background: var(--c-paper-2); border-radius: var(--r-1) var(--r-1) 0 0;
+  container: plate / inline-size;
+}
+.plate__cap {
+  display: flex; align-items: center; gap: 10px; min-height: var(--cap-h); padding: 0 14px;
+  border-top: 1px solid var(--rule);
+  font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: .02em; color: var(--fg-2);
+  white-space: nowrap;
+}
+.plate__no { color: var(--fg); font-weight: 500; flex: none; }
+.plate__what { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.plate__cap .prov { margin-left: auto; flex: none; }
+
+/* --- Kaaran capture on its mat (§8.2: paper-2 passe-partout, 6 %, 1 px rule) --- */
+.mat { position: absolute; inset: 3.75% 6%; display: block; background: #fff; outline: 1px solid var(--c-bone); }
+.mat picture, .mat img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mat img { object-fit: cover; }
+.annot { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.annot__mark { fill: none; stroke: var(--c-cobalt); stroke-width: 4; }
+.annot--compact .annot__mark { stroke-width: 5; }
+.annot__lead { fill: none; stroke: var(--c-cobalt); stroke-width: 3.5; stroke-dasharray: 11 9; }
+.annot--compact .annot__lead { stroke-width: 4.5; }
+.annot__draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.annot__tag {
+  position: absolute; left: 29%; top: 37%;
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 7px;
+  font: 400 var(--t-micro)/1.3 var(--f-mono); letter-spacing: .02em; white-space: nowrap;
+  color: var(--c-paper); background: var(--c-cobalt); border-radius: var(--r-1);
+}
+.annot__tag .icon { width: 11px; height: 11px; vertical-align: 0; }
+.annot__tag--compact { left: auto; right: 4%; top: auto; bottom: 7%; }
+.annot--compact, .annot__tag--compact { display: none; }
+@media (max-width: 759px) {
+  .annot--full, .annot__tag--full { display: none; }
+  .annot--compact { display: block; }
+  .annot__tag--compact { display: inline-flex; }
+}
+
+/* --- Plate drawings: ink on paper-2, one cobalt datum (§8.2, §12.8) --- */
+.pl-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
+.pl-svg text { font-family: var(--f-mono); font-size: 24px; fill: var(--c-ink); }
+.pl-svg.v-compact text { font-size: 20px; }
+.pl-svg .t-soft { fill: var(--c-ink-soft); }
+.pl-svg .t-cap { letter-spacing: .06em; }
+.pl-svg .t-serif { font-family: var(--f-serif); font-size: 28px; }
+.pl-svg.v-compact .t-serif { font-size: 22px; }
+.pl-svg .t-it { font-family: var(--f-serif-i); font-style: italic; }
+.pl-svg .t-node { font-size: 26px; text-anchor: middle; }
+.pl-svg.v-compact .t-node { font-size: 20px; }
+.pl-svg .t-val { font-size: 26px; font-weight: 500; }
+.pl-svg.v-compact .t-val { font-size: 20px; }
+.pl-svg .t-ref { font-size: 28px; }
+.pl-svg .t-sub { font-size: 24px; }
+.pl-svg .t-tick text { text-anchor: middle; }
+.pl-svg .t-seal text, .pl-svg .t-seal-c { text-anchor: middle; }
+.pl-svg .t-seal text { font-size: 22px; }
+.pl-svg.v-compact .t-seal-c { font-size: 22px; }
+.pl-svg .t-paper { fill: var(--c-paper); }
+.pl-svg .t-hot { fill: var(--c-cobalt); }
+.pl-svg .ln { fill: none; stroke: var(--c-ink); stroke-width: 1.25px; vector-effect: non-scaling-stroke; }
+.pl-svg .ln-soft { stroke: var(--c-ink-soft); }
+.pl-svg .ln-dash { stroke-dasharray: 5 6; }
+.pl-svg .hair { fill: none; stroke: var(--c-bone); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.pl-svg .node, .pl-svg .box, .pl-svg .seal { fill: var(--c-paper); stroke: var(--c-ink); stroke-width: 1.25px; vector-effect: non-scaling-stroke; }
+.pl-svg .hot { fill: var(--c-cobalt); stroke: var(--c-cobalt); }
+.pl-svg .bar { fill: var(--c-ink); }
+.pl-svg .bar.hot { fill: var(--c-cobalt-hi); stroke: none; }
+.pl-svg .layer rect { fill: var(--c-paper-3); stroke: var(--c-ink); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.pl-svg .datum rect { fill: var(--c-bone); }
+.pl-svg .qr rect:not(.box) { fill: var(--c-ink); }
+.pl-svg .fed-up { stroke-dasharray: 1; stroke-dashoffset: 0; vector-effect: none; stroke-width: 2px; }
+.pl-svg.v-compact .fed-up { stroke-width: 1.6px; }
+.v-compact { display: none; }
+@container plate (max-width: 439px) {
+  .v-full { display: none; }
+  .v-compact { display: block; }
+}
+
+/* --- Activation choreography: once per activation, never looped (§12.4) --- */
+@keyframes gallery-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes gallery-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes gallery-dim { from { opacity: .25; } to { opacity: 1; } }
+html.js .gallery.is-revealed .slide.is-active .annot__draw--a { animation: gallery-draw 520ms var(--e-out) 380ms both; }
+html.js .gallery.is-revealed .slide.is-active .annot__draw--lead { animation: gallery-draw 900ms var(--e-inout) 620ms both; }
+html.js .gallery.is-revealed .slide.is-active .annot__draw--b { animation: gallery-draw 520ms var(--e-out) 1380ms both; }
+/* FedAvg: one round in 2400 ms (weights up, average, model down), then rest */
+html.js .gallery.is-revealed .slide.is-active .fed-up { animation: gallery-draw 800ms var(--e-inout) calc(200ms + var(--k, 0) * 120ms) both; }
+html.js .gallery.is-revealed .slide.is-active .fed-head { animation: gallery-fade 240ms linear 1040ms both; }
+html.js .gallery.is-revealed .slide.is-active .fed-avg { animation: gallery-dim 480ms var(--e-out) 1200ms both; }
+html.js .gallery.is-revealed .slide.is-active .fed-down { animation: gallery-fade 700ms var(--e-out) 1700ms both; }
+
+/* =====================================================================
+   Controls: counter · Prev · index ruler · Next  (desktop)
+             status · Prev · Next                 (mobile)
+   ===================================================================== */
+.gallery__controls { display: flex; align-items: center; gap: var(--s-2); padding-inline: var(--page-x); }
+.gallery__btn { height: 48px; min-height: 48px; padding: 0 var(--s-4); }
+.gallery__btn .btn__inner { gap: .5em; }
+.gallery__btn[aria-disabled="true"] { opacity: .38; }
+
+/* Counter (odometer): serif folio numerals in fixed cells (§4.3) */
+.gallery .counter { display: none; align-items: baseline; gap: .18em; margin: 0; font: 400 var(--t-counter)/1 var(--f-serif); color: var(--fg); }
+.counter__win { display: inline-block; height: 1em; overflow: hidden; }
+.counter__roll { display: block; transform: translateY(calc(var(--at, 0) * -1em)); transition: transform var(--d-swap) var(--e-inout); }
+.counter__roll > span { display: block; height: 1em; line-height: 1; }
+.counter__roll i, .counter__of { font-style: normal; font-family: var(--f-serif); font-size: 1em; line-height: 1; }
+.counter__roll i { display: inline-block; width: .5em; text-align: center; }
+.counter__of { font-size: .42em; letter-spacing: .02em; color: var(--fg-2); }
+
+/* Index ruler (roving tabindex; one tab stop) */
+.gallery .index { position: relative; display: none; grid-template-columns: repeat(5, minmax(0, 1fr)); min-width: 0; border-bottom: 1px solid var(--rule-strong); }
+.index__stop {
+  position: relative; display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 48px; padding: 0 12px;
+  background: none; border: 0; border-left: 1px solid var(--rule); color: var(--fg-2); text-align: left;
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase;
+  transition: color var(--d-instant) linear;
+}
+.index__stop:last-of-type { border-right: 1px solid var(--rule); }
+.index__stop[aria-current="true"] { color: var(--fg); }
+.index__stop[aria-current="true"] .index__num { color: var(--accent); font-weight: 500; }
+.index__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.index__stop:focus-visible { outline-offset: -3px; }
+@media (hover: hover) and (pointer: fine) { .index__stop:hover { color: var(--fg); } }
+.index__marker {
+  position: absolute; left: 0; bottom: -1px; width: 20%; height: 3px; background: var(--accent); pointer-events: none;
+  transform: translateX(calc(var(--at, 0) * 100%)); transition: transform var(--d-travel) var(--e-out);
+}
+
+/* Mobile status: "01 — 05", progress hairline, active name (§12.7) */
+.gallery__status {
+  flex: 1 1 auto; min-width: 0; margin: 0 var(--s-2) 0 0;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--s-3); row-gap: 8px;
+  font: 400 var(--t-micro)/1 var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase; color: var(--fg-2);
+}
+.gallery__count { color: var(--fg); letter-spacing: .04em; }
+.gallery__name { color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gallery__bar { grid-column: 1 / -1; position: relative; display: block; height: 1px; background: var(--rule); }
+.gallery__bar > span { position: absolute; inset: 0; background: var(--fg-2); transform-origin: left center; transform: scaleX(var(--p, .2)); transition: transform var(--d-swap) var(--e-out); }
+
+/* ---------- Deck (desktop, JS): mirrors the active slide's text ---------- */
+.gallery .deck { display: none; }
+.gallery .kicker { font: 400 var(--t-micro)/var(--lh-micro) var(--f-mono); letter-spacing: var(--tr-caps); text-transform: uppercase; color: var(--fg-2); }
+.slide__title { font: 400 var(--t-h2)/var(--lh-h2) var(--f-serif); letter-spacing: var(--tr-h2); }
+.gallery .summary { font: 400 var(--t-body)/1.55 var(--f-sans); color: var(--fg-2); }
+.gallery .facts--deck { border-top: 1px solid var(--rule); }
+.gallery .facts--deck > div { grid-template-columns: 7ch minmax(0, 1fr); padding: 6px 0; min-height: 36px; align-items: center; }
+.gallery .facts--deck dt { font-size: var(--t-micro); }
+.gallery .facts--deck dd { margin: 0; font-size: var(--t-small); line-height: 1.35; }
+.gallery .facts--deck .chips { gap: 6px; }
+.slide__cta { align-self: flex-start; gap: .5em; }
+
+/* =====================================================================
+   Mobile + no-JS mobile: native scroll-snap strip (§12.7)
+   No 3D, no custom pointer handlers, no touch-action on plates.
+   ===================================================================== */
+@media (max-width: 759px) {
+  .gallery { display: flex; flex-direction: column; gap: var(--s-4); }
+  .gallery__btn { width: 48px; padding: 0; }
+  .gallery__btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .gallery .gallery__ring {
+    position: relative; display: flex; gap: 14px; margin: 0;
+    overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scrollbar-width: none; padding-inline: var(--margin); scroll-padding-inline: var(--margin);
+  }
+  .gallery__ring::-webkit-scrollbar { display: none; }
+  /* Match the 28 px neighbour preview at the trailing end so the final
+     project can snap to the same leading inset as every other project. */
+  .gallery__ring::after { content: ""; flex: 0 0 14px; }
+  .slide { flex: 0 0 calc(100% - 28px); scroll-snap-align: start; display: flex; flex-direction: column; }
+  .plate__cap { flex-wrap: wrap; row-gap: 2px; padding-block: 9px; white-space: normal; }
+  .plate__cap .prov { white-space: normal; }
+  .plate__what { display: none; }
+  .slide__text { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-4) 2px 0; }
+  .slide__text .summary { margin-bottom: var(--s-2); }
+  .slide__cta { margin-top: auto; }
+}
+
+/* =====================================================================
+   No JS, ≥ 760: a plain list of the five plates with their text
+   ===================================================================== */
+@media (min-width: 760px) {
+  html:not(.js) .gallery .gallery__ring { display: grid; gap: var(--s-8); margin: 0; padding-inline: var(--page-x); }
+  html:not(.js) .slide { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
+  html:not(.js) .plate { grid-column: 1 / span 7; }
+  html:not(.js) .slide__text { grid-column: 9 / -1; display: flex; flex-direction: column; gap: var(--s-3); }
+}
+
+/* =====================================================================
+   JS, ≥ 760: the clamped 3D arc (§12.3)
+   ===================================================================== */
+@media (min-width: 760px) {
+  html.js .gallery { display: grid; grid-template-areas: "stage" "controls" "deck"; }
+  html.js .gallery__stage {
+    grid-area: stage; position: relative;
+    height: calc(var(--plate-w) / 1.6 + var(--cap-h));
+    perspective: 1700px; perspective-origin: 50% 40%;
+    touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab;
+  }
+  html.js .gallery.is-dragging .gallery__stage { cursor: grabbing; }
+  html.js .gallery .gallery__ring {
+    position: absolute; inset: 0; margin: 0;
+    transform-style: preserve-3d;
+    transition: transform var(--d-travel) var(--e-out);
+  }
+  html.js .slide {
+    position: absolute; top: 0; left: 50%;
+    width: var(--plate-w); margin-left: calc(var(--plate-w) / -2);
+    transition: transform var(--d-travel) var(--e-out), opacity var(--d-travel) var(--e-out), visibility var(--d-travel) linear;
+    backface-visibility: hidden;
+  }
+  html.js .slide__text { display: none; }
+  html.js .gallery.is-dragging .slide, html.js .gallery.is-instant .slide,
+  html.js .gallery.is-dragging .plate::after, html.js .gallery.is-instant .plate::after,
+  html.js .gallery.is-dragging .plate::before, html.js .gallery.is-instant .plate::before { transition: none; }
+  html.js .gallery.is-dragging .gallery__ring { transition: none; }
+  /* first frame before gallery.js runs = index 0 (inline styles override) */
+  html.js .gallery:not(.is-ready) .slide:nth-child(2) { transform: translate3d(calc(var(--plate-w) * .8), 0, -360px) rotateY(-30deg); }
+  html.js .gallery:not(.is-ready) .slide:nth-child(3) { transform: translate3d(calc(var(--plate-w) * 1.22), 0, -720px) rotateY(-39deg); opacity: .15; }
+  html.js .gallery:not(.is-ready) .slide:nth-child(n + 4) { transform: translate3d(calc(var(--plate-w) * 1.64), 0, -792px) rotateY(-39deg); opacity: 0; visibility: hidden; }
+  html.js .gallery:not(.is-ready) .slide:nth-child(2) .plate { --veil: .3; }
+  html.js .gallery:not(.is-ready) .slide:nth-child(n + 3) .plate { --veil: .6; }
+
+  /* light: the active plate casts the plate shadow; neighbours take the night veil */
+  html.js .plate::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+    box-shadow: var(--shadow-plate); opacity: 0; transition: opacity var(--d-travel) var(--e-out);
+  }
+  html.js .slide.is-active .plate::before { opacity: 1; }
+  html.js .plate::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: var(--c-night); opacity: var(--veil, 0); transition: opacity var(--d-travel) var(--e-out);
+  }
+  @container platebox (max-width: 479px) { .plate__what { display: none; } }
+
+  /* controls row */
+  html.js .gallery__controls {
+    grid-area: controls; display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto;
+    align-items: end; column-gap: var(--s-4); margin-top: var(--s-4);
+  }
+  html.js .gallery .counter { display: flex; margin-right: var(--s-4); }
+  html.js .gallery .index { display: grid; }
+  html.js .gallery__status { display: none; }
+
+  /* deck: cols 1–7 kicker/title/summary · cols 8–12 facts + CTA */
+  html.js .gallery .deck {
+    grid-area: deck; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); column-gap: var(--gutter);
+    padding-inline: var(--page-x); margin-top: var(--s-4); align-items: start;
+  }
+  html.js .gallery .deck__main { grid-column: 1 / span 7; min-width: 0; }
+  html.js .gallery .deck__side { grid-column: 8 / -1; min-width: 0; display: flex; flex-direction: column; gap: var(--s-3); }
+  .gallery .deck__title {
+    display: grid; margin: 4px 0 8px;
+    font: 400 min(var(--t-title), 4.5rem)/.95 var(--f-serif); letter-spacing: var(--tr-display); word-spacing: var(--ws-display);
+    clip-path: inset(-.12em -1em -.28em -.12em);      /* the swap reads as a slot, not a slide-over */
+  }
+  .gallery .deck__line { grid-area: 1 / 1; display: block; white-space: nowrap; }
+  .gallery .deck .summary { max-width: 60ch; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .gallery .deck__cta { align-self: flex-start; height: 48px; }
+}
+@media (min-width: 760px) and (max-width: 1099px) {
+  /* md (§5.3): the ruler gets its own full-width row so every name fits; the
+     counter and Prev/Next share the row above it */
+  .work__title { grid-column: 1 / -1; }
+  .work__hint { grid-column: 1 / span 9; justify-self: start; text-align: left; padding-bottom: 0; }
+  html.js .gallery__controls { grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "counter . prev next" "index index index index"; row-gap: var(--s-3); }
+  html.js .gallery .counter { grid-area: counter; }
+  html.js #prev { grid-area: prev; }
+  html.js #next { grid-area: next; }
+  html.js .gallery .index { grid-area: index; }
+  html.js .gallery .deck__main { grid-column: 1 / span 6; }
+  html.js .gallery .deck__side { grid-column: 7 / -1; }
+  .gallery .deck .summary { -webkit-line-clamp: 4; }
+}
+@media (min-width: 760px) and (max-height: 820px) {
+  .work { padding-top: 0; }
+  .gallery { margin-top: var(--s-4); }
+  html.js .gallery__controls, html.js .gallery .deck { margin-top: var(--s-4); }
+  .work__head > .running-head { margin-bottom: 0; }
+}

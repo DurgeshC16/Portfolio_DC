@@ -1,310 +1,492 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#141518" />
-    <title>Engineering notebook | Durgesh Chaudhari</title>
-    <meta
-      name="description"
-      content="Explore Durgesh Chaudhari’s C++ tree benchmarks and the reciprocal rank fusion behind Review Summarizer."
-    />
-    <meta property="og:title" content="Engineering notebook | Durgesh Chaudhari" />
-    <meta
-      property="og:description"
-      content="Explore Durgesh Chaudhari’s C++ tree benchmarks and the reciprocal rank fusion behind Review Summarizer."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="../assets/favicon.svg" />
-    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../notebook.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Engineering notebook — Durgesh Chaudhari</title>
+    <meta name="description" content="Interactive notes on two engineering decisions: how insertion order shapes tree height, and how rank fusion orders search results.">
+    <meta name="theme-color" content="#0d0e11">
+    <meta name="color-scheme" content="dark light">
+    <!-- TODO(durgesh): add <link rel="canonical"> and make og:image absolute once the deployment URL is decided (ledger Q-16). -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DC. — The Interactive Engineering Archive">
+    <meta property="og:title" content="Engineering notebook — Durgesh Chaudhari">
+    <meta property="og:description" content="Interactive notes on two engineering decisions: how insertion order shapes tree height, and how rank fusion orders search results.">
+    <meta property="og:image" content="../assets/og/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DC. — Durgesh Chaudhari, The Interactive Engineering Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Engineering notebook — Durgesh Chaudhari">
+    <meta name="twitter:description" content="Interactive notes on two engineering decisions: how insertion order shapes tree height, and how rank fusion orders search results.">
+    <meta name="twitter:image" content="../assets/og/og-default.png">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script>!function(h){h.classList.add("js");try{if(localStorage.getItem("dc.motion")=="reduce")return h.setAttribute("data-motion","reduce")}catch(e){}matchMedia("(prefers-reduced-motion: reduce)").matches||h.classList.add("intro")}(document.documentElement)</script>
+    <link rel="preload" href="../assets/fonts/dm-sans-normal-100_1000-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/chrome.css">
+    <link rel="stylesheet" href="../css/notebook.css">
+    <script src="../js/core.js" defer></script>
     <script src="../assets/tree-benchmarks.js" defer></script>
-    <script src="../navigation.js" defer></script>
     <script src="../notebook.js" defer></script>
+    <script src="../js/nav.js" defer></script>
+    <script src="../js/palette-index.js" defer></script>
+    <script src="../js/palette.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+    <script src="../js/transitions.js" defer></script>
   </head>
-  <body>
-    <a href="#main" class="skip">Skip to content</a>
-    <header class="mast">
-      <div class="wrap nav-row">
-        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
-          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
-        >
-        <nav aria-label="Main navigation">
-          <a href="../index.html#work" class="">Work</a
-          ><a href="notebook.html" aria-current="page">Notebook</a
-          ><a href="../index.html#research" class="">Research</a
-          ><a href="../index.html#about" class="">About</a>
+  <body id="top" data-page="notebook">
+    <!-- region:shell-header (owner A) -->
+    <header class="site-header" data-header data-surface="night">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="site-header__bar">
+        <a class="wordmark" href="../index.html">DC<span class="wordmark__stop">.</span><span class="vh"> Durgesh Chaudhari, home</span></a>
+        <p class="site-header__title">The Interactive Engineering Archive</p>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../index.html#work">Work<sup aria-hidden="true">I</sup></a></li>
+            <li class="site-nav__wide"><a href="../index.html#evidence">Evidence<sup aria-hidden="true">II</sup></a></li>
+            <li class="site-nav__wide"><a href="../projects/notebook.html" aria-current="page">Notebook</a></li>
+            <li><a href="#contact">Contact<sup aria-hidden="true">V</sup></a></li>
+          </ul>
         </nav>
-        <a href="../index.html#contact" class="nav-contact"
-          ><svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2.5" y="5" width="19" height="14" rx="3" />
-            <path d="m4 7 8 6 8-6" /></svg
-          >Get in touch</a
-        >
-        <button
-          type="button"
-          class="menu-btn"
-          aria-label="Open navigation"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-        </button>
+        <div class="site-header__actions">
+          <a class="site-header__cv" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon icon--file" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#file"></use></svg>Résumé<span class="vh"> (PDF)</span></a>
+          <button class="site-header__btn site-header__search" type="button" data-palette-open aria-haspopup="dialog" aria-controls="palette"><svg class="icon icon--search" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="site-header__label">Search</span> <kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">K</kbd></button>
+          <button class="site-header__btn site-header__index" type="button" data-menu-open aria-haspopup="dialog" aria-controls="nav-overlay" aria-expanded="false"><svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#menu"></use></svg><span class="site-header__label">Index</span></button>
+        </div>
       </div>
-      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="../index.html#work" class="">Work</a
-        ><a href="notebook.html" aria-current="page">Notebook</a
-        ><a href="../index.html#research" class="">Research</a
-        ><a href="../index.html#about" class="">About</a
-        ><a href="../index.html#contact" class="">Contact</a>
-      </nav>
+      <span class="site-header__progress" data-scroll-progress aria-hidden="true"></span>
     </header>
-    <main id="main" class="notebook">
-      <section class="book-cover">
-        <div class="wrap cover-grid">
-          <div>
-            <a class="book-back" href="../index.html#work">← Selected work</a>
-            <h1>Engineering<br /><em>notebook.</em></h1>
-            <p class="cover-deck">
-              How does a tree respond to its input? Which review rises to the top of a search? Explore
-              two decisions from my engineering projects.
-            </p>
-            <nav class="cover-links" aria-label="Notebook contents">
-              <a href="#trees">Tree benchmarks <span aria-hidden="true">↓</span></a>
-              <a href="#retrieval">Review retrieval <span aria-hidden="true">↓</span></a>
-            </nav>
+    <!-- /region:shell-header -->
+    <main id="main" class="notebook" data-surface="paper">
+      <!-- region:notebook (owner E2) -->
+      <section class="nb-cover" data-surface="night" aria-labelledby="nb-title">
+        <div class="grid nb-cover__grid">
+          <div class="running-head" aria-hidden="true"><span><b>Notebook</b></span><span>Entries 01–03</span><span>p. —</span></div>
+          <div class="nb-cover__text">
+            <a class="nb-crumb" href="../index.html#work"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Selected work</a>
+            <p class="label nb-cover__kicker">Pl. 05 · Algorithms and retrieval</p>
+            <h1 class="nb-cover__title" id="nb-title">Engineering <em>notebook</em></h1>
+            <p class="nb-cover__dek">Interactive notes on two engineering decisions: how insertion order shapes tree height, and how rank fusion orders search results.</p>
+            <dl class="facts facts--stack nb-cover__facts">
+              <div><dt>Entries</dt><dd>An AVL insertion replay, a C++ tree benchmark and a rank-fusion study</dd></div>
+              <div><dt>Benchmark</dt><dd>My C++17 benchmark, <span class="mono">DS_Actual_CP @ b80db89</span></dd></div>
+              <div><dt>Retrieval</dt><dd>Review Summarizer, a team project with Niraj Chavan (repository maintained by Niraj)</dd></div>
+              <div><dt>This page</dt><dd>Vanilla JavaScript, canvas, SVG and CSS</dd></div>
+            </dl>
           </div>
-          <figure class="insertion-figure" id="insertion">
-            <figcaption>Inside an AVL tree <span>C++ · Data structures</span></figcaption>
-            <div class="insertion-drawing" hidden>
-              <canvas id="insertion-canvas" role="img" aria-label="Seven-node AVL tree"></canvas>
+          <figure class="fig nb-plate" data-reveal="media">
+            <div class="fig__media nb-plate__media" data-surface="paper">
+              <svg class="nb-plate__svg nb-plate__svg--full" viewBox="0 0 800 420" role="img" aria-labelledby="nb-plate-t nb-plate-d">
+                <title id="nb-plate-t">Tree height after 10,000 ascending keys, log scale</title>
+                <desc id="nb-plate-d">Bar chart. AVL reaches 14 levels, red-black 24 and splay 10,000, one level per key. The shortest possible binary tree for 10,000 keys has 14 levels, so AVL sits on that minimum.</desc>
+                <text class="nb-plate__head" x="32" y="44">Tree height after 10,000 ascending keys</text>
+                <text class="nb-plate__head" x="768" y="44" text-anchor="end">log scale</text>
+                <line class="nb-plate__rule" x1="32" y1="62" x2="768" y2="62"/>
+                <g class="nb-plate__grid"><line x1="170" y1="86" x2="170" y2="332"/><line x1="315" y1="86" x2="315" y2="332"/><line x1="460" y1="86" x2="460" y2="332"/><line x1="605" y1="86" x2="605" y2="332"/><line x1="750" y1="86" x2="750" y2="332"/></g>
+                <g class="nb-plate__tick" text-anchor="middle"><text x="170" y="362">1</text><text x="315" y="362">10</text><text x="460" y="362">100</text><text x="605" y="362">1,000</text><text x="750" y="362" text-anchor="end">10,000</text></g>
+                <text class="nb-plate__axis" x="32" y="400">levels · one recorded run per tree</text>
+                <line class="nb-plate__ref" x1="336.2" y1="80" x2="336.2" y2="332"/>
+                <text class="nb-plate__note" x="346" y="98">minimum possible: 14</text>
+                <path class="nb-plate__bar" d="M170 112 H332.2 a4 4 0 0 1 4 4 V140 a4 4 0 0 1 -4 4 H170 Z"/>
+                <path class="nb-plate__bar" d="M170 188 H366.1 a4 4 0 0 1 4 4 V216 a4 4 0 0 1 -4 4 H170 Z"/>
+                <path class="nb-plate__bar nb-plate__bar--datum" d="M170 264 H746 a4 4 0 0 1 4 4 V292 a4 4 0 0 1 -4 4 H170 Z"/>
+                <g class="nb-plate__name" text-anchor="end"><text x="152" y="136">AVL</text><text x="152" y="212">Red-black</text><text x="152" y="288">Splay</text></g>
+                <g class="nb-plate__value"><text x="348" y="134">14</text><text x="382" y="210">24</text><text class="nb-plate__value--in" x="736" y="286" text-anchor="end">10,000, a single path</text></g>
+              </svg>
+              <svg class="nb-plate__svg nb-plate__svg--compact" viewBox="0 0 400 300" role="img" aria-labelledby="nb-plate-ct nb-plate-d">
+                <title id="nb-plate-ct">Tree height after 10,000 ascending keys, log scale</title>
+                <line class="nb-plate__ref" x1="123.2" y1="34" x2="123.2" y2="232"/>
+                <text class="nb-plate__note nb-plate__c" x="131" y="26">minimum possible: 14</text>
+                <g class="nb-plate__c nb-plate__cname"><text x="20" y="62">AVL · 14</text><text x="20" y="128">Red-black · 24</text><text x="20" y="194">Splay · 10,000</text></g>
+                <path class="nb-plate__bar" d="M20 72 H119.2 a4 4 0 0 1 4 4 V92 a4 4 0 0 1 -4 4 H20 Z"/>
+                <path class="nb-plate__bar" d="M20 138 H140.2 a4 4 0 0 1 4 4 V158 a4 4 0 0 1 -4 4 H20 Z"/>
+                <path class="nb-plate__bar nb-plate__bar--datum" d="M20 204 H376 a4 4 0 0 1 4 4 V224 a4 4 0 0 1 -4 4 H20 Z"/>
+                <g class="nb-plate__c nb-plate__tick"><text x="20" y="266">1</text><text x="380" y="266" text-anchor="end">10,000</text></g>
+              </svg>
             </div>
-            <div class="insertion-controls" data-js-only hidden>
-              <label for="step"
-                >Ascending insertions <output for="step" id="step-count">7 / 7</output></label
-              >
-              <input id="step" type="range" min="1" max="7" value="7" step="1" />
-            </div>
-            <p id="step-reading">
-              After inserting keys 1 through 7, the root is 4 and the tree has three levels.
-            </p>
+            <figcaption class="fig__cap"><span class="fig__no">Pl. 05</span> <span class="fig__text">Same 10,000 ascending keys, three trees. The splay tree becomes a chain; AVL stays at the minimum possible height.</span> <span class="prov prov--run">Recorded run · DS_Actual_CP @ b80db89</span></figcaption>
           </figure>
         </div>
       </section>
-      <section class="book-study wrap" id="trees" aria-labelledby="trees-title">
-        <div class="study-intro">
-          <p class="overline">C++17 · Benchmark study</p>
-          <h2 id="trees-title">How tall does a <em>tree grow?</em></h2>
-          <p>
-            My C++ benchmark feeds the same sequence of keys to an AVL tree, a red-black tree and a splay
-            tree. Change the insertion order to see which trees keep their depth, then compare how long
-            each batch took.
-          </p>
-          <details class="method">
-            <summary>How the measurements were taken</summary>
-            <p>
-              Each configuration has one recorded run. Height counts levels, with a single node at level
-              one. Time covers the full insertion batch and excludes key generation and height
-              measurement. Random inputs use seed 42 and can repeat keys. Ordered inputs use each integer
-              from 1 through the selected size once.
-            </p>
-            <p>
-              In the ascending workload, each new key is the largest. Splaying moves it to the root, with
-              the previous tree on its left. Repeating that step creates the chain visible in the height
-              measurements.
-            </p>
-            <a
-              href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/src/BenchmarkRunner.cpp#L32-L55"
-              >Read the benchmark runner ↗</a
-            >
+
+      <div class="grid nb-body">
+        <nav class="nb-toc" aria-label="Notebook contents">
+          <details class="nb-toc__details" open data-toc>
+            <summary class="nb-toc__summary"><span class="label">Contents</span><span class="nb-toc__count mono">3 entries</span><span class="nb-toc__chev" aria-hidden="true"></span></summary>
+            <ol class="nb-toc__list">
+              <li><a class="nb-toc__link" href="#insertion" data-toc-link="insertion"><span class="nb-toc__no mono">01</span><span class="nb-toc__title">Seven keys, four rotations</span><span class="nb-toc__state mono" data-toc-state="insertion" aria-hidden="true">step 7 / 7</span></a></li>
+              <li><a class="nb-toc__link" href="#trees" data-toc-link="trees"><span class="nb-toc__no mono">02</span><span class="nb-toc__title">How tall does a tree grow?</span><span class="nb-toc__state mono" data-toc-state="trees" aria-hidden="true">ascending · 10,000 · height</span></a></li>
+              <li><a class="nb-toc__link" href="#retrieval" data-toc-link="retrieval"><span class="nb-toc__no mono">03</span><span class="nb-toc__title">Which review surfaces first?</span><span class="nb-toc__state mono" data-toc-state="retrieval" aria-hidden="true">overlap · hybrid</span></a></li>
+            </ol>
+            <div class="nb-toc__share" data-js-only>
+              <p class="nb-toc__note t-caption fg-2">The address keeps all three settings, so a copied link reopens this exact view.</p>
+              <button class="btn btn--ghost btn--sm nb-share" type="button" data-nb-share><span class="btn__inner"><svg class="icon icon--copy" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#copy"></use></svg><span data-nb-share-label>Copy link to this view</span></span></button>
+              <p class="vh" aria-live="polite" data-nb-share-live></p>
+            </div>
           </details>
-        </div>
-        <div class="instrument tree-instrument">
-          <h3>Compare the runs</h3>
-          <div class="instrument-fields" data-js-only hidden>
-            <label
-              >Insertion order<select id="order">
-                <option value="ascending">Ascending</option>
-                <option value="random">Random</option>
-                <option value="descending">Descending</option>
-              </select></label
-            >
-            <label
-              >Insert calls<select id="size">
-                <option value="1000">1,000</option>
-                <option value="5000">5,000</option>
-                <option value="10000" selected>10,000</option>
-              </select></label
-            >
-            <label
-              >Measurement<select id="metric">
-                <option value="height">Final height</option>
-                <option value="time">Batch time</option>
-              </select></label
-            >
-          </div>
-          <figure class="plot">
-            <figcaption id="plot-caption">Final height in levels · Logarithmic scale</figcaption>
-            <div class="plot-row">
-              <span>AVL</span>
-              <div class="plot-track" aria-hidden="true"><i style="--position: 28.7%"></i></div>
-              <strong>14</strong>
+        </nav>
+
+        <div class="nb-entries">
+          <!-- ===================== Entry 01: AVL insertion replay ===================== -->
+          <article class="nb-entry" id="insertion" aria-labelledby="insertion-title">
+            <header class="nb-entry__head">
+              <!-- TODO(durgesh): add the date of each notebook entry (not recorded in the ledger). -->
+              <p class="nb-entry__meta label"><span>Entry 01</span><span>Data structures</span></p>
+              <h2 class="nb-entry__title" id="insertion-title">Seven keys, <em>four rotations</em></h2>
+              <p class="nb-entry__dek">Insert the keys 1 to 7 in ascending order. A plain binary search tree would become a chain seven levels deep. The AVL tree rotates four times and finishes with three levels.</p>
+              <div class="fig__badges"><span class="prov prov--drawing">Original drawing</span></div>
+            </header>
+
+            <div class="nb-bench" data-bench="insertion">
+              <div class="nb-bench__bar">
+                <p class="nb-bench__name label">Lab 01 · Insertion replay</p>
+                <p class="nb-bench__state mono" data-bench-state="insertion" aria-hidden="true">step=7</p>
+                <button class="btn btn--text nb-bench__reset" type="button" data-reset="insertion" data-js-only>Reset<span class="vh"> the insertion replay</span></button>
+              </div>
+              <div class="nb-bench__body">
+                <div class="nb-bench__controls insertion-controls" data-js-only>
+                  <div class="nb-field">
+                    <label class="nb-field__label" for="step">Ascending insertions <output class="nb-field__out" for="step" id="step-count">7 / 7</output></label>
+                    <input class="nb-range" id="step" type="range" min="1" max="7" value="7" step="1" />
+                    <div class="nb-ticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+                  </div>
+                  <div class="nb-stepper">
+                    <button class="btn btn--ghost btn--sm" type="button" data-step-by="-1"><span class="btn__inner"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Previous<span class="vh"> key</span></span></button>
+                    <button class="btn btn--ghost btn--sm" type="button" data-step-by="1"><span class="btn__inner">Next<span class="vh"> key</span><svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></span></button>
+                  </div>
+                  <button class="btn btn--primary btn--sm nb-play" type="button" data-replay><span class="btn__inner"><svg class="icon icon--play icon--static" aria-hidden="true" focusable="false" data-replay-icon><use href="../assets/icons.svg#play"></use></svg><span data-replay-label>Replay from key 1</span></span></button>
+                  <p class="nb-hint t-caption fg-2">Ascending keys always land at the far right, so every imbalance is the right-right case and a single left rotation repairs it. Nodes keep their left-to-right order; rotations only change depth.</p>
+                </div>
+                <figure class="fig nb-bench__stage nb-fig">
+                  <div class="nb-canvas insertion-drawing">
+                    <canvas id="insertion-canvas" role="img" aria-label="Seven-node AVL tree"></canvas>
+                  </div>
+                  <div class="nb-static" data-nojs-only>
+                    <svg class="nb-static__svg" viewBox="0 0 700 250" role="img" aria-label="AVL tree after inserting keys 1 to 7. Root 4. Node 2 has children 1 and 3. Node 6 has children 5 and 7.">
+                      <g class="nb-static__edges"><line x1="350" y1="40" x2="150" y2="120"/><line x1="350" y1="40" x2="550" y2="120"/><line x1="150" y1="120" x2="50" y2="200"/><line x1="150" y1="120" x2="250" y2="200"/><line x1="550" y1="120" x2="450" y2="200"/><line x1="550" y1="120" x2="650" y2="200"/></g>
+                      <g class="nb-static__nodes"><circle cx="350" cy="40" r="20"/><circle cx="150" cy="120" r="20"/><circle cx="550" cy="120" r="20"/><circle cx="50" cy="200" r="20"/><circle cx="250" cy="200" r="20"/><circle cx="450" cy="200" r="20"/><circle class="nb-static__datum" cx="650" cy="200" r="20"/></g>
+                      <g class="nb-static__keys" text-anchor="middle"><text x="350" y="46">4</text><text x="150" y="126">2</text><text x="550" y="126">6</text><text x="50" y="206">1</text><text x="250" y="206">3</text><text x="450" y="206">5</text><text class="nb-static__datum-key" x="650" y="206">7</text></g>
+                    </svg>
+                  </div>
+                  <figcaption class="fig__cap"><span class="fig__no">Fig. 1</span> <span class="fig__text">The AVL tree after each insertion. Keys sit in left-to-right order on fixed columns; the newest key is highlighted and a dashed ring marks the rotation pivot.</span></figcaption>
+                </figure>
+              </div>
+              <div class="nb-bench__foot">
+                <p class="nb-reading" id="step-reading" role="status">After inserting keys 1 through 7, the root is 4 and the tree has three levels.</p>
+                <p class="nb-source mono">Computed in the browser by this page’s notebook.js · parent table checked against an independent AVL insertion</p>
+              </div>
             </div>
-            <div class="plot-row">
-              <span>Red-black</span>
-              <div class="plot-track" aria-hidden="true"><i style="--position: 34.5%"></i></div>
-              <strong>24</strong>
-            </div>
-            <div class="plot-row">
-              <span>Splay</span>
-              <div class="plot-track" aria-hidden="true"><i style="--position: 100%"></i></div>
-              <strong>10,000</strong>
-            </div>
-            <div class="plot-axis" aria-hidden="true">
-              <span>1</span><span>10</span><span>100</span><span>1k</span><span>10k</span>
-            </div>
-          </figure>
-          <p id="tree-reading" class="instrument-reading" role="status">
-            At 10,000 ascending insertions, the splay tree has one level per key. The AVL tree reaches 14
-            levels.
-          </p>
-          <a
-            class="instrument-source"
-            href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/dashboard/metrics.json"
-            >Inspect the recorded measurements ↗</a
-          >
-        </div>
-      </section>
-      <section class="retrieval-band" id="retrieval" aria-labelledby="retrieval-title">
-        <div class="book-study wrap">
-          <div class="study-intro">
-            <p class="overline">Python · Information retrieval</p>
-            <h2 id="retrieval-title">Which review <em>surfaces first?</em></h2>
-            <p>
-              In Review Summarizer, co-built with Niraj Chavan, one search ranks product reviews by
-              keywords and another by meaning. Reciprocal rank fusion combines their positions into a
-              single result.
-            </p>
-            <details class="method">
-              <summary>Where the rankings come from</summary>
-              <p>
-                The project uses BM25 for keyword matches and FAISS with multilingual E5 embeddings for
-                semantic matches. The example below uses three fictional headphone reviews with assigned
-                ranks. Each match contributes 1/(60 + rank) to the score. A review missing from a list
-                receives zero from that list.
-              </p>
-              <a
-                href="https://github.com/Niraj-Chavan/review-summarizer/blob/68d0c0a6dd76fe38be99836982d72f404b1cf814/src/retrieval/hybrid_search.py"
-                >Read the retrieval implementation ↗</a
-              >
+
+            <details class="nb-more">
+              <summary>Step table: all seven insertions</summary>
+              <div class="nb-table-wrap" tabindex="0" role="region" aria-labelledby="insertion-table-cap">
+                <table class="nb-table" data-step-table>
+                  <caption id="insertion-table-cap">Ascending AVL insertions, keys 1 to 7</caption>
+                  <thead><tr><th scope="col">Step</th><th scope="col">Rebalancing</th><th scope="col">Root</th><th scope="col">Levels</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">1</th><td>First key becomes the root</td><td>1</td><td>1</td></tr>
+                    <tr><th scope="row">2</th><td>None</td><td>1</td><td>2</td></tr>
+                    <tr><th scope="row">3</th><td>Left rotation at 1</td><td>2</td><td>2</td></tr>
+                    <tr><th scope="row">4</th><td>None</td><td>2</td><td>3</td></tr>
+                    <tr><th scope="row">5</th><td>Left rotation at 3</td><td>2</td><td>3</td></tr>
+                    <tr><th scope="row">6</th><td>Left rotation at 2</td><td>4</td><td>3</td></tr>
+                    <tr><th scope="row">7</th><td>Left rotation at 5</td><td>4</td><td>3</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </details>
-          </div>
-          <div class="instrument rank-instrument">
-            <h3>Inspect the ranking</h3>
-            <p class="instrument-prompt">Illustrative reviews for a search about battery life.</p>
-            <div class="instrument-fields" data-js-only hidden>
-              <label
-                >Input rankings<select id="scenario">
-                  <option value="overlap">Shared second choice</option>
-                  <option value="agreement">Shared first choice</option>
-                  <option value="split">Reversed top two</option>
-                </select></label
-              >
-              <label
-                >Search method<select id="channel">
-                  <option value="hybrid">Hybrid search</option>
-                  <option value="keyword">Keyword only</option>
-                  <option value="semantic">Semantic only</option>
-                </select></label
-              >
+
+            <a class="nb-next" href="#trees"><span class="label">Next entry · 02</span><span class="nb-next__title">How tall does a tree grow?</span><svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></a>
+          </article>
+
+          <!-- ===================== Entry 02: C++ tree benchmark ===================== -->
+          <article class="nb-entry" id="trees" aria-labelledby="trees-title">
+            <header class="nb-entry__head">
+              <p class="nb-entry__meta label"><span>Entry 02</span><span>C++17 benchmark</span></p>
+              <h2 class="nb-entry__title" id="trees-title">How tall does a <em>tree grow?</em></h2>
+              <p class="nb-entry__dek">My C++ benchmark feeds the same sequence of keys to an AVL tree, a red-black tree and a splay tree. Change the insertion order to see which trees keep their depth, then compare how long each batch took.</p>
+              <div class="fig__badges"><span class="prov prov--run">Recorded run · DS_Actual_CP @ b80db89</span></div>
+            </header>
+
+            <div class="nb-bench" data-bench="trees">
+              <div class="nb-bench__bar">
+                <p class="nb-bench__name label">Lab 02 · Tree benchmark</p>
+                <p class="nb-bench__state mono" data-bench-state="trees" aria-hidden="true">order=ascending · size=10000 · metric=height</p>
+                <button class="btn btn--text nb-bench__reset" type="button" data-reset="trees" data-js-only>Reset<span class="vh"> the tree benchmark</span></button>
+              </div>
+              <div class="nb-bench__body">
+                <div class="nb-bench__controls instrument-fields" data-js-only>
+                  <div class="nb-field">
+                    <label class="nb-field__label" for="order">Insertion order</label>
+                    <span class="nb-select"><select id="order">
+                      <option value="ascending">Ascending</option>
+                      <option value="random">Random</option>
+                      <option value="descending">Descending</option>
+                    </select></span>
+                  </div>
+                  <div class="nb-field">
+                    <label class="nb-field__label" for="size">Insert calls</label>
+                    <span class="nb-select"><select id="size">
+                      <option value="1000">1,000</option>
+                      <option value="5000">5,000</option>
+                      <option value="10000" selected>10,000</option>
+                    </select></span>
+                  </div>
+                  <div class="nb-field">
+                    <label class="nb-field__label" for="metric">Measurement</label>
+                    <span class="nb-select"><select id="metric">
+                      <option value="height">Final height</option>
+                      <option value="time">Batch time</option>
+                    </select></span>
+                  </div>
+                  <p class="nb-hint t-caption fg-2">Random keys use seed 42 and can repeat. Ordered inputs use each integer from 1 to the selected size once.</p>
+                </div>
+                <figure class="fig nb-bench__stage plot nb-plot" data-metric="height">
+                  <p class="nb-plot__title mono" id="plot-caption">Final height in levels · Logarithmic scale</p>
+                  <div class="nb-plot__frame">
+                    <div class="nb-plot__grid" aria-hidden="true" data-plot-grid>
+                      <span class="is-major" style="--x: 0%"></span><span style="--x: 7.5257%"></span><span style="--x: 11.9280%"></span><span style="--x: 15.0515%"></span><span style="--x: 17.4743%"></span><span style="--x: 19.4537%"></span><span style="--x: 21.1272%"></span><span style="--x: 22.5772%"></span><span style="--x: 23.8561%"></span>
+                      <span class="is-major" style="--x: 25%"></span><span style="--x: 32.5257%"></span><span style="--x: 36.9280%"></span><span style="--x: 40.0515%"></span><span style="--x: 42.4743%"></span><span style="--x: 44.4537%"></span><span style="--x: 46.1272%"></span><span style="--x: 47.5772%"></span><span style="--x: 48.8561%"></span>
+                      <span class="is-major" style="--x: 50%"></span><span style="--x: 57.5257%"></span><span style="--x: 61.9280%"></span><span style="--x: 65.0515%"></span><span style="--x: 67.4743%"></span><span style="--x: 69.4537%"></span><span style="--x: 71.1272%"></span><span style="--x: 72.5772%"></span><span style="--x: 73.8561%"></span>
+                      <span class="is-major" style="--x: 75%"></span><span style="--x: 82.5257%"></span><span style="--x: 86.9280%"></span><span style="--x: 90.0515%"></span><span style="--x: 92.4743%"></span><span style="--x: 94.4537%"></span><span style="--x: 96.1272%"></span><span style="--x: 97.5772%"></span><span style="--x: 98.8561%"></span>
+                      <span class="is-major" style="--x: 100%"></span>
+                    </div>
+                    <div class="plot-row nb-row" data-tree="AVL">
+                      <span class="nb-row__name">AVL</span>
+                      <div class="plot-track nb-track" aria-hidden="true"><b class="nb-bar" style="--fraction: 0.286532"></b><span class="nb-lane"><span class="nb-ghost" style="--position: 25%"></span><span class="nb-ghost" style="--position: 27.8486%"></span><i style="--position: 28.6532%"></i></span></div>
+                      <strong class="nb-row__value">14</strong>
+                    </div>
+                    <div class="plot-row nb-row" data-tree="Red-Black">
+                      <span class="nb-row__name">Red-black</span>
+                      <div class="plot-track nb-track" aria-hidden="true"><b class="nb-bar" style="--fraction: 0.345053"></b><span class="nb-lane"><span class="nb-ghost" style="--position: 30.7612%"></span><span class="nb-ghost" style="--position: 33.5606%"></span><i style="--position: 34.5053%"></i></span></div>
+                      <strong class="nb-row__value">24</strong>
+                    </div>
+                    <div class="plot-row nb-row is-datum" data-tree="Splay">
+                      <span class="nb-row__name">Splay</span>
+                      <div class="plot-track nb-track" aria-hidden="true"><b class="nb-bar" style="--fraction: 1"></b><span class="nb-lane"><span class="nb-ghost" style="--position: 75%"></span><span class="nb-ghost" style="--position: 92.4743%"></span><i style="--position: 100%"></i></span></div>
+                      <strong class="nb-row__value">10,000</strong>
+                    </div>
+                    <div class="plot-axis nb-axis" aria-hidden="true">
+                      <span>1</span><span>10</span><span>100</span><span data-short="1k">1,000</span><span data-short="10k">10,000</span>
+                    </div>
+                  </div>
+                  <ul class="nb-legend" aria-hidden="true">
+                    <li><span class="nb-key nb-key--dot"></span>Selected size</li>
+                    <li><span class="nb-key nb-key--ring"></span>The other two sizes</li>
+                    <li class="nb-legend__bar"><span class="nb-key nb-key--bar"></span>Levels counted from one</li>
+                  </ul>
+                  <figcaption class="fig__cap"><span class="fig__no">Fig. 2</span> <span class="fig__text">Each row is one tree on a fixed logarithmic axis. Hollow rings show the same tree at the other two sizes, so the spread of each row shows how it grows.</span></figcaption>
+                </figure>
+              </div>
+              <div class="nb-bench__foot">
+                <p id="tree-reading" class="nb-reading instrument-reading" role="status">At 10,000 ascending insertions, the splay tree has one level per key. The AVL tree reaches 14 levels.</p>
+                <p class="nb-scope mono"><strong>Single run.</strong> Each configuration has one recorded run; every timing is one measurement, not an average.</p>
+                <p class="nb-source mono"><span>Source</span>
+                  <a class="evidence instrument-source" href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/dashboard/metrics.json">Recorded data<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (metrics.json at commit b80db89, opens external site)</span></a>
+                  <a class="evidence" href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/src/BenchmarkRunner.cpp#L32-L55">Runner L32–55<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (BenchmarkRunner.cpp, opens external site)</span></a>
+                  <a class="evidence" href="https://github.com/DurgeshC16/DS_Actual_CP/blob/b80db89f864a8dfa09558a4292f029df4fc537c1/src/DatasetGenerator.cpp#L29-L47">Seed 42 generator<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (DatasetGenerator.cpp, opens external site)</span></a>
+                </p>
+              </div>
             </div>
-            <div class="rank-matrix">
-              <table>
-                <caption>
-                  Review positions and calculated scores
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Review</th>
-                    <th scope="col">Keyword</th>
-                    <th scope="col">Semantic</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody id="rank-results">
-                  <tr>
-                    <th scope="row">Commute</th>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>0.03226</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Quick charge</th>
-                    <td>—</td>
-                    <td>1</td>
-                    <td>0.01639</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Two days</th>
-                    <td>1</td>
-                    <td>—</td>
-                    <td>0.01639</td>
-                  </tr>
+
+            <div class="nb-table-wrap nb-results" tabindex="0" role="region" aria-labelledby="trees-table-cap">
+              <table class="nb-table" data-trees-table>
+                <caption id="trees-table-cap"><span data-trees-table-caption>Final height in levels, ascending keys</span></caption>
+                <thead><tr><th scope="col">Tree</th><th scope="col" data-size-col="1000">1,000</th><th scope="col" data-size-col="5000">5,000</th><th scope="col" data-size-col="10000" class="is-current">10,000</th></tr></thead>
+                <tbody data-trees-table-body>
+                  <tr><th scope="row">AVL</th><td>10</td><td>13</td><td class="is-current">14</td></tr>
+                  <tr><th scope="row">Red-black</th><td>17</td><td>22</td><td class="is-current">24</td></tr>
+                  <tr><th scope="row">Splay</th><td>1,000</td><td>5,000</td><td class="is-current">10,000</td></tr>
                 </tbody>
               </table>
             </div>
-            <p id="rank-reading" class="instrument-reading" role="status">
-              Commute leads. Its two second-place matches contribute 1/62 + 1/62 = 0.03226.
-            </p>
-            <details class="method excerpts">
+
+            <details class="nb-more method">
+              <summary>How the measurements were taken</summary>
+              <div class="nb-more__body prose">
+                <p>Each configuration has one recorded run. Height counts levels, with a single node at level one. Time covers the full insertion batch and excludes key generation and height measurement. Random inputs use seed 42 and can repeat keys. Ordered inputs use each integer from 1 through the selected size once.</p>
+                <p>In the ascending workload, each new key is the largest. Splaying moves it to the root, with the previous tree on its left. Repeating that step creates the chain visible in the height measurements.</p>
+                <p>The source project records 375 runs: five trees, five operations, five datasets and three sizes. This page plots the 27 insert runs for AVL, red-black and splay trees on ascending, random and descending keys. The values match the source file exactly.</p>
+              </div>
+            </details>
+
+            <details class="nb-more">
+              <summary>All 27 recorded insert runs</summary>
+              <div class="nb-table-wrap" tabindex="0" role="region" aria-labelledby="trees-all-cap">
+                <table class="nb-table nb-table--all">
+                  <caption id="trees-all-cap">Insert runs at DS_Actual_CP @ b80db89, one run each</caption>
+                  <thead><tr><th scope="col">Keys</th><th scope="col">Tree</th><th scope="col">Height (levels)</th><th scope="col">Batch time (ms)</th></tr></thead>
+<tbody>
+<tr class="nb-table__group"><th scope="rowgroup" colspan="4">Ascending</th></tr>
+<tr><td>1,000</td><th scope="row">AVL</th><td>10</td><td>0.0567</td></tr>
+<tr><td>1,000</td><th scope="row">Red-black</th><td>17</td><td>0.0570</td></tr>
+<tr><td>1,000</td><th scope="row">Splay</th><td>1,000</td><td>0.0318</td></tr>
+<tr><td>5,000</td><th scope="row">AVL</th><td>13</td><td>0.3897</td></tr>
+<tr><td>5,000</td><th scope="row">Red-black</th><td>22</td><td>0.3577</td></tr>
+<tr><td>5,000</td><th scope="row">Splay</th><td>5,000</td><td>0.2746</td></tr>
+<tr><td>10,000</td><th scope="row">AVL</th><td>14</td><td>0.7602</td></tr>
+<tr><td>10,000</td><th scope="row">Red-black</th><td>24</td><td>0.8809</td></tr>
+<tr><td>10,000</td><th scope="row">Splay</th><td>10,000</td><td>0.3674</td></tr>
+</tbody>
+<tbody>
+<tr class="nb-table__group"><th scope="rowgroup" colspan="4">Random</th></tr>
+<tr><td>1,000</td><th scope="row">AVL</th><td>12</td><td>0.1114</td></tr>
+<tr><td>1,000</td><th scope="row">Red-black</th><td>13</td><td>0.0833</td></tr>
+<tr><td>1,000</td><th scope="row">Splay</th><td>23</td><td>0.1485</td></tr>
+<tr><td>5,000</td><th scope="row">AVL</th><td>15</td><td>0.6143</td></tr>
+<tr><td>5,000</td><th scope="row">Red-black</th><td>15</td><td>0.5370</td></tr>
+<tr><td>5,000</td><th scope="row">Splay</th><td>30</td><td>0.9161</td></tr>
+<tr><td>10,000</td><th scope="row">AVL</th><td>16</td><td>1.4578</td></tr>
+<tr><td>10,000</td><th scope="row">Red-black</th><td>16</td><td>1.1624</td></tr>
+<tr><td>10,000</td><th scope="row">Splay</th><td>29</td><td>2.3441</td></tr>
+</tbody>
+<tbody>
+<tr class="nb-table__group"><th scope="rowgroup" colspan="4">Descending</th></tr>
+<tr><td>1,000</td><th scope="row">AVL</th><td>10</td><td>0.0602</td></tr>
+<tr><td>1,000</td><th scope="row">Red-black</th><td>17</td><td>0.0559</td></tr>
+<tr><td>1,000</td><th scope="row">Splay</th><td>1,000</td><td>0.0309</td></tr>
+<tr><td>5,000</td><th scope="row">AVL</th><td>13</td><td>0.3692</td></tr>
+<tr><td>5,000</td><th scope="row">Red-black</th><td>22</td><td>0.3407</td></tr>
+<tr><td>5,000</td><th scope="row">Splay</th><td>5,000</td><td>0.1512</td></tr>
+<tr><td>10,000</td><th scope="row">AVL</th><td>14</td><td>0.9096</td></tr>
+<tr><td>10,000</td><th scope="row">Red-black</th><td>24</td><td>0.7742</td></tr>
+<tr><td>10,000</td><th scope="row">Splay</th><td>10,000</td><td>0.3649</td></tr>
+</tbody>
+                </table>
+              </div>
+            </details>
+
+            <a class="nb-next" href="#retrieval"><span class="label">Next entry · 03</span><span class="nb-next__title">Which review surfaces first?</span><svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></a>
+          </article>
+
+          <!-- ===================== Entry 03: Reciprocal rank fusion ===================== -->
+          <article class="nb-entry" id="retrieval" aria-labelledby="retrieval-title">
+            <header class="nb-entry__head">
+              <p class="nb-entry__meta label"><span>Entry 03</span><span>Information retrieval</span><span>Collaborator’s repository</span></p>
+              <h2 class="nb-entry__title" id="retrieval-title">Which review <em>surfaces first?</em></h2>
+              <p class="nb-entry__dek">In Review Summarizer, a team project with Niraj Chavan (repository maintained by Niraj), one search ranks product reviews by keywords and another by meaning. Reciprocal rank fusion combines their positions into a single result.</p>
+              <div class="fig__badges"><span class="prov prov--illustrative">Illustrative · fictional reviews</span></div>
+            </header>
+
+            <div class="nb-bench" data-bench="retrieval">
+              <div class="nb-bench__bar">
+                <p class="nb-bench__name label">Lab 03 · Rank fusion</p>
+                <p class="nb-bench__state mono" data-bench-state="retrieval" aria-hidden="true">scenario=overlap · channel=hybrid</p>
+                <button class="btn btn--text nb-bench__reset" type="button" data-reset="retrieval" data-js-only>Reset<span class="vh"> the rank fusion study</span></button>
+              </div>
+              <div class="nb-bench__body">
+                <div class="nb-bench__controls instrument-fields" data-js-only>
+                  <p class="nb-prompt">Illustrative reviews for a search about battery life.</p>
+                  <div class="nb-field">
+                    <label class="nb-field__label" for="scenario">Input rankings</label>
+                    <span class="nb-select"><select id="scenario">
+                      <option value="overlap">Shared second choice</option>
+                      <option value="agreement">Shared first choice</option>
+                      <option value="split">Reversed top two</option>
+                    </select></span>
+                  </div>
+                  <div class="nb-field">
+                    <label class="nb-field__label" for="channel">Search method</label>
+                    <span class="nb-select"><select id="channel">
+                      <option value="hybrid">Hybrid search</option>
+                      <option value="keyword">Keyword only</option>
+                      <option value="semantic">Semantic only</option>
+                    </select></span>
+                  </div>
+                  <p class="nb-formula"><span class="label">Score</span><span class="nb-formula__eq">sum of 1 / (60 + rank)</span><span class="t-caption fg-2">Rank starts at 1. A review missing from a list gets nothing from it.</span></p>
+                </div>
+                <figure class="fig nb-bench__stage nb-rrf-fig">
+                  <div class="nb-rrf" data-rrf></div>
+                  <div class="rank-matrix nb-table-wrap" tabindex="0" role="region" aria-labelledby="rank-cap">
+                    <table class="nb-table nb-table--rank">
+                      <caption id="rank-cap">Review positions and calculated scores</caption>
+                      <thead>
+                        <tr><th scope="col">Review</th><th scope="col">Keyword</th><th scope="col">Semantic</th><th scope="col">Score</th></tr>
+                      </thead>
+                      <tbody id="rank-results">
+                        <tr><th scope="row">Commute</th><td>2</td><td>2</td><td>0.03226</td></tr>
+                        <tr><th scope="row">Quick charge</th><td>—</td><td>1</td><td>0.01639</td></tr>
+                        <tr><th scope="row">Two days</th><td>1</td><td>—</td><td>0.01639</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <figcaption class="fig__cap"><span class="fig__no">Fig. 3</span> <span class="fig__text">Two ranked lists feed one fused list. Each bar is a review’s score, split into its keyword and semantic terms; the top fused result is highlighted.</span> <span class="prov prov--illustrative">Illustrative</span></figcaption>
+                </figure>
+              </div>
+              <div class="nb-bench__foot">
+                <p id="rank-reading" class="nb-reading instrument-reading" role="status">Commute leads. Commute receives 1/62 + 1/62 = 0.03226.</p>
+                <p class="nb-source mono"><span>Source</span>
+                  <a class="evidence" href="https://github.com/Niraj-Chavan/review-summarizer/blob/68d0c0a6dd76fe38be99836982d72f404b1cf814/src/retrieval/hybrid_search.py#L63-L77">hybrid_search.py L63–77<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (collaborator’s repository at commit 68d0c0a, opens external site)</span></a>
+                </p>
+              </div>
+            </div>
+
+            <details class="nb-more method">
+              <summary>Where the rankings come from</summary>
+              <div class="nb-more__body prose">
+                <p>The repository includes a retriever that fuses BM25 keyword ranks with FAISS and multilingual-E5 semantic ranks. The example uses three fictional headphone reviews with assigned ranks. Each match contributes 1/(60 + rank) to the score, and a review missing from a list receives zero from that list.</p>
+                <p>Rank fusion compares positions instead of raw scores, so BM25 scores never have to be calibrated against cosine similarity. When two reviews tie, the semantic list’s order decides, as in the source’s stable sort.</p>
+                <p>Limitations: the reviews are fictional, and the fusion step is not on the served path of the source app.</p>
+              </div>
+            </details>
+
+            <details class="nb-more excerpts">
               <summary>Read the three sample reviews</summary>
-              <dl>
-                <dt>Two days</dt>
-                <dd>“I used these headphones for two days on one charge.”</dd>
-                <dt>Commute</dt>
-                <dd>“The battery lasted through my commute, and recharging took about an hour.”</dd>
-                <dt>Quick charge</dt>
-                <dd>“A short charge gave me enough listening time for the trip home.”</dd>
+              <dl class="nb-quotes">
+                <div><dt>Two days</dt><dd>“I used these headphones for two days on one charge.”</dd></div>
+                <div><dt>Commute</dt><dd>“The battery lasted through my commute, and recharging took about an hour.”</dd></div>
+                <div><dt>Quick charge</dt><dd>“A short charge gave me enough listening time for the trip home.”</dd></div>
               </dl>
             </details>
+
+            <a class="nb-next nb-next--up" href="#insertion"><span class="label">Back to entry · 01</span><span class="nb-next__title">Seven keys, four rotations</span><svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up"></use></svg></a>
+          </article>
+
+          <div class="nb-end">
+            <a class="btn btn--ghost" href="../index.html#work"><span class="btn__inner"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Selected work</span></a>
+            <a class="btn btn--text" href="../assets/Durgesh-Chaudhari-Resume.pdf">View résumé<span class="vh"> (PDF)</span></a>
           </div>
         </div>
-      </section>
-      <div class="book-end wrap">
-        <a href="../index.html#work">← Selected work</a
-        ><a href="../assets/Durgesh-Chaudhari-Resume.pdf">View résumé ↗</a>
       </div>
+      <!-- /region:notebook -->
     </main>
-    <footer>
-      <div class="wrap foot">
-        <span>© 2026 Durgesh Chaudhari</span>
-        <div>
-          <a class="" href="https://github.com/DurgeshC16">GitHub</a
-          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
-          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+    <!-- region:shell-footer (owner A) -->
+    <footer class="credits" id="contact" data-surface="night" aria-labelledby="contact-label">
+      <div class="wrap">
+        <div class="running-head" aria-hidden="true"><span><b>V</b> — Correspondence</span><span>Credits</span><span>p. 05</span></div>
+      </div>
+      <div class="credits__body grid">
+        <h2 class="credits__label" id="contact-label">Contact</h2>
+        <div class="credits__main">
+          <p class="credits__lead">Looking for an AI engineering internship.</p>
+          <p class="credits__shout"><a class="credits__email" href="mailto:durgesh.chaudhari24@vit.edu">durgesh.chaudhari24<span class="credits__domain"><span class="credits__at">@</span>vit.edu</span></a></p>
+          <div class="credits__row">
+            <button class="btn btn--ghost copy" type="button" data-copy="durgesh.chaudhari24@vit.edu" data-copy-email data-magnetic data-cursor="Copy"><span class="btn__inner"><svg class="icon icon--copy copy__idle" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#copy"></use></svg><svg class="icon icon--check copy__done" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#check"></use></svg><span data-copy-label>Copy address</span></span></button>
+            <p class="vh" aria-live="polite" data-copy-live></p>
+            <ul class="credits__links">
+              <li><span class="cite" aria-hidden="true">[a]</span><a href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[b]</span><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[c]</span><a href="https://leetcode.com/u/strangeDC/">LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[d]</span><a href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="credits__base">
+          <p>Durgesh Chaudhari · Pune, India</p>
+          <p>Set in DM Sans, Instrument Serif and DM Mono. Hand-built in HTML, CSS and JavaScript.</p>
+          <a class="credits__top" href="#top">Back to top<svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up"></use></svg></a>
         </div>
       </div>
     </footer>
+    <!-- /region:shell-footer -->
+    <!-- region:chrome (owner CHROME: nav overlay + command palette; empty shells so the header's aria-controls resolve) -->
+    <dialog id="nav-overlay" class="nav-overlay" data-surface="night" aria-label="Site index"></dialog>
+    <dialog id="palette" class="palette" data-surface="night" aria-label="Search the archive"></dialog>
+    <!-- /region:chrome -->
   </body>
 </html>

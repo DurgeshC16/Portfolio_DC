@@ -1,329 +1,489 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#141518" />
-    <title>Kaaran | Durgesh Chaudhari</title>
-    <meta
-      name="description"
-      content="A bilingual data analyst that traces school district findings back to their source records."
-    />
-    <meta property="og:title" content="Kaaran | Durgesh Chaudhari" />
-    <meta
-      property="og:description"
-      content="A bilingual data analyst that traces school district findings back to their source records."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="../assets/favicon.svg" />
-    <link rel="preload" href="../assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kaaran — Durgesh Chaudhari</title>
+    <meta name="description" content="A bilingual education-data analyst where Claude handles language and code computes every figure.">
+    <meta name="theme-color" content="#0d0e11">
+    <meta name="color-scheme" content="dark light">
+    <!-- TODO(durgesh): add <link rel="canonical"> and make og:image absolute once the deployment URL is decided (ledger Q-16). -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DC. — The Interactive Engineering Archive">
+    <meta property="og:title" content="Kaaran — Durgesh Chaudhari">
+    <meta property="og:description" content="A bilingual education-data analyst where Claude handles language and code computes every figure.">
+    <meta property="og:image" content="../assets/og/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DC. — Durgesh Chaudhari, The Interactive Engineering Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kaaran — Durgesh Chaudhari">
+    <meta name="twitter:description" content="A bilingual education-data analyst where Claude handles language and code computes every figure.">
+    <meta name="twitter:image" content="../assets/og/og-default.png">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script>!function(h){h.classList.add("js");try{if(localStorage.getItem("dc.motion")=="reduce")return h.setAttribute("data-motion","reduce")}catch(e){}matchMedia("(prefers-reduced-motion: reduce)").matches||h.classList.add("intro")}(document.documentElement)</script>
+    <link rel="preload" href="../assets/fonts/dm-sans-normal-100_1000-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/instrument-serif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/chrome.css">
+    <link rel="stylesheet" href="../css/case.css">
+    <link rel="stylesheet" href="../css/lab.css">
+    <script src="../js/core.js" defer></script>
     <script src="../assets/kaaran-evidence.js" defer></script>
     <script src="../experiments.js" defer></script>
-    <script src="../navigation.js" defer></script>
     <script src="../site.js" defer></script>
+    <script src="../js/case.js" defer></script>
+    <script src="../js/nav.js" defer></script>
+    <script src="../js/palette-index.js" defer></script>
+    <script src="../js/palette.js" defer></script>
+    <script src="../js/cursor.js" defer></script>
+    <script src="../js/transitions.js" defer></script>
   </head>
-  <body>
-    <a href="#main" class="skip">Skip to content</a>
-    <header class="mast">
-      <div class="wrap nav-row">
-        <a class="brand" href="../index.html" aria-label="Durgesh Chaudhari, home"
-          ><span class="monogram" aria-hidden="true">dc.</span><span>Durgesh Chaudhari</span></a
-        >
-        <nav aria-label="Main navigation">
-          <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
-          ><a href="../index.html#research" class="">Research</a
-          ><a href="../index.html#about" class="">About</a>
+  <body id="top" data-page="case" data-case="kaaran">
+    <!-- region:shell-header (owner A) -->
+    <header class="site-header" data-header data-surface="night">
+      <a class="skip" href="#main">Skip to content</a>
+      <div class="site-header__bar">
+        <a class="wordmark" href="../index.html">DC<span class="wordmark__stop">.</span><span class="vh"> Durgesh Chaudhari, home</span></a>
+        <p class="site-header__title">The Interactive Engineering Archive</p>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../index.html#work" aria-current="page">Work<sup aria-hidden="true">I</sup></a></li>
+            <li class="site-nav__wide"><a href="../index.html#evidence">Evidence<sup aria-hidden="true">II</sup></a></li>
+            <li class="site-nav__wide"><a href="../projects/notebook.html">Notebook</a></li>
+            <li><a href="#contact">Contact<sup aria-hidden="true">V</sup></a></li>
+          </ul>
         </nav>
-        <a href="../index.html#contact" class="nav-contact"
-          ><svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2.5" y="5" width="19" height="14" rx="3" />
-            <path d="m4 7 8 6 8-6" /></svg
-          >Get in touch</a
-        >
-        <button
-          type="button"
-          class="menu-btn"
-          aria-label="Open navigation"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <svg
-            class="icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-        </button>
+        <div class="site-header__actions">
+          <a class="site-header__cv" href="../assets/Durgesh-Chaudhari-Resume.pdf"><svg class="icon icon--file" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#file"></use></svg>Résumé<span class="vh"> (PDF)</span></a>
+          <button class="site-header__btn site-header__search" type="button" data-palette-open aria-haspopup="dialog" aria-controls="palette"><svg class="icon icon--search" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="site-header__label">Search</span> <kbd class="kbd" data-kbd-mod>Ctrl</kbd><kbd class="kbd">K</kbd></button>
+          <button class="site-header__btn site-header__index" type="button" data-menu-open aria-haspopup="dialog" aria-controls="nav-overlay" aria-expanded="false"><svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#menu"></use></svg><span class="site-header__label">Index</span></button>
+        </div>
       </div>
-      <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
-        <a href="../index.html#work" class="">Work</a><a href="notebook.html">Notebook</a
-        ><a href="../index.html#research" class="">Research</a
-        ><a href="../index.html#about" class="">About</a
-        ><a href="../index.html#contact" class="">Contact</a>
-      </nav>
+      <span class="site-header__progress" data-scroll-progress aria-hidden="true"></span>
     </header>
-    <main id="main" class="detail">
-      <section class="detail-hero">
-        <div class="wrap">
-          <a class="crumb" href="../index.html#lab/kaaran"
-            ><svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-            Interactive projects</a
-          >
-          <p class="eyebrow"><span></span>Applied AI</p>
-          <h1>Kaaran</h1>
-          <p class="deck">
-            A Marathi and English data analyst co-built for education officers during the Anthropic ×
-            ShikshaNext hackathon, where the project placed in the top 30.
-          </p>
-          <div class="tags">
-            <span class="chip">Claude</span><span class="chip">DuckDB</span
-            ><span class="chip">Python</span>
+    <!-- /region:shell-header -->
+    <main id="main" class="detail" data-surface="paper">
+      <!-- region:case-a (owner E1) -->
+      <section class="case-plate" id="overview" data-surface="night" data-case-essential aria-labelledby="case-title">
+        <div class="grid case-plate__head">
+          <div class="running-head" aria-hidden="true"><span><b>Pl. 01</b> — Case study</span><span>Kaaran</span><span>Ch. 01–08</span></div>
+          <a class="case-crumb" href="../index.html#work"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Selected work</a>
+          <p class="case-plate__kicker label">Pl. 01 · Applied AI · Hackathon build</p>
+          <h1 class="case-plate__title" id="case-title" data-vt-title>Kaaran</h1>
+          <p class="case-plate__dek">A bilingual education-data analyst where Claude handles language and code computes every figure.</p>
+          <div class="case-plate__side">
+            <ul class="chips" aria-label="Status"><li class="chip">Hackathon build</li><li class="chip">Build stage · top 30</li></ul>
+            <div class="case-mode" role="group" aria-labelledby="case-mode-label" data-case-modes>
+              <span class="case-mode__hint" id="case-mode-label">Reading mode</span>
+              <div class="case-mode__seg" data-active="deep">
+                <button class="case-mode__btn" type="button" data-case-mode="quick" aria-pressed="false">Quick view <span class="case-mode__time" data-case-time="quick"></span></button>
+                <button class="case-mode__btn" type="button" data-case-mode="deep" aria-pressed="true">Deep dive <span class="case-mode__time" data-case-time="deep"></span></button>
+              </div>
+              <p class="vh" aria-live="polite" data-case-mode-live></p>
+            </div>
           </div>
+          <figure class="fig case-plate__fig case-plate__fig--capture">
+            <div class="case-plate__mat" data-vt-plate>
+              <picture>
+                <source media="(max-width: 759px)" srcset="../assets/img/case/kaaran-source-drawer-mobile-420.webp 420w, ../assets/img/case/kaaran-source-drawer-mobile-780.webp 780w" sizes="92vw" width="780" height="1150">
+                <img src="../assets/img/case/kaaran-source-drawer-1208.webp" srcset="../assets/img/case/kaaran-source-drawer-760.webp 760w, ../assets/img/case/kaaran-source-drawer-1208.webp 1208w" sizes="(min-width: 1600px) 1500px, 92vw" width="1208" height="900" fetchpriority="high" decoding="async" alt="Kaaran’s answer to “Which clusters in Pandharpur need attention?”, with the Source drawer open for the figure 11.6: computed as mean_rel_change from fln_assessment_2024-25.xlsx and fln_assessment_2025-26.xlsx, with the filter used and 120 rows matched in each file.">
+              </picture>
+            </div>
+            <figcaption class="fig__cap"><span class="fig__no">Pl. 01</span> <span class="fig__text">Click any figure and Kaaran shows the file, table, filter and rows behind it. Synthetic demo data · captured 2026-11-23 from the live demo.</span> <span class="fig__badges"><span class="prov">Live demo capture</span><span class="prov prov--synthetic">Synthetic data</span></span></figcaption>
+          </figure>
         </div>
       </section>
-      <section class="wrap case-layout">
-        <div>
-          <p class="category">Engineering case study</p>
-          <h2>From a district question to a verifiable answer.</h2>
-          <div class="spec">
-            <h3>Engineering decision</h3>
-            <p>
-              Claude interprets questions and prepares language. DuckDB and pandas compute the figures. A
-              verifier checks the generated brief before it reaches the officer.
-            </p>
+      <section class="case-brief" id="summary" data-surface="paper" data-case-essential aria-label="Summary">
+        <div class="grid">
+          <dl class="facts" data-reveal="fade">
+            <div><dt>Role</dt><dd>Sole committer of the public repository; built with Claude as an AI coding assistant</dd></div>
+            <div><dt>Team</dt><dd>Four-person team (Team EASY COMPANY)<!-- TODO(durgesh): teammates' names and roles, if they agree to be named (ledger Q-7). --></dd></div>
+            <div><dt>Timeline</dt><dd>Oct–Nov 2026</dd></div>
+            <div><dt>Context</dt><dd>AI for Foundational Learning Hackathon (ShikshaNext, in collaboration with Anthropic), challenge “Data to Action”</dd></div>
+            <div><dt>Stack</dt><dd>Python, FastAPI, pandas, Claude Haiku and Sonnet, Sarvam speech, WhatsApp Cloud API, Docker</dd></div>
+            <div><dt>Proof</dt><dd><a class="evidence" href="https://github.com/DurgeshC16/Kaaran">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a> <a class="evidence" href="https://kaaran-vk5o.onrender.com">Live demo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></dd></div>
+          </dl>
+          <div class="case-row">
+            <h2 class="case-row__label label">In 30 seconds</h2>
+            <dl class="case-row__body case-row__body--measure case-30" data-reveal="lines">
+              <div data-reveal-item><dt>What it is</dt><dd>Kaaran answers Marathi or English questions from education officers on the web, over WhatsApp and by voice. Claude turns each question into a validated plan; pandas code computes the figures, and every number links to its source file and rows.</dd></div>
+              <div data-reveal-item><dt>What I did</dt><dd>I maintained the public repository for our four-person team. It contains the intent parser, analysis engine, evidence verifier and the web, WhatsApp and voice channels.</dd></div>
+              <div data-reveal-item><dt>What came of it</dt><dd>Selected for the hackathon’s Build stage (top 30 teams). The public demo runs on synthetic district data and answers in under a second once the server is warm.</dd></div>
+            </dl>
           </div>
-          <div class="spec">
-            <h3>Evaluation</h3>
-            <p>
-              On 25 test questions, the LLM parser reached 92% intent accuracy and the rule-based tier
-              reached 96%. All 22 evaluated briefs passed verification on the first attempt. The project
-              includes 295 automated tests.
-            </p>
-          </div>
-          <div class="spec">
-            <h3>Delivery</h3>
-            <p>
-              The system provides web, WhatsApp and voice interfaces, plus downloadable evidence briefs.
-              Its district demonstration uses synthetic data.
-            </p>
-          </div>
-          <div class="source-links">
-            <a class="card-link" href="https://github.com/DurgeshC16/Kaaran"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m7 6-5 6 5 6m10-12 5 6-5 6m-4-15-2 18" /></svg
-              >Project repository</a
-            ><a class="card-link" href="https://kaaran-vk5o.onrender.com"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M12 17v4m-5 0h10" /></svg
-              >Open live application</a
-            ><a class="card-link" href="../assets/Durgesh-Chaudhari-Resume.pdf"
-              ><svg
-                class="icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.65"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 2H6a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7Z M14 2v5h5 M8 12h8m-8 4h6"
-                /></svg
-              >Résumé</a
-            >
-          </div>
-        </div>
-        <div class="experiment" id="experiment">
-          <article class="lab lab-kaaran" data-lab="kaaran" id="lab-kaaran">
-            <div class="lab-heading">
-              <span class="lab-symbol"
-                ><svg
-                  class="icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M3 16v4m5-10v10m5-15v15m5-11v11" /></svg
-              ></span>
-              <h2>Kaaran</h2>
-              <div class="language" aria-label="Evidence language">
-                <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button
-                ><button
-                  type="button"
-                  data-language="mr"
-                  lang="mr"
-                  aria-pressed="false"
-                  aria-label="मराठी"
-                >
-                  मराठी
-                </button>
+          <div class="case-row">
+            <h2 class="case-row__label label">Key results</h2>
+            <div class="case-row__body metrics" data-reveal="lines">
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">23/25</span><span class="metric__unit">92%</span></p>
+                <p class="metric__label">Questions Claude Haiku parsed correctly. Both misses asked for clarification or refused rather than guessing.</p>
+                <p class="metric__scope">25-question test set · re-derived from recorded Haiku outputs</p>
+                <p class="metric__src"><a class="evidence" href="https://github.com/DurgeshC16/Kaaran/blob/b6eb102/tests/fixtures/intent_questions.json">Test set<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">9/11</span><span class="metric__unit">briefs</span></p>
+                <p class="metric__label">Live briefs where the verifier caught Marathi causal wording and forced a rewrite; all then passed.</p>
+                <p class="metric__scope">Block-lens briefs recorded 26 and 31 Oct 2026 · re-derived from the replay cache</p>
+                <p class="metric__src"><a class="evidence" href="https://github.com/DurgeshC16/Kaaran/blob/b6eb102/src/kaaran/brief/verify.py">Verifier<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p>
+              </div>
+              <div class="metric" data-reveal-item>
+                <p class="metric__figure"><span class="metric__value">&lt;&#8202;1</span><span class="metric__unit">s</span></p>
+                <p class="metric__label">End-to-end answer time once the server is warm.</p>
+                <p class="metric__scope">7 warm calls, 0.34–0.87 s · measured on the live demo, 2026-11-23 · cold start about a minute</p>
+                <p class="metric__src"><a class="evidence" href="https://kaaran-vk5o.onrender.com">Live demo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p>
               </div>
             </div>
-            <figure class="block-figure">
-              <img
-                src="../assets/kaaran-blocks.webp"
-                width="950"
-                height="397"
-                alt="Three isometric plates for Pandharpur and one plate each for Karmala and Madha."
-              />
-              <figcaption>
-                <span>Pandharpur <b>3</b></span
-                ><span>Karmala <b>1</b></span
-                ><span>Madha <b>1</b></span>
-              </figcaption>
-            </figure>
-            <div class="lab-body" data-evidence-body lang="en">
-              <div class="lab-meta" data-e-text="type">Education analytics · Synthetic sample</div>
-              <h3 data-e-text="question">Which block needs the most attention?</h3>
-              <p data-e-text="answer">Pandharpur has three flagged clusters in the district sample.</p>
-              <details class="records">
-                <summary>
-                  <span class="inspect-icon"
-                    ><svg
-                      class="icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.7"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <circle cx="10" cy="10" r="6" />
-                      <path d="m15 15 6 6m-11-14v6m-3-3h6" /></svg></span
-                  ><span data-e-text="inspect">Inspect 3 clusters</span
-                  ><span class="toggle-sign" aria-hidden="true"></span>
-                </summary>
-                <noscript
-                  ><ul>
-                    <li>
-                      Bhalwad Khurd Kendra · Relative mathematics decline of 11.6 percentage points.
-                    </li>
+          </div>
+          <div class="case-row">
+            <h2 class="case-row__label label">Links</h2>
+            <div class="case-row__body case-links">
+              <a class="btn btn--primary" href="https://kaaran-vk5o.onrender.com" data-magnetic><span class="btn__inner">Try the live demo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg></span><span class="vh"> (opens external site)</span></a>
+              <a class="btn btn--ghost" href="https://github.com/DurgeshC16/Kaaran"><span class="btn__inner"><svg class="icon icon--github" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github"></use></svg>Source on GitHub <span class="btn__tag">MIT</span></span><span class="vh"> (opens external site)</span></a>
+              <p class="case-links__note">The demo runs on Render’s free tier: after 15 idle minutes it may take a minute to wake.</p>
+            </div>
+          </div>
+          <p class="case-deep-cta" data-case-quick-only><button class="btn btn--ghost" type="button" data-case-mode="deep" data-case-goto="problem"><span class="btn__inner">Read the deep dive<svg class="icon icon--arrow-down" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-down"></use></svg></span></button></p>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="problem" data-surface="paper" aria-labelledby="ch-problem">
+        <div class="running-head" aria-hidden="true"><span><b>01</b> — Kaaran</span><span>Case study</span><span>Ch. 01 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-problem" data-reveal><span class="case-ch__no">01 —</span> <span>Problem</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">A block education officer in Maharashtra oversees 150–300 schools, and the data on them does not talk to itself.</p>
+          <p>UDISE+, attendance, teacher posts and assessments sit in separate portals and Excel sheets that nobody joins or checks. Officers need a specific, trustworthy action, in Marathi, on a basic phone.</p>
+          <p>So the numbers cannot come from a language model. Each one has to trace back to the file and rows it came from, and doubt has to turn into a question rather than a guess.</p>
+          <dl class="case-pairs" aria-label="Constraints">
+            <div><dt>Language</dt><dd>Marathi or English, typed or spoken, including Marathi typed in Latin letters.</dd></div>
+            <div><dt>Channel</dt><dd>The web and WhatsApp, on a basic phone.</dd></div>
+            <div><dt>Trust</dt><dd>No number may come from the model; every figure must trace to a file and rows.</dd></div>
+            <div><dt>Data</dt><dd>Synthetic files in real formats, with real Solapur block names as labels only.</dd></div>
+            <div><dt>Privacy</dt><dd>The model sees only aggregates, never school names.</dd></div>
+            <div><dt>Compute</dt><dd>A free host with 512 MB of memory and 0.1 CPU, and a per-process spending cap on model and voice calls.</dd></div>
+          </dl>
+        </div>
+        <aside class="case-ch__aside" aria-label="Key number">
+          <div class="case-pull" data-reveal="fade">
+            <p class="case-pull__value">150–300</p>
+            <p class="case-pull__label">schools overseen by one block education officer</p>
+            <p class="case-pull__scope">Source: the project README, “The problem”</p>
+          </div>
+        </aside>
+      </section>
+      <section class="case-section case-ch grid" id="role" data-surface="paper" aria-labelledby="ch-role">
+        <div class="running-head" aria-hidden="true"><span><b>02</b> — Kaaran</span><span>Case study</span><span>Ch. 02 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-role" data-reveal><span class="case-ch__no">02 —</span> <span>Role and team contributions</span></h2>
+        <div class="case-ch__body">
+          <p class="case-ch__lead">Co-built in a four-person hackathon team. The code in the public repository is mine.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <table class="case-table">
+            <caption>Contribution boundary · from the public git history and the team’s own documents</caption>
+            <thead><tr><th scope="col">Area</th><th scope="col">I did</th><th scope="col">Team did</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">System code</th><td data-label="I did">Every commit in the public repository (49 of 49): the intent parser, analysis engine, evidence briefs, verifier, WhatsApp and voice channels, and the deployment.<span class="case-who">git shortlog @ b6eb102</span></td><td data-label="Team did" class="case-none">No commits in the public repository.</td></tr>
+              <tr><th scope="row">AI assistance</th><td data-label="I did">I used Claude as a coding assistant.<span class="case-who">46 of 49 commits carry a Co-Authored-By: Claude trailer</span></td><td data-label="Team did" class="case-none">Not applicable.</td></tr>
+              <tr><th scope="row">User testing and pitch</th><td data-label="I did" class="case-none"><!-- TODO(durgesh): document any personal role in testing or the pitch. -->Team activity</td><td data-label="Team did">Ran user testing and prepared the pitch materials. One teammate is a government primary-school teacher.<span class="case-who">Team EASY COMPANY · docs/USER_TESTING.md</span><!-- TODO(durgesh): name teammates and their roles once they agree (ledger Q-7). --></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="architecture" data-surface="paper" aria-labelledby="ch-arch">
+        <div class="running-head" aria-hidden="true"><span><b>03</b> — Kaaran</span><span>Case study</span><span>Ch. 03 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-arch" data-reveal><span class="case-ch__no">03 —</span> <span>Technical architecture</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Three bands: ask, compute, then write and check. The model appears twice, and code stands on both sides of it.</p>
+        </div>
+        <div class="case-ch__wide">
+          <figure class="fig case-arch" data-reveal="media" aria-labelledby="kaaran-arch-cap">
+            <div class="fig__media"><svg class="dg dg--full" viewBox="0 0 1000 640" role="img" aria-labelledby="kaaran-arch-t kaaran-arch-d" focusable="false"><title id="kaaran-arch-t">Fig. 1.3 Kaaran architecture, as built on the live path</title><desc id="kaaran-arch-d">Three bands. Ask: an officer asks on the web or WhatsApp, typed or by voice; voice goes through Sarvam speech-to-text; a code guard answers sensitive questions with a fixed reply before any AI call; Claude Haiku turns the question into a JSON plan over a closed list of places; a validator checks the plan, falls back to rules, and turns doubt into a clarifying question. Compute, code only: raw synthetic files in real formats are ingested with bilingual header recognition, trust-checked, analysed by an insight engine and action rubric, and packed as numbers with provenance. Write and check: simple facts go to direct-answer templates; otherwise Claude Sonnet writes prose with placeholders from aggregates only; a deterministic verifier rejects digits, number words, school names and causal claims, allowing one retry before a fixed template; code fills every figure from the evidence pack and returns the answer with click-to-source, an A4 PDF brief and an MP3 summary. Every LLM call is recorded and replayed first, then called live under a spending cap. Dashed boxes are planned and not live.</desc><path class="dg-rule" d="M0 0H1000"/><text x="0" y="20" class="dg-band">1 · ASK</text><text x="1000" y="20" class="dg-band dg-mute" text-anchor="end">typed or spoken · Marathi or English</text><path class="dg-rule" d="M0 196H1000"/><text x="0" y="216" class="dg-band">2 · COMPUTE · CODE ONLY</text><text x="1000" y="216" class="dg-band dg-mute" text-anchor="end">every figure computed here</text><path class="dg-rule" d="M0 402H1000"/><text x="0" y="422" class="dg-band">3 · WRITE AND CHECK</text><text x="1000" y="422" class="dg-band dg-mute" text-anchor="end">the model writes words, code writes numbers</text><g class="dg-node " data-node="1"><rect x="0" y="54" width="110" height="64" rx="2"/><text x="55.0" y="81.7" class="dg-label" text-anchor="middle" font-size="14">Officer</text><text x="55.0" y="100.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">DEO / BEO</text><g class="dg-badge"><circle cx="0" cy="54" r="11"/><text x="0" y="58.6" text-anchor="middle" font-size="13">1</text></g></g><g class="dg-node " data-node="2"><rect x="138" y="54" width="140" height="64" rx="2"/><text x="208.0" y="81.7" class="dg-label" text-anchor="middle" font-size="14">Web app</text><text x="208.0" y="100.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">WhatsApp</text><g class="dg-badge"><circle cx="138" cy="54" r="11"/><text x="138" y="58.6" text-anchor="middle" font-size="13">2</text></g></g><g class="dg-node " data-node="3"><rect x="334" y="54" width="150" height="64" rx="2"/><text x="409.0" y="81.7" class="dg-label" text-anchor="middle" font-size="14">Sarvam</text><text x="409.0" y="100.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">speech-to-text</text><g class="dg-badge"><circle cx="334" cy="54" r="11"/><text x="334" y="58.6" text-anchor="middle" font-size="13">3</text></g></g><g class="dg-node " data-node="4"><rect x="512" y="54" width="130" height="64" rx="2"/><text x="577.0" y="81.7" class="dg-label" text-anchor="middle" font-size="14">Code guard</text><text x="577.0" y="100.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">no AI call</text><g class="dg-badge"><circle cx="512" cy="54" r="11"/><text x="512" y="58.6" text-anchor="middle" font-size="13">4</text></g></g><g class="dg-node " data-node="5"><rect x="670" y="54" width="150" height="64" rx="2"/><text x="745.0" y="81.7" class="dg-label" text-anchor="middle" font-size="14">Claude Haiku</text><text x="745.0" y="100.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">JSON plan</text><g class="dg-badge"><circle cx="670" cy="54" r="11"/><text x="670" y="58.6" text-anchor="middle" font-size="13">5</text></g></g><g class="dg-node " data-node="6"><rect x="848" y="54" width="152" height="64" rx="2"/><text x="924.0" y="81.7" class="dg-label" text-anchor="middle" font-size="14">Plan validator</text><text x="924.0" y="100.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">rule fallback</text><g class="dg-badge"><circle cx="848" cy="54" r="11"/><text x="848" y="58.6" text-anchor="middle" font-size="13">6</text></g></g><g class="dg-node dg-node--plan" data-node="p"><rect x="138" y="140" width="140" height="32" rx="2"/><text x="208.0" y="160.6" class="dg-label" text-anchor="middle" font-size="13">SMS · planned</text></g><path class="dg-edge" d="M110.0 86.0 L136.0 86.0"/><path class="dg-head" d="M129.0 89.8 L136.0 86.0 L129.0 82.2"/><path class="dg-edge" d="M278.0 98.0 L332.0 98.0"/><path class="dg-head" d="M325.0 101.8 L332.0 98.0 L325.0 94.2"/><text x="306" y="92" class="dg-elabel " text-anchor="middle">voice</text><path class="dg-edge" d="M484.0 86.0 L510.0 86.0"/><path class="dg-head" d="M503.0 89.8 L510.0 86.0 L503.0 82.2"/><path class="dg-edge" d="M238.0 54.0 L238.0 34.0 L577.0 34.0 L577.0 52.0"/><path class="dg-head" d="M573.1 45.0 L577.0 52.0 L580.9 45.0"/><text x="408" y="28" class="dg-elabel " text-anchor="middle">text</text><path class="dg-edge" d="M642.0 86.0 L668.0 86.0"/><path class="dg-head" d="M661.0 89.8 L668.0 86.0 L661.0 82.2"/><path class="dg-edge" d="M820.0 86.0 L846.0 86.0"/><path class="dg-head" d="M839.0 89.8 L846.0 86.0 L839.0 82.2"/><path class="dg-edge" d="M894.0 118.0 L894.0 156.0 L500.0 156.0 L500.0 194.0"/><text x="886" y="178" class="dg-elabel" text-anchor="end">doubt: ask, never guess</text><g class="dg-node " data-node="7"><rect x="0" y="250" width="120" height="64" rx="2"/><text x="60.0" y="277.7" class="dg-label" text-anchor="middle" font-size="14">Raw files</text><text x="60.0" y="296.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">xlsx · csv</text><g class="dg-badge"><circle cx="0" cy="250" r="11"/><text x="0" y="254.6" text-anchor="middle" font-size="13">7</text></g></g><g class="dg-node " data-node="8"><rect x="142" y="250" width="170" height="64" rx="2"/><text x="227.0" y="277.7" class="dg-label" text-anchor="middle" font-size="14">Ingest</text><text x="227.0" y="296.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">bilingual headers</text><g class="dg-badge"><circle cx="142" cy="250" r="11"/><text x="142" y="254.6" text-anchor="middle" font-size="13">8</text></g></g><g class="dg-node " data-node="9"><rect x="334" y="250" width="140" height="64" rx="2"/><text x="404.0" y="277.7" class="dg-label" text-anchor="middle" font-size="14">Trust checks</text><text x="404.0" y="296.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">flat · missing</text><g class="dg-badge"><circle cx="334" cy="250" r="11"/><text x="334" y="254.6" text-anchor="middle" font-size="13">9</text></g></g><g class="dg-node " data-node="10"><rect x="496" y="250" width="160" height="64" rx="2"/><text x="576.0" y="277.7" class="dg-label" text-anchor="middle" font-size="14">Insight engine</text><text x="576.0" y="296.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">action rubric</text><g class="dg-badge"><circle cx="496" cy="250" r="11"/><text x="496" y="254.6" text-anchor="middle" font-size="13">10</text></g></g><g class="dg-node dg-node--soft" data-node="11"><rect x="678" y="250" width="160" height="64" rx="2"/><text x="758.0" y="277.7" class="dg-label" text-anchor="middle" font-size="14">Evidence pack</text><text x="758.0" y="296.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">numbers + source</text><g class="dg-badge"><circle cx="678" cy="250" r="11"/><text x="678" y="254.6" text-anchor="middle" font-size="13">11</text></g></g><g class="dg-node dg-node--aux" data-node="r"><rect x="860" y="242" width="140" height="80" rx="2"/><text x="930.0" y="269.4" class="dg-label" text-anchor="middle" font-size="13">Replay cache</text><text x="930.0" y="286.6" class="dg-label dg-label--2" text-anchor="middle" font-size="12">spend caps</text><text x="930.0" y="303.7" class="dg-label dg-label--2" text-anchor="middle" font-size="12">for 5 and 13</text></g><g class="dg-node dg-node--plan" data-node="p"><rect x="0" y="330" width="120" height="44" rx="2"/><text x="60.0" y="348.0" class="dg-label" text-anchor="middle" font-size="13">upload</text><text x="60.0" y="365.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">planned</text></g><g class="dg-node dg-node--plan" data-node="p"><rect x="142" y="330" width="170" height="44" rx="2"/><text x="227.0" y="348.0" class="dg-label" text-anchor="middle" font-size="13">LLM column mapper</text><text x="227.0" y="365.1" class="dg-label dg-label--2" text-anchor="middle" font-size="12">planned</text></g><path class="dg-edge" d="M500.0 196.0 L500.0 214.0 L576.0 214.0 L576.0 248.0"/><path class="dg-head" d="M572.1 241.0 L576.0 248.0 L579.9 241.0"/><text x="590" y="236" class="dg-elabel ">block, kendra, metric</text><path class="dg-edge" d="M120.0 282.0 L140.0 282.0"/><path class="dg-head" d="M133.0 285.9 L140.0 282.0 L133.0 278.1"/><path class="dg-edge" d="M312.0 282.0 L332.0 282.0"/><path class="dg-head" d="M325.0 285.9 L332.0 282.0 L325.0 278.1"/><path class="dg-edge" d="M474.0 282.0 L494.0 282.0"/><path class="dg-head" d="M487.0 285.9 L494.0 282.0 L487.0 278.1"/><path class="dg-edge" d="M656.0 282.0 L676.0 282.0"/><path class="dg-head" d="M669.0 285.9 L676.0 282.0 L669.0 278.1"/><path class="dg-edge dg-edge--dash" d="M60.0 330.0 L60.0 316.0"/><path class="dg-head dg-edge--dash" d="M63.9 323.0 L60.0 316.0 L56.1 323.0"/><path class="dg-edge dg-edge--dash" d="M227.0 330.0 L227.0 316.0"/><path class="dg-head dg-edge--dash" d="M230.8 323.0 L227.0 316.0 L223.2 323.0"/><g class="dg-node " data-node="12"><rect x="0" y="456" width="160" height="64" rx="2"/><text x="80.0" y="483.7" class="dg-label" text-anchor="middle" font-size="14">Direct answer</text><text x="80.0" y="502.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">templates, no LLM</text><g class="dg-badge"><circle cx="0" cy="456" r="11"/><text x="0" y="460.6" text-anchor="middle" font-size="13">12</text></g></g><g class="dg-node " data-node="13"><rect x="200" y="456" width="160" height="64" rx="2"/><text x="280.0" y="483.7" class="dg-label" text-anchor="middle" font-size="14">Claude Sonnet</text><text x="280.0" y="502.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">writes {{n:id}}</text><g class="dg-badge"><circle cx="200" cy="456" r="11"/><text x="200" y="460.6" text-anchor="middle" font-size="13">13</text></g></g><g class="dg-node dg-node--hi" data-node="14"><rect x="400" y="456" width="150" height="64" rx="2"/><text x="475.0" y="483.7" class="dg-label" text-anchor="middle" font-size="14">Verifier</text><text x="475.0" y="502.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">deterministic</text><g class="dg-badge"><circle cx="400" cy="456" r="11"/><text x="400" y="460.6" text-anchor="middle" font-size="13">14</text></g></g><g class="dg-node " data-node="15"><rect x="590" y="456" width="140" height="64" rx="2"/><text x="660.0" y="483.7" class="dg-label" text-anchor="middle" font-size="14">Fill figures</text><text x="660.0" y="502.1" class="dg-label dg-label--2" text-anchor="middle" font-size="13">or template</text><g class="dg-badge"><circle cx="590" cy="456" r="11"/><text x="590" y="460.6" text-anchor="middle" font-size="13">15</text></g></g><g class="dg-node dg-node--dark" data-node="16"><rect x="770" y="446" width="230" height="84" rx="2"/><text x="885.0" y="474.4" class="dg-label" text-anchor="middle" font-size="14">Answer + source</text><text x="885.0" y="492.9" class="dg-label dg-label--2" text-anchor="middle" font-size="13">A4 PDF brief</text><text x="885.0" y="511.4" class="dg-label dg-label--2" text-anchor="middle" font-size="13">MP3 summary</text><g class="dg-badge"><circle cx="770" cy="446" r="11"/><text x="770" y="450.6" text-anchor="middle" font-size="13">16</text></g></g><path class="dg-edge" d="M738.0 314.0 L738.0 392.0 L280.0 392.0 L280.0 454.0"/><path class="dg-head" d="M276.1 447.0 L280.0 454.0 L283.9 447.0"/><text x="400" y="382" class="dg-elabel ">aggregates only, no school names</text><path class="dg-edge" d="M280.0 392.0 L80.0 392.0 L80.0 454.0"/><path class="dg-head" d="M76.2 447.0 L80.0 454.0 L83.8 447.0"/><text x="90" y="382" class="dg-elabel">facts</text><path class="dg-edge" d="M360.0 488.0 L398.0 488.0"/><path class="dg-head" d="M391.0 491.9 L398.0 488.0 L391.0 484.1"/><path class="dg-edge" d="M550.0 488.0 L588.0 488.0"/><path class="dg-head" d="M581.0 491.9 L588.0 488.0 L581.0 484.1"/><text x="570" y="480" class="dg-elabel " text-anchor="middle">pass</text><path class="dg-edge" d="M730.0 488.0 L768.0 488.0"/><path class="dg-head" d="M761.0 491.9 L768.0 488.0 L761.0 484.1"/><path class="dg-edge" d="M475.0 520.0 L475.0 552.0 L280.0 552.0 L280.0 522.0"/><path class="dg-head" d="M283.9 529.0 L280.0 522.0 L276.1 529.0"/><text x="378" y="572" class="dg-elabel " text-anchor="middle">fail: one retry</text><path class="dg-edge" d="M80.0 520.0 L80.0 604.0 L885.0 604.0 L885.0 532.0"/><path class="dg-head" d="M888.9 539.0 L885.0 532.0 L881.1 539.0"/><text x="110" y="592" class="dg-elabel">template sentence, figures filled by code</text><text x="1000" y="636" class="dg-band dg-mute" text-anchor="end">Dashed = planned, not live · runs in one Docker container on Render</text></svg><svg class="dg dg--compact" viewBox="0 0 400 548" role="img" aria-labelledby="kaaran-arch-c-t kaaran-arch-c-d" focusable="false"><title id="kaaran-arch-c-t">Fig. 1.3 Kaaran architecture, compact</title><desc id="kaaran-arch-c-d">Six stages from top to bottom: a question in Marathi or English, typed or spoken; Claude Haiku turns it into a JSON plan that code validates; code computes every figure with its source rows; Claude Sonnet writes prose with placeholders only; a deterministic verifier checks the prose and allows one retry; the officer gets an answer with click-to-source, a PDF brief and a voice summary.</desc><g class="dg-node " data-node="2"><rect x="22" y="16" width="370" height="60" rx="2"/><text x="207.0" y="53.4" class="dg-label" text-anchor="middle" font-size="21">Question · mr / en</text><g class="dg-badge"><circle cx="22" cy="16" r="15"/><text x="22" y="22.4" text-anchor="middle" font-size="18">2</text></g></g><g class="dg-node " data-node="5"><rect x="22" y="106" width="370" height="60" rx="2"/><text x="207.0" y="143.3" class="dg-label" text-anchor="middle" font-size="21">Claude: JSON plan</text><g class="dg-badge"><circle cx="22" cy="106" r="15"/><text x="22" y="112.4" text-anchor="middle" font-size="18">5</text></g></g><g class="dg-node " data-node="10"><rect x="22" y="196" width="370" height="60" rx="2"/><text x="207.0" y="233.3" class="dg-label" text-anchor="middle" font-size="21">Code computes</text><g class="dg-badge"><circle cx="22" cy="196" r="15"/><text x="22" y="202.4" text-anchor="middle" font-size="18">10</text></g></g><g class="dg-node " data-node="13"><rect x="22" y="286" width="370" height="60" rx="2"/><text x="207.0" y="323.4" class="dg-label" text-anchor="middle" font-size="21">Claude: placeholders</text><g class="dg-badge"><circle cx="22" cy="286" r="15"/><text x="22" y="292.4" text-anchor="middle" font-size="18">13</text></g></g><g class="dg-node dg-node--hi" data-node="14"><rect x="22" y="376" width="370" height="60" rx="2"/><text x="207.0" y="413.4" class="dg-label" text-anchor="middle" font-size="21">Verifier</text><g class="dg-badge"><circle cx="22" cy="376" r="15"/><text x="22" y="382.4" text-anchor="middle" font-size="18">14</text></g></g><g class="dg-node dg-node--dark" data-node="16"><rect x="22" y="466" width="370" height="60" rx="2"/><text x="207.0" y="503.4" class="dg-label" text-anchor="middle" font-size="21">Answer + PDF + MP3</text><g class="dg-badge"><circle cx="22" cy="466" r="15"/><text x="22" y="472.4" text-anchor="middle" font-size="18">16</text></g></g><path class="dg-edge" d="M207.0 76.0 L207.0 104.0"/><path class="dg-head" d="M201.5 94.0 L207.0 104.0 L212.5 94.0"/><path class="dg-edge" d="M207.0 166.0 L207.0 194.0"/><path class="dg-head" d="M201.5 184.0 L207.0 194.0 L212.5 184.0"/><path class="dg-edge" d="M207.0 256.0 L207.0 284.0"/><path class="dg-head" d="M201.5 274.0 L207.0 284.0 L212.5 274.0"/><path class="dg-edge" d="M207.0 346.0 L207.0 374.0"/><path class="dg-head" d="M201.5 364.0 L207.0 374.0 L212.5 364.0"/><path class="dg-edge" d="M207.0 436.0 L207.0 464.0"/><path class="dg-head" d="M201.5 454.0 L207.0 464.0 L212.5 454.0"/></svg></div>
+            <figcaption class="fig__cap" id="kaaran-arch-cap"><span class="fig__no">Fig. 1.3</span> <span class="fig__text">As built on the live path. The highlighted node, the verifier, is where a bad sentence is stopped. Dashed boxes are planned, not live.</span> <span class="prov prov--drawing">Original drawing</span></figcaption>
+          </figure>
+          <div class="case-arch__tools" data-case-js>
+            <button class="btn btn--ghost btn--sm" type="button" data-arch-open="kaaran-viewer" aria-haspopup="dialog"><span class="btn__inner"><svg class="icon icon--plus" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#plus"></use></svg>Open the full diagram</span></button>
+          </div>
+          <dialog class="case-viewer" id="kaaran-viewer" data-surface="paper" aria-labelledby="kaaran-viewer-title">
+            <div class="case-viewer__bar"><h2 id="kaaran-viewer-title">Fig. 1.3 · Kaaran architecture, full</h2><button class="btn btn--icon" type="button" data-viewer-close><svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg><span class="vh">Close</span></button></div>
+            <div class="case-viewer__scroll" tabindex="0" role="region" aria-label="Full diagram, scrollable" data-viewer-slot="kaaran-arch"></div>
+            <p class="case-viewer__hint">Scroll sideways to follow the three bands.</p>
+          </dialog>
+          <ol class="case-legend" aria-label="Diagram legend" data-legend-for="kaaran-arch">
+            <li data-node="1"><span class="case-legend__n">1</span><span><b>Officer.</b> A district or block education officer (DEO or BEO).</span></li>
+            <li data-node="2"><span class="case-legend__n">2</span><span><b>Web app and WhatsApp.</b> The same bot behind both; WhatsApp runs on a Meta test number.</span></li>
+            <li data-node="3"><span class="case-legend__n">3</span><span><b>Speech-to-text.</b> Sarvam turns a voice question into a transcript.</span></li>
+            <li data-node="4"><span class="case-legend__n">4</span><span><b>Code guard.</b> Wellbeing, abuse and caste or religion questions get a fixed reply, with no AI call.</span></li>
+            <li data-node="5"><span class="case-legend__n">5</span><span><b>Intent parser.</b> Claude Haiku turns the question into a JSON plan over a closed list of places.</span></li>
+            <li data-node="6"><span class="case-legend__n">6</span><span><b>Plan validator.</b> Doubt becomes a clarifying question; if the model is unavailable or over budget, a rule-based parser takes over.</span></li>
+            <li data-node="7"><span class="case-legend__n">7</span><span><b>Raw files.</b> Synthetic xlsx and csv in real formats.</span></li>
+            <li data-node="8"><span class="case-legend__n">8</span><span><b>Ingest.</b> Recognises Marathi and English headers and keeps provenance per row.</span></li>
+            <li data-node="9"><span class="case-legend__n">9</span><span><b>Trust checks.</b> Flags flat runs, missing data and implausible values before any analysis.</span></li>
+            <li data-node="10"><span class="case-legend__n">10</span><span><b>Insight engine and action rubric.</b> Risk scan, diagnoses, positive deviants; actions come from a fixed rubric.</span></li>
+            <li data-node="11"><span class="case-legend__n">11</span><span><b>Evidence pack.</b> Every number with the file and rows it came from.</span></li>
+            <li data-node="12"><span class="case-legend__n">12</span><span><b>Direct answers.</b> Template sentences for simple facts, with no LLM call.</span></li>
+            <li data-node="13"><span class="case-legend__n">13</span><span><b>Brief writer.</b> Claude Sonnet writes Marathi and English prose with placeholders such as <code>{{n:id}}</code>, never digits.</span></li>
+            <li data-node="14"><span class="case-legend__n">14</span><span><b>Verifier.</b> Rejects digits, number words, school names and causal claims; one retry, then a fixed template.</span></li>
+            <li data-node="15"><span class="case-legend__n">15</span><span><b>Filler.</b> Code fills each placeholder from the evidence pack, in Devanagari digits for Marathi.</span></li>
+            <li data-node="16"><span class="case-legend__n">16</span><span><b>Outputs.</b> An answer with click-to-source, a one-page A4 PDF brief and an MP3 summary.</span></li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="decisions" data-surface="paper" aria-labelledby="ch-decisions">
+        <div class="running-head" aria-hidden="true"><span><b>04</b> — Kaaran</span><span>Case study</span><span>Ch. 04 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-decisions" data-reveal><span class="case-ch__no">04 —</span> <span>Key challenges and decisions</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ol class="case-decisions">
+            <li data-reveal="fade">
+              <span class="case-decisions__no">D1</span>
+              <h3>The model writes words; code writes numbers.</h3>
+              <p>A placeholder contract plus a deterministic verifier. In the live demo’s briefs, Sonnet wrote the Marathi for “because of election work” about a cause the data had ruled out; the verifier blocked it and the retry fixed it.</p>
+              <p class="case-trade"><b>Trade-off</b>A failed draft costs one more model call, then falls back to a fixed template.</p>
+            </li>
+            <li data-reveal="fade">
+              <span class="case-decisions__no">D2</span>
+              <h3>Clarify, don’t guess.</h3>
+              <p>Place names are a closed JSON-schema list. The tests allow a miss to ask or refuse, but never to analyse the wrong place.</p>
+              <p class="case-trade"><b>Trade-off</b>Some questions get a follow-up question before an answer.</p>
+            </li>
+            <li data-reveal="fade">
+              <span class="case-decisions__no">D3</span>
+              <h3>Record and replay every LLM call.</h3>
+              <p>It keeps the tests and the public demo cheap and repeatable. User testing exposed the cost: unrecorded questions fell to the rule parser and gave “dummy answers”, which led to the deterministic direct-answer layer.</p>
+              <p class="case-trade"><b>Trade-off</b>New phrasings call the live API, so spending is capped per process.</p>
+            </li>
+            <li data-reveal="fade">
+              <span class="case-decisions__no">D4</span>
+              <h3>Plant the truth in the synthetic data.</h3>
+              <p>The generators plant known causes, so the analysis engine can be scored against an answer key rather than judged by eye.</p>
+              <p class="case-trade"><b>Trade-off</b>A planted answer key proves the engine finds what was planted, not that real data looks like this.</p>
+            </li>
+            <li data-reveal="fade">
+              <span class="case-decisions__no">D5</span>
+              <h3>Check trust before analysis.</h3>
+              <p>Rule-based confidence labels: “Strong evidence” needs an effect, a share, replication and no pre-trend. Clusters with suspect records only get “verify registers”.</p>
+              <p class="case-trade"><b>Trade-off</b>A suspect cluster gets a check-the-registers action instead of a diagnosis.</p>
+            </li>
+            <li data-reveal="fade">
+              <span class="case-decisions__no">D6</span>
+              <h3>A PDF service on a 512 MB host.</h3>
+              <p>Headless Chromium renders the briefs on Render’s free tier (0.1 CPU). Briefs and PDFs are pre-built when the image is built, and only one dataset is loaded: about 320 MB instead of 630 MB.</p>
+              <p class="case-trade"><b>Trade-off</b>A cold start of about a minute after 15 idle minutes.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="implementation" data-surface="paper" aria-labelledby="ch-impl">
+        <div class="running-head" aria-hidden="true"><span><b>05</b> — Kaaran</span><span>Case study</span><span>Ch. 05 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-impl" data-reveal><span class="case-ch__no">05 —</span> <span>Implementation and technology</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">One FastAPI service behind the web app and the WhatsApp webhook, packaged as a single Docker container.</p>
+          <p>Figures are computed with pandas (the first ingest pipeline used DuckDB). Each answer has a one-page evidence brief, rendered to PDF by headless Chromium with Noto Devanagari fonts. Incoming WhatsApp webhooks are rejected unless their HMAC signature matches, and live model and voice calls stop at a per-process spending cap.</p>
+        </div>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <dl class="case-stack" data-reveal="lines">
+            <div data-reveal-item><dt>Language layer</dt><dd>Claude Haiku (intent), Claude Sonnet (wording), placeholder-constrained generation, recorded replay</dd></div>
+            <div data-reveal-item><dt>Data and analysis</dt><dd>Python 3.11, pandas and numpy; DuckDB in the first ingest</dd></div>
+            <div data-reveal-item><dt>Channels</dt><dd>FastAPI web app, Meta WhatsApp Cloud API, Sarvam speech-to-text and text-to-speech</dd></div>
+            <div data-reveal-item><dt>Delivery</dt><dd>Headless Chromium for PDF, Docker on Render, pytest</dd></div>
+          </dl>
+        </div>
+        <div class="case-figs">
+          <figure class="fig case-fig--main" data-reveal="media">
+            <div class="fig__media case-sheets">
+              <div class="case-sheets__sheet"><img src="../assets/img/case/kaaran-brief-en-460.webp" srcset="../assets/img/case/kaaran-brief-en-460.webp 460w, ../assets/img/case/kaaran-brief-en-760.webp 760w" sizes="(min-width: 760px) 30vw, 40vw" width="760" height="842" loading="lazy" decoding="async" alt="The one-page English evidence brief for Pandharpur: a synthetic-data banner, then A, what needs attention; B, why it may be happening, each line with a rule label; C, what to do, eight numbered actions with an owner and a deadline."></div>
+              <div class="case-sheets__sheet" lang="mr"><img src="../assets/img/case/kaaran-brief-mr-460.webp" srcset="../assets/img/case/kaaran-brief-mr-460.webp 460w, ../assets/img/case/kaaran-brief-mr-760.webp 760w" sizes="(min-width: 760px) 30vw, 40vw" width="760" height="842" loading="lazy" decoding="async" alt="केंद्रनिहाय पुरावा अहवाल: पंढरपूर. The same brief in Marathi, with the same three sections and Devanagari digits."></div>
+            </div>
+            <figcaption class="fig__cap"><span class="fig__no">Fig. 1.5a</span> <span class="fig__text">The same one-page brief in English and Marathi. Every figure in it was computed by code; the actions come from a fixed rubric.</span> <span class="fig__badges"><span class="prov">Live demo capture</span><span class="prov prov--synthetic">Synthetic data</span></span></figcaption>
+          </figure>
+          <figure class="fig case-fig--side" data-reveal="media">
+            <div class="fig__media mat"><img src="../assets/img/case/kaaran-whatsapp-mr-400.webp" srcset="../assets/img/case/kaaran-whatsapp-mr-400.webp 400w, ../assets/img/case/kaaran-whatsapp-mr-700.webp 700w" sizes="(min-width: 760px) 26rem, 80vw" width="700" height="873" loading="lazy" decoding="async" alt="The WhatsApp simulator answering in Marathi: a direct answer for Pandharpur with a synthetic-data warning, an offer of the full PDF evidence brief, and a one-minute voice summary."></div>
+            <figcaption class="fig__cap"><span class="fig__no">Fig. 1.5b</span> <span class="fig__text">The WhatsApp simulator, which runs the same bot as the webhook: a text answer, the PDF brief on request and a voice summary.</span> <span class="fig__badges"><span class="prov">Live demo capture</span><span class="prov prov--synthetic">Synthetic data</span></span></figcaption>
+          </figure>
+          <figure class="fig case-fig--r" data-reveal="media">
+            <div class="fig__media mat"><img src="../assets/img/case/kaaran-translit-answer-560.webp" srcset="../assets/img/case/kaaran-translit-answer-560.webp 560w, ../assets/img/case/kaaran-translit-answer-960.webp 960w" sizes="(min-width: 760px) 55vw, 90vw" width="960" height="495" loading="lazy" decoding="async" alt="A question typed in Marathi with Latin letters, “Malshiras cha nikal changla ka aala?”, answered in Marathi: results rose, the data shows no clear reason, ask the most improved clusters directly. Source files are listed, and a footer reports AI intent, AI plus code checks, figures checked: passed, in 0.19 seconds."></div>
+            <figcaption class="fig__cap"><span class="fig__no">Fig. 1.5c</span> <span class="fig__text">Marathi typed in Latin letters, answered in Marathi. When the data shows no clear reason, the answer says so. The footer shows how the answer was made.</span> <span class="fig__badges"><span class="prov">Live demo capture</span><span class="prov prov--synthetic">Synthetic data</span></span></figcaption>
+          </figure>
+        </div>
+      </section>
+      <!-- /region:case-a -->
+      <!-- region:bench (owner L) -->
+      <section class="case-bench section" id="how-it-works" data-surface="paper" aria-labelledby="bench-title">
+        <div class="grid bench-case__head">
+          <h2 class="bench-case__title" id="bench-title"><span class="bench-case__no">04 —</span> How it works</h2>
+          <p class="bench-case__dek">Trace one answer from an officer’s question to the source records behind it. The records are a dated snapshot of the live demo’s synthetic data, so the exercise works even while the demo sleeps.</p>
+        </div>
+        <div class="wrap">
+        <div class="experiment" id="experiment">
+          <article class="lab bench bench--kaaran" data-lab="kaaran" id="lab-kaaran" aria-labelledby="lab-kaaran-title">
+          <header class="bench__bar">
+            <h3 class="bench__title" id="lab-kaaran-title"><span class="bench__no">Lab 01</span> Evidence explorer</h3>
+            <p class="bench__readout" data-k-readout>3 flagged clusters · EN</p>
+            <span class="prov prov--synthetic bench__prov">Synthetic data</span>
+            <div class="bench__tools">
+              <div class="language seg" role="group" aria-label="Evidence language">
+                <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button><button type="button" data-language="mr" lang="mr" aria-pressed="false">मराठी</button>
+              </div>
+              <button type="button" class="btn btn--text bench__reset" data-reset>Reset</button>
+            </div>
+          </header>
+          <div class="bench__body kflow-body" data-evidence-body lang="en">
+            <ol class="kflow">
+              <li class="kflow__step kflow__step--q">
+                <p class="kflow__label" lang="en"><span>01</span> Question</p>
+                <p class="kflow__meta" data-e-text="type">Education analytics · Synthetic sample</p>
+                <h4 class="kflow__question" data-e-text="question">Which block needs the most attention?</h4>
+              </li>
+              <li class="kflow__step kflow__step--a">
+                <p class="kflow__label" lang="en"><span>02</span> Analysis</p>
+                <figure class="kchart" lang="en">
+                  <svg class="kchart__svg" viewBox="0 0 290 124" role="img" aria-labelledby="kchart-title-c">
+                    <title id="kchart-title-c">Flagged clusters per block: Pandharpur 3, Karmala 1, Madha 1.</title>
+                    <g class="kchart__labels"><text x="0" y="22" dy="0.35em">Pandharpur</text><text x="0" y="66" dy="0.35em">Karmala</text><text x="0" y="110" dy="0.35em">Madha</text></g>
+                    <g class="kchart__lead"><g class="kchart__cell" data-k-cell data-k-pick="n.drop.08K03"><rect x="136" y="7" width="30" height="30" rx="2"/><text x="151" y="22" dy="0.35em" text-anchor="middle">a</text></g><g class="kchart__cell" data-k-cell data-k-pick="n.mig.gap.08K11"><rect x="174" y="7" width="30" height="30" rx="2"/><text x="189" y="22" dy="0.35em" text-anchor="middle">b</text></g><g class="kchart__cell" data-k-cell data-k-pick="n.drop.08K07"><rect x="212" y="7" width="30" height="30" rx="2"/><text x="227" y="22" dy="0.35em" text-anchor="middle">c</text></g></g>
+                    <g class="kchart__rest"><rect x="136" y="51" width="30" height="30" rx="2"/><rect x="136" y="95" width="30" height="30" rx="2"/></g>
+                    <g class="kchart__counts"><text class="is-lead" x="262" y="22" dy="0.35em">3</text><text x="186" y="66" dy="0.35em">1</text><text x="186" y="110" dy="0.35em">1</text></g>
+                  </svg>
+                  <figcaption class="kchart__cap">Flagged clusters per block, district sample</figcaption>
+                </figure>
+              </li>
+              <li class="kflow__step kflow__step--f">
+                <p class="kflow__label" lang="en"><span>03</span> Finding</p>
+                <p class="kflow__answer" data-e-text="answer">Pandharpur has three flagged clusters in the district sample.</p>
+              </li>
+              <li class="kflow__step kflow__step--e">
+                <p class="kflow__label" lang="en"><span>04</span> Evidence</p>
+                <details class="records">
+                  <summary class="records__summary"><span class="records__count" aria-hidden="true">3</span><span class="records__text" data-e-text="inspect">Inspect 3 clusters</span><svg class="icon icon--plus records__sign" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#plus"></use></svg></summary>
+                  <noscript><ul class="records__plain">
+                    <li>Bhalwad Khurd Kendra · Relative mathematics decline of 11.6 percentage points.</li>
                     <li>Bhalpur Kendra · Seasonal attendance gap of 14.7 percentage points.</li>
                     <li>Takangaon Kendra · Relative mathematics decline of 7.4 percentage points.</li>
                   </ul>
-                  <a
-                    class="source-link"
-                    href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur"
-                    >Read the block evidence</a
-                  ></noscript
-                >
-                <div class="evidence-detail">
-                  <label for="cluster" data-e-text="choose">Select a cluster</label
-                  ><select id="cluster">
-                    <option>Bhalwad Khurd Kendra</option>
-                    <option>Bhalpur Kendra</option>
-                    <option>Takangaon Kendra</option>
-                  </select>
-                  <div class="source-extract" aria-live="polite">
-                    <h4 data-record-name>Bhalwad Khurd Kendra</h4>
-                    <p data-record-finding>
-                      The mathematics score fell 11.6 points more than elsewhere in the block.
-                    </p>
-                    <p data-record-period></p>
-                    <ul data-workbooks></ul>
-                    <a
-                      class="source-link"
-                      data-record-url
-                      href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03"
-                      >View source record</a
-                    >
+                  <p class="records__plain-link"><a class="evidence" href="https://kaaran-vk5o.onrender.com/api/home?role=beo&amp;block=BPandharpur">Read the block evidence <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></p></noscript>
+                  <div class="evidence-detail">
+                    <ol class="kledger" data-k-ledger aria-hidden="true"><li class="kledger__row" data-k-pick="n.drop.08K03" aria-current="true"><span class="kledger__key">a</span><span class="kledger__name">Bhalwad Khurd Kendra</span><span class="kledger__value" lang="en">11.6 pp</span></li><li class="kledger__row" data-k-pick="n.mig.gap.08K11"><span class="kledger__key">b</span><span class="kledger__name">Bhalpur Kendra</span><span class="kledger__value" lang="en">14.7 pp</span></li><li class="kledger__row" data-k-pick="n.drop.08K07"><span class="kledger__key">c</span><span class="kledger__name">Takangaon Kendra</span><span class="kledger__value" lang="en">7.4 pp</span></li></ol>
+                    <div class="kfield">
+                      <label for="cluster" data-e-text="choose">Why does this cluster need attention?</label>
+                      <select id="cluster"><option value="n.drop.08K03">Bhalwad Khurd Kendra</option><option value="n.mig.gap.08K11">Bhalpur Kendra</option><option value="n.drop.08K07">Takangaon Kendra</option></select>
+                    </div>
+                    <div class="source-extract" aria-live="polite">
+                      <h4 class="source-extract__name" data-record-name>Bhalwad Khurd Kendra</h4>
+                      <p class="source-extract__finding" data-record-finding>The decline in mathematics scores across 12 schools was 11.6 percentage points greater than in the rest of the block.</p>
+                      <p class="source-extract__period" data-record-period>Comparison period · 2024–25 to 2025–26</p>
+                      <ul class="source-extract__files" data-workbooks><li>fln_assessment_2024-25.xlsx</li><li>fln_assessment_2025-26.xlsx</li></ul>
+                      <a class="evidence" data-record-url href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03"><span data-record-url-label>View source record</span> <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a>
+                    </div>
                   </div>
-                  <small data-snapshot></small>
-                </div>
-              </details>
-            </div>
-          </article>
+                </details>
+              </li>
+            </ol>
+          </div>
+          <footer class="bench__foot">
+            <p class="bench__source"><span class="label">Source</span> <span class="bench__snapshot" data-snapshot lang="en">Synthetic evidence captured · 2026-11-21</span> <span class="bench__sep" aria-hidden="true">·</span> <a class="evidence" href="https://kaaran-vk5o.onrender.com">Live demo <svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a> <span class="bench__aside">The free host may take a minute to wake.</span></p>
+            <a class="bench__return btn btn--text" href="../index.html#lab/kaaran" data-lab-return><span class="btn__inner"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg> Open on the home bench</span></a>
+          </footer>
+        </article>
+        </div>
         </div>
       </section>
-      <aside class="case-bottom">
-        <div class="wrap">
-          <div>
-            <p class="eyebrow"><span></span>Continue exploring</p>
-            <h2>Neuro-symbolic tree tutor</h2>
-          </div>
-          <a class="button secondary" href="tutor.html"
-            ><svg
-              class="icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M3 4h5c2 0 4 1 4 3 0-2 2-3 4-3h5v15h-5c-2 0-4 1-4 3 0-2-2-3-4-3H3zM12 7v14"
-              /></svg
-            >Read case study</a
-          >
+      <!-- /region:bench -->
+      <!-- region:case-b (owner E1) -->
+      <div class="case-benchlink grid" data-surface="paper">
+        <p>The lab keeps its state in the address. <a class="crumb" href="../index.html#lab/kaaran">Open this lab on the home bench<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></a></p>
+      </div>
+      <section class="case-section case-ch grid" id="evaluation" data-surface="paper" aria-labelledby="ch-eval">
+        <div class="running-head" aria-hidden="true"><span><b>07</b> — Kaaran</span><span>Case study</span><span>Ch. 07 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-eval" data-reveal><span class="case-ch__no">07 —</span> <span>Evaluation, results and limitations</span></h2>
+        <div class="case-ch__body prose">
+          <p class="case-ch__lead">Every result below states what was measured, on what, and who measured it.</p>
+          <p>Figures marked “re-derived” were recomputed from recorded data in the repository. Figures marked “project log” are reported by the project’s own log and were not re-run.</p>
         </div>
-      </aside>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <table class="case-table case-table--eval">
+            <caption>Results with scope · Kaaran @ b6eb102</caption>
+            <thead><tr><th scope="col">Check</th><th scope="col">Result</th><th scope="col">Scope</th><th scope="col">Evidence</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Intent parsing, Claude Haiku</th><td data-label="Result" class="case-num">23 of 25 (92%)</td><td data-label="Scope">25-question test set. Both misses asked for clarification or refused rather than guessing.</td><td data-label="Evidence">Re-derived from recorded outputs</td></tr>
+              <tr><th scope="row">Intent parsing, Claude Sonnet</th><td data-label="Result" class="case-num">25 of 25</td><td data-label="Scope">Same set. Haiku was kept: its misses were conservative, and the project log puts it at roughly a twentieth of the cost per question.</td><td data-label="Evidence">Accuracy re-derived; cost from the project log</td></tr>
+              <tr><th scope="row">Rule-based fallback</th><td data-label="Result" class="case-num">96%</td><td data-label="Scope">Same set. The test itself enforces at least 0.8.</td><td data-label="Evidence">Project log</td></tr>
+              <tr><th scope="row">Verifier on live briefs</th><td data-label="Result" class="case-num">9 of 11 caught</td><td data-label="Scope">Block-lens briefs recorded 2026-10-26 and 10-31: Marathi causal wording, rewritten after one retry; all then passed.</td><td data-label="Evidence">Re-derived from the replay cache</td></tr>
+              <tr><th scope="row">First-generation briefs</th><td data-label="Result" class="case-num">22 of 22</td><td data-label="Scope">All 22 first-generation taluka briefs passed on the first attempt. This does not describe the current demo.</td><td data-label="Evidence">Project log, matched by the cache</td></tr>
+              <tr><th scope="row">Column mapping</th><td data-label="Result" class="case-num">47 of 47 fields</td><td data-label="Scope">Held-out synthetic layout with reworded Marathi and English headers, shuffled and junk columns, 3 seeds. The mapper is not used by the live demo’s ingest.</td><td data-label="Evidence">3 recorded mappings re-checked</td></tr>
+              <tr><th scope="row">Planted-truth analysis</th><td data-label="Result" class="case-num">19 of 19</td><td data-label="Scope">Planted causes recovered on 6 seeds; re-checking provenance found and fixed 3 errors.</td><td data-label="Evidence">Project log</td></tr>
+              <tr><th scope="row">Answer time, warm</th><td data-label="Result" class="case-num">0.34–0.87 s</td><td data-label="Scope">7 warm calls end to end; the server reported 0.11–0.38 s.</td><td data-label="Evidence">Measured on the live demo, 2026-11-23</td></tr>
+              <tr><th scope="row">Automated tests</th><td data-label="Result" class="case-num">about 300</td><td data-label="Scope">307 at the final commit; the last recorded run reports 304 passed and 3 live-API tests skipped.</td><td data-label="Evidence">Counted in the repository</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="case-ch__body case-sub">
+          <h3 class="case-h3">Limitations</h3>
+          <ul class="case-list">
+            <li>All demo findings are synthetic, with real Solapur block names as labels. The <code>/real</code> page shows real public aggregates (UDISE+ 2024-25).</li>
+            <li>No serving education officers had been interviewed by 29 Oct 2026.</li>
+            <li>The Marathi needs a native-speaker review.</li>
+            <li>Officers cannot yet upload their own files.</li>
+            <li>WhatsApp runs on a Meta test number, so it reaches pre-registered phones only.</li>
+            <li>The free host takes about a minute to wake from a cold start.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="case-section case-ch grid" id="source" data-surface="paper" aria-labelledby="ch-source">
+        <div class="running-head" aria-hidden="true"><span><b>08</b> — Kaaran</span><span>Case study</span><span>Ch. 08 / 08</span></div>
+        <h2 class="case-ch__title" id="ch-source" data-reveal><span class="case-ch__no">08 —</span> <span>Source code and supporting evidence</span></h2>
+        <div class="case-ch__wide case-ch__wide--inset">
+          <ul class="case-sources">
+            <li><span class="case-sources__what">Repository</span><span class="case-sources__why">DurgeshC16/Kaaran, MIT licence. Every commit is mine.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/DurgeshC16/Kaaran">Repo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Live demo</span><span class="case-sources__why">The public demo on synthetic data. It may take a minute to wake.</span><span class="case-sources__badges"><a class="evidence" href="https://kaaran-vk5o.onrender.com">Live demo<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Source record</span><span class="case-sources__why">The JSON behind the figure 11.6 for Bhalwad Khurd Kendra: value, files and rows.</span><span class="case-sources__badges"><a class="evidence" href="https://kaaran-vk5o.onrender.com/api/briefs/blocks.BPandharpur/number?id=n.drop.08K03">Source record<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Verifier</span><span class="case-sources__why"><code>src/kaaran/brief/verify.py</code>, the rules that reject a draft.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/DurgeshC16/Kaaran/blob/b6eb102/src/kaaran/brief/verify.py">Source<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Intent test set</span><span class="case-sources__why"><code>tests/fixtures/intent_questions.json</code>, the 25 questions.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/DurgeshC16/Kaaran/blob/b6eb102/tests/fixtures/intent_questions.json">Source<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Project log</span><span class="case-sources__why"><code>PROGRESS.md</code>, the source of the figures marked “project log”.</span><span class="case-sources__badges"><a class="evidence" href="https://github.com/DurgeshC16/Kaaran/blob/b6eb102/PROGRESS.md">Project log<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></span></li>
+            <li><span class="case-sources__what">Captures</span><span class="case-sources__why">Every screenshot on this page was captured from the live demo on 2026-11-23, without logging in or typing free text.</span><span class="case-sources__badges"><span class="prov">Live demo capture</span><span class="prov prov--synthetic">Synthetic data</span></span></li>
+          </ul>
+        </div>
+      </section>
+      <nav class="case-next grid" data-surface="paper" data-case-essential aria-label="More case studies">
+        <div class="case-next__inner">
+          <a class="case-next__link" href="notebook.html" rel="prev"><span class="case-next__meta"><svg class="icon icon--arrow-left" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-left"></use></svg>Previous · Pl. 05</span><span class="case-next__title">Engineering notebook</span><span class="case-next__dek">How insertion order shapes tree height, and how rank fusion orders search results.</span></a>
+          <a class="case-next__link" href="tutor.html" rel="next"><span class="case-next__meta">Next · Pl. 02<svg class="icon icon--arrow-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-right"></use></svg></span><span class="case-next__title">Neuro-symbolic tree tutor</span><span class="case-next__dek">A team-built tree-structure tutor where rule-based validators check invariants and an LLM explains them.</span></a>
+        </div>
+        <p class="case-next__colophon"><span>Last updated 2026-11-23</span><span>Every claim on this page maps to a source above.</span></p>
+      </nav>
+      <!-- /region:case-b -->
     </main>
-    <footer>
-      <div class="wrap foot">
-        <span>© 2026 Durgesh Chaudhari</span>
-        <div>
-          <a class="" href="https://github.com/DurgeshC16">GitHub</a
-          ><a class="" href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn</a
-          ><a class="" href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé</a>
+    <!-- region:shell-footer (owner A) -->
+    <footer class="credits" id="contact" data-surface="night" aria-labelledby="contact-label">
+      <div class="wrap">
+        <div class="running-head" aria-hidden="true"><span><b>V</b> — Correspondence</span><span>Credits</span><span>p. 05</span></div>
+      </div>
+      <div class="credits__body grid">
+        <h2 class="credits__label" id="contact-label">Contact</h2>
+        <div class="credits__main">
+          <p class="credits__lead">Looking for an AI engineering internship.</p>
+          <p class="credits__shout"><a class="credits__email" href="mailto:durgesh.chaudhari24@vit.edu">durgesh.chaudhari24<span class="credits__domain"><span class="credits__at">@</span>vit.edu</span></a></p>
+          <div class="credits__row">
+            <button class="btn btn--ghost copy" type="button" data-copy="durgesh.chaudhari24@vit.edu" data-copy-email data-magnetic data-cursor="Copy"><span class="btn__inner"><svg class="icon icon--copy copy__idle" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#copy"></use></svg><svg class="icon icon--check copy__done" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#check"></use></svg><span data-copy-label>Copy address</span></span></button>
+            <p class="vh" aria-live="polite" data-copy-live></p>
+            <ul class="credits__links">
+              <li><span class="cite" aria-hidden="true">[a]</span><a href="https://github.com/DurgeshC16">GitHub<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[b]</span><a href="https://in.linkedin.com/in/durgesh-chaudhari-420408331">LinkedIn<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[c]</span><a href="https://leetcode.com/u/strangeDC/">LeetCode<svg class="icon icon--arrow-up-right" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up-right"></use></svg><span class="vh"> (opens external site)</span></a></li>
+              <li><span class="cite" aria-hidden="true">[d]</span><a href="../assets/Durgesh-Chaudhari-Resume.pdf">Résumé (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="credits__base">
+          <p>Durgesh Chaudhari · Pune, India</p>
+          <p>Set in DM Sans, Instrument Serif and DM Mono. Hand-built in HTML, CSS and JavaScript.</p>
+          <a class="credits__top" href="#top">Back to top<svg class="icon icon--arrow-up" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#arrow-up"></use></svg></a>
         </div>
       </div>
     </footer>
+    <!-- /region:shell-footer -->
+    <!-- region:chrome (owner CHROME: nav overlay + command palette; empty shells so the header's aria-controls resolve) -->
+    <dialog id="nav-overlay" class="nav-overlay" data-surface="night" aria-label="Site index"></dialog>
+    <dialog id="palette" class="palette" data-surface="night" aria-label="Search the archive"></dialog>
+    <!-- /region:chrome -->
   </body>
 </html>
