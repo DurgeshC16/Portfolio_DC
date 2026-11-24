@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- DC. icon sprite (owner A). 16 px grid, 1.5 px stroke, square caps, currentColor.
+       Use: <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#arrow-right"/></svg>
+       (prefix ../ on projects/*). The github mark is filled by its own symbol attributes. -->
+  <symbol id="arrow-right" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M2.5 8h10M9 4.25 12.75 8 9 11.75"/>
+  </symbol>
+  <symbol id="arrow-left" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M13.5 8h-10M7 4.25 3.25 8 7 11.75"/>
+  </symbol>
+  <symbol id="arrow-down" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M8 2.5v10M4.25 9 8 12.75 11.75 9"/>
+  </symbol>
+  <symbol id="arrow-up" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M8 13.5v-10M4.25 7 8 3.25 11.75 7"/>
+  </symbol>
+  <symbol id="arrow-up-right" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M4 12 11.5 4.5M5.5 4h6.5v6.5"/>
+  </symbol>
+  <symbol id="external" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M4 12 11.5 4.5M5.5 4h6.5v6.5"/>
+  </symbol>
+  <symbol id="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square">
+    <path d="m3 8.5 3.25 3.25L13 5"/>
+  </symbol>
+  <symbol id="close" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="m3.5 3.5 9 9m0-9-9 9"/>
+  </symbol>
+  <symbol id="menu" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M2 4.5h12M2 8h12M2 11.5h7"/>
+  </symbol>
+  <symbol id="search" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3.25 3.25"/>
+  </symbol>
+  <symbol id="cmd" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M6 6h4v4H6zM6 6V4.5A1.5 1.5 0 1 0 4.5 6H6Zm4 0V4.5A1.5 1.5 0 1 1 11.5 6H10Zm0 4v1.5a1.5 1.5 0 1 0 1.5-1.5H10Zm-4 0v1.5A1.5 1.5 0 1 1 4.5 10H6Z"/>
+  </symbol>
+  <symbol id="command" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M6 6h4v4H6zM6 6V4.5A1.5 1.5 0 1 0 4.5 6H6Zm4 0V4.5A1.5 1.5 0 1 1 11.5 6H10Zm0 4v1.5a1.5 1.5 0 1 0 1.5-1.5H10Zm-4 0v1.5A1.5 1.5 0 1 1 4.5 10H6Z"/>
+  </symbol>
+  <symbol id="return" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M13 3.5V8a1.5 1.5 0 0 1-1.5 1.5H3.5M6.25 6.75 3.5 9.5l2.75 2.75"/>
+  </symbol>
+  <symbol id="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M8 3v10M3 8h10"/>
+  </symbol>
+  <symbol id="minus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M3 8h10"/>
+  </symbol>
+  <symbol id="copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M5.5 5.5h8v8h-8z"/><path d="M10.5 2.5h-8v8"/>
+  </symbol>
+  <symbol id="mail" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M2 3.5h12v9H2z"/><path d="m2.5 4 5.5 4.5L13.5 4"/>
+  </symbol>
+  <symbol id="file" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M3.5 1.75h6l3 3v9.5h-9z"/><path d="M9.5 1.75v3h3M5.75 8.5h4.5M5.75 11h3"/>
+  </symbol>
+  <symbol id="pdf" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M3.5 1.75h6l3 3v9.5h-9z"/><path d="M9.5 1.75v3h3M5.75 8.5h4.5M5.75 11h3"/>
+  </symbol>
+  <symbol id="download" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M8 2v8.5M4.75 7.25 8 10.5l3.25-3.25M2.5 13.75h11"/>
+  </symbol>
+  <symbol id="play" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M4.5 3v10l8.5-5z"/>
+  </symbol>
+  <symbol id="pause" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M5.5 3.5v9M10.5 3.5v9"/>
+  </symbol>
+  <symbol id="reset" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M3 8a5 5 0 1 0 1.6-3.65"/><path d="M3 2.75V5.5h2.75"/>
+  </symbol>
+  <symbol id="linkedin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+    <path d="M1.75 1.75h12.5v12.5H1.75z"/><path d="M5 7v4.5M5 4.75v.01M7.75 11.5V7m0 2.25c0-1.5 3.5-2.25 3.5.25v2"/>
+  </symbol>
+  <!-- github: the GitHub mark, from GitHub Octicons (MIT licence, (c) GitHub Inc.). Filled. -->
+  <symbol id="github" viewBox="0 0 16 16" fill="currentColor" stroke="none">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+  </symbol>
+</svg>
