@@ -1,30 +1,31 @@
-# Durgesh Chaudhari’s engineering portfolio
+# DC. — The Interactive Engineering Archive
 
-An interactive portfolio covering AI engineering, research and collaborative software projects. The website is plain HTML, CSS and JavaScript. The HTML pages, styles, script, fonts, illustrations and downloadable résumé are in `dist/`.
+Durgesh Chaudhari’s computer engineering portfolio pairs five project case studies with runnable demonstrations and their sources. The site is static HTML, CSS and JavaScript. Its fonts, technical artwork, illustrative datasets and downloadable résumé are served from `dist/`.
 
-## Interactive projects
+## Run locally
 
-- **Kaaran** traces a synthetic district finding to three local evidence records. Select a cluster or change the language to inspect its figures, comparison period and source workbooks.
-- **Tree tutor** lets visitors choose a node, apply AVL rotations, inspect its balance factor and undo a move. Two insertion sequences illustrate single and double rotations.
-- **Federated learning** calculates a weighted average from three adjustable client sample counts. The case study also explains the stages of a training round.
+From the repository root, run `npm run serve` with Python 3 available. Open [the portfolio](http://127.0.0.1:8000/) and press Ctrl+C in the terminal when finished. The preview binds to the loopback interface and serves the archive’s error page for missing documents.
 
-Each demonstration records its selection in the URL so the same example can be reopened or shared. The collaborations section includes interface captures from SmartCare and Review Summarizer. The extension capture uses synthetic review data.
+## Explore
 
-## Engineering notebook
+- [Kaaran](dist/projects/kaaran.html) traces a synthetic finding to local evidence records in English and Marathi.
+- [Tree tutor](dist/projects/tutor.html) lets visitors select a node, apply or undo rotations and inspect its balance factor.
+- [Federated learning](dist/projects/federated.html) calculates a weighted model parameter from illustrative client counts.
+- [CertiVault](dist/projects/certivault.html) follows a certificate from issuance through public verification.
+- [Engineering notebook](dist/projects/notebook.html) includes seven AVL insertions, 27 archived benchmark runs and a reciprocal rank fusion experiment.
 
-[Open the notebook](dist/projects/notebook.html) to replay seven ascending AVL insertions, compare 27 recorded C++ benchmark results, or inspect the reciprocal rank fusion used by the collaborative Review Summarizer. The benchmark shows the final height and single-run batch time for three binary trees. The retrieval study uses fictional reviews with assigned input ranks and recalculates the project's scoring formula locally. Each study links to its source revision and preserves the selected example in the URL.
+The homepage gallery supports keyboard navigation, dragging and touch scrolling. Ctrl/Cmd + K searches the archive. The labs and notebook encode selections in the URL. Figures and navigation have reduced-motion and JavaScript-free alternatives.
 
-## Local preview
+## Browser checks
 
-From the repository root, run the following command with Python 3.
+Install the development dependencies and browsers once with `npm ci` and `npx playwright install chromium firefox webkit`. Run `npm test -- --workers=4`. Playwright starts its own local preview. Test reports and screenshots are ignored by Git. [Test coverage](tests/README.md)
 
-```sh
-python -m http.server 8000 --bind 127.0.0.1 --directory dist
-```
+## Release
 
-Open [the local portfolio](http://127.0.0.1:8000/). Press Ctrl+C in the terminal to stop the preview. The site requires no build step, account or API key. Kaaran’s sample runs locally, and its evidence links open the original project when selected.
+Vercel should use the repository root with the Other preset and serve `dist/`. The checked-in configuration supplies the output directory, skips the build and preserves the 404 status for missing URLs. Domain-specific metadata and live checks are listed in the handoff.
 
-## Project documents
-
-- [Portfolio enhancement plan](docs/portfolio-enhancement-plan.md) — proposed interactions, implementation order and decisions for review.
-- [Original website plan](docs/Durgesh_Chaudhari_Portfolio_Plan.docx) — the approved design brief.
+- [Implementation status and verification](docs/CODEX-HANDOFF.md)
+- [Design system](docs/design-system.md)
+- [Content ledger](docs/content-ledger.md)
+- [Outstanding evidence and launch decisions](docs/REMAINING-WORK.md)
+- [Earlier enhancement plan](docs/portfolio-enhancement-plan.md)
